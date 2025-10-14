@@ -15,144 +15,6 @@ from tqdm import tqdm
 import matplotlib.patches as mpatches
 
 
-def compute_entropy_deviation_correlation(model, test_loader, checkpoint_path, all_deviations):
-    """
-    Compute correlation between attention entropy and head deviation for each graph.
-    This tests whether attention concentration predicts functional importance.
-    
-    Returns:
-        entropy_dev_correlations: List of Spearman correlations (one per graph)
-        per_graph_entropy: Dict mapping graph_idx -> {head_name: entropy_value}
-    """
-    import scipy.stats as stats
-    
-    logging.info("Computing entropy-deviation correlations...")
-    
-    num_graphs = len(all_deviations)
-    entropy_dev_correlations = []
-    per_graph_entropy = {}
-    
-    # Suppress verbose logging
-    old_level = logging.getLogger().level
-    logging.getLogger().setLevel(logging.WARNING)
-    
-    # Create model once for attention extraction
-    model, _ = create_model_from_checkpoint(checkpoint_path)
-    if hasattr(model, 'model'):
-        layers = list(model.model.discrete_sequential) if hasattr(model.model, 'discrete_sequential') else model.model.layers
-    else:
-        layers = model.layers
-    for layer in layers:
-        if hasattr(layer, 'log_attn_weights'):
-            layer.log_attn_weights = True
-    
-    logging.getLogger().setLevel(old_level)
-    
-    for graph_idx in tqdm(range(num_graphs), desc="Computing entropy correlations"):
-        entropy_values = []
-        deviation_values = []
-        head_entropies = {}
-        
-        # For each head in this graph
-        for layer_idx in all_deviations[graph_idx]:
-            for head_idx in all_deviations[graph_idx][layer_idx]:
-                # Get attention matrix
-                attn_matrix = extract_attention_for_graph(
-                    model, test_loader, graph_idx, layer_idx, head_idx
-                )
-                
-                if attn_matrix is not None and attn_matrix.size > 0:
-                    # Pool attention: sum across rows (incoming attention per node)
-                    pooled_attn = np.sum(attn_matrix, axis=0)
-                    
-                    # Normalize to probability distribution
-                    total = pooled_attn.sum()
-                    if total > 0:
-                        prob_dist = pooled_attn / total
-                        
-                        # Compute entropy: H = -Σ p_j log(p_j)
-                        # Filter out zeros to avoid log(0)
-                        prob_dist_nonzero = prob_dist[prob_dist > 0]
-                        entropy = -np.sum(prob_dist_nonzero * np.log(prob_dist_nonzero))
-                    else:
-                        entropy = 0.0
-                    
-                    # Get deviation for this head
-                    deviation = all_deviations[graph_idx][layer_idx][head_idx]
-                    deviation = float(deviation) if hasattr(deviation, 'item') else float(deviation)
-                    
-                    # Store
-                    head_name = f'L{layer_idx}_H{head_idx}'
-                    head_entropies[head_name] = float(entropy)
-                    entropy_values.append(entropy)
-                    deviation_values.append(deviation)
-        
-        # Compute Spearman correlation for this graph
-        if len(entropy_values) >= 3:  # Need at least 3 points for meaningful correlation
-            corr, _ = stats.spearmanr(entropy_values, deviation_values)
-            # Handle NaN (happens if all values identical)
-            if np.isnan(corr):
-                corr = 0.0
-        else:
-            corr = 0.0
-        
-        entropy_dev_correlations.append(float(corr))
-        per_graph_entropy[graph_idx] = head_entropies
-    
-    # Clean up
-    del model
-    torch.cuda.empty_cache()
-    
-    logging.info(f"Computed entropy-deviation correlations for {num_graphs} graphs")
-    
-    return entropy_dev_correlations, per_graph_entropy
-
-
-def visualize_entropy_deviation_analysis(entropy_dev_correlations, save_dir):
-    """
-    Create visualization showing the distribution of entropy-deviation correlations.
-    Low/inconsistent correlation proves the visualization paradox.
-    """
-    fig, axes = plt.subplots(1, 2, figsize=(14, 5))
-    
-    # Histogram of correlations
-    axes[0].hist(entropy_dev_correlations, bins=30, alpha=0.7, color='purple', edgecolor='black')
-    median_corr = np.median(entropy_dev_correlations)
-    mean_corr = np.mean(entropy_dev_correlations)
-    
-    axes[0].axvline(median_corr, color='red', linestyle='--', linewidth=2,
-                    label=f'Median: {median_corr:.3f}')
-    axes[0].axvline(mean_corr, color='orange', linestyle='--', linewidth=2,
-                    label=f'Mean: {mean_corr:.3f}')
-    axes[0].axvline(0, color='black', linestyle='-', linewidth=1, alpha=0.3)
-    
-    axes[0].set_xlabel('Spearman Correlation (Entropy vs Deviation)', fontsize=12)
-    axes[0].set_ylabel('Number of Graphs', fontsize=12)
-    axes[0].set_title('Attention Entropy Does Not Predict Functional Importance', fontsize=13, fontweight='bold')
-    axes[0].legend(fontsize=11)
-    axes[0].grid(True, alpha=0.3)
-    
-    # Box plot
-    axes[1].boxplot(entropy_dev_correlations, vert=True, patch_artist=True,
-                    boxprops=dict(facecolor='lightblue', alpha=0.7),
-                    medianprops=dict(color='red', linewidth=2))
-    axes[1].axhline(0, color='black', linestyle='-', linewidth=1, alpha=0.3)
-    axes[1].set_ylabel('Spearman Correlation', fontsize=12)
-    axes[1].set_title('Distribution Summary', fontsize=13, fontweight='bold')
-    axes[1].grid(True, alpha=0.3, axis='y')
-    
-    # Add statistics text
-    stats_text = f'Median: {median_corr:.3f}\nMean: {mean_corr:.3f}\nStd: {np.std(entropy_dev_correlations):.3f}'
-    axes[1].text(1.15, 0.5, stats_text, transform=axes[1].transAxes,
-                fontsize=11, verticalalignment='center',
-                bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
-    
-    plt.tight_layout()
-    plt.savefig(save_dir / 'entropy_deviation_correlation.png', dpi=150, bbox_inches='tight')
-    plt.close()
-    
-    logging.info(f"Saved entropy-deviation correlation plot")
-
 def create_model_from_checkpoint(checkpoint_path):
     """Create a fresh model and load checkpoint weights : handles standard-gt, gps and darts-gt"""
     from torch_geometric.graphgym.model_builder import create_model
@@ -191,25 +53,25 @@ def create_model_from_checkpoint(checkpoint_path):
     
     # For NAS models, convert to discrete version
     if cfg.model.type == 'NASModelEdge' and optimal_weights is not None:
-        from dartsgt.network.NAS_model_edge import NASModelEdge
+        from graphgps.network.NAS_model_edge import NASModelEdge
         temp_model = NASModelEdge(cfg.share.dim_in, cfg.share.dim_out)
         discrete_model = temp_model.get_discrete_model(optimal_weights, cfg.gt.weight_type)
         discrete_model.optimal_weights_dict = optimal_weights
         model.model = discrete_model
     elif cfg.model.type == 'NASModel' and optimal_weights is not None:
-        from dartsgt.network.NAS_model import NASModel
+        from graphgps.network.NAS_model import NASModel
         temp_model = NASModel(cfg.share.dim_in, cfg.share.dim_out)
         discrete_model = temp_model.get_discrete_model(optimal_weights, cfg.gt.weight_type)
         discrete_model.optimal_weights_dict = optimal_weights
         model.model = discrete_model
     if cfg.model.type == 'NASModelQE' and optimal_weights is not None:
-        from dartsgt.network.NAS_model_qproj_edge import NASModelEdge
+        from graphgps.network.NAS_model_qproj_edge import NASModelEdge
         temp_model = NASModelEdge(cfg.share.dim_in, cfg.share.dim_out)
         discrete_model = temp_model.get_discrete_model(optimal_weights, cfg.gt.weight_type)
         discrete_model.optimal_weights_dict = optimal_weights
         model.model = discrete_model
     elif cfg.model.type == 'NASModelQ' and optimal_weights is not None:
-        from dartsgt.network.NAS_model_qproj import NASModel
+        from graphgps.network.NAS_model_qproj import NASModel
         temp_model = NASModel(cfg.share.dim_in, cfg.share.dim_out)
         discrete_model = temp_model.get_discrete_model(optimal_weights, cfg.gt.weight_type)
         discrete_model.optimal_weights_dict = optimal_weights
@@ -889,7 +751,7 @@ def compute_all_head_deviations(checkpoint_path, test_loader):
 
 def save_per_graph_results(graph_idx, specialization, focus, head_deviations, 
                           top_k_heads, bottom_k_heads, baseline_pred, true_label, save_dir,
-                          head_to_nodes, correlation, total_attn_dict, stdev_dict,head_entropy_dict=None):
+                          head_to_nodes, correlation, total_attn_dict, stdev_dict):
     """Save individual graph results to JSON - NOW WITH NEW METRICS"""
     graph_results_dir = save_dir / 'graph_results'
     graph_results_dir.mkdir(parents=True, exist_ok=True)
@@ -926,7 +788,6 @@ def save_per_graph_results(graph_idx, specialization, focus, head_deviations,
         'correlation': float(correlation),  # NEW
         'total_attention_per_head': total_attn_dict,  # NEW
         'stdev_attention_per_head': stdev_dict,  # NEW
-        'entropy_per_head': head_entropy_dict if head_entropy_dict else {},
         'head_deviations': head_deviations,
         'top_k_heads': top_k_heads_clean,
         'bottom_k_heads': bottom_k_heads_clean,
@@ -1039,21 +900,6 @@ def run_pk_analysis(model, train_loader, test_loader):
     
     # Step 2: Compute all head deviations
     all_deviations, baseline_preds, true_labels = compute_all_head_deviations(checkpoint_path, test_loader)
-    # Create results directory early (needed for entropy visualization)
-    vis_dir = Path(cfg.run_dir) / 'pk_explainer_results'
-    vis_dir.mkdir(parents=True, exist_ok=True)
-    # Step 2.5: Compute entropy-deviation correlations (proves visualization paradox)
-    logging.info("Computing entropy-deviation correlations...")
-    entropy_dev_correlations, per_graph_entropy = compute_entropy_deviation_correlation(
-        model, test_loader, checkpoint_path, all_deviations
-    )
-    visualize_entropy_deviation_analysis(entropy_dev_correlations, vis_dir)
-    
-    median_entropy_corr = np.median(entropy_dev_correlations)
-    mean_entropy_corr = np.mean(entropy_dev_correlations)
-    std_entropy_corr = np.std(entropy_dev_correlations)
-    
-    logging.info(f"Entropy-Deviation Correlation: {median_entropy_corr:.3f} (median), {mean_entropy_corr:.3f} (mean)")
     
     # Step 3: Calculate metrics for each graph
     num_graphs = len(all_deviations)
@@ -1143,8 +989,7 @@ def run_pk_analysis(model, train_loader, test_loader):
             head_to_nodes,   
             correlation,  # NEW
             total_attn_dict,  # NEW
-            stdev_dict,# NEW
-            per_graph_entropy.get(graph_idx, {})# NEW
+            stdev_dict  # NEW
         )
     
     # Step 5: Dataset-level statistics WITH NEW METRICS
@@ -1159,7 +1004,7 @@ def run_pk_analysis(model, train_loader, test_loader):
     logging.info(f"Specialization: {mean_spec:.6f} +/- {std_spec:.6f}")
     logging.info(f"Focus: {mean_focus:.6f} +/- {std_focus:.6f}")
     logging.info(f"Correlation: {mean_corr:.6f} +/- {std_corr:.6f}")  # NEW
-    logging.info(f"Entropy-Deviation Corr: {median_entropy_corr:.3f} +/- {std_entropy_corr:.3f}")
+    
     # Step 6: Aggregate visualizations
     visualize_aggregate_results(specializations, focus_scores, vis_dir)
     
@@ -1176,10 +1021,7 @@ def run_pk_analysis(model, train_loader, test_loader):
             'focus_mean': float(mean_focus),
             'focus_std': float(std_focus),
             'correlation_mean': float(mean_corr),  # NEW
-            'correlation_std': float(std_corr),  # NEW
-            'entropy_deviation_correlation_median': float(median_entropy_corr),
-            'entropy_deviation_correlation_mean': float(mean_entropy_corr),
-            'entropy_deviation_correlation_std': float(std_entropy_corr)
+            'correlation_std': float(std_corr)  # NEW
         },
         'interpretability_category': overall_category
     }

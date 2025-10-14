@@ -1,0 +1,1701 @@
+Lmod has detected the following error: The following module(s) are unknown:
+"cuda/12.0"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore-cache load "cuda/12.0"
+
+Also make sure that all modulefiles written in TCL start with the string
+#%Module
+
+
+
+              total        used        free      shared  buff/cache   available
+Mem:          376Gi        53Gi       258Gi       2.2Gi        64Gi       317Gi
+Swap:         1.9Gi       1.7Gi       150Mi
+Tue Aug 26 18:32:05 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 560.35.03              Driver Version: 560.35.03      CUDA Version: 12.6     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100-PCIE-16GB           On  |   00000000:B1:00.0 Off |                    0 |
+| N/A   47C    P0             45W /  250W |       1MiB /  16384MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Running experiment with seed: 45
+Starting training for seed 45...
+Changed working directory to: /data/coml-deepcmb/lady6973/ABLATION_FINAL/RACE_TO_SUP/MALNET/FINAL_SINGLE/PERFORMER_E/ORIGNOQ/SYYM
+Loading config from: /data/coml-deepcmb/lady6973/ABLATION_FINAL/RACE_TO_SUP/MALNET/FINAL_SINGLE/PERFORMER_E/ORIGNOQ/SYYM/confignas.yaml
+Using device: cuda
+2025-08-26 18:33:36,505 - INFO - GPU Mem: 16.9GB
+2025-08-26 18:33:36,505 - INFO - Run directory: results/MALNET/MALNET-E-45
+2025-08-26 18:33:36,505 - INFO - Seed: 45
+2025-08-26 18:33:36,505 - INFO - === OPTIMIZED MOE CONFIGURATION ===
+2025-08-26 18:33:36,505 - INFO - Routing mode: nas
+2025-08-26 18:33:36,505 - INFO - Expert types: ['GINE', 'CustomGatedGCN', 'GATV2']
+2025-08-26 18:33:36,505 - INFO - Number of layers: 4
+2025-08-26 18:33:36,505 - INFO - Uncertainty enabled: False
+2025-08-26 18:33:36,505 - INFO - Training mode: NoMixNas_uncertainty_train
+2025-08-26 18:33:36,505 - INFO - Optimization: Uncertainty only for last layer + test/val
+2025-08-26 18:33:36,505 - INFO - Additional features: Router weights logging + JSON export
+2025-08-26 18:33:38,930 - INFO - Computing "LocalDegreeProfile" node features for MalNetTiny.
+2025-08-26 18:33:43,330 - INFO - [*] Loaded dataset 'LocalDegreeProfile' from 'PyG-MalNetTiny':
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/torch_geometric/data/in_memory_dataset.py:300: UserWarning: It is not recommended to directly access the internal storage format `data` of an 'InMemoryDataset'. If you are absolutely certain what you are doing, access the internal storage via `InMemoryDataset._data` instead to suppress this warning. Alternatively, you can access stacked individual attributes of every graph via `dataset.{attr_name}`.
+  warnings.warn(msg)
+2025-08-26 18:33:43,332 - INFO -   Data(edge_index=[2, 14299688], y=[5000], x=[7051560, 5], num_nodes=7051560)
+2025-08-26 18:33:43,349 - INFO -   undirected: False
+2025-08-26 18:33:43,349 - INFO -   num graphs: 5000
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/torch_geometric/data/in_memory_dataset.py:300: UserWarning: It is not recommended to directly access the internal storage format `data` of an 'InMemoryDataset'. The data of the dataset is already cached, so any modifications to `data` will not be reflected when accessing its elements. Clearing the cache now by removing all elements in `dataset._data_list`. If you are absolutely certain what you are doing, access the internal storage via `InMemoryDataset._data` instead to suppress this warning. Alternatively, you can access stacked individual attributes of every graph via `dataset.{attr_name}`.
+  warnings.warn(msg)
+2025-08-26 18:33:43,349 - INFO -   avg num_nodes/graph: 1410
+2025-08-26 18:33:43,350 - INFO -   num node features: 5
+2025-08-26 18:33:43,350 - INFO -   num edge features: 0
+2025-08-26 18:33:43,350 - INFO -   num classes: 5
+2025-08-26 18:33:43,352 - INFO - [*] Loaded dataset 'LocalDegreeProfile' from 'PyG-MalNetTiny'
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/nni/nas/nn/pytorch/choice.py:252: UserWarning: "key" is deprecated. Assuming label.
+  warnings.warn(f'"key" is deprecated. Assuming label.')
+2025-08-26 18:33:43,763 - INFO - Created model type: <class 'torch_geometric.graphgym.model_builder.GraphGymModule'>
+2025-08-26 18:33:43,764 - INFO - Inner model type: <class 'graphgps.network.NAS_model_edge_syym.NASModelEdge'>
+2025-08-26 18:33:43,764 - INFO - Inner model has get_darts_model: True
+2025-08-26 18:33:43,766 - INFO - GraphGymModule(
+  (model): NASModelEdge(
+    (encoder): FeatureEncoder(
+      (edge_encoder): DummyEdgeEncoder(
+        (encoder): Embedding(1, 64)
+      )
+    )
+    (pre_mp): GeneralMultiLayer(
+      (Layer_0): GeneralLayer(
+        (layer): Linear(
+          (model): Linear(5, 64, bias=False)
+        )
+        (post_layer): Sequential(
+          (0): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (1): ReLU()
+        )
+      )
+    )
+    (darts_layers): ModuleList(
+      (0): NASLayer(
+        summary: dim_h=64, global_model_type=SparseTransformer, num_heads=4, num_experts=3, routing_mode=nas, is_last_layer=False
+        (expert_dropout): Dropout(p=0.3, inplace=False)
+        (kv_model): ModuleDict(
+          (0): GINEConv(nn=Sequential(
+            (0): Linear(64, 64, bias=True)
+            (1): ReLU()
+            (2): Linear(64, 64, bias=True)
+          ))
+          (1): GatedGCNLayer()
+          (2): GATv2Conv(64, 16, heads=4)
+        )
+        (input_choice): InputChoice(n_candidates=3, n_chosen=1, reduction='sum', label='gnn_mixture_choice_group_0')
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=64, out_features=64, bias=True)
+          (W_v): Linear(in_features=64, out_features=64, bias=True)
+          (W_o): Linear(in_features=64, out_features=64, bias=True)
+        )
+        (norm1_kv): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_attn): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_kv): Dropout(p=0.0, inplace=False)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=64, out_features=128, bias=True)
+        (ff_linear2): Linear(in_features=128, out_features=64, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+        (edge_processor): Sequential(
+          (0): Linear(in_features=64, out_features=64, bias=True)
+          (1): ReLU()
+          (2): Dropout(p=0.0, inplace=False)
+          (3): Linear(in_features=64, out_features=64, bias=True)
+          (4): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (1): NASLayer(
+        summary: dim_h=64, global_model_type=SparseTransformer, num_heads=4, num_experts=3, routing_mode=nas, is_last_layer=False
+        (expert_dropout): Dropout(p=0.3, inplace=False)
+        (kv_model): ModuleDict(
+          (0): GINEConv(nn=Sequential(
+            (0): Linear(64, 64, bias=True)
+            (1): ReLU()
+            (2): Linear(64, 64, bias=True)
+          ))
+          (1): GatedGCNLayer()
+          (2): GATv2Conv(64, 16, heads=4)
+        )
+        (input_choice): InputChoice(n_candidates=3, n_chosen=1, reduction='sum', label='gnn_mixture_choice_group_1')
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=64, out_features=64, bias=True)
+          (W_v): Linear(in_features=64, out_features=64, bias=True)
+          (W_o): Linear(in_features=64, out_features=64, bias=True)
+        )
+        (norm1_kv): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_attn): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_kv): Dropout(p=0.0, inplace=False)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=64, out_features=128, bias=True)
+        (ff_linear2): Linear(in_features=128, out_features=64, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+        (edge_processor): Sequential(
+          (0): Linear(in_features=64, out_features=64, bias=True)
+          (1): ReLU()
+          (2): Dropout(p=0.0, inplace=False)
+          (3): Linear(in_features=64, out_features=64, bias=True)
+          (4): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (2): NASLayer(
+        summary: dim_h=64, global_model_type=SparseTransformer, num_heads=4, num_experts=3, routing_mode=nas, is_last_layer=False
+        (expert_dropout): Dropout(p=0.3, inplace=False)
+        (kv_model): ModuleDict(
+          (0): GINEConv(nn=Sequential(
+            (0): Linear(64, 64, bias=True)
+            (1): ReLU()
+            (2): Linear(64, 64, bias=True)
+          ))
+          (1): GatedGCNLayer()
+          (2): GATv2Conv(64, 16, heads=4)
+        )
+        (input_choice): InputChoice(n_candidates=3, n_chosen=1, reduction='sum', label='gnn_mixture_choice_group_2')
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=64, out_features=64, bias=True)
+          (W_v): Linear(in_features=64, out_features=64, bias=True)
+          (W_o): Linear(in_features=64, out_features=64, bias=True)
+        )
+        (norm1_kv): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_attn): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_kv): Dropout(p=0.0, inplace=False)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=64, out_features=128, bias=True)
+        (ff_linear2): Linear(in_features=128, out_features=64, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+        (edge_processor): Sequential(
+          (0): Linear(in_features=64, out_features=64, bias=True)
+          (1): ReLU()
+          (2): Dropout(p=0.0, inplace=False)
+          (3): Linear(in_features=64, out_features=64, bias=True)
+          (4): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (3): NASLayer(
+        summary: dim_h=64, global_model_type=SparseTransformer, num_heads=4, num_experts=3, routing_mode=nas, is_last_layer=False
+        (expert_dropout): Dropout(p=0.3, inplace=False)
+        (kv_model): ModuleDict(
+          (0): GINEConv(nn=Sequential(
+            (0): Linear(64, 64, bias=True)
+            (1): ReLU()
+            (2): Linear(64, 64, bias=True)
+          ))
+          (1): GatedGCNLayer()
+          (2): GATv2Conv(64, 16, heads=4)
+        )
+        (input_choice): InputChoice(n_candidates=3, n_chosen=1, reduction='sum', label='gnn_mixture_choice_group_3')
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=64, out_features=64, bias=True)
+          (W_v): Linear(in_features=64, out_features=64, bias=True)
+          (W_o): Linear(in_features=64, out_features=64, bias=True)
+        )
+        (norm1_kv): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_attn): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_kv): Dropout(p=0.0, inplace=False)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=64, out_features=128, bias=True)
+        (ff_linear2): Linear(in_features=128, out_features=64, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+        (edge_processor): Sequential(
+          (0): Linear(in_features=64, out_features=64, bias=True)
+          (1): ReLU()
+          (2): Dropout(p=0.0, inplace=False)
+          (3): Linear(in_features=64, out_features=64, bias=True)
+          (4): Dropout(p=0.0, inplace=False)
+        )
+      )
+    )
+    (darts_sequential): Sequential(
+      (0): NASLayer(
+        summary: dim_h=64, global_model_type=SparseTransformer, num_heads=4, num_experts=3, routing_mode=nas, is_last_layer=False
+        (expert_dropout): Dropout(p=0.3, inplace=False)
+        (kv_model): ModuleDict(
+          (0): GINEConv(nn=Sequential(
+            (0): Linear(64, 64, bias=True)
+            (1): ReLU()
+            (2): Linear(64, 64, bias=True)
+          ))
+          (1): GatedGCNLayer()
+          (2): GATv2Conv(64, 16, heads=4)
+        )
+        (input_choice): InputChoice(n_candidates=3, n_chosen=1, reduction='sum', label='gnn_mixture_choice_group_0')
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=64, out_features=64, bias=True)
+          (W_v): Linear(in_features=64, out_features=64, bias=True)
+          (W_o): Linear(in_features=64, out_features=64, bias=True)
+        )
+        (norm1_kv): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_attn): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_kv): Dropout(p=0.0, inplace=False)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=64, out_features=128, bias=True)
+        (ff_linear2): Linear(in_features=128, out_features=64, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+        (edge_processor): Sequential(
+          (0): Linear(in_features=64, out_features=64, bias=True)
+          (1): ReLU()
+          (2): Dropout(p=0.0, inplace=False)
+          (3): Linear(in_features=64, out_features=64, bias=True)
+          (4): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (1): NASLayer(
+        summary: dim_h=64, global_model_type=SparseTransformer, num_heads=4, num_experts=3, routing_mode=nas, is_last_layer=False
+        (expert_dropout): Dropout(p=0.3, inplace=False)
+        (kv_model): ModuleDict(
+          (0): GINEConv(nn=Sequential(
+            (0): Linear(64, 64, bias=True)
+            (1): ReLU()
+            (2): Linear(64, 64, bias=True)
+          ))
+          (1): GatedGCNLayer()
+          (2): GATv2Conv(64, 16, heads=4)
+        )
+        (input_choice): InputChoice(n_candidates=3, n_chosen=1, reduction='sum', label='gnn_mixture_choice_group_1')
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=64, out_features=64, bias=True)
+          (W_v): Linear(in_features=64, out_features=64, bias=True)
+          (W_o): Linear(in_features=64, out_features=64, bias=True)
+        )
+        (norm1_kv): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_attn): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_kv): Dropout(p=0.0, inplace=False)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=64, out_features=128, bias=True)
+        (ff_linear2): Linear(in_features=128, out_features=64, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+        (edge_processor): Sequential(
+          (0): Linear(in_features=64, out_features=64, bias=True)
+          (1): ReLU()
+          (2): Dropout(p=0.0, inplace=False)
+          (3): Linear(in_features=64, out_features=64, bias=True)
+          (4): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (2): NASLayer(
+        summary: dim_h=64, global_model_type=SparseTransformer, num_heads=4, num_experts=3, routing_mode=nas, is_last_layer=False
+        (expert_dropout): Dropout(p=0.3, inplace=False)
+        (kv_model): ModuleDict(
+          (0): GINEConv(nn=Sequential(
+            (0): Linear(64, 64, bias=True)
+            (1): ReLU()
+            (2): Linear(64, 64, bias=True)
+          ))
+          (1): GatedGCNLayer()
+          (2): GATv2Conv(64, 16, heads=4)
+        )
+        (input_choice): InputChoice(n_candidates=3, n_chosen=1, reduction='sum', label='gnn_mixture_choice_group_2')
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=64, out_features=64, bias=True)
+          (W_v): Linear(in_features=64, out_features=64, bias=True)
+          (W_o): Linear(in_features=64, out_features=64, bias=True)
+        )
+        (norm1_kv): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_attn): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_kv): Dropout(p=0.0, inplace=False)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=64, out_features=128, bias=True)
+        (ff_linear2): Linear(in_features=128, out_features=64, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+        (edge_processor): Sequential(
+          (0): Linear(in_features=64, out_features=64, bias=True)
+          (1): ReLU()
+          (2): Dropout(p=0.0, inplace=False)
+          (3): Linear(in_features=64, out_features=64, bias=True)
+          (4): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (3): NASLayer(
+        summary: dim_h=64, global_model_type=SparseTransformer, num_heads=4, num_experts=3, routing_mode=nas, is_last_layer=False
+        (expert_dropout): Dropout(p=0.3, inplace=False)
+        (kv_model): ModuleDict(
+          (0): GINEConv(nn=Sequential(
+            (0): Linear(64, 64, bias=True)
+            (1): ReLU()
+            (2): Linear(64, 64, bias=True)
+          ))
+          (1): GatedGCNLayer()
+          (2): GATv2Conv(64, 16, heads=4)
+        )
+        (input_choice): InputChoice(n_candidates=3, n_chosen=1, reduction='sum', label='gnn_mixture_choice_group_3')
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=64, out_features=64, bias=True)
+          (W_v): Linear(in_features=64, out_features=64, bias=True)
+          (W_o): Linear(in_features=64, out_features=64, bias=True)
+        )
+        (norm1_kv): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_attn): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_kv): Dropout(p=0.0, inplace=False)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=64, out_features=128, bias=True)
+        (ff_linear2): Linear(in_features=128, out_features=64, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+        (edge_processor): Sequential(
+          (0): Linear(in_features=64, out_features=64, bias=True)
+          (1): ReLU()
+          (2): Dropout(p=0.0, inplace=False)
+          (3): Linear(in_features=64, out_features=64, bias=True)
+          (4): Dropout(p=0.0, inplace=False)
+        )
+      )
+    )
+    (post_mp): GNNGraphHead(
+      (layer_post_mp): MLP(
+        (model): Sequential(
+          (0): GeneralMultiLayer(
+            (Layer_0): GeneralLayer(
+              (layer): Linear(
+                (model): Linear(64, 64, bias=True)
+              )
+              (post_layer): Sequential(
+                (0): ReLU()
+              )
+            )
+            (Layer_1): GeneralLayer(
+              (layer): Linear(
+                (model): Linear(64, 64, bias=True)
+              )
+              (post_layer): Sequential(
+                (0): ReLU()
+              )
+            )
+          )
+          (1): Linear(
+            (model): Linear(64, 5, bias=True)
+          )
+        )
+      )
+    )
+  )
+)
+2025-08-26 18:33:43,769 - INFO - Number of parameters: 327,881
+2025-08-26 18:33:43,769 - INFO - Starting optimized training: 2025-08-26 18:33:43.769728
+2025-08-26 18:33:43,861 - INFO - Computing "LocalDegreeProfile" node features for MalNetTiny.
+2025-08-26 18:33:47,881 - INFO - [*] Loaded dataset 'LocalDegreeProfile' from 'PyG-MalNetTiny':
+2025-08-26 18:33:47,882 - INFO -   Data(edge_index=[2, 14299688], y=[5000], x=[7051560, 5], num_nodes=7051560)
+2025-08-26 18:33:47,882 - INFO -   undirected: False
+2025-08-26 18:33:47,882 - INFO -   num graphs: 5000
+2025-08-26 18:33:47,883 - INFO -   avg num_nodes/graph: 1410
+2025-08-26 18:33:47,883 - INFO -   num node features: 5
+2025-08-26 18:33:47,883 - INFO -   num edge features: 0
+2025-08-26 18:33:47,883 - INFO -   num classes: 5
+2025-08-26 18:33:47,886 - INFO - [*] Loaded dataset 'LocalDegreeProfile' from 'PyG-MalNetTiny'
+2025-08-26 18:33:47,889 - INFO - === STARTING OPTIMIZED TRAINING ===
+2025-08-26 18:33:47,889 - INFO - Start from epoch 0
+2025-08-26 18:33:47,889 - INFO - ================================================================================
+2025-08-26 18:33:47,889 - INFO - STARTING TWO-PHASE NAS TRAINING
+2025-08-26 18:33:47,889 - INFO - ================================================================================
+2025-08-26 18:33:47,889 - INFO - Routing mode: nas
+2025-08-26 18:33:47,889 - INFO - Expert types: ['GINE', 'CustomGatedGCN', 'GATV2']
+2025-08-26 18:33:47,889 - INFO - Phase 1: Architecture search/initialization
+2025-08-26 18:33:47,890 - INFO - Phase 2: Discrete training with uncertainty (NO variance)
+2025-08-26 18:33:47,890 - INFO - ============================================================
+2025-08-26 18:33:47,890 - INFO - PHASE 1: ARCHITECTURE SEARCH/INITIALIZATION
+2025-08-26 18:33:47,890 - INFO - ============================================================
+2025-08-26 18:33:47,890 - INFO - Splitting dataset for DARTS:
+2025-08-26 18:33:47,890 - INFO -   Original train size: 3500
+2025-08-26 18:33:47,890 - INFO -   DARTS train size: 2100 (60.0%)
+2025-08-26 18:33:47,890 - INFO -   DARTS val size: 1400 (40.0%)
+2025-08-26 18:33:47,890 - INFO - Found GraphGym wrapper, using inner model: <class 'graphgps.network.NAS_model_edge_syym.NASModelEdge'>
+2025-08-26 18:33:47,890 - INFO - Successfully configured model for DARTS training
+2025-08-26 18:33:47,891 - INFO - NAS MODE: Running 30 epochs with DARTS
+2025-08-26 18:33:47,891 - INFO - DARTS Configuration:
+2025-08-26 18:33:47,891 - INFO -   Epochs: 30
+2025-08-26 18:33:47,891 - INFO -   Architecture LR: 0.0004
+2025-08-26 18:33:47,891 - INFO -   Grad clip: 5.0
+2025-08-26 18:33:47,892 - INFO - Starting DARTS architecture search
+2025-08-26 18:33:51,510 - WARNING - Epoch [1/30] Step [1/88]  acc 0.062500 (0.062500)  loss 1.641031 (1.641031)
+GPU memory consumption  GPU Memory: Allocated: 56.9 MB, Reserved: 1988.0 MB
+2025-08-26 18:33:52,818 - WARNING - Epoch [1/30] Step [11/88]  acc 0.562500 (0.340909)  loss 1.483568 (1.570538)
+GPU memory consumption  GPU Memory: Allocated: 47.0 MB, Reserved: 2418.0 MB
+2025-08-26 18:33:54,163 - WARNING - Epoch [1/30] Step [21/88]  acc 0.500000 (0.375000)  loss 1.478287 (1.531066)
+GPU memory consumption  GPU Memory: Allocated: 49.3 MB, Reserved: 3052.0 MB
+2025-08-26 18:33:55,542 - WARNING - Epoch [1/30] Step [31/88]  acc 0.500000 (0.415323)  loss 1.414999 (1.496689)
+GPU memory consumption  GPU Memory: Allocated: 58.1 MB, Reserved: 3562.0 MB
+2025-08-26 18:33:56,883 - WARNING - Epoch [1/30] Step [41/88]  acc 0.500000 (0.439024)  loss 1.349712 (1.466342)
+GPU memory consumption  GPU Memory: Allocated: 56.5 MB, Reserved: 3562.0 MB
+2025-08-26 18:33:58,208 - WARNING - Epoch [1/30] Step [51/88]  acc 0.500000 (0.474265)  loss 1.374179 (1.434968)
+GPU memory consumption  GPU Memory: Allocated: 55.3 MB, Reserved: 3562.0 MB
+2025-08-26 18:33:59,631 - WARNING - Epoch [1/30] Step [61/88]  acc 0.500000 (0.470287)  loss 1.297935 (1.417160)
+GPU memory consumption  GPU Memory: Allocated: 74.3 MB, Reserved: 4076.0 MB
+2025-08-26 18:34:01,049 - WARNING - Epoch [1/30] Step [71/88]  acc 0.625000 (0.477113)  loss 1.257472 (1.401428)
+GPU memory consumption  GPU Memory: Allocated: 57.7 MB, Reserved: 4112.0 MB
+2025-08-26 18:34:02,419 - WARNING - Epoch [1/30] Step [81/88]  acc 0.312500 (0.483796)  loss 1.397546 (1.385306)
+GPU memory consumption  GPU Memory: Allocated: 66.3 MB, Reserved: 4112.0 MB
+Epoch 1 completed in 0:00:15.551939
+2025-08-26 18:34:06,547 - WARNING - Epoch [2/30] Step [1/88]  acc 0.562500 (0.562500)  loss 1.177781 (1.177781)
+GPU memory consumption  GPU Memory: Allocated: 56.1 MB, Reserved: 4112.0 MB
+2025-08-26 18:34:07,895 - WARNING - Epoch [2/30] Step [11/88]  acc 0.437500 (0.477273)  loss 1.282284 (1.230626)
+GPU memory consumption  GPU Memory: Allocated: 51.9 MB, Reserved: 4112.0 MB
+2025-08-26 18:34:09,211 - WARNING - Epoch [2/30] Step [21/88]  acc 0.562500 (0.538690)  loss 1.207918 (1.201783)
+GPU memory consumption  GPU Memory: Allocated: 50.7 MB, Reserved: 4112.0 MB
+2025-08-26 18:34:10,591 - WARNING - Epoch [2/30] Step [31/88]  acc 0.625000 (0.540323)  loss 1.121861 (1.183372)
+GPU memory consumption  GPU Memory: Allocated: 53.5 MB, Reserved: 4112.0 MB
+2025-08-26 18:34:11,907 - WARNING - Epoch [2/30] Step [41/88]  acc 0.562500 (0.542683)  loss 1.114985 (1.169234)
+GPU memory consumption  GPU Memory: Allocated: 52.6 MB, Reserved: 4112.0 MB
+2025-08-26 18:34:13,276 - WARNING - Epoch [2/30] Step [51/88]  acc 0.437500 (0.544118)  loss 1.266148 (1.168352)
+GPU memory consumption  GPU Memory: Allocated: 58.8 MB, Reserved: 4112.0 MB
+2025-08-26 18:34:14,656 - WARNING - Epoch [2/30] Step [61/88]  acc 0.687500 (0.544057)  loss 0.873615 (1.157579)
+GPU memory consumption  GPU Memory: Allocated: 62.8 MB, Reserved: 4112.0 MB
+2025-08-26 18:34:16,048 - WARNING - Epoch [2/30] Step [71/88]  acc 0.500000 (0.535211)  loss 1.289205 (1.158816)
+GPU memory consumption  GPU Memory: Allocated: 55.9 MB, Reserved: 4112.0 MB
+2025-08-26 18:34:17,394 - WARNING - Epoch [2/30] Step [81/88]  acc 0.687500 (0.529321)  loss 0.922447 (1.161053)
+GPU memory consumption  GPU Memory: Allocated: 44.9 MB, Reserved: 4112.0 MB
+Epoch 2 completed in 0:00:11.991676
+2025-08-26 18:34:21,494 - WARNING - Epoch [3/30] Step [1/88]  acc 0.875000 (0.875000)  loss 0.903766 (0.903766)
+GPU memory consumption  GPU Memory: Allocated: 54.4 MB, Reserved: 4112.0 MB
+2025-08-26 18:34:22,816 - WARNING - Epoch [3/30] Step [11/88]  acc 0.687500 (0.630682)  loss 1.011553 (1.045519)
+GPU memory consumption  GPU Memory: Allocated: 46.1 MB, Reserved: 4150.0 MB
+2025-08-26 18:34:24,125 - WARNING - Epoch [3/30] Step [21/88]  acc 0.500000 (0.586310)  loss 1.068136 (1.030854)
+GPU memory consumption  GPU Memory: Allocated: 50.5 MB, Reserved: 4150.0 MB
+2025-08-26 18:34:25,537 - WARNING - Epoch [3/30] Step [31/88]  acc 0.500000 (0.558468)  loss 1.041405 (1.051586)
+GPU memory consumption  GPU Memory: Allocated: 58.9 MB, Reserved: 4150.0 MB
+2025-08-26 18:34:26,858 - WARNING - Epoch [3/30] Step [41/88]  acc 0.375000 (0.557927)  loss 1.243279 (1.046986)
+GPU memory consumption  GPU Memory: Allocated: 50.9 MB, Reserved: 4150.0 MB
+2025-08-26 18:34:28,216 - WARNING - Epoch [3/30] Step [51/88]  acc 0.500000 (0.556373)  loss 1.112751 (1.053522)
+GPU memory consumption  GPU Memory: Allocated: 55.9 MB, Reserved: 4150.0 MB
+2025-08-26 18:34:29,621 - WARNING - Epoch [3/30] Step [61/88]  acc 0.500000 (0.551230)  loss 1.021366 (1.057381)
+GPU memory consumption  GPU Memory: Allocated: 68.9 MB, Reserved: 4150.0 MB
+2025-08-26 18:34:30,977 - WARNING - Epoch [3/30] Step [71/88]  acc 0.500000 (0.560739)  loss 1.074355 (1.054634)
+GPU memory consumption  GPU Memory: Allocated: 54.1 MB, Reserved: 4150.0 MB
+2025-08-26 18:34:32,335 - WARNING - Epoch [3/30] Step [81/88]  acc 0.375000 (0.554784)  loss 1.280580 (1.060133)
+GPU memory consumption  GPU Memory: Allocated: 60.0 MB, Reserved: 4150.0 MB
+Epoch 3 completed in 0:00:11.993550
+2025-08-26 18:34:36,573 - WARNING - Epoch [4/30] Step [1/88]  acc 0.625000 (0.625000)  loss 1.101789 (1.101789)
+GPU memory consumption  GPU Memory: Allocated: 59.9 MB, Reserved: 4150.0 MB
+2025-08-26 18:34:37,920 - WARNING - Epoch [4/30] Step [11/88]  acc 0.437500 (0.596591)  loss 1.051665 (0.942625)
+GPU memory consumption  GPU Memory: Allocated: 49.0 MB, Reserved: 4150.0 MB
+2025-08-26 18:34:39,505 - WARNING - Epoch [4/30] Step [21/88]  acc 0.500000 (0.601190)  loss 1.047220 (0.986148)
+GPU memory consumption  GPU Memory: Allocated: 57.0 MB, Reserved: 4150.0 MB
+2025-08-26 18:34:40,967 - WARNING - Epoch [4/30] Step [31/88]  acc 0.750000 (0.592742)  loss 0.832496 (1.005821)
+GPU memory consumption  GPU Memory: Allocated: 53.5 MB, Reserved: 4150.0 MB
+2025-08-26 18:34:42,287 - WARNING - Epoch [4/30] Step [41/88]  acc 0.500000 (0.585366)  loss 1.012481 (1.007464)
+GPU memory consumption  GPU Memory: Allocated: 56.6 MB, Reserved: 4150.0 MB
+2025-08-26 18:34:43,660 - WARNING - Epoch [4/30] Step [51/88]  acc 0.625000 (0.584559)  loss 0.832521 (1.000471)
+GPU memory consumption  GPU Memory: Allocated: 50.1 MB, Reserved: 4150.0 MB
+2025-08-26 18:34:45,080 - WARNING - Epoch [4/30] Step [61/88]  acc 0.625000 (0.573770)  loss 1.044088 (1.014756)
+GPU memory consumption  GPU Memory: Allocated: 71.6 MB, Reserved: 4150.0 MB
+2025-08-26 18:34:46,412 - WARNING - Epoch [4/30] Step [71/88]  acc 0.625000 (0.574824)  loss 1.002168 (1.014717)
+GPU memory consumption  GPU Memory: Allocated: 55.7 MB, Reserved: 4150.0 MB
+2025-08-26 18:34:47,751 - WARNING - Epoch [4/30] Step [81/88]  acc 0.687500 (0.575617)  loss 0.987909 (1.011348)
+GPU memory consumption  GPU Memory: Allocated: 51.8 MB, Reserved: 4150.0 MB
+Epoch 4 completed in 0:00:12.360736
+2025-08-26 18:34:51,882 - WARNING - Epoch [5/30] Step [1/88]  acc 0.750000 (0.750000)  loss 0.609543 (0.609543)
+GPU memory consumption  GPU Memory: Allocated: 45.4 MB, Reserved: 4150.0 MB
+2025-08-26 18:34:53,293 - WARNING - Epoch [5/30] Step [11/88]  acc 0.437500 (0.556818)  loss 1.215739 (1.016932)
+GPU memory consumption  GPU Memory: Allocated: 54.5 MB, Reserved: 4150.0 MB
+2025-08-26 18:34:54,677 - WARNING - Epoch [5/30] Step [21/88]  acc 0.625000 (0.577381)  loss 0.828781 (0.977960)
+GPU memory consumption  GPU Memory: Allocated: 47.0 MB, Reserved: 4150.0 MB
+2025-08-26 18:34:56,033 - WARNING - Epoch [5/30] Step [31/88]  acc 0.750000 (0.570565)  loss 0.738763 (0.993556)
+GPU memory consumption  GPU Memory: Allocated: 52.7 MB, Reserved: 4150.0 MB
+2025-08-26 18:34:57,354 - WARNING - Epoch [5/30] Step [41/88]  acc 0.625000 (0.573171)  loss 0.869739 (0.981236)
+GPU memory consumption  GPU Memory: Allocated: 54.8 MB, Reserved: 4150.0 MB
+2025-08-26 18:34:58,713 - WARNING - Epoch [5/30] Step [51/88]  acc 0.562500 (0.573529)  loss 0.994295 (0.989589)
+GPU memory consumption  GPU Memory: Allocated: 47.9 MB, Reserved: 4150.0 MB
+2025-08-26 18:35:00,119 - WARNING - Epoch [5/30] Step [61/88]  acc 0.750000 (0.578893)  loss 0.848232 (0.978609)
+GPU memory consumption  GPU Memory: Allocated: 76.4 MB, Reserved: 4150.0 MB
+2025-08-26 18:35:01,440 - WARNING - Epoch [5/30] Step [71/88]  acc 0.500000 (0.575704)  loss 0.982557 (0.988487)
+GPU memory consumption  GPU Memory: Allocated: 55.4 MB, Reserved: 4150.0 MB
+2025-08-26 18:35:02,836 - WARNING - Epoch [5/30] Step [81/88]  acc 0.500000 (0.576389)  loss 0.986678 (0.988413)
+GPU memory consumption  GPU Memory: Allocated: 53.3 MB, Reserved: 4150.0 MB
+Epoch 5 completed in 0:00:12.086633
+2025-08-26 18:35:06,957 - WARNING - Epoch [6/30] Step [1/88]  acc 0.375000 (0.375000)  loss 1.172419 (1.172419)
+GPU memory consumption  GPU Memory: Allocated: 55.8 MB, Reserved: 4150.0 MB
+2025-08-26 18:35:08,314 - WARNING - Epoch [6/30] Step [11/88]  acc 0.812500 (0.579545)  loss 0.862595 (0.989262)
+GPU memory consumption  GPU Memory: Allocated: 52.3 MB, Reserved: 4150.0 MB
+2025-08-26 18:35:09,643 - WARNING - Epoch [6/30] Step [21/88]  acc 0.812500 (0.592262)  loss 0.788615 (0.980403)
+GPU memory consumption  GPU Memory: Allocated: 46.7 MB, Reserved: 4668.0 MB
+2025-08-26 18:35:11,116 - WARNING - Epoch [6/30] Step [31/88]  acc 0.500000 (0.578629)  loss 0.947736 (1.016266)
+GPU memory consumption  GPU Memory: Allocated: 66.7 MB, Reserved: 4668.0 MB
+2025-08-26 18:35:12,392 - WARNING - Epoch [6/30] Step [41/88]  acc 0.500000 (0.592988)  loss 1.004019 (0.975565)
+GPU memory consumption  GPU Memory: Allocated: 56.3 MB, Reserved: 4668.0 MB
+2025-08-26 18:35:13,689 - WARNING - Epoch [6/30] Step [51/88]  acc 0.625000 (0.606618)  loss 0.926732 (0.959235)
+GPU memory consumption  GPU Memory: Allocated: 50.1 MB, Reserved: 4668.0 MB
+2025-08-26 18:35:15,097 - WARNING - Epoch [6/30] Step [61/88]  acc 0.562500 (0.598361)  loss 0.930658 (0.965340)
+GPU memory consumption  GPU Memory: Allocated: 78.0 MB, Reserved: 4668.0 MB
+2025-08-26 18:35:16,470 - WARNING - Epoch [6/30] Step [71/88]  acc 0.437500 (0.588028)  loss 1.231089 (0.979975)
+GPU memory consumption  GPU Memory: Allocated: 61.2 MB, Reserved: 4668.0 MB
+2025-08-26 18:35:17,873 - WARNING - Epoch [6/30] Step [81/88]  acc 0.750000 (0.593364)  loss 0.785838 (0.965248)
+GPU memory consumption  GPU Memory: Allocated: 60.9 MB, Reserved: 4668.0 MB
+Epoch 6 completed in 0:00:12.056593
+2025-08-26 18:35:21,993 - WARNING - Epoch [7/30] Step [1/88]  acc 0.375000 (0.375000)  loss 1.179217 (1.179217)
+GPU memory consumption  GPU Memory: Allocated: 52.9 MB, Reserved: 4668.0 MB
+2025-08-26 18:35:23,361 - WARNING - Epoch [7/30] Step [11/88]  acc 0.812500 (0.596591)  loss 0.784488 (1.063028)
+GPU memory consumption  GPU Memory: Allocated: 47.4 MB, Reserved: 4668.0 MB
+2025-08-26 18:35:24,718 - WARNING - Epoch [7/30] Step [21/88]  acc 0.562500 (0.577381)  loss 0.837382 (1.014855)
+GPU memory consumption  GPU Memory: Allocated: 53.0 MB, Reserved: 4668.0 MB
+2025-08-26 18:35:26,139 - WARNING - Epoch [7/30] Step [31/88]  acc 0.750000 (0.570565)  loss 0.879619 (1.000666)
+GPU memory consumption  GPU Memory: Allocated: 53.5 MB, Reserved: 4668.0 MB
+2025-08-26 18:35:27,547 - WARNING - Epoch [7/30] Step [41/88]  acc 0.812500 (0.582317)  loss 0.690125 (0.971087)
+GPU memory consumption  GPU Memory: Allocated: 60.9 MB, Reserved: 4668.0 MB
+2025-08-26 18:35:28,908 - WARNING - Epoch [7/30] Step [51/88]  acc 0.687500 (0.579657)  loss 0.669964 (0.968592)
+GPU memory consumption  GPU Memory: Allocated: 51.9 MB, Reserved: 4668.0 MB
+2025-08-26 18:35:30,314 - WARNING - Epoch [7/30] Step [61/88]  acc 0.625000 (0.590164)  loss 0.804171 (0.959968)
+GPU memory consumption  GPU Memory: Allocated: 62.4 MB, Reserved: 4668.0 MB
+2025-08-26 18:35:31,738 - WARNING - Epoch [7/30] Step [71/88]  acc 0.562500 (0.588908)  loss 1.033110 (0.960469)
+GPU memory consumption  GPU Memory: Allocated: 52.1 MB, Reserved: 4668.0 MB
+2025-08-26 18:35:33,153 - WARNING - Epoch [7/30] Step [81/88]  acc 0.687500 (0.592593)  loss 0.936558 (0.956183)
+GPU memory consumption  GPU Memory: Allocated: 65.2 MB, Reserved: 4668.0 MB
+Epoch 7 completed in 0:00:12.317492
+2025-08-26 18:35:37,373 - WARNING - Epoch [8/30] Step [1/88]  acc 0.562500 (0.562500)  loss 1.016450 (1.016450)
+GPU memory consumption  GPU Memory: Allocated: 61.9 MB, Reserved: 4668.0 MB
+2025-08-26 18:35:38,829 - WARNING - Epoch [8/30] Step [11/88]  acc 0.562500 (0.545455)  loss 0.956675 (0.975581)
+GPU memory consumption  GPU Memory: Allocated: 53.6 MB, Reserved: 4946.0 MB
+2025-08-26 18:35:40,198 - WARNING - Epoch [8/30] Step [21/88]  acc 0.437500 (0.574405)  loss 1.240592 (0.956191)
+GPU memory consumption  GPU Memory: Allocated: 49.1 MB, Reserved: 4946.0 MB
+2025-08-26 18:35:41,602 - WARNING - Epoch [8/30] Step [31/88]  acc 0.625000 (0.574597)  loss 1.180254 (0.970689)
+GPU memory consumption  GPU Memory: Allocated: 60.6 MB, Reserved: 4946.0 MB
+2025-08-26 18:35:42,977 - WARNING - Epoch [8/30] Step [41/88]  acc 0.625000 (0.580793)  loss 1.052712 (0.974488)
+GPU memory consumption  GPU Memory: Allocated: 60.0 MB, Reserved: 4946.0 MB
+2025-08-26 18:35:44,405 - WARNING - Epoch [8/30] Step [51/88]  acc 0.500000 (0.589461)  loss 1.017055 (0.962855)
+GPU memory consumption  GPU Memory: Allocated: 53.9 MB, Reserved: 4946.0 MB
+2025-08-26 18:35:45,887 - WARNING - Epoch [8/30] Step [61/88]  acc 0.625000 (0.592213)  loss 0.878659 (0.967671)
+GPU memory consumption  GPU Memory: Allocated: 72.9 MB, Reserved: 4946.0 MB
+2025-08-26 18:35:47,293 - WARNING - Epoch [8/30] Step [71/88]  acc 0.500000 (0.585387)  loss 0.933006 (0.970332)
+GPU memory consumption  GPU Memory: Allocated: 64.7 MB, Reserved: 4946.0 MB
+2025-08-26 18:35:48,665 - WARNING - Epoch [8/30] Step [81/88]  acc 0.750000 (0.597222)  loss 0.802421 (0.949751)
+GPU memory consumption  GPU Memory: Allocated: 52.2 MB, Reserved: 4946.0 MB
+Epoch 8 completed in 0:00:12.457108
+2025-08-26 18:35:52,745 - WARNING - Epoch [9/30] Step [1/88]  acc 0.500000 (0.500000)  loss 0.913420 (0.913420)
+GPU memory consumption  GPU Memory: Allocated: 54.4 MB, Reserved: 4946.0 MB
+2025-08-26 18:35:54,135 - WARNING - Epoch [9/30] Step [11/88]  acc 0.562500 (0.545455)  loss 0.801166 (0.982771)
+GPU memory consumption  GPU Memory: Allocated: 46.1 MB, Reserved: 4946.0 MB
+2025-08-26 18:35:55,554 - WARNING - Epoch [9/30] Step [21/88]  acc 0.625000 (0.580357)  loss 0.778161 (0.927769)
+GPU memory consumption  GPU Memory: Allocated: 46.3 MB, Reserved: 4946.0 MB
+2025-08-26 18:35:57,065 - WARNING - Epoch [9/30] Step [31/88]  acc 0.812500 (0.602823)  loss 0.755796 (0.923314)
+GPU memory consumption  GPU Memory: Allocated: 59.3 MB, Reserved: 4946.0 MB
+2025-08-26 18:35:58,504 - WARNING - Epoch [9/30] Step [41/88]  acc 0.750000 (0.600610)  loss 0.805372 (0.917742)
+GPU memory consumption  GPU Memory: Allocated: 62.1 MB, Reserved: 4946.0 MB
+2025-08-26 18:35:59,943 - WARNING - Epoch [9/30] Step [51/88]  acc 0.687500 (0.598039)  loss 0.834684 (0.933469)
+GPU memory consumption  GPU Memory: Allocated: 48.4 MB, Reserved: 4946.0 MB
+2025-08-26 18:36:01,448 - WARNING - Epoch [9/30] Step [61/88]  acc 0.750000 (0.600410)  loss 0.612587 (0.934037)
+GPU memory consumption  GPU Memory: Allocated: 61.8 MB, Reserved: 4946.0 MB
+2025-08-26 18:36:02,925 - WARNING - Epoch [9/30] Step [71/88]  acc 0.562500 (0.599472)  loss 0.760926 (0.934403)
+GPU memory consumption  GPU Memory: Allocated: 52.7 MB, Reserved: 4946.0 MB
+2025-08-26 18:36:04,410 - WARNING - Epoch [9/30] Step [81/88]  acc 0.625000 (0.599537)  loss 0.847411 (0.931306)
+GPU memory consumption  GPU Memory: Allocated: 57.7 MB, Reserved: 4946.0 MB
+Epoch 9 completed in 0:00:12.944234
+2025-08-26 18:36:08,803 - WARNING - Epoch [10/30] Step [1/88]  acc 0.750000 (0.750000)  loss 0.909197 (0.909197)
+GPU memory consumption  GPU Memory: Allocated: 54.2 MB, Reserved: 4946.0 MB
+2025-08-26 18:36:10,182 - WARNING - Epoch [10/30] Step [11/88]  acc 0.687500 (0.659091)  loss 1.006707 (0.888310)
+GPU memory consumption  GPU Memory: Allocated: 51.5 MB, Reserved: 4946.0 MB
+2025-08-26 18:36:11,500 - WARNING - Epoch [10/30] Step [21/88]  acc 0.687500 (0.666667)  loss 0.720917 (0.849539)
+GPU memory consumption  GPU Memory: Allocated: 43.5 MB, Reserved: 4946.0 MB
+2025-08-26 18:36:12,944 - WARNING - Epoch [10/30] Step [31/88]  acc 0.500000 (0.627016)  loss 1.345601 (0.910961)
+GPU memory consumption  GPU Memory: Allocated: 66.1 MB, Reserved: 4946.0 MB
+2025-08-26 18:36:14,275 - WARNING - Epoch [10/30] Step [41/88]  acc 0.687500 (0.625000)  loss 0.828503 (0.909174)
+GPU memory consumption  GPU Memory: Allocated: 56.9 MB, Reserved: 4946.0 MB
+2025-08-26 18:36:15,634 - WARNING - Epoch [10/30] Step [51/88]  acc 0.625000 (0.620098)  loss 0.758498 (0.909588)
+GPU memory consumption  GPU Memory: Allocated: 49.0 MB, Reserved: 4946.0 MB
+2025-08-26 18:36:17,076 - WARNING - Epoch [10/30] Step [61/88]  acc 0.625000 (0.609631)  loss 0.841751 (0.921396)
+GPU memory consumption  GPU Memory: Allocated: 68.6 MB, Reserved: 4946.0 MB
+2025-08-26 18:36:18,414 - WARNING - Epoch [10/30] Step [71/88]  acc 0.312500 (0.604754)  loss 1.352967 (0.920305)
+GPU memory consumption  GPU Memory: Allocated: 54.7 MB, Reserved: 4946.0 MB
+2025-08-26 18:36:19,778 - WARNING - Epoch [10/30] Step [81/88]  acc 0.625000 (0.609568)  loss 0.866309 (0.914272)
+GPU memory consumption  GPU Memory: Allocated: 63.8 MB, Reserved: 4946.0 MB
+Epoch 10 completed in 0:00:12.133006
+2025-08-26 18:36:23,932 - WARNING - Epoch [11/30] Step [1/88]  acc 0.562500 (0.562500)  loss 0.860091 (0.860091)
+GPU memory consumption  GPU Memory: Allocated: 56.2 MB, Reserved: 4946.0 MB
+2025-08-26 18:36:25,359 - WARNING - Epoch [11/30] Step [11/88]  acc 0.687500 (0.613636)  loss 0.628346 (0.892359)
+GPU memory consumption  GPU Memory: Allocated: 49.9 MB, Reserved: 4946.0 MB
+2025-08-26 18:36:26,837 - WARNING - Epoch [11/30] Step [21/88]  acc 0.500000 (0.627976)  loss 0.928470 (0.914218)
+GPU memory consumption  GPU Memory: Allocated: 57.5 MB, Reserved: 4946.0 MB
+2025-08-26 18:36:28,279 - WARNING - Epoch [11/30] Step [31/88]  acc 0.625000 (0.622984)  loss 0.821285 (0.891353)
+GPU memory consumption  GPU Memory: Allocated: 51.6 MB, Reserved: 4946.0 MB
+2025-08-26 18:36:29,722 - WARNING - Epoch [11/30] Step [41/88]  acc 0.500000 (0.615854)  loss 1.079838 (0.906027)
+GPU memory consumption  GPU Memory: Allocated: 59.2 MB, Reserved: 4946.0 MB
+2025-08-26 18:36:31,179 - WARNING - Epoch [11/30] Step [51/88]  acc 0.562500 (0.605392)  loss 0.751273 (0.915698)
+GPU memory consumption  GPU Memory: Allocated: 41.3 MB, Reserved: 4946.0 MB
+2025-08-26 18:36:32,689 - WARNING - Epoch [11/30] Step [61/88]  acc 0.625000 (0.600410)  loss 0.792874 (0.920274)
+GPU memory consumption  GPU Memory: Allocated: 66.4 MB, Reserved: 4946.0 MB
+2025-08-26 18:36:34,100 - WARNING - Epoch [11/30] Step [71/88]  acc 0.625000 (0.605634)  loss 1.106815 (0.920989)
+GPU memory consumption  GPU Memory: Allocated: 53.6 MB, Reserved: 4946.0 MB
+2025-08-26 18:36:35,562 - WARNING - Epoch [11/30] Step [81/88]  acc 0.562500 (0.604167)  loss 1.002128 (0.922651)
+GPU memory consumption  GPU Memory: Allocated: 54.9 MB, Reserved: 4946.0 MB
+Epoch 11 completed in 0:00:12.919808
+2025-08-26 18:36:39,943 - WARNING - Epoch [12/30] Step [1/88]  acc 0.437500 (0.437500)  loss 1.398336 (1.398336)
+GPU memory consumption  GPU Memory: Allocated: 54.2 MB, Reserved: 5292.0 MB
+2025-08-26 18:36:41,374 - WARNING - Epoch [12/30] Step [11/88]  acc 0.625000 (0.579545)  loss 0.900629 (0.954173)
+GPU memory consumption  GPU Memory: Allocated: 46.0 MB, Reserved: 5292.0 MB
+2025-08-26 18:36:42,852 - WARNING - Epoch [12/30] Step [21/88]  acc 0.562500 (0.568452)  loss 0.970670 (0.965061)
+GPU memory consumption  GPU Memory: Allocated: 53.7 MB, Reserved: 5292.0 MB
+2025-08-26 18:36:44,314 - WARNING - Epoch [12/30] Step [31/88]  acc 0.500000 (0.594758)  loss 0.988009 (0.918044)
+GPU memory consumption  GPU Memory: Allocated: 49.3 MB, Reserved: 5292.0 MB
+2025-08-26 18:36:45,801 - WARNING - Epoch [12/30] Step [41/88]  acc 0.687500 (0.586890)  loss 0.875833 (0.934745)
+GPU memory consumption  GPU Memory: Allocated: 50.7 MB, Reserved: 5292.0 MB
+2025-08-26 18:36:47,302 - WARNING - Epoch [12/30] Step [51/88]  acc 0.562500 (0.579657)  loss 0.876323 (0.948432)
+GPU memory consumption  GPU Memory: Allocated: 50.8 MB, Reserved: 5292.0 MB
+2025-08-26 18:36:48,825 - WARNING - Epoch [12/30] Step [61/88]  acc 0.812500 (0.579918)  loss 0.668495 (0.957263)
+GPU memory consumption  GPU Memory: Allocated: 73.4 MB, Reserved: 5292.0 MB
+2025-08-26 18:36:50,324 - WARNING - Epoch [12/30] Step [71/88]  acc 0.562500 (0.584507)  loss 0.936305 (0.944235)
+GPU memory consumption  GPU Memory: Allocated: 58.1 MB, Reserved: 5292.0 MB
+2025-08-26 18:36:51,802 - WARNING - Epoch [12/30] Step [81/88]  acc 0.687500 (0.592593)  loss 0.761798 (0.930497)
+GPU memory consumption  GPU Memory: Allocated: 52.5 MB, Reserved: 5292.0 MB
+Epoch 12 completed in 0:00:13.098904
+2025-08-26 18:36:56,027 - WARNING - Epoch [13/30] Step [1/88]  acc 0.562500 (0.562500)  loss 0.902707 (0.902707)
+GPU memory consumption  GPU Memory: Allocated: 57.2 MB, Reserved: 5292.0 MB
+2025-08-26 18:36:57,415 - WARNING - Epoch [13/30] Step [11/88]  acc 0.375000 (0.505682)  loss 1.341599 (1.043125)
+GPU memory consumption  GPU Memory: Allocated: 48.5 MB, Reserved: 5292.0 MB
+2025-08-26 18:36:58,777 - WARNING - Epoch [13/30] Step [21/88]  acc 0.687500 (0.565476)  loss 0.821984 (0.968059)
+GPU memory consumption  GPU Memory: Allocated: 46.0 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:00,155 - WARNING - Epoch [13/30] Step [31/88]  acc 0.750000 (0.586694)  loss 0.966402 (0.949654)
+GPU memory consumption  GPU Memory: Allocated: 56.5 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:01,543 - WARNING - Epoch [13/30] Step [41/88]  acc 0.625000 (0.599085)  loss 0.784443 (0.937415)
+GPU memory consumption  GPU Memory: Allocated: 54.3 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:02,940 - WARNING - Epoch [13/30] Step [51/88]  acc 0.437500 (0.591912)  loss 0.936594 (0.935326)
+GPU memory consumption  GPU Memory: Allocated: 50.7 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:04,387 - WARNING - Epoch [13/30] Step [61/88]  acc 0.562500 (0.596311)  loss 0.876258 (0.920053)
+GPU memory consumption  GPU Memory: Allocated: 66.9 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:05,794 - WARNING - Epoch [13/30] Step [71/88]  acc 0.750000 (0.601232)  loss 0.680867 (0.910617)
+GPU memory consumption  GPU Memory: Allocated: 52.4 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:07,221 - WARNING - Epoch [13/30] Step [81/88]  acc 0.625000 (0.601080)  loss 0.857845 (0.912838)
+GPU memory consumption  GPU Memory: Allocated: 63.5 MB, Reserved: 5292.0 MB
+Epoch 13 completed in 0:00:12.374398
+2025-08-26 18:37:11,410 - WARNING - Epoch [14/30] Step [1/88]  acc 0.562500 (0.562500)  loss 1.038232 (1.038232)
+GPU memory consumption  GPU Memory: Allocated: 63.6 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:12,805 - WARNING - Epoch [14/30] Step [11/88]  acc 0.812500 (0.647727)  loss 0.601746 (0.883164)
+GPU memory consumption  GPU Memory: Allocated: 44.6 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:14,171 - WARNING - Epoch [14/30] Step [21/88]  acc 0.625000 (0.630952)  loss 0.856581 (0.876910)
+GPU memory consumption  GPU Memory: Allocated: 52.2 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:15,614 - WARNING - Epoch [14/30] Step [31/88]  acc 0.625000 (0.629032)  loss 0.910497 (0.886275)
+GPU memory consumption  GPU Memory: Allocated: 55.7 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:17,062 - WARNING - Epoch [14/30] Step [41/88]  acc 0.562500 (0.614329)  loss 0.913814 (0.892971)
+GPU memory consumption  GPU Memory: Allocated: 52.2 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:18,429 - WARNING - Epoch [14/30] Step [51/88]  acc 0.750000 (0.615196)  loss 0.739404 (0.896554)
+GPU memory consumption  GPU Memory: Allocated: 42.3 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:19,877 - WARNING - Epoch [14/30] Step [61/88]  acc 0.562500 (0.617828)  loss 0.808102 (0.884513)
+GPU memory consumption  GPU Memory: Allocated: 69.5 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:21,300 - WARNING - Epoch [14/30] Step [71/88]  acc 0.500000 (0.612676)  loss 1.134209 (0.890223)
+GPU memory consumption  GPU Memory: Allocated: 68.2 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:22,734 - WARNING - Epoch [14/30] Step [81/88]  acc 0.687500 (0.617284)  loss 0.769569 (0.888762)
+GPU memory consumption  GPU Memory: Allocated: 56.3 MB, Reserved: 5292.0 MB
+Epoch 14 completed in 0:00:12.549839
+2025-08-26 18:37:26,911 - WARNING - Epoch [15/30] Step [1/88]  acc 0.687500 (0.687500)  loss 0.666361 (0.666361)
+GPU memory consumption  GPU Memory: Allocated: 48.1 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:28,256 - WARNING - Epoch [15/30] Step [11/88]  acc 0.812500 (0.676136)  loss 0.641426 (0.820126)
+GPU memory consumption  GPU Memory: Allocated: 46.0 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:29,619 - WARNING - Epoch [15/30] Step [21/88]  acc 0.375000 (0.654762)  loss 1.174825 (0.830945)
+GPU memory consumption  GPU Memory: Allocated: 57.7 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:31,060 - WARNING - Epoch [15/30] Step [31/88]  acc 0.625000 (0.633065)  loss 0.825055 (0.854663)
+GPU memory consumption  GPU Memory: Allocated: 64.4 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:32,492 - WARNING - Epoch [15/30] Step [41/88]  acc 0.687500 (0.626524)  loss 0.732873 (0.872441)
+GPU memory consumption  GPU Memory: Allocated: 57.0 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:33,871 - WARNING - Epoch [15/30] Step [51/88]  acc 0.687500 (0.638480)  loss 0.875406 (0.867696)
+GPU memory consumption  GPU Memory: Allocated: 48.5 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:35,290 - WARNING - Epoch [15/30] Step [61/88]  acc 0.375000 (0.631148)  loss 1.023654 (0.877387)
+GPU memory consumption  GPU Memory: Allocated: 74.9 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:36,668 - WARNING - Epoch [15/30] Step [71/88]  acc 0.750000 (0.630282)  loss 0.979139 (0.882245)
+GPU memory consumption  GPU Memory: Allocated: 52.5 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:38,123 - WARNING - Epoch [15/30] Step [81/88]  acc 0.500000 (0.622685)  loss 1.143070 (0.897644)
+GPU memory consumption  GPU Memory: Allocated: 63.4 MB, Reserved: 5292.0 MB
+Epoch 15 completed in 0:00:12.346648
+2025-08-26 18:37:42,224 - WARNING - Epoch [16/30] Step [1/88]  acc 0.812500 (0.812500)  loss 0.716643 (0.716643)
+GPU memory consumption  GPU Memory: Allocated: 54.5 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:43,588 - WARNING - Epoch [16/30] Step [11/88]  acc 0.750000 (0.681818)  loss 0.783222 (0.891233)
+GPU memory consumption  GPU Memory: Allocated: 46.2 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:44,948 - WARNING - Epoch [16/30] Step [21/88]  acc 0.625000 (0.681548)  loss 0.869020 (0.882341)
+GPU memory consumption  GPU Memory: Allocated: 50.8 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:46,366 - WARNING - Epoch [16/30] Step [31/88]  acc 0.312500 (0.655242)  loss 1.270660 (0.881496)
+GPU memory consumption  GPU Memory: Allocated: 62.8 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:47,769 - WARNING - Epoch [16/30] Step [41/88]  acc 0.562500 (0.637195)  loss 1.025529 (0.905039)
+GPU memory consumption  GPU Memory: Allocated: 55.1 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:49,191 - WARNING - Epoch [16/30] Step [51/88]  acc 0.750000 (0.632353)  loss 0.718347 (0.904494)
+GPU memory consumption  GPU Memory: Allocated: 52.0 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:50,574 - WARNING - Epoch [16/30] Step [61/88]  acc 0.562500 (0.631148)  loss 1.009475 (0.895883)
+GPU memory consumption  GPU Memory: Allocated: 74.5 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:51,970 - WARNING - Epoch [16/30] Step [71/88]  acc 0.687500 (0.635563)  loss 0.992220 (0.888969)
+GPU memory consumption  GPU Memory: Allocated: 66.8 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:53,383 - WARNING - Epoch [16/30] Step [81/88]  acc 0.750000 (0.633488)  loss 0.679251 (0.884621)
+GPU memory consumption  GPU Memory: Allocated: 58.3 MB, Reserved: 5292.0 MB
+Epoch 16 completed in 0:00:12.311990
+2025-08-26 18:37:57,511 - WARNING - Epoch [17/30] Step [1/88]  acc 0.687500 (0.687500)  loss 0.753608 (0.753608)
+GPU memory consumption  GPU Memory: Allocated: 56.0 MB, Reserved: 5292.0 MB
+2025-08-26 18:37:58,890 - WARNING - Epoch [17/30] Step [11/88]  acc 0.750000 (0.670455)  loss 0.852114 (0.839895)
+GPU memory consumption  GPU Memory: Allocated: 37.6 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:00,248 - WARNING - Epoch [17/30] Step [21/88]  acc 0.750000 (0.681548)  loss 0.755110 (0.817778)
+GPU memory consumption  GPU Memory: Allocated: 48.2 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:01,656 - WARNING - Epoch [17/30] Step [31/88]  acc 0.687500 (0.669355)  loss 0.598603 (0.837810)
+GPU memory consumption  GPU Memory: Allocated: 48.1 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:03,058 - WARNING - Epoch [17/30] Step [41/88]  acc 0.625000 (0.643293)  loss 0.997341 (0.868839)
+GPU memory consumption  GPU Memory: Allocated: 50.8 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:04,435 - WARNING - Epoch [17/30] Step [51/88]  acc 0.500000 (0.644608)  loss 1.035751 (0.856516)
+GPU memory consumption  GPU Memory: Allocated: 54.1 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:05,865 - WARNING - Epoch [17/30] Step [61/88]  acc 0.687500 (0.658811)  loss 0.830368 (0.843454)
+GPU memory consumption  GPU Memory: Allocated: 74.6 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:07,240 - WARNING - Epoch [17/30] Step [71/88]  acc 0.687500 (0.657570)  loss 0.651652 (0.845402)
+GPU memory consumption  GPU Memory: Allocated: 54.3 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:08,582 - WARNING - Epoch [17/30] Step [81/88]  acc 0.625000 (0.662037)  loss 0.644635 (0.831298)
+GPU memory consumption  GPU Memory: Allocated: 48.9 MB, Reserved: 5292.0 MB
+Epoch 17 completed in 0:00:12.250051
+2025-08-26 18:38:12,712 - WARNING - Epoch [18/30] Step [1/88]  acc 0.687500 (0.687500)  loss 0.799537 (0.799537)
+GPU memory consumption  GPU Memory: Allocated: 45.5 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:14,073 - WARNING - Epoch [18/30] Step [11/88]  acc 0.687500 (0.727273)  loss 0.768592 (0.736422)
+GPU memory consumption  GPU Memory: Allocated: 51.7 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:15,392 - WARNING - Epoch [18/30] Step [21/88]  acc 0.687500 (0.708333)  loss 0.853745 (0.780721)
+GPU memory consumption  GPU Memory: Allocated: 49.4 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:16,834 - WARNING - Epoch [18/30] Step [31/88]  acc 0.500000 (0.685484)  loss 1.109744 (0.824781)
+GPU memory consumption  GPU Memory: Allocated: 58.5 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:18,199 - WARNING - Epoch [18/30] Step [41/88]  acc 0.750000 (0.696646)  loss 0.752136 (0.808027)
+GPU memory consumption  GPU Memory: Allocated: 55.0 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:19,573 - WARNING - Epoch [18/30] Step [51/88]  acc 0.437500 (0.685049)  loss 0.934836 (0.819714)
+GPU memory consumption  GPU Memory: Allocated: 49.7 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:20,955 - WARNING - Epoch [18/30] Step [61/88]  acc 0.687500 (0.688525)  loss 0.749299 (0.805761)
+GPU memory consumption  GPU Memory: Allocated: 63.7 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:22,367 - WARNING - Epoch [18/30] Step [71/88]  acc 0.562500 (0.690141)  loss 1.013415 (0.807433)
+GPU memory consumption  GPU Memory: Allocated: 66.0 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:23,803 - WARNING - Epoch [18/30] Step [81/88]  acc 0.625000 (0.685185)  loss 0.789225 (0.807845)
+GPU memory consumption  GPU Memory: Allocated: 53.6 MB, Reserved: 5292.0 MB
+Epoch 18 completed in 0:00:12.269478
+2025-08-26 18:38:27,939 - WARNING - Epoch [19/30] Step [1/88]  acc 0.812500 (0.812500)  loss 0.606032 (0.606032)
+GPU memory consumption  GPU Memory: Allocated: 58.0 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:29,298 - WARNING - Epoch [19/30] Step [11/88]  acc 0.687500 (0.738636)  loss 0.758427 (0.735169)
+GPU memory consumption  GPU Memory: Allocated: 44.3 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:30,694 - WARNING - Epoch [19/30] Step [21/88]  acc 0.562500 (0.690476)  loss 0.990993 (0.785357)
+GPU memory consumption  GPU Memory: Allocated: 61.0 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:32,108 - WARNING - Epoch [19/30] Step [31/88]  acc 0.687500 (0.687500)  loss 0.728374 (0.789951)
+GPU memory consumption  GPU Memory: Allocated: 46.6 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:33,497 - WARNING - Epoch [19/30] Step [41/88]  acc 0.625000 (0.673780)  loss 0.838138 (0.816349)
+GPU memory consumption  GPU Memory: Allocated: 53.8 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:34,880 - WARNING - Epoch [19/30] Step [51/88]  acc 0.625000 (0.677696)  loss 0.770465 (0.812876)
+GPU memory consumption  GPU Memory: Allocated: 52.4 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:36,290 - WARNING - Epoch [19/30] Step [61/88]  acc 0.625000 (0.682377)  loss 0.765059 (0.812483)
+GPU memory consumption  GPU Memory: Allocated: 77.6 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:37,697 - WARNING - Epoch [19/30] Step [71/88]  acc 0.625000 (0.675176)  loss 0.752041 (0.815771)
+GPU memory consumption  GPU Memory: Allocated: 55.9 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:39,007 - WARNING - Epoch [19/30] Step [81/88]  acc 0.750000 (0.680556)  loss 0.685120 (0.800989)
+GPU memory consumption  GPU Memory: Allocated: 54.4 MB, Reserved: 5292.0 MB
+Epoch 19 completed in 0:00:12.227898
+2025-08-26 18:38:43,143 - WARNING - Epoch [20/30] Step [1/88]  acc 0.875000 (0.875000)  loss 0.434662 (0.434662)
+GPU memory consumption  GPU Memory: Allocated: 54.3 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:44,528 - WARNING - Epoch [20/30] Step [11/88]  acc 0.625000 (0.704545)  loss 0.872668 (0.751408)
+GPU memory consumption  GPU Memory: Allocated: 55.1 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:45,941 - WARNING - Epoch [20/30] Step [21/88]  acc 0.812500 (0.726190)  loss 0.528689 (0.749849)
+GPU memory consumption  GPU Memory: Allocated: 50.1 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:47,391 - WARNING - Epoch [20/30] Step [31/88]  acc 0.937500 (0.725806)  loss 0.553731 (0.743321)
+GPU memory consumption  GPU Memory: Allocated: 60.3 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:48,764 - WARNING - Epoch [20/30] Step [41/88]  acc 0.687500 (0.707317)  loss 0.796319 (0.759365)
+GPU memory consumption  GPU Memory: Allocated: 59.8 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:50,100 - WARNING - Epoch [20/30] Step [51/88]  acc 0.750000 (0.713235)  loss 0.728427 (0.749071)
+GPU memory consumption  GPU Memory: Allocated: 44.7 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:51,514 - WARNING - Epoch [20/30] Step [61/88]  acc 0.500000 (0.706967)  loss 1.042959 (0.752671)
+GPU memory consumption  GPU Memory: Allocated: 80.8 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:52,895 - WARNING - Epoch [20/30] Step [71/88]  acc 0.687500 (0.700704)  loss 0.667776 (0.765682)
+GPU memory consumption  GPU Memory: Allocated: 58.1 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:54,239 - WARNING - Epoch [20/30] Step [81/88]  acc 0.500000 (0.706019)  loss 0.963070 (0.755649)
+GPU memory consumption  GPU Memory: Allocated: 52.5 MB, Reserved: 5292.0 MB
+Epoch 20 completed in 0:00:12.280051
+2025-08-26 18:38:58,386 - WARNING - Epoch [21/30] Step [1/88]  acc 0.687500 (0.687500)  loss 0.707494 (0.707494)
+GPU memory consumption  GPU Memory: Allocated: 58.7 MB, Reserved: 5292.0 MB
+2025-08-26 18:38:59,755 - WARNING - Epoch [21/30] Step [11/88]  acc 0.687500 (0.784091)  loss 0.606733 (0.616167)
+GPU memory consumption  GPU Memory: Allocated: 52.9 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:01,154 - WARNING - Epoch [21/30] Step [21/88]  acc 0.562500 (0.711310)  loss 1.187480 (0.742753)
+GPU memory consumption  GPU Memory: Allocated: 51.0 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:02,562 - WARNING - Epoch [21/30] Step [31/88]  acc 0.687500 (0.697581)  loss 1.019649 (0.777415)
+GPU memory consumption  GPU Memory: Allocated: 51.1 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:04,015 - WARNING - Epoch [21/30] Step [41/88]  acc 0.812500 (0.696646)  loss 0.600481 (0.786833)
+GPU memory consumption  GPU Memory: Allocated: 51.8 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:05,340 - WARNING - Epoch [21/30] Step [51/88]  acc 0.750000 (0.718137)  loss 0.659847 (0.756359)
+GPU memory consumption  GPU Memory: Allocated: 44.8 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:06,782 - WARNING - Epoch [21/30] Step [61/88]  acc 0.625000 (0.711066)  loss 0.809419 (0.759425)
+GPU memory consumption  GPU Memory: Allocated: 70.5 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:08,163 - WARNING - Epoch [21/30] Step [71/88]  acc 0.750000 (0.717430)  loss 0.616759 (0.749967)
+GPU memory consumption  GPU Memory: Allocated: 58.8 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:09,498 - WARNING - Epoch [21/30] Step [81/88]  acc 0.500000 (0.716821)  loss 1.108145 (0.748946)
+GPU memory consumption  GPU Memory: Allocated: 51.1 MB, Reserved: 5292.0 MB
+Epoch 21 completed in 0:00:12.289423
+2025-08-26 18:39:13,641 - WARNING - Epoch [22/30] Step [1/88]  acc 0.750000 (0.750000)  loss 0.620503 (0.620503)
+GPU memory consumption  GPU Memory: Allocated: 59.0 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:15,028 - WARNING - Epoch [22/30] Step [11/88]  acc 0.687500 (0.698864)  loss 0.713486 (0.769865)
+GPU memory consumption  GPU Memory: Allocated: 47.5 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:16,435 - WARNING - Epoch [22/30] Step [21/88]  acc 0.812500 (0.720238)  loss 0.649799 (0.740706)
+GPU memory consumption  GPU Memory: Allocated: 55.4 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:17,846 - WARNING - Epoch [22/30] Step [31/88]  acc 0.812500 (0.729839)  loss 0.680310 (0.731220)
+GPU memory consumption  GPU Memory: Allocated: 57.1 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:19,152 - WARNING - Epoch [22/30] Step [41/88]  acc 0.625000 (0.737805)  loss 0.728459 (0.687215)
+GPU memory consumption  GPU Memory: Allocated: 56.6 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:20,532 - WARNING - Epoch [22/30] Step [51/88]  acc 0.687500 (0.734069)  loss 0.780789 (0.696732)
+GPU memory consumption  GPU Memory: Allocated: 45.6 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:21,964 - WARNING - Epoch [22/30] Step [61/88]  acc 0.687500 (0.727459)  loss 0.608908 (0.705398)
+GPU memory consumption  GPU Memory: Allocated: 68.6 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:23,300 - WARNING - Epoch [22/30] Step [71/88]  acc 0.812500 (0.729754)  loss 0.542085 (0.702981)
+GPU memory consumption  GPU Memory: Allocated: 50.5 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:24,693 - WARNING - Epoch [22/30] Step [81/88]  acc 0.687500 (0.724537)  loss 0.821321 (0.707933)
+GPU memory consumption  GPU Memory: Allocated: 55.1 MB, Reserved: 5292.0 MB
+Epoch 22 completed in 0:00:12.208382
+2025-08-26 18:39:28,794 - WARNING - Epoch [23/30] Step [1/88]  acc 0.687500 (0.687500)  loss 0.739066 (0.739066)
+GPU memory consumption  GPU Memory: Allocated: 59.9 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:30,194 - WARNING - Epoch [23/30] Step [11/88]  acc 0.750000 (0.676136)  loss 0.798046 (0.839893)
+GPU memory consumption  GPU Memory: Allocated: 53.0 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:31,560 - WARNING - Epoch [23/30] Step [21/88]  acc 0.687500 (0.693452)  loss 0.740690 (0.792668)
+GPU memory consumption  GPU Memory: Allocated: 57.0 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:32,948 - WARNING - Epoch [23/30] Step [31/88]  acc 0.562500 (0.703629)  loss 0.938317 (0.779045)
+GPU memory consumption  GPU Memory: Allocated: 55.8 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:34,290 - WARNING - Epoch [23/30] Step [41/88]  acc 0.687500 (0.713415)  loss 0.805559 (0.754531)
+GPU memory consumption  GPU Memory: Allocated: 49.5 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:35,664 - WARNING - Epoch [23/30] Step [51/88]  acc 0.625000 (0.710784)  loss 0.803188 (0.745127)
+GPU memory consumption  GPU Memory: Allocated: 52.3 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:37,108 - WARNING - Epoch [23/30] Step [61/88]  acc 0.875000 (0.709016)  loss 0.538536 (0.742720)
+GPU memory consumption  GPU Memory: Allocated: 69.2 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:38,517 - WARNING - Epoch [23/30] Step [71/88]  acc 0.750000 (0.713028)  loss 0.857076 (0.736584)
+GPU memory consumption  GPU Memory: Allocated: 65.6 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:39,972 - WARNING - Epoch [23/30] Step [81/88]  acc 0.875000 (0.724537)  loss 0.435136 (0.718753)
+GPU memory consumption  GPU Memory: Allocated: 49.5 MB, Reserved: 5292.0 MB
+Epoch 23 completed in 0:00:12.368497
+2025-08-26 18:39:44,151 - WARNING - Epoch [24/30] Step [1/88]  acc 0.687500 (0.687500)  loss 0.638418 (0.638418)
+GPU memory consumption  GPU Memory: Allocated: 52.0 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:45,511 - WARNING - Epoch [24/30] Step [11/88]  acc 0.687500 (0.778409)  loss 0.682698 (0.632376)
+GPU memory consumption  GPU Memory: Allocated: 50.0 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:46,874 - WARNING - Epoch [24/30] Step [21/88]  acc 0.750000 (0.758929)  loss 0.680621 (0.626266)
+GPU memory consumption  GPU Memory: Allocated: 56.6 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:48,308 - WARNING - Epoch [24/30] Step [31/88]  acc 0.687500 (0.745968)  loss 0.754099 (0.651836)
+GPU memory consumption  GPU Memory: Allocated: 55.4 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:49,676 - WARNING - Epoch [24/30] Step [41/88]  acc 0.812500 (0.743902)  loss 0.605334 (0.661579)
+GPU memory consumption  GPU Memory: Allocated: 51.4 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:51,105 - WARNING - Epoch [24/30] Step [51/88]  acc 0.687500 (0.734069)  loss 0.682994 (0.680718)
+GPU memory consumption  GPU Memory: Allocated: 53.2 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:52,564 - WARNING - Epoch [24/30] Step [61/88]  acc 0.750000 (0.730533)  loss 0.729515 (0.695419)
+GPU memory consumption  GPU Memory: Allocated: 74.9 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:53,982 - WARNING - Epoch [24/30] Step [71/88]  acc 0.875000 (0.730634)  loss 0.443006 (0.690133)
+GPU memory consumption  GPU Memory: Allocated: 55.2 MB, Reserved: 5292.0 MB
+2025-08-26 18:39:55,365 - WARNING - Epoch [24/30] Step [81/88]  acc 0.687500 (0.735340)  loss 0.745117 (0.686195)
+GPU memory consumption  GPU Memory: Allocated: 54.7 MB, Reserved: 5292.0 MB
+Epoch 24 completed in 0:00:12.377328
+2025-08-26 18:39:59,536 - WARNING - Epoch [25/30] Step [1/88]  acc 0.500000 (0.500000)  loss 0.902403 (0.902403)
+GPU memory consumption  GPU Memory: Allocated: 51.4 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:00,908 - WARNING - Epoch [25/30] Step [11/88]  acc 0.812500 (0.721591)  loss 0.466636 (0.693578)
+GPU memory consumption  GPU Memory: Allocated: 46.3 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:02,315 - WARNING - Epoch [25/30] Step [21/88]  acc 0.562500 (0.717262)  loss 1.105578 (0.677414)
+GPU memory consumption  GPU Memory: Allocated: 49.9 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:03,684 - WARNING - Epoch [25/30] Step [31/88]  acc 0.625000 (0.705645)  loss 0.903616 (0.697481)
+GPU memory consumption  GPU Memory: Allocated: 49.2 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:05,066 - WARNING - Epoch [25/30] Step [41/88]  acc 0.687500 (0.698171)  loss 0.785224 (0.707369)
+GPU memory consumption  GPU Memory: Allocated: 53.7 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:06,475 - WARNING - Epoch [25/30] Step [51/88]  acc 0.812500 (0.703431)  loss 0.492406 (0.700298)
+GPU memory consumption  GPU Memory: Allocated: 36.4 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:07,915 - WARNING - Epoch [25/30] Step [61/88]  acc 0.687500 (0.719262)  loss 0.738507 (0.688488)
+GPU memory consumption  GPU Memory: Allocated: 67.7 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:09,323 - WARNING - Epoch [25/30] Step [71/88]  acc 0.687500 (0.727993)  loss 0.551911 (0.674986)
+GPU memory consumption  GPU Memory: Allocated: 55.5 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:10,722 - WARNING - Epoch [25/30] Step [81/88]  acc 0.625000 (0.723765)  loss 0.837719 (0.679932)
+GPU memory consumption  GPU Memory: Allocated: 62.8 MB, Reserved: 5292.0 MB
+Epoch 25 completed in 0:00:12.356010
+2025-08-26 18:40:14,900 - WARNING - Epoch [26/30] Step [1/88]  acc 0.750000 (0.750000)  loss 0.661616 (0.661616)
+GPU memory consumption  GPU Memory: Allocated: 53.5 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:16,286 - WARNING - Epoch [26/30] Step [11/88]  acc 0.687500 (0.732955)  loss 0.596497 (0.660664)
+GPU memory consumption  GPU Memory: Allocated: 57.4 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:17,679 - WARNING - Epoch [26/30] Step [21/88]  acc 0.687500 (0.720238)  loss 0.816856 (0.670489)
+GPU memory consumption  GPU Memory: Allocated: 53.6 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:19,115 - WARNING - Epoch [26/30] Step [31/88]  acc 0.687500 (0.701613)  loss 0.739525 (0.728262)
+GPU memory consumption  GPU Memory: Allocated: 62.5 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:20,500 - WARNING - Epoch [26/30] Step [41/88]  acc 0.937500 (0.711890)  loss 0.249009 (0.710565)
+GPU memory consumption  GPU Memory: Allocated: 47.4 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:21,900 - WARNING - Epoch [26/30] Step [51/88]  acc 0.687500 (0.729167)  loss 0.991344 (0.692999)
+GPU memory consumption  GPU Memory: Allocated: 44.3 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:23,308 - WARNING - Epoch [26/30] Step [61/88]  acc 0.937500 (0.726434)  loss 0.349477 (0.678637)
+GPU memory consumption  GPU Memory: Allocated: 69.8 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:24,675 - WARNING - Epoch [26/30] Step [71/88]  acc 0.812500 (0.727993)  loss 0.448228 (0.671750)
+GPU memory consumption  GPU Memory: Allocated: 55.6 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:26,088 - WARNING - Epoch [26/30] Step [81/88]  acc 0.750000 (0.733025)  loss 0.569641 (0.670692)
+GPU memory consumption  GPU Memory: Allocated: 65.6 MB, Reserved: 5292.0 MB
+Epoch 26 completed in 0:00:12.374578
+2025-08-26 18:40:30,241 - WARNING - Epoch [27/30] Step [1/88]  acc 0.625000 (0.625000)  loss 0.691916 (0.691916)
+GPU memory consumption  GPU Memory: Allocated: 53.1 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:31,623 - WARNING - Epoch [27/30] Step [11/88]  acc 0.812500 (0.721591)  loss 0.627703 (0.675943)
+GPU memory consumption  GPU Memory: Allocated: 44.4 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:32,961 - WARNING - Epoch [27/30] Step [21/88]  acc 0.750000 (0.738095)  loss 0.490214 (0.647977)
+GPU memory consumption  GPU Memory: Allocated: 47.9 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:34,373 - WARNING - Epoch [27/30] Step [31/88]  acc 0.687500 (0.735887)  loss 0.827543 (0.645738)
+GPU memory consumption  GPU Memory: Allocated: 58.1 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:35,742 - WARNING - Epoch [27/30] Step [41/88]  acc 0.750000 (0.740854)  loss 0.738520 (0.663427)
+GPU memory consumption  GPU Memory: Allocated: 53.8 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:37,104 - WARNING - Epoch [27/30] Step [51/88]  acc 0.875000 (0.742647)  loss 0.444332 (0.666867)
+GPU memory consumption  GPU Memory: Allocated: 50.0 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:38,594 - WARNING - Epoch [27/30] Step [61/88]  acc 0.562500 (0.734631)  loss 0.910981 (0.681750)
+GPU memory consumption  GPU Memory: Allocated: 67.4 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:40,015 - WARNING - Epoch [27/30] Step [71/88]  acc 0.750000 (0.733275)  loss 0.600668 (0.693155)
+GPU memory consumption  GPU Memory: Allocated: 55.6 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:41,410 - WARNING - Epoch [27/30] Step [81/88]  acc 0.687500 (0.731481)  loss 0.496200 (0.694955)
+GPU memory consumption  GPU Memory: Allocated: 53.5 MB, Reserved: 5292.0 MB
+Epoch 27 completed in 0:00:12.310066
+2025-08-26 18:40:45,542 - WARNING - Epoch [28/30] Step [1/88]  acc 0.562500 (0.562500)  loss 0.975906 (0.975906)
+GPU memory consumption  GPU Memory: Allocated: 58.9 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:46,924 - WARNING - Epoch [28/30] Step [11/88]  acc 0.812500 (0.698864)  loss 0.694295 (0.750448)
+GPU memory consumption  GPU Memory: Allocated: 48.1 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:48,288 - WARNING - Epoch [28/30] Step [21/88]  acc 0.750000 (0.714286)  loss 0.747982 (0.717849)
+GPU memory consumption  GPU Memory: Allocated: 51.0 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:49,734 - WARNING - Epoch [28/30] Step [31/88]  acc 0.625000 (0.713710)  loss 0.870102 (0.727174)
+GPU memory consumption  GPU Memory: Allocated: 52.4 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:51,047 - WARNING - Epoch [28/30] Step [41/88]  acc 0.562500 (0.710366)  loss 0.915146 (0.718967)
+GPU memory consumption  GPU Memory: Allocated: 50.1 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:52,453 - WARNING - Epoch [28/30] Step [51/88]  acc 0.750000 (0.712010)  loss 0.645318 (0.709699)
+GPU memory consumption  GPU Memory: Allocated: 53.0 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:53,862 - WARNING - Epoch [28/30] Step [61/88]  acc 0.750000 (0.730533)  loss 0.491201 (0.675811)
+GPU memory consumption  GPU Memory: Allocated: 67.4 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:55,259 - WARNING - Epoch [28/30] Step [71/88]  acc 0.750000 (0.731514)  loss 0.836157 (0.680715)
+GPU memory consumption  GPU Memory: Allocated: 58.1 MB, Reserved: 5292.0 MB
+2025-08-26 18:40:56,662 - WARNING - Epoch [28/30] Step [81/88]  acc 0.812500 (0.732253)  loss 0.798447 (0.687901)
+GPU memory consumption  GPU Memory: Allocated: 53.3 MB, Reserved: 5292.0 MB
+Epoch 28 completed in 0:00:12.337304
+2025-08-26 18:41:00,838 - WARNING - Epoch [29/30] Step [1/88]  acc 0.812500 (0.812500)  loss 0.563196 (0.563196)
+GPU memory consumption  GPU Memory: Allocated: 51.1 MB, Reserved: 5292.0 MB
+2025-08-26 18:41:02,282 - WARNING - Epoch [29/30] Step [11/88]  acc 0.625000 (0.732955)  loss 0.762905 (0.672149)
+GPU memory consumption  GPU Memory: Allocated: 54.2 MB, Reserved: 5292.0 MB
+2025-08-26 18:41:03,645 - WARNING - Epoch [29/30] Step [21/88]  acc 0.625000 (0.729167)  loss 0.762700 (0.694718)
+GPU memory consumption  GPU Memory: Allocated: 46.8 MB, Reserved: 5292.0 MB
+2025-08-26 18:41:05,023 - WARNING - Epoch [29/30] Step [31/88]  acc 0.875000 (0.733871)  loss 0.492085 (0.682834)
+GPU memory consumption  GPU Memory: Allocated: 54.1 MB, Reserved: 5292.0 MB
+2025-08-26 18:41:06,413 - WARNING - Epoch [29/30] Step [41/88]  acc 0.750000 (0.727134)  loss 0.595853 (0.692664)
+GPU memory consumption  GPU Memory: Allocated: 59.8 MB, Reserved: 5292.0 MB
+2025-08-26 18:41:07,795 - WARNING - Epoch [29/30] Step [51/88]  acc 0.625000 (0.734069)  loss 0.884450 (0.680627)
+GPU memory consumption  GPU Memory: Allocated: 49.8 MB, Reserved: 5292.0 MB
+2025-08-26 18:41:09,209 - WARNING - Epoch [29/30] Step [61/88]  acc 0.750000 (0.732582)  loss 0.598029 (0.685221)
+GPU memory consumption  GPU Memory: Allocated: 61.4 MB, Reserved: 5292.0 MB
+2025-08-26 18:41:10,644 - WARNING - Epoch [29/30] Step [71/88]  acc 0.875000 (0.734155)  loss 0.508254 (0.684478)
+GPU memory consumption  GPU Memory: Allocated: 54.0 MB, Reserved: 5292.0 MB
+2025-08-26 18:41:12,023 - WARNING - Epoch [29/30] Step [81/88]  acc 0.687500 (0.736883)  loss 0.684919 (0.674598)
+GPU memory consumption  GPU Memory: Allocated: 50.0 MB, Reserved: 5292.0 MB
+Epoch 29 completed in 0:00:12.314914
+2025-08-26 18:41:16,144 - WARNING - Epoch [30/30] Step [1/88]  acc 0.750000 (0.750000)  loss 0.466380 (0.466380)
+GPU memory consumption  GPU Memory: Allocated: 56.0 MB, Reserved: 5292.0 MB
+2025-08-26 18:41:17,515 - WARNING - Epoch [30/30] Step [11/88]  acc 0.625000 (0.721591)  loss 0.935125 (0.682792)
+GPU memory consumption  GPU Memory: Allocated: 52.0 MB, Reserved: 5292.0 MB
+2025-08-26 18:41:18,876 - WARNING - Epoch [30/30] Step [21/88]  acc 0.750000 (0.723214)  loss 0.713844 (0.667631)
+GPU memory consumption  GPU Memory: Allocated: 53.3 MB, Reserved: 5292.0 MB
+2025-08-26 18:41:20,335 - WARNING - Epoch [30/30] Step [31/88]  acc 0.625000 (0.743952)  loss 0.746034 (0.636654)
+GPU memory consumption  GPU Memory: Allocated: 55.7 MB, Reserved: 5292.0 MB
+2025-08-26 18:41:21,686 - WARNING - Epoch [30/30] Step [41/88]  acc 0.812500 (0.746951)  loss 0.422128 (0.624089)
+GPU memory consumption  GPU Memory: Allocated: 51.3 MB, Reserved: 5292.0 MB
+2025-08-26 18:41:23,070 - WARNING - Epoch [30/30] Step [51/88]  acc 0.750000 (0.743873)  loss 0.727575 (0.634877)
+GPU memory consumption  GPU Memory: Allocated: 56.3 MB, Reserved: 5292.0 MB
+2025-08-26 18:41:24,500 - WARNING - Epoch [30/30] Step [61/88]  acc 0.687500 (0.752049)  loss 0.923303 (0.625576)
+GPU memory consumption  GPU Memory: Allocated: 65.8 MB, Reserved: 5292.0 MB
+2025-08-26 18:41:25,865 - WARNING - Epoch [30/30] Step [71/88]  acc 0.875000 (0.753521)  loss 0.552431 (0.634178)
+GPU memory consumption  GPU Memory: Allocated: 61.2 MB, Reserved: 5292.0 MB
+2025-08-26 18:41:27,264 - WARNING - Epoch [30/30] Step [81/88]  acc 0.750000 (0.755401)  loss 0.712611 (0.628190)
+GPU memory consumption  GPU Memory: Allocated: 54.7 MB, Reserved: 5292.0 MB
+Epoch 30 completed in 0:00:12.286781
+2025-08-26 18:41:31,271 - INFO - DARTS search completed in 463.38s
+2025-08-26 18:41:31,271 - INFO - 
+============================================================
+2025-08-26 18:41:31,271 - INFO - Layer layer_0 Expert Selection:
+2025-08-26 18:41:31,271 - INFO -   Expert 0: GINE (α=0.3071)
+2025-08-26 18:41:31,271 - INFO -   Expert 1: CustomGatedGCN (α=0.3722) ← SELECTED
+2025-08-26 18:41:31,271 - INFO -   Expert 2: GATV2 (α=0.3207)
+2025-08-26 18:41:31,271 - INFO - Selected Expert Index: 1 (CustomGatedGCN)
+2025-08-26 18:41:31,272 - INFO - ============================================================
+
+2025-08-26 18:41:31,272 - INFO - 
+============================================================
+2025-08-26 18:41:31,272 - INFO - Layer layer_1 Expert Selection:
+2025-08-26 18:41:31,272 - INFO -   Expert 0: GINE (α=0.3590) ← SELECTED
+2025-08-26 18:41:31,272 - INFO -   Expert 1: CustomGatedGCN (α=0.3218)
+2025-08-26 18:41:31,272 - INFO -   Expert 2: GATV2 (α=0.3192)
+2025-08-26 18:41:31,272 - INFO - Selected Expert Index: 0 (GINE)
+2025-08-26 18:41:31,272 - INFO - ============================================================
+
+2025-08-26 18:41:31,272 - INFO - 
+============================================================
+2025-08-26 18:41:31,272 - INFO - Layer layer_2 Expert Selection:
+2025-08-26 18:41:31,272 - INFO -   Expert 0: GINE (α=0.3400) ← SELECTED
+2025-08-26 18:41:31,272 - INFO -   Expert 1: CustomGatedGCN (α=0.3355)
+2025-08-26 18:41:31,272 - INFO -   Expert 2: GATV2 (α=0.3244)
+2025-08-26 18:41:31,272 - INFO - Selected Expert Index: 0 (GINE)
+2025-08-26 18:41:31,272 - INFO - ============================================================
+
+2025-08-26 18:41:31,272 - INFO - 
+============================================================
+2025-08-26 18:41:31,272 - INFO - Layer layer_3 Expert Selection:
+2025-08-26 18:41:31,272 - INFO -   Expert 0: GINE (α=0.3452) ← SELECTED
+2025-08-26 18:41:31,272 - INFO -   Expert 1: CustomGatedGCN (α=0.3288)
+2025-08-26 18:41:31,272 - INFO -   Expert 2: GATV2 (α=0.3260)
+2025-08-26 18:41:31,272 - INFO - Selected Expert Index: 0 (GINE)
+2025-08-26 18:41:31,272 - INFO - ============================================================
+
+=== MODEL PARAMETER COMPARISON ===
+Original DARTS model parameters: 327,893
+2025-08-26 18:41:31,309 - INFO - Layer 0: Using ONLY Expert 1 (CustomGatedGCN)
+2025-08-26 18:41:31,309 - INFO - DiscreteNASLayer 0: Using ONLY Expert 1 (CustomGatedGCN)
+2025-08-26 18:41:31,315 - INFO - Layer 1: Using ONLY Expert 0 (GINE)
+2025-08-26 18:41:31,315 - INFO - DiscreteNASLayer 1: Using ONLY Expert 0 (GINE)
+2025-08-26 18:41:31,317 - INFO - Layer 2: Using ONLY Expert 0 (GINE)
+2025-08-26 18:41:31,317 - INFO - DiscreteNASLayer 2: Using ONLY Expert 0 (GINE)
+2025-08-26 18:41:31,320 - INFO - Layer 3: Using ONLY Expert 0 (GINE)
+2025-08-26 18:41:31,320 - INFO - DiscreteNASLayer 3: Using ONLY Expert 0 (GINE)
+Fresh discrete model parameters: 206,217
+Parameter difference: -121,676
+✓ Used cfg.share.dim_in (raw input) instead of self.encoder.dim_in (processed)
+✓ Fresh discrete model with correct input dimensions
+2025-08-26 18:41:31,327 - INFO - Replaced inner model with discrete version
+2025-08-26 18:41:31,328 - INFO - Creating fresh optimizer/scheduler for discrete model...
+2025-08-26 18:41:31,329 - INFO - Fresh optimizer created: AdamW
+2025-08-26 18:41:31,329 - INFO - Fresh scheduler created: LambdaLR
+2025-08-26 18:41:31,329 - INFO - Discrete model parameters: 206,217
+2025-08-26 18:41:31,329 - INFO - ============================================================
+2025-08-26 18:41:31,330 - INFO - PHASE 2: DISCRETE TRAINING WITH UNCERTAINTY
+2025-08-26 18:41:31,330 - INFO - ============================================================
+2025-08-26 18:41:31,330 - INFO - === Epoch 0 ===
+2025-08-26 18:41:41,062 - INFO - train: {'epoch': 0, 'time_epoch': 9.18329, 'eta': 909.1459, 'eta_hours': 0.25254, 'loss': 1.61368732, 'lr': 0.0, 'params': 206217, 'time_iter': 0.04193, 'accuracy': 0.2, 'f1': 0.06667, 'auc': 0.48856}
+2025-08-26 18:41:41,081 - INFO - ...computing epoch stats took: 0.56s
+2025-08-26 18:41:41,836 - INFO - val: {'epoch': 0, 'time_epoch': 0.74649, 'loss': 1.61059269, 'lr': 0, 'params': 206217, 'time_iter': 0.02333, 'accuracy': 0.2, 'f1': 0.06667, 'auc': 0.48046}
+2025-08-26 18:41:41,852 - INFO - ...computing epoch stats took: 0.02s
+2025-08-26 18:41:44,177 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:41:44,184 - INFO - test: {'epoch': 0, 'time_epoch': 1.47794, 'loss': 1.61081052, 'lr': 0, 'params': 206217, 'time_iter': 0.02346, 'accuracy': 0.2, 'f1': 0.06667, 'auc': 0.49945}
+2025-08-26 18:41:44,205 - INFO - ...computing epoch stats took: 0.03s
+2025-08-26 18:41:44,206 - INFO - > Epoch 0: took 12.9s (avg 12.9s) | Best so far: epoch 0	train_loss: 1.6137 train_accuracy: 0.2000	val_loss: 1.6106 val_accuracy: 0.2000	test_loss: 1.6108 test_accuracy: 0.2000
+2025-08-26 18:41:44,206 - INFO - === Epoch 1 ===
+2025-08-26 18:41:53,272 - INFO - train: {'epoch': 1, 'time_epoch': 9.05328, 'eta': 893.59212, 'eta_hours': 0.24822, 'loss': 1.54138598, 'lr': 5e-05, 'params': 206217, 'time_iter': 0.04134, 'accuracy': 0.37229, 'f1': 0.31045, 'auc': 0.77381}
+2025-08-26 18:41:53,275 - INFO - ...computing epoch stats took: 0.01s
+2025-08-26 18:41:53,969 - INFO - val: {'epoch': 1, 'time_epoch': 0.68535, 'loss': 1.49867449, 'lr': 0, 'params': 206217, 'time_iter': 0.02142, 'accuracy': 0.486, 'f1': 0.40053, 'auc': 0.84457}
+2025-08-26 18:41:53,970 - INFO - ...computing epoch stats took: 0.01s
+2025-08-26 18:41:56,285 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:41:56,294 - INFO - test: {'epoch': 1, 'time_epoch': 1.3763, 'loss': 1.50502457, 'lr': 0, 'params': 206217, 'time_iter': 0.02185, 'accuracy': 0.468, 'f1': 0.38259, 'auc': 0.83262}
+2025-08-26 18:41:56,295 - INFO - ...computing epoch stats took: 0.01s
+2025-08-26 18:41:56,295 - INFO - > Epoch 1: took 12.1s (avg 12.5s) | Best so far: epoch 1	train_loss: 1.5414 train_accuracy: 0.3723	val_loss: 1.4987 val_accuracy: 0.4860	test_loss: 1.5050 test_accuracy: 0.4680
+2025-08-26 18:41:56,295 - INFO - === Epoch 2 ===
+2025-08-26 18:42:05,315 - INFO - train: {'epoch': 2, 'time_epoch': 9.0065, 'eta': 880.85938, 'eta_hours': 0.24468, 'loss': 1.44294381, 'lr': 0.0001, 'params': 206217, 'time_iter': 0.04113, 'accuracy': 0.52343, 'f1': 0.43317, 'auc': 0.82481}
+2025-08-26 18:42:05,318 - INFO - ...computing epoch stats took: 0.01s
+2025-08-26 18:42:06,015 - INFO - val: {'epoch': 2, 'time_epoch': 0.68767, 'loss': 1.41872842, 'lr': 0, 'params': 206217, 'time_iter': 0.02149, 'accuracy': 0.526, 'f1': 0.43872, 'auc': 0.87173}
+2025-08-26 18:42:06,016 - INFO - ...computing epoch stats took: 0.01s
+2025-08-26 18:42:08,305 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:42:08,313 - INFO - test: {'epoch': 2, 'time_epoch': 1.37902, 'loss': 1.43192953, 'lr': 0, 'params': 206217, 'time_iter': 0.02189, 'accuracy': 0.496, 'f1': 0.41276, 'auc': 0.84515}
+2025-08-26 18:42:08,314 - INFO - ...computing epoch stats took: 0.01s
+2025-08-26 18:42:08,314 - INFO - > Epoch 2: took 12.0s (avg 12.3s) | Best so far: epoch 2	train_loss: 1.4429 train_accuracy: 0.5234	val_loss: 1.4187 val_accuracy: 0.5260	test_loss: 1.4319 test_accuracy: 0.4960
+2025-08-26 18:42:08,315 - INFO - === Epoch 3 ===
+2025-08-26 18:42:17,358 - INFO - train: {'epoch': 3, 'time_epoch': 9.03082, 'eta': 870.57336, 'eta_hours': 0.24183, 'loss': 1.3591492, 'lr': 0.00015, 'params': 206217, 'time_iter': 0.04124, 'accuracy': 0.58, 'f1': 0.53342, 'auc': 0.86441}
+2025-08-26 18:42:18,062 - INFO - val: {'epoch': 3, 'time_epoch': 0.69273, 'loss': 1.31807089, 'lr': 0, 'params': 206217, 'time_iter': 0.02165, 'accuracy': 0.646, 'f1': 0.60361, 'auc': 0.90115}
+2025-08-26 18:42:20,480 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:42:20,488 - INFO - test: {'epoch': 3, 'time_epoch': 1.38759, 'loss': 1.33821386, 'lr': 0, 'params': 206217, 'time_iter': 0.02203, 'accuracy': 0.622, 'f1': 0.5864, 'auc': 0.87256}
+2025-08-26 18:42:20,491 - INFO - > Epoch 3: took 12.2s (avg 12.3s) | Best so far: epoch 3	train_loss: 1.3591 train_accuracy: 0.5800	val_loss: 1.3181 val_accuracy: 0.6460	test_loss: 1.3382 test_accuracy: 0.6220
+2025-08-26 18:42:20,491 - INFO - === Epoch 4 ===
+2025-08-26 18:42:29,556 - INFO - train: {'epoch': 4, 'time_epoch': 9.05243, 'eta': 861.20014, 'eta_hours': 0.23922, 'loss': 1.24960729, 'lr': 0.0002, 'params': 206217, 'time_iter': 0.04134, 'accuracy': 0.706, 'f1': 0.67752, 'auc': 0.8997}
+2025-08-26 18:42:30,264 - INFO - val: {'epoch': 4, 'time_epoch': 0.6984, 'loss': 1.21401674, 'lr': 0, 'params': 206217, 'time_iter': 0.02182, 'accuracy': 0.686, 'f1': 0.64097, 'auc': 0.92447}
+2025-08-26 18:42:32,583 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:42:32,593 - INFO - test: {'epoch': 4, 'time_epoch': 1.41369, 'loss': 1.23081443, 'lr': 0, 'params': 206217, 'time_iter': 0.02244, 'accuracy': 0.675, 'f1': 0.63501, 'auc': 0.9001}
+2025-08-26 18:42:32,596 - INFO - > Epoch 4: took 12.1s (avg 12.3s) | Best so far: epoch 4	train_loss: 1.2496 train_accuracy: 0.7060	val_loss: 1.2140 val_accuracy: 0.6860	test_loss: 1.2308 test_accuracy: 0.6750
+2025-08-26 18:42:32,596 - INFO - === Epoch 5 ===
+2025-08-26 18:42:41,683 - INFO - train: {'epoch': 5, 'time_epoch': 9.07297, 'eta': 852.25556, 'eta_hours': 0.23674, 'loss': 1.15464306, 'lr': 0.00025, 'params': 206217, 'time_iter': 0.04143, 'accuracy': 0.72343, 'f1': 0.6967, 'auc': 0.9105}
+2025-08-26 18:42:42,389 - INFO - val: {'epoch': 5, 'time_epoch': 0.69276, 'loss': 1.12993244, 'lr': 0, 'params': 206217, 'time_iter': 0.02165, 'accuracy': 0.708, 'f1': 0.70503, 'auc': 0.9268}
+2025-08-26 18:42:44,666 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:42:44,675 - INFO - test: {'epoch': 5, 'time_epoch': 1.3943, 'loss': 1.16081744, 'lr': 0, 'params': 206217, 'time_iter': 0.02213, 'accuracy': 0.678, 'f1': 0.68263, 'auc': 0.89992}
+2025-08-26 18:42:44,679 - INFO - > Epoch 5: took 12.1s (avg 12.2s) | Best so far: epoch 5	train_loss: 1.1546 train_accuracy: 0.7234	val_loss: 1.1299 val_accuracy: 0.7080	test_loss: 1.1608 test_accuracy: 0.6780
+2025-08-26 18:42:44,679 - INFO - === Epoch 6 ===
+2025-08-26 18:42:53,777 - INFO - train: {'epoch': 6, 'time_epoch': 9.08512, 'eta': 843.43575, 'eta_hours': 0.23429, 'loss': 1.06469551, 'lr': 0.0003, 'params': 206217, 'time_iter': 0.04148, 'accuracy': 0.73686, 'f1': 0.72646, 'auc': 0.91817}
+2025-08-26 18:42:54,477 - INFO - val: {'epoch': 6, 'time_epoch': 0.68807, 'loss': 1.0272558, 'lr': 0, 'params': 206217, 'time_iter': 0.0215, 'accuracy': 0.78, 'f1': 0.78837, 'auc': 0.94282}
+2025-08-26 18:42:56,786 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:42:56,795 - INFO - test: {'epoch': 6, 'time_epoch': 1.38015, 'loss': 1.05440455, 'lr': 0, 'params': 206217, 'time_iter': 0.02191, 'accuracy': 0.762, 'f1': 0.77135, 'auc': 0.92191}
+2025-08-26 18:42:56,797 - INFO - > Epoch 6: took 12.1s (avg 12.2s) | Best so far: epoch 6	train_loss: 1.0647 train_accuracy: 0.7369	val_loss: 1.0273 val_accuracy: 0.7800	test_loss: 1.0544 test_accuracy: 0.7620
+2025-08-26 18:42:56,797 - INFO - === Epoch 7 ===
+2025-08-26 18:43:05,816 - INFO - train: {'epoch': 7, 'time_epoch': 9.00688, 'eta': 833.64987, 'eta_hours': 0.23157, 'loss': 0.98305861, 'lr': 0.00035, 'params': 206217, 'time_iter': 0.04113, 'accuracy': 0.74343, 'f1': 0.73397, 'auc': 0.92344}
+2025-08-26 18:43:06,515 - INFO - val: {'epoch': 7, 'time_epoch': 0.68801, 'loss': 0.9706388, 'lr': 0, 'params': 206217, 'time_iter': 0.0215, 'accuracy': 0.738, 'f1': 0.73075, 'auc': 0.93804}
+2025-08-26 18:43:08,787 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:43:08,795 - INFO - test: {'epoch': 7, 'time_epoch': 1.38155, 'loss': 0.98595767, 'lr': 0, 'params': 206217, 'time_iter': 0.02193, 'accuracy': 0.737, 'f1': 0.73265, 'auc': 0.92656}
+2025-08-26 18:43:08,797 - INFO - > Epoch 7: took 12.0s (avg 12.2s) | Best so far: epoch 6	train_loss: 1.0647 train_accuracy: 0.7369	val_loss: 1.0273 val_accuracy: 0.7800	test_loss: 1.0544 test_accuracy: 0.7620
+2025-08-26 18:43:08,797 - INFO - === Epoch 8 ===
+2025-08-26 18:43:17,880 - INFO - train: {'epoch': 8, 'time_epoch': 9.06788, 'eta': 824.65389, 'eta_hours': 0.22907, 'loss': 0.90881939, 'lr': 0.0004, 'params': 206217, 'time_iter': 0.04141, 'accuracy': 0.76286, 'f1': 0.76016, 'auc': 0.92674}
+2025-08-26 18:43:18,580 - INFO - val: {'epoch': 8, 'time_epoch': 0.68927, 'loss': 0.84546942, 'lr': 0, 'params': 206217, 'time_iter': 0.02154, 'accuracy': 0.786, 'f1': 0.79298, 'auc': 0.95483}
+2025-08-26 18:43:20,855 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:43:20,863 - INFO - test: {'epoch': 8, 'time_epoch': 1.3822, 'loss': 0.87887829, 'lr': 0, 'params': 206217, 'time_iter': 0.02194, 'accuracy': 0.765, 'f1': 0.77528, 'auc': 0.93658}
+2025-08-26 18:43:20,865 - INFO - > Epoch 8: took 12.1s (avg 12.2s) | Best so far: epoch 8	train_loss: 0.9088 train_accuracy: 0.7629	val_loss: 0.8455 val_accuracy: 0.7860	test_loss: 0.8789 test_accuracy: 0.7650
+2025-08-26 18:43:20,865 - INFO - === Epoch 9 ===
+2025-08-26 18:43:30,028 - INFO - train: {'epoch': 9, 'time_epoch': 9.14762, 'eta': 816.36118, 'eta_hours': 0.22677, 'loss': 0.8351188, 'lr': 0.00045, 'params': 206217, 'time_iter': 0.04177, 'accuracy': 0.76571, 'f1': 0.76274, 'auc': 0.932}
+2025-08-26 18:43:30,743 - INFO - val: {'epoch': 9, 'time_epoch': 0.703, 'loss': 0.75487027, 'lr': 0, 'params': 206217, 'time_iter': 0.02197, 'accuracy': 0.812, 'f1': 0.81366, 'auc': 0.95682}
+2025-08-26 18:43:33,051 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:43:33,059 - INFO - test: {'epoch': 9, 'time_epoch': 1.38285, 'loss': 0.80124286, 'lr': 0, 'params': 206217, 'time_iter': 0.02195, 'accuracy': 0.768, 'f1': 0.77066, 'auc': 0.94168}
+2025-08-26 18:43:33,061 - INFO - > Epoch 9: took 12.2s (avg 12.2s) | Best so far: epoch 9	train_loss: 0.8351 train_accuracy: 0.7657	val_loss: 0.7549 val_accuracy: 0.8120	test_loss: 0.8012 test_accuracy: 0.7680
+2025-08-26 18:43:33,061 - INFO - === Epoch 10 ===
+2025-08-26 18:43:42,181 - INFO - train: {'epoch': 10, 'time_epoch': 9.10481, 'eta': 807.56664, 'eta_hours': 0.22432, 'loss': 0.77850823, 'lr': 0.0005, 'params': 206217, 'time_iter': 0.04157, 'accuracy': 0.77171, 'f1': 0.76905, 'auc': 0.93281}
+2025-08-26 18:43:42,884 - INFO - val: {'epoch': 10, 'time_epoch': 0.69151, 'loss': 0.78158244, 'lr': 0, 'params': 206217, 'time_iter': 0.02161, 'accuracy': 0.76, 'f1': 0.75156, 'auc': 0.94362}
+2025-08-26 18:43:45,159 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:43:45,169 - INFO - test: {'epoch': 10, 'time_epoch': 1.39449, 'loss': 0.83467689, 'lr': 0, 'params': 206217, 'time_iter': 0.02213, 'accuracy': 0.723, 'f1': 0.71254, 'auc': 0.92448}
+2025-08-26 18:43:45,172 - INFO - > Epoch 10: took 12.1s (avg 12.2s) | Best so far: epoch 9	train_loss: 0.8351 train_accuracy: 0.7657	val_loss: 0.7549 val_accuracy: 0.8120	test_loss: 0.8012 test_accuracy: 0.7680
+2025-08-26 18:43:45,172 - INFO - === Epoch 11 ===
+2025-08-26 18:43:54,283 - INFO - train: {'epoch': 11, 'time_epoch': 9.0962, 'eta': 798.65726, 'eta_hours': 0.22185, 'loss': 0.72815616, 'lr': 0.00049985, 'params': 206217, 'time_iter': 0.04154, 'accuracy': 0.77257, 'f1': 0.76991, 'auc': 0.9374}
+2025-08-26 18:43:54,984 - INFO - val: {'epoch': 11, 'time_epoch': 0.68887, 'loss': 0.67935568, 'lr': 0, 'params': 206217, 'time_iter': 0.02153, 'accuracy': 0.804, 'f1': 0.81254, 'auc': 0.96352}
+2025-08-26 18:43:57,224 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:43:57,232 - INFO - test: {'epoch': 11, 'time_epoch': 1.37206, 'loss': 0.73758603, 'lr': 0, 'params': 206217, 'time_iter': 0.02178, 'accuracy': 0.768, 'f1': 0.77812, 'auc': 0.94491}
+2025-08-26 18:43:57,239 - INFO - > Epoch 11: took 12.1s (avg 12.2s) | Best so far: epoch 9	train_loss: 0.8351 train_accuracy: 0.7657	val_loss: 0.7549 val_accuracy: 0.8120	test_loss: 0.8012 test_accuracy: 0.7680
+2025-08-26 18:43:57,239 - INFO - === Epoch 12 ===
+2025-08-26 18:44:06,289 - INFO - train: {'epoch': 12, 'time_epoch': 9.03732, 'eta': 789.32509, 'eta_hours': 0.21926, 'loss': 0.68487439, 'lr': 0.00049939, 'params': 206217, 'time_iter': 0.04127, 'accuracy': 0.786, 'f1': 0.78679, 'auc': 0.94169}
+2025-08-26 18:44:06,991 - INFO - val: {'epoch': 12, 'time_epoch': 0.69053, 'loss': 0.66701135, 'lr': 0, 'params': 206217, 'time_iter': 0.02158, 'accuracy': 0.786, 'f1': 0.78706, 'auc': 0.95615}
+2025-08-26 18:44:09,247 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:44:09,256 - INFO - test: {'epoch': 12, 'time_epoch': 1.3879, 'loss': 0.69693995, 'lr': 0, 'params': 206217, 'time_iter': 0.02203, 'accuracy': 0.767, 'f1': 0.76747, 'auc': 0.94922}
+2025-08-26 18:44:09,259 - INFO - > Epoch 12: took 12.0s (avg 12.1s) | Best so far: epoch 9	train_loss: 0.8351 train_accuracy: 0.7657	val_loss: 0.7549 val_accuracy: 0.8120	test_loss: 0.8012 test_accuracy: 0.7680
+2025-08-26 18:44:09,259 - INFO - === Epoch 13 ===
+2025-08-26 18:44:18,397 - INFO - train: {'epoch': 13, 'time_epoch': 9.12494, 'eta': 780.57327, 'eta_hours': 0.21683, 'loss': 0.6392853, 'lr': 0.00049863, 'params': 206217, 'time_iter': 0.04167, 'accuracy': 0.79543, 'f1': 0.79613, 'auc': 0.94716}
+2025-08-26 18:44:19,096 - INFO - val: {'epoch': 13, 'time_epoch': 0.68847, 'loss': 0.59668851, 'lr': 0, 'params': 206217, 'time_iter': 0.02151, 'accuracy': 0.808, 'f1': 0.81138, 'auc': 0.96197}
+2025-08-26 18:44:21,387 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:44:21,395 - INFO - test: {'epoch': 13, 'time_epoch': 1.39174, 'loss': 0.6239281, 'lr': 0, 'params': 206217, 'time_iter': 0.02209, 'accuracy': 0.787, 'f1': 0.79058, 'auc': 0.95597}
+2025-08-26 18:44:21,397 - INFO - > Epoch 13: took 12.1s (avg 12.1s) | Best so far: epoch 9	train_loss: 0.8351 train_accuracy: 0.7657	val_loss: 0.7549 val_accuracy: 0.8120	test_loss: 0.8012 test_accuracy: 0.7680
+2025-08-26 18:44:21,397 - INFO - === Epoch 14 ===
+2025-08-26 18:44:30,463 - INFO - train: {'epoch': 14, 'time_epoch': 9.05263, 'eta': 771.36195, 'eta_hours': 0.21427, 'loss': 0.60457326, 'lr': 0.00049757, 'params': 206217, 'time_iter': 0.04134, 'accuracy': 0.80771, 'f1': 0.80835, 'auc': 0.94888}
+2025-08-26 18:44:31,166 - INFO - val: {'epoch': 14, 'time_epoch': 0.69291, 'loss': 0.55380968, 'lr': 0, 'params': 206217, 'time_iter': 0.02165, 'accuracy': 0.844, 'f1': 0.84216, 'auc': 0.96278}
+2025-08-26 18:44:33,460 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:44:33,468 - INFO - test: {'epoch': 14, 'time_epoch': 1.38941, 'loss': 0.59117716, 'lr': 0, 'params': 206217, 'time_iter': 0.02205, 'accuracy': 0.811, 'f1': 0.80999, 'auc': 0.95628}
+2025-08-26 18:44:33,469 - INFO - > Epoch 14: took 12.1s (avg 12.1s) | Best so far: epoch 14	train_loss: 0.6046 train_accuracy: 0.8077	val_loss: 0.5538 val_accuracy: 0.8440	test_loss: 0.5912 test_accuracy: 0.8110
+2025-08-26 18:44:33,470 - INFO - === Epoch 15 ===
+2025-08-26 18:44:42,555 - INFO - train: {'epoch': 15, 'time_epoch': 9.07214, 'eta': 762.27288, 'eta_hours': 0.21174, 'loss': 0.57638371, 'lr': 0.0004962, 'params': 206217, 'time_iter': 0.04143, 'accuracy': 0.81486, 'f1': 0.81548, 'auc': 0.95328}
+2025-08-26 18:44:43,258 - INFO - val: {'epoch': 15, 'time_epoch': 0.69179, 'loss': 0.50776535, 'lr': 0, 'params': 206217, 'time_iter': 0.02162, 'accuracy': 0.854, 'f1': 0.85687, 'auc': 0.97354}
+2025-08-26 18:44:45,580 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:44:45,588 - INFO - test: {'epoch': 15, 'time_epoch': 1.38433, 'loss': 0.56068751, 'lr': 0, 'params': 206217, 'time_iter': 0.02197, 'accuracy': 0.821, 'f1': 0.82506, 'auc': 0.96156}
+2025-08-26 18:44:45,589 - INFO - > Epoch 15: took 12.1s (avg 12.1s) | Best so far: epoch 15	train_loss: 0.5764 train_accuracy: 0.8149	val_loss: 0.5078 val_accuracy: 0.8540	test_loss: 0.5607 test_accuracy: 0.8210
+2025-08-26 18:44:45,589 - INFO - === Epoch 16 ===
+2025-08-26 18:44:54,696 - INFO - train: {'epoch': 16, 'time_epoch': 9.09311, 'eta': 753.28819, 'eta_hours': 0.20925, 'loss': 0.53550316, 'lr': 0.00049454, 'params': 206217, 'time_iter': 0.04152, 'accuracy': 0.83086, 'f1': 0.83195, 'auc': 0.95993}
+2025-08-26 18:44:55,402 - INFO - val: {'epoch': 16, 'time_epoch': 0.69548, 'loss': 0.47295935, 'lr': 0, 'params': 206217, 'time_iter': 0.02173, 'accuracy': 0.856, 'f1': 0.85472, 'auc': 0.97313}
+2025-08-26 18:44:57,692 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:44:57,702 - INFO - test: {'epoch': 16, 'time_epoch': 1.3879, 'loss': 0.51376997, 'lr': 0, 'params': 206217, 'time_iter': 0.02203, 'accuracy': 0.837, 'f1': 0.83679, 'auc': 0.96647}
+2025-08-26 18:44:57,704 - INFO - > Epoch 16: took 12.1s (avg 12.1s) | Best so far: epoch 16	train_loss: 0.5355 train_accuracy: 0.8309	val_loss: 0.4730 val_accuracy: 0.8560	test_loss: 0.5138 test_accuracy: 0.8370
+2025-08-26 18:44:57,704 - INFO - === Epoch 17 ===
+2025-08-26 18:45:07,091 - INFO - train: {'epoch': 17, 'time_epoch': 9.37231, 'eta': 745.56336, 'eta_hours': 0.2071, 'loss': 0.50753618, 'lr': 0.00049257, 'params': 206217, 'time_iter': 0.0428, 'accuracy': 0.83229, 'f1': 0.83413, 'auc': 0.96272}
+2025-08-26 18:45:07,820 - INFO - val: {'epoch': 17, 'time_epoch': 0.718, 'loss': 0.49595546, 'lr': 0, 'params': 206217, 'time_iter': 0.02244, 'accuracy': 0.822, 'f1': 0.8297, 'auc': 0.97386}
+2025-08-26 18:45:10,101 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:45:10,110 - INFO - test: {'epoch': 17, 'time_epoch': 1.40317, 'loss': 0.56655698, 'lr': 0, 'params': 206217, 'time_iter': 0.02227, 'accuracy': 0.799, 'f1': 0.80783, 'auc': 0.95927}
+2025-08-26 18:45:10,112 - INFO - > Epoch 17: took 12.4s (avg 12.2s) | Best so far: epoch 16	train_loss: 0.5355 train_accuracy: 0.8309	val_loss: 0.4730 val_accuracy: 0.8560	test_loss: 0.5138 test_accuracy: 0.8370
+2025-08-26 18:45:10,112 - INFO - === Epoch 18 ===
+2025-08-26 18:45:19,249 - INFO - train: {'epoch': 18, 'time_epoch': 9.12299, 'eta': 736.60222, 'eta_hours': 0.20461, 'loss': 0.48877127, 'lr': 0.00049032, 'params': 206217, 'time_iter': 0.04166, 'accuracy': 0.84057, 'f1': 0.84248, 'auc': 0.96369}
+2025-08-26 18:45:19,951 - INFO - val: {'epoch': 18, 'time_epoch': 0.69166, 'loss': 0.46475345, 'lr': 0, 'params': 206217, 'time_iter': 0.02161, 'accuracy': 0.852, 'f1': 0.85872, 'auc': 0.9739}
+2025-08-26 18:45:22,213 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:45:22,223 - INFO - test: {'epoch': 18, 'time_epoch': 1.38839, 'loss': 0.51700479, 'lr': 0, 'params': 206217, 'time_iter': 0.02204, 'accuracy': 0.817, 'f1': 0.82666, 'auc': 0.96443}
+2025-08-26 18:45:22,224 - INFO - > Epoch 18: took 12.1s (avg 12.2s) | Best so far: epoch 16	train_loss: 0.5355 train_accuracy: 0.8309	val_loss: 0.4730 val_accuracy: 0.8560	test_loss: 0.5138 test_accuracy: 0.8370
+2025-08-26 18:45:22,224 - INFO - === Epoch 19 ===
+2025-08-26 18:45:31,339 - INFO - train: {'epoch': 19, 'time_epoch': 9.10146, 'eta': 727.5388, 'eta_hours': 0.20209, 'loss': 0.46751708, 'lr': 0.00048776, 'params': 206217, 'time_iter': 0.04156, 'accuracy': 0.84629, 'f1': 0.84758, 'auc': 0.96775}
+2025-08-26 18:45:32,040 - INFO - val: {'epoch': 19, 'time_epoch': 0.69012, 'loss': 0.4345025, 'lr': 0, 'params': 206217, 'time_iter': 0.02157, 'accuracy': 0.842, 'f1': 0.84951, 'auc': 0.97914}
+2025-08-26 18:45:34,256 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:45:34,263 - INFO - test: {'epoch': 19, 'time_epoch': 1.37997, 'loss': 0.49607702, 'lr': 0, 'params': 206217, 'time_iter': 0.0219, 'accuracy': 0.812, 'f1': 0.82096, 'auc': 0.96955}
+2025-08-26 18:45:34,265 - INFO - > Epoch 19: took 12.0s (avg 12.1s) | Best so far: epoch 16	train_loss: 0.5355 train_accuracy: 0.8309	val_loss: 0.4730 val_accuracy: 0.8560	test_loss: 0.5138 test_accuracy: 0.8370
+2025-08-26 18:45:34,265 - INFO - === Epoch 20 ===
+2025-08-26 18:45:43,377 - INFO - train: {'epoch': 20, 'time_epoch': 9.09672, 'eta': 718.4539, 'eta_hours': 0.19957, 'loss': 0.45022389, 'lr': 0.00048492, 'params': 206217, 'time_iter': 0.04154, 'accuracy': 0.85429, 'f1': 0.85596, 'auc': 0.96927}
+2025-08-26 18:45:44,081 - INFO - val: {'epoch': 20, 'time_epoch': 0.69272, 'loss': 0.38785971, 'lr': 0, 'params': 206217, 'time_iter': 0.02165, 'accuracy': 0.866, 'f1': 0.86716, 'auc': 0.98037}
+2025-08-26 18:45:46,433 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:45:46,441 - INFO - test: {'epoch': 20, 'time_epoch': 1.38557, 'loss': 0.42715523, 'lr': 0, 'params': 206217, 'time_iter': 0.02199, 'accuracy': 0.849, 'f1': 0.85195, 'auc': 0.97294}
+2025-08-26 18:45:46,443 - INFO - > Epoch 20: took 12.2s (avg 12.1s) | Best so far: epoch 20	train_loss: 0.4502 train_accuracy: 0.8543	val_loss: 0.3879 val_accuracy: 0.8660	test_loss: 0.4272 test_accuracy: 0.8490
+2025-08-26 18:45:46,443 - INFO - === Epoch 21 ===
+2025-08-26 18:45:55,634 - INFO - train: {'epoch': 21, 'time_epoch': 9.17438, 'eta': 709.64329, 'eta_hours': 0.19712, 'loss': 0.42829125, 'lr': 0.0004818, 'params': 206217, 'time_iter': 0.04189, 'accuracy': 0.85943, 'f1': 0.86097, 'auc': 0.97005}
+2025-08-26 18:45:56,348 - INFO - val: {'epoch': 21, 'time_epoch': 0.702, 'loss': 0.42086818, 'lr': 0, 'params': 206217, 'time_iter': 0.02194, 'accuracy': 0.85, 'f1': 0.84632, 'auc': 0.97787}
+2025-08-26 18:45:58,676 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:45:58,686 - INFO - test: {'epoch': 21, 'time_epoch': 1.40734, 'loss': 0.48114985, 'lr': 0, 'params': 206217, 'time_iter': 0.02234, 'accuracy': 0.83, 'f1': 0.8292, 'auc': 0.96612}
+2025-08-26 18:45:58,691 - INFO - > Epoch 21: took 12.2s (avg 12.2s) | Best so far: epoch 20	train_loss: 0.4502 train_accuracy: 0.8543	val_loss: 0.3879 val_accuracy: 0.8660	test_loss: 0.4272 test_accuracy: 0.8490
+2025-08-26 18:45:58,692 - INFO - === Epoch 22 ===
+2025-08-26 18:46:07,930 - INFO - train: {'epoch': 22, 'time_epoch': 9.22439, 'eta': 700.96845, 'eta_hours': 0.19471, 'loss': 0.42433252, 'lr': 0.00047839, 'params': 206217, 'time_iter': 0.04212, 'accuracy': 0.85686, 'f1': 0.85775, 'auc': 0.97113}
+2025-08-26 18:46:08,646 - INFO - val: {'epoch': 22, 'time_epoch': 0.70388, 'loss': 0.4088976, 'lr': 0, 'params': 206217, 'time_iter': 0.022, 'accuracy': 0.85, 'f1': 0.85704, 'auc': 0.98082}
+2025-08-26 18:46:10,946 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:46:10,954 - INFO - test: {'epoch': 22, 'time_epoch': 1.40402, 'loss': 0.4747768, 'lr': 0, 'params': 206217, 'time_iter': 0.02229, 'accuracy': 0.82, 'f1': 0.82829, 'auc': 0.9725}
+2025-08-26 18:46:10,956 - INFO - > Epoch 22: took 12.3s (avg 12.2s) | Best so far: epoch 20	train_loss: 0.4502 train_accuracy: 0.8543	val_loss: 0.3879 val_accuracy: 0.8660	test_loss: 0.4272 test_accuracy: 0.8490
+2025-08-26 18:46:10,956 - INFO - === Epoch 23 ===
+2025-08-26 18:46:20,079 - INFO - train: {'epoch': 23, 'time_epoch': 9.10829, 'eta': 691.88017, 'eta_hours': 0.19219, 'loss': 0.39033851, 'lr': 0.0004747, 'params': 206217, 'time_iter': 0.04159, 'accuracy': 0.87029, 'f1': 0.87174, 'auc': 0.97509}
+2025-08-26 18:46:20,785 - INFO - val: {'epoch': 23, 'time_epoch': 0.69415, 'loss': 0.36371667, 'lr': 0, 'params': 206217, 'time_iter': 0.02169, 'accuracy': 0.882, 'f1': 0.88334, 'auc': 0.98455}
+2025-08-26 18:46:23,054 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:46:23,064 - INFO - test: {'epoch': 23, 'time_epoch': 1.38976, 'loss': 0.43134914, 'lr': 0, 'params': 206217, 'time_iter': 0.02206, 'accuracy': 0.842, 'f1': 0.84551, 'auc': 0.97236}
+2025-08-26 18:46:23,065 - INFO - > Epoch 23: took 12.1s (avg 12.2s) | Best so far: epoch 23	train_loss: 0.3903 train_accuracy: 0.8703	val_loss: 0.3637 val_accuracy: 0.8820	test_loss: 0.4313 test_accuracy: 0.8420
+2025-08-26 18:46:23,066 - INFO - === Epoch 24 ===
+2025-08-26 18:46:32,253 - INFO - train: {'epoch': 24, 'time_epoch': 9.17412, 'eta': 682.98778, 'eta_hours': 0.18972, 'loss': 0.39252346, 'lr': 0.00047074, 'params': 206217, 'time_iter': 0.04189, 'accuracy': 0.86486, 'f1': 0.86586, 'auc': 0.97406}
+2025-08-26 18:46:32,960 - INFO - val: {'epoch': 24, 'time_epoch': 0.69608, 'loss': 0.35418902, 'lr': 0, 'params': 206217, 'time_iter': 0.02175, 'accuracy': 0.878, 'f1': 0.87367, 'auc': 0.98221}
+2025-08-26 18:46:35,241 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:46:35,250 - INFO - test: {'epoch': 24, 'time_epoch': 1.40561, 'loss': 0.39433161, 'lr': 0, 'params': 206217, 'time_iter': 0.02231, 'accuracy': 0.866, 'f1': 0.86397, 'auc': 0.97562}
+2025-08-26 18:46:35,251 - INFO - > Epoch 24: took 12.2s (avg 12.2s) | Best so far: epoch 23	train_loss: 0.3903 train_accuracy: 0.8703	val_loss: 0.3637 val_accuracy: 0.8820	test_loss: 0.4313 test_accuracy: 0.8420
+2025-08-26 18:46:35,252 - INFO - === Epoch 25 ===
+2025-08-26 18:46:44,492 - INFO - train: {'epoch': 25, 'time_epoch': 9.22544, 'eta': 674.21978, 'eta_hours': 0.18728, 'loss': 0.38447171, 'lr': 0.00046651, 'params': 206217, 'time_iter': 0.04213, 'accuracy': 0.86857, 'f1': 0.87037, 'auc': 0.97414}
+2025-08-26 18:46:45,211 - INFO - val: {'epoch': 25, 'time_epoch': 0.70779, 'loss': 0.30846141, 'lr': 0, 'params': 206217, 'time_iter': 0.02212, 'accuracy': 0.898, 'f1': 0.89726, 'auc': 0.98577}
+2025-08-26 18:46:47,523 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:46:47,532 - INFO - test: {'epoch': 25, 'time_epoch': 1.41642, 'loss': 0.37393136, 'lr': 0, 'params': 206217, 'time_iter': 0.02248, 'accuracy': 0.865, 'f1': 0.86416, 'auc': 0.97772}
+2025-08-26 18:46:47,535 - INFO - > Epoch 25: took 12.3s (avg 12.2s) | Best so far: epoch 25	train_loss: 0.3845 train_accuracy: 0.8686	val_loss: 0.3085 val_accuracy: 0.8980	test_loss: 0.3739 test_accuracy: 0.8650
+2025-08-26 18:46:47,535 - INFO - === Epoch 26 ===
+2025-08-26 18:46:56,703 - INFO - train: {'epoch': 26, 'time_epoch': 9.15341, 'eta': 665.22315, 'eta_hours': 0.18478, 'loss': 0.38032673, 'lr': 0.00046201, 'params': 206217, 'time_iter': 0.0418, 'accuracy': 0.86771, 'f1': 0.86904, 'auc': 0.97501}
+2025-08-26 18:46:57,407 - INFO - val: {'epoch': 26, 'time_epoch': 0.69398, 'loss': 0.37746732, 'lr': 0, 'params': 206217, 'time_iter': 0.02169, 'accuracy': 0.858, 'f1': 0.85553, 'auc': 0.98233}
+2025-08-26 18:46:59,701 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:46:59,710 - INFO - test: {'epoch': 26, 'time_epoch': 1.38283, 'loss': 0.44253733, 'lr': 0, 'params': 206217, 'time_iter': 0.02195, 'accuracy': 0.839, 'f1': 0.8388, 'auc': 0.97364}
+2025-08-26 18:46:59,712 - INFO - > Epoch 26: took 12.2s (avg 12.2s) | Best so far: epoch 25	train_loss: 0.3845 train_accuracy: 0.8686	val_loss: 0.3085 val_accuracy: 0.8980	test_loss: 0.3739 test_accuracy: 0.8650
+2025-08-26 18:46:59,713 - INFO - === Epoch 27 ===
+2025-08-26 18:47:08,868 - INFO - train: {'epoch': 27, 'time_epoch': 9.14212, 'eta': 656.18629, 'eta_hours': 0.18227, 'loss': 0.35431201, 'lr': 0.00045726, 'params': 206217, 'time_iter': 0.04174, 'accuracy': 0.88343, 'f1': 0.88434, 'auc': 0.97767}
+2025-08-26 18:47:09,566 - INFO - val: {'epoch': 27, 'time_epoch': 0.68731, 'loss': 0.36828982, 'lr': 0, 'params': 206217, 'time_iter': 0.02148, 'accuracy': 0.87, 'f1': 0.8602, 'auc': 0.9852}
+2025-08-26 18:47:11,819 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:47:11,827 - INFO - test: {'epoch': 27, 'time_epoch': 1.3802, 'loss': 0.40205541, 'lr': 0, 'params': 206217, 'time_iter': 0.02191, 'accuracy': 0.864, 'f1': 0.8593, 'auc': 0.97776}
+2025-08-26 18:47:11,835 - INFO - > Epoch 27: took 12.1s (avg 12.2s) | Best so far: epoch 25	train_loss: 0.3845 train_accuracy: 0.8686	val_loss: 0.3085 val_accuracy: 0.8980	test_loss: 0.3739 test_accuracy: 0.8650
+2025-08-26 18:47:11,835 - INFO - === Epoch 28 ===
+2025-08-26 18:47:21,087 - INFO - train: {'epoch': 28, 'time_epoch': 9.2394, 'eta': 647.38034, 'eta_hours': 0.17983, 'loss': 0.339887, 'lr': 0.00045225, 'params': 206217, 'time_iter': 0.04219, 'accuracy': 0.88657, 'f1': 0.8871, 'auc': 0.97915}
+2025-08-26 18:47:21,802 - INFO - val: {'epoch': 28, 'time_epoch': 0.7035, 'loss': 0.39589791, 'lr': 0, 'params': 206217, 'time_iter': 0.02198, 'accuracy': 0.864, 'f1': 0.86363, 'auc': 0.98351}
+2025-08-26 18:47:24,098 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:47:24,106 - INFO - test: {'epoch': 28, 'time_epoch': 1.40109, 'loss': 0.46308149, 'lr': 0, 'params': 206217, 'time_iter': 0.02224, 'accuracy': 0.827, 'f1': 0.82835, 'auc': 0.97289}
+2025-08-26 18:47:24,108 - INFO - > Epoch 28: took 12.3s (avg 12.2s) | Best so far: epoch 25	train_loss: 0.3845 train_accuracy: 0.8686	val_loss: 0.3085 val_accuracy: 0.8980	test_loss: 0.3739 test_accuracy: 0.8650
+2025-08-26 18:47:24,108 - INFO - === Epoch 29 ===
+2025-08-26 18:47:33,424 - INFO - train: {'epoch': 29, 'time_epoch': 9.30107, 'eta': 638.6894, 'eta_hours': 0.17741, 'loss': 0.34328942, 'lr': 0.000447, 'params': 206217, 'time_iter': 0.04247, 'accuracy': 0.88457, 'f1': 0.88615, 'auc': 0.97834}
+2025-08-26 18:47:34,130 - INFO - val: {'epoch': 29, 'time_epoch': 0.69578, 'loss': 0.34069568, 'lr': 0, 'params': 206217, 'time_iter': 0.02174, 'accuracy': 0.874, 'f1': 0.87092, 'auc': 0.98334}
+2025-08-26 18:47:36,398 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:47:36,409 - INFO - test: {'epoch': 29, 'time_epoch': 1.39757, 'loss': 0.37018205, 'lr': 0, 'params': 206217, 'time_iter': 0.02218, 'accuracy': 0.859, 'f1': 0.85845, 'auc': 0.97758}
+2025-08-26 18:47:36,411 - INFO - > Epoch 29: took 12.3s (avg 12.2s) | Best so far: epoch 25	train_loss: 0.3845 train_accuracy: 0.8686	val_loss: 0.3085 val_accuracy: 0.8980	test_loss: 0.3739 test_accuracy: 0.8650
+2025-08-26 18:47:36,411 - INFO - === Epoch 30 ===
+2025-08-26 18:47:45,802 - INFO - train: {'epoch': 30, 'time_epoch': 9.37497, 'eta': 630.12359, 'eta_hours': 0.17503, 'loss': 0.33749797, 'lr': 0.00044151, 'params': 206217, 'time_iter': 0.04281, 'accuracy': 0.88829, 'f1': 0.88927, 'auc': 0.97794}
+2025-08-26 18:47:46,513 - INFO - val: {'epoch': 30, 'time_epoch': 0.69975, 'loss': 0.30734943, 'lr': 0, 'params': 206217, 'time_iter': 0.02187, 'accuracy': 0.888, 'f1': 0.88729, 'auc': 0.98623}
+2025-08-26 18:47:48,791 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:47:48,800 - INFO - test: {'epoch': 30, 'time_epoch': 1.40253, 'loss': 0.39625842, 'lr': 0, 'params': 206217, 'time_iter': 0.02226, 'accuracy': 0.857, 'f1': 0.85516, 'auc': 0.97659}
+2025-08-26 18:47:48,801 - INFO - > Epoch 30: took 12.4s (avg 12.2s) | Best so far: epoch 25	train_loss: 0.3845 train_accuracy: 0.8686	val_loss: 0.3085 val_accuracy: 0.8980	test_loss: 0.3739 test_accuracy: 0.8650
+2025-08-26 18:47:48,801 - INFO - === Epoch 31 ===
+2025-08-26 18:47:58,284 - INFO - train: {'epoch': 31, 'time_epoch': 9.46666, 'eta': 621.70203, 'eta_hours': 0.1727, 'loss': 0.33391567, 'lr': 0.00043579, 'params': 206217, 'time_iter': 0.04323, 'accuracy': 0.88429, 'f1': 0.88524, 'auc': 0.97953}
+2025-08-26 18:47:59,005 - INFO - val: {'epoch': 31, 'time_epoch': 0.70976, 'loss': 0.28617541, 'lr': 0, 'params': 206217, 'time_iter': 0.02218, 'accuracy': 0.904, 'f1': 0.9056, 'auc': 0.98588}
+2025-08-26 18:48:01,321 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:48:01,330 - INFO - test: {'epoch': 31, 'time_epoch': 1.4368, 'loss': 0.36354412, 'lr': 0, 'params': 206217, 'time_iter': 0.02281, 'accuracy': 0.87, 'f1': 0.8731, 'auc': 0.97877}
+2025-08-26 18:48:01,331 - INFO - > Epoch 31: took 12.5s (avg 12.2s) | Best so far: epoch 31	train_loss: 0.3339 train_accuracy: 0.8843	val_loss: 0.2862 val_accuracy: 0.9040	test_loss: 0.3635 test_accuracy: 0.8700
+2025-08-26 18:48:01,332 - INFO - === Epoch 32 ===
+2025-08-26 18:48:10,931 - INFO - train: {'epoch': 32, 'time_epoch': 9.58424, 'eta': 613.45587, 'eta_hours': 0.1704, 'loss': 0.32372206, 'lr': 0.00042983, 'params': 206217, 'time_iter': 0.04376, 'accuracy': 0.88971, 'f1': 0.89095, 'auc': 0.9808}
+2025-08-26 18:48:11,663 - INFO - val: {'epoch': 32, 'time_epoch': 0.71921, 'loss': 0.28052837, 'lr': 0, 'params': 206217, 'time_iter': 0.02248, 'accuracy': 0.9, 'f1': 0.90143, 'auc': 0.98677}
+2025-08-26 18:48:13,989 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:48:13,998 - INFO - test: {'epoch': 32, 'time_epoch': 1.43549, 'loss': 0.33133364, 'lr': 0, 'params': 206217, 'time_iter': 0.02279, 'accuracy': 0.879, 'f1': 0.88245, 'auc': 0.98111}
+2025-08-26 18:48:13,999 - INFO - > Epoch 32: took 12.7s (avg 12.2s) | Best so far: epoch 31	train_loss: 0.3339 train_accuracy: 0.8843	val_loss: 0.2862 val_accuracy: 0.9040	test_loss: 0.3635 test_accuracy: 0.8700
+2025-08-26 18:48:14,000 - INFO - === Epoch 33 ===
+2025-08-26 18:48:23,399 - INFO - train: {'epoch': 33, 'time_epoch': 9.38497, 'eta': 604.74418, 'eta_hours': 0.16798, 'loss': 0.3214725, 'lr': 0.00042366, 'params': 206217, 'time_iter': 0.04285, 'accuracy': 0.894, 'f1': 0.89487, 'auc': 0.98077}
+2025-08-26 18:48:24,112 - INFO - val: {'epoch': 33, 'time_epoch': 0.70287, 'loss': 0.26668119, 'lr': 0, 'params': 206217, 'time_iter': 0.02196, 'accuracy': 0.904, 'f1': 0.90065, 'auc': 0.98881}
+2025-08-26 18:48:26,342 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:48:26,350 - INFO - test: {'epoch': 33, 'time_epoch': 1.37734, 'loss': 0.31485251, 'lr': 0, 'params': 206217, 'time_iter': 0.02186, 'accuracy': 0.884, 'f1': 0.88235, 'auc': 0.98328}
+2025-08-26 18:48:26,352 - INFO - > Epoch 33: took 12.4s (avg 12.2s) | Best so far: epoch 31	train_loss: 0.3339 train_accuracy: 0.8843	val_loss: 0.2862 val_accuracy: 0.9040	test_loss: 0.3635 test_accuracy: 0.8700
+2025-08-26 18:48:26,352 - INFO - === Epoch 34 ===
+2025-08-26 18:48:35,977 - INFO - train: {'epoch': 34, 'time_epoch': 9.60985, 'eta': 596.41164, 'eta_hours': 0.16567, 'loss': 0.30119649, 'lr': 0.00041728, 'params': 206217, 'time_iter': 0.04388, 'accuracy': 0.89714, 'f1': 0.89741, 'auc': 0.98304}
+2025-08-26 18:48:36,699 - INFO - val: {'epoch': 34, 'time_epoch': 0.71036, 'loss': 0.28341898, 'lr': 0, 'params': 206217, 'time_iter': 0.0222, 'accuracy': 0.902, 'f1': 0.89884, 'auc': 0.98842}
+2025-08-26 18:48:38,949 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:48:38,957 - INFO - test: {'epoch': 34, 'time_epoch': 1.42178, 'loss': 0.30393317, 'lr': 0, 'params': 206217, 'time_iter': 0.02257, 'accuracy': 0.893, 'f1': 0.89119, 'auc': 0.98395}
+2025-08-26 18:48:38,958 - INFO - > Epoch 34: took 12.6s (avg 12.2s) | Best so far: epoch 31	train_loss: 0.3339 train_accuracy: 0.8843	val_loss: 0.2862 val_accuracy: 0.9040	test_loss: 0.3635 test_accuracy: 0.8700
+2025-08-26 18:48:38,959 - INFO - === Epoch 35 ===
+2025-08-26 18:48:48,399 - INFO - train: {'epoch': 35, 'time_epoch': 9.42711, 'eta': 587.68327, 'eta_hours': 0.16325, 'loss': 0.29477561, 'lr': 0.0004107, 'params': 206217, 'time_iter': 0.04305, 'accuracy': 0.90143, 'f1': 0.90138, 'auc': 0.98344}
+2025-08-26 18:48:49,124 - INFO - val: {'epoch': 35, 'time_epoch': 0.71284, 'loss': 0.23648373, 'lr': 0, 'params': 206217, 'time_iter': 0.02228, 'accuracy': 0.922, 'f1': 0.92272, 'auc': 0.99015}
+2025-08-26 18:48:51,328 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:48:51,335 - INFO - test: {'epoch': 35, 'time_epoch': 1.38545, 'loss': 0.34801957, 'lr': 0, 'params': 206217, 'time_iter': 0.02199, 'accuracy': 0.881, 'f1': 0.88163, 'auc': 0.97893}
+2025-08-26 18:48:51,337 - INFO - > Epoch 35: took 12.4s (avg 12.2s) | Best so far: epoch 35	train_loss: 0.2948 train_accuracy: 0.9014	val_loss: 0.2365 val_accuracy: 0.9220	test_loss: 0.3480 test_accuracy: 0.8810
+2025-08-26 18:48:51,337 - INFO - === Epoch 36 ===
+2025-08-26 18:49:00,967 - INFO - train: {'epoch': 36, 'time_epoch': 9.61323, 'eta': 579.23404, 'eta_hours': 0.1609, 'loss': 0.28563133, 'lr': 0.00040392, 'params': 206217, 'time_iter': 0.0439, 'accuracy': 0.90457, 'f1': 0.90498, 'auc': 0.98401}
+2025-08-26 18:49:01,692 - INFO - val: {'epoch': 36, 'time_epoch': 0.71338, 'loss': 0.33273132, 'lr': 0, 'params': 206217, 'time_iter': 0.02229, 'accuracy': 0.888, 'f1': 0.88662, 'auc': 0.9889}
+2025-08-26 18:49:03,934 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:49:03,943 - INFO - test: {'epoch': 36, 'time_epoch': 1.41403, 'loss': 0.36329548, 'lr': 0, 'params': 206217, 'time_iter': 0.02244, 'accuracy': 0.881, 'f1': 0.87824, 'auc': 0.98106}
+2025-08-26 18:49:03,944 - INFO - > Epoch 36: took 12.6s (avg 12.2s) | Best so far: epoch 35	train_loss: 0.2948 train_accuracy: 0.9014	val_loss: 0.2365 val_accuracy: 0.9220	test_loss: 0.3480 test_accuracy: 0.8810
+2025-08-26 18:49:03,944 - INFO - === Epoch 37 ===
+2025-08-26 18:49:13,606 - INFO - train: {'epoch': 37, 'time_epoch': 9.64509, 'eta': 570.77553, 'eta_hours': 0.15855, 'loss': 0.27126746, 'lr': 0.00039695, 'params': 206217, 'time_iter': 0.04404, 'accuracy': 0.90943, 'f1': 0.90984, 'auc': 0.98514}
+2025-08-26 18:49:14,348 - INFO - val: {'epoch': 37, 'time_epoch': 0.73038, 'loss': 0.24285391, 'lr': 0, 'params': 206217, 'time_iter': 0.02282, 'accuracy': 0.916, 'f1': 0.91679, 'auc': 0.98961}
+2025-08-26 18:49:16,620 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:49:16,630 - INFO - test: {'epoch': 37, 'time_epoch': 1.42944, 'loss': 0.31213067, 'lr': 0, 'params': 206217, 'time_iter': 0.02269, 'accuracy': 0.888, 'f1': 0.88972, 'auc': 0.98286}
+2025-08-26 18:49:16,632 - INFO - > Epoch 37: took 12.7s (avg 12.2s) | Best so far: epoch 35	train_loss: 0.2948 train_accuracy: 0.9014	val_loss: 0.2365 val_accuracy: 0.9220	test_loss: 0.3480 test_accuracy: 0.8810
+2025-08-26 18:49:16,632 - INFO - === Epoch 38 ===
+2025-08-26 18:49:26,419 - INFO - train: {'epoch': 38, 'time_epoch': 9.77027, 'eta': 562.45197, 'eta_hours': 0.15624, 'loss': 0.26222957, 'lr': 0.0003898, 'params': 206217, 'time_iter': 0.04461, 'accuracy': 0.91057, 'f1': 0.91124, 'auc': 0.98583}
+2025-08-26 18:49:27,152 - INFO - val: {'epoch': 38, 'time_epoch': 0.72089, 'loss': 0.23018296, 'lr': 0, 'params': 206217, 'time_iter': 0.02253, 'accuracy': 0.926, 'f1': 0.92538, 'auc': 0.99009}
+2025-08-26 18:49:29,668 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:49:29,677 - INFO - test: {'epoch': 38, 'time_epoch': 1.44666, 'loss': 0.28522931, 'lr': 0, 'params': 206217, 'time_iter': 0.02296, 'accuracy': 0.899, 'f1': 0.89815, 'auc': 0.98461}
+2025-08-26 18:49:29,679 - INFO - > Epoch 38: took 13.0s (avg 12.3s) | Best so far: epoch 38	train_loss: 0.2622 train_accuracy: 0.9106	val_loss: 0.2302 val_accuracy: 0.9260	test_loss: 0.2852 test_accuracy: 0.8990
+2025-08-26 18:49:29,679 - INFO - === Epoch 39 ===
+2025-08-26 18:49:39,340 - INFO - train: {'epoch': 39, 'time_epoch': 9.64542, 'eta': 553.86878, 'eta_hours': 0.15385, 'loss': 0.25511794, 'lr': 0.00038248, 'params': 206217, 'time_iter': 0.04404, 'accuracy': 0.91686, 'f1': 0.91709, 'auc': 0.98644}
+2025-08-26 18:49:40,072 - INFO - val: {'epoch': 39, 'time_epoch': 0.71993, 'loss': 0.22419305, 'lr': 0, 'params': 206217, 'time_iter': 0.0225, 'accuracy': 0.934, 'f1': 0.93364, 'auc': 0.9865}
+2025-08-26 18:49:42,377 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:49:42,386 - INFO - test: {'epoch': 39, 'time_epoch': 1.43508, 'loss': 0.33949659, 'lr': 0, 'params': 206217, 'time_iter': 0.02278, 'accuracy': 0.889, 'f1': 0.88727, 'auc': 0.97887}
+2025-08-26 18:49:42,388 - INFO - > Epoch 39: took 12.7s (avg 12.3s) | Best so far: epoch 39	train_loss: 0.2551 train_accuracy: 0.9169	val_loss: 0.2242 val_accuracy: 0.9340	test_loss: 0.3395 test_accuracy: 0.8890
+2025-08-26 18:49:42,388 - INFO - === Epoch 40 ===
+2025-08-26 18:49:52,064 - INFO - train: {'epoch': 40, 'time_epoch': 9.66206, 'eta': 545.25773, 'eta_hours': 0.15146, 'loss': 0.26508032, 'lr': 0.000375, 'params': 206217, 'time_iter': 0.04412, 'accuracy': 0.90829, 'f1': 0.90852, 'auc': 0.98608}
+2025-08-26 18:49:52,803 - INFO - val: {'epoch': 40, 'time_epoch': 0.72579, 'loss': 0.2243242, 'lr': 0, 'params': 206217, 'time_iter': 0.02268, 'accuracy': 0.924, 'f1': 0.92564, 'auc': 0.98995}
+2025-08-26 18:49:55,190 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:49:55,201 - INFO - test: {'epoch': 40, 'time_epoch': 1.44455, 'loss': 0.28343681, 'lr': 0, 'params': 206217, 'time_iter': 0.02293, 'accuracy': 0.896, 'f1': 0.89939, 'auc': 0.98607}
+2025-08-26 18:49:55,203 - INFO - > Epoch 40: took 12.8s (avg 12.3s) | Best so far: epoch 39	train_loss: 0.2551 train_accuracy: 0.9169	val_loss: 0.2242 val_accuracy: 0.9340	test_loss: 0.3395 test_accuracy: 0.8890
+2025-08-26 18:49:55,203 - INFO - === Epoch 41 ===
+2025-08-26 18:50:04,876 - INFO - train: {'epoch': 41, 'time_epoch': 9.65645, 'eta': 536.58888, 'eta_hours': 0.14905, 'loss': 0.25319064, 'lr': 0.00036737, 'params': 206217, 'time_iter': 0.04409, 'accuracy': 0.90857, 'f1': 0.90874, 'auc': 0.98678}
+2025-08-26 18:50:05,610 - INFO - val: {'epoch': 41, 'time_epoch': 0.72129, 'loss': 0.20953667, 'lr': 0, 'params': 206217, 'time_iter': 0.02254, 'accuracy': 0.926, 'f1': 0.92661, 'auc': 0.99144}
+2025-08-26 18:50:07,916 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:50:07,925 - INFO - test: {'epoch': 41, 'time_epoch': 1.44874, 'loss': 0.27229247, 'lr': 0, 'params': 206217, 'time_iter': 0.023, 'accuracy': 0.899, 'f1': 0.89981, 'auc': 0.98665}
+2025-08-26 18:50:07,927 - INFO - > Epoch 41: took 12.7s (avg 12.3s) | Best so far: epoch 39	train_loss: 0.2551 train_accuracy: 0.9169	val_loss: 0.2242 val_accuracy: 0.9340	test_loss: 0.3395 test_accuracy: 0.8890
+2025-08-26 18:50:07,927 - INFO - === Epoch 42 ===
+2025-08-26 18:50:17,582 - INFO - train: {'epoch': 42, 'time_epoch': 9.63906, 'eta': 527.85105, 'eta_hours': 0.14663, 'loss': 0.24974992, 'lr': 0.00035959, 'params': 206217, 'time_iter': 0.04401, 'accuracy': 0.91714, 'f1': 0.91763, 'auc': 0.98741}
+2025-08-26 18:50:18,321 - INFO - val: {'epoch': 42, 'time_epoch': 0.72657, 'loss': 0.25459212, 'lr': 0, 'params': 206217, 'time_iter': 0.02271, 'accuracy': 0.916, 'f1': 0.91451, 'auc': 0.98784}
+2025-08-26 18:50:20,602 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:50:20,613 - INFO - test: {'epoch': 42, 'time_epoch': 1.43709, 'loss': 0.29063349, 'lr': 0, 'params': 206217, 'time_iter': 0.02281, 'accuracy': 0.901, 'f1': 0.89993, 'auc': 0.9844}
+2025-08-26 18:50:20,616 - INFO - > Epoch 42: took 12.7s (avg 12.3s) | Best so far: epoch 39	train_loss: 0.2551 train_accuracy: 0.9169	val_loss: 0.2242 val_accuracy: 0.9340	test_loss: 0.3395 test_accuracy: 0.8890
+2025-08-26 18:50:20,616 - INFO - === Epoch 43 ===
+2025-08-26 18:50:30,171 - INFO - train: {'epoch': 43, 'time_epoch': 9.53912, 'eta': 518.94506, 'eta_hours': 0.14415, 'loss': 0.24010042, 'lr': 0.00035168, 'params': 206217, 'time_iter': 0.04356, 'accuracy': 0.91857, 'f1': 0.91863, 'auc': 0.98797}
+2025-08-26 18:50:30,899 - INFO - val: {'epoch': 43, 'time_epoch': 0.71633, 'loss': 0.23910533, 'lr': 0, 'params': 206217, 'time_iter': 0.02239, 'accuracy': 0.912, 'f1': 0.91124, 'auc': 0.98957}
+2025-08-26 18:50:33,221 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:50:33,229 - INFO - test: {'epoch': 43, 'time_epoch': 1.43811, 'loss': 0.25844062, 'lr': 0, 'params': 206217, 'time_iter': 0.02283, 'accuracy': 0.91, 'f1': 0.90999, 'auc': 0.98782}
+2025-08-26 18:50:33,231 - INFO - > Epoch 43: took 12.6s (avg 12.3s) | Best so far: epoch 39	train_loss: 0.2551 train_accuracy: 0.9169	val_loss: 0.2242 val_accuracy: 0.9340	test_loss: 0.3395 test_accuracy: 0.8890
+2025-08-26 18:50:33,232 - INFO - === Epoch 44 ===
+2025-08-26 18:50:42,860 - INFO - train: {'epoch': 44, 'time_epoch': 9.61464, 'eta': 510.10322, 'eta_hours': 0.1417, 'loss': 0.2374553, 'lr': 0.00034365, 'params': 206217, 'time_iter': 0.0439, 'accuracy': 0.92029, 'f1': 0.92058, 'auc': 0.98817}
+2025-08-26 18:50:43,593 - INFO - val: {'epoch': 44, 'time_epoch': 0.72104, 'loss': 0.21926997, 'lr': 0, 'params': 206217, 'time_iter': 0.02253, 'accuracy': 0.928, 'f1': 0.92721, 'auc': 0.9915}
+2025-08-26 18:50:45,900 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:50:45,909 - INFO - test: {'epoch': 44, 'time_epoch': 1.45584, 'loss': 0.2805241, 'lr': 0, 'params': 206217, 'time_iter': 0.02311, 'accuracy': 0.901, 'f1': 0.90047, 'auc': 0.98621}
+2025-08-26 18:50:45,911 - INFO - > Epoch 44: took 12.7s (avg 12.3s) | Best so far: epoch 39	train_loss: 0.2551 train_accuracy: 0.9169	val_loss: 0.2242 val_accuracy: 0.9340	test_loss: 0.3395 test_accuracy: 0.8890
+2025-08-26 18:50:45,911 - INFO - === Epoch 45 ===
+2025-08-26 18:50:55,545 - INFO - train: {'epoch': 45, 'time_epoch': 9.61762, 'eta': 501.23129, 'eta_hours': 0.13923, 'loss': 0.2487601, 'lr': 0.00033551, 'params': 206217, 'time_iter': 0.04392, 'accuracy': 0.91314, 'f1': 0.91389, 'auc': 0.98697}
+2025-08-26 18:50:56,279 - INFO - val: {'epoch': 45, 'time_epoch': 0.72226, 'loss': 0.22667886, 'lr': 0, 'params': 206217, 'time_iter': 0.02257, 'accuracy': 0.918, 'f1': 0.91737, 'auc': 0.98956}
+2025-08-26 18:50:58,546 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:50:58,554 - INFO - test: {'epoch': 45, 'time_epoch': 1.4286, 'loss': 0.28095194, 'lr': 0, 'params': 206217, 'time_iter': 0.02268, 'accuracy': 0.895, 'f1': 0.8944, 'auc': 0.98507}
+2025-08-26 18:50:58,556 - INFO - > Epoch 45: took 12.6s (avg 12.3s) | Best so far: epoch 39	train_loss: 0.2551 train_accuracy: 0.9169	val_loss: 0.2242 val_accuracy: 0.9340	test_loss: 0.3395 test_accuracy: 0.8890
+2025-08-26 18:50:58,556 - INFO - === Epoch 46 ===
+2025-08-26 18:51:08,183 - INFO - train: {'epoch': 46, 'time_epoch': 9.61094, 'eta': 492.32009, 'eta_hours': 0.13676, 'loss': 0.220062, 'lr': 0.00032725, 'params': 206217, 'time_iter': 0.04389, 'accuracy': 0.93086, 'f1': 0.93086, 'auc': 0.98906}
+2025-08-26 18:51:08,902 - INFO - val: {'epoch': 46, 'time_epoch': 0.70674, 'loss': 0.25247563, 'lr': 0, 'params': 206217, 'time_iter': 0.02209, 'accuracy': 0.914, 'f1': 0.91235, 'auc': 0.99016}
+2025-08-26 18:51:11,145 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:51:11,156 - INFO - test: {'epoch': 46, 'time_epoch': 1.44203, 'loss': 0.25848512, 'lr': 0, 'params': 206217, 'time_iter': 0.02289, 'accuracy': 0.909, 'f1': 0.90792, 'auc': 0.98779}
+2025-08-26 18:51:11,158 - INFO - > Epoch 46: took 12.6s (avg 12.3s) | Best so far: epoch 39	train_loss: 0.2551 train_accuracy: 0.9169	val_loss: 0.2242 val_accuracy: 0.9340	test_loss: 0.3395 test_accuracy: 0.8890
+2025-08-26 18:51:11,158 - INFO - === Epoch 47 ===
+2025-08-26 18:51:20,783 - INFO - train: {'epoch': 47, 'time_epoch': 9.60959, 'eta': 483.37827, 'eta_hours': 0.13427, 'loss': 0.20930404, 'lr': 0.00031891, 'params': 206217, 'time_iter': 0.04388, 'accuracy': 0.92886, 'f1': 0.92887, 'auc': 0.99005}
+2025-08-26 18:51:21,491 - INFO - val: {'epoch': 47, 'time_epoch': 0.69722, 'loss': 0.24404827, 'lr': 0, 'params': 206217, 'time_iter': 0.02179, 'accuracy': 0.912, 'f1': 0.91105, 'auc': 0.99066}
+2025-08-26 18:51:23,796 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:51:23,806 - INFO - test: {'epoch': 47, 'time_epoch': 1.41637, 'loss': 0.29220308, 'lr': 0, 'params': 206217, 'time_iter': 0.02248, 'accuracy': 0.901, 'f1': 0.89997, 'auc': 0.98545}
+2025-08-26 18:51:23,808 - INFO - > Epoch 47: took 12.6s (avg 12.3s) | Best so far: epoch 39	train_loss: 0.2551 train_accuracy: 0.9169	val_loss: 0.2242 val_accuracy: 0.9340	test_loss: 0.3395 test_accuracy: 0.8890
+2025-08-26 18:51:23,808 - INFO - === Epoch 48 ===
+2025-08-26 18:51:33,448 - INFO - train: {'epoch': 48, 'time_epoch': 9.62464, 'eta': 474.42486, 'eta_hours': 0.13178, 'loss': 0.23072081, 'lr': 0.00031048, 'params': 206217, 'time_iter': 0.04395, 'accuracy': 0.92114, 'f1': 0.92162, 'auc': 0.98882}
+2025-08-26 18:51:34,172 - INFO - val: {'epoch': 48, 'time_epoch': 0.71142, 'loss': 0.25006704, 'lr': 0, 'params': 206217, 'time_iter': 0.02223, 'accuracy': 0.916, 'f1': 0.91448, 'auc': 0.99032}
+2025-08-26 18:51:36,462 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:51:36,472 - INFO - test: {'epoch': 48, 'time_epoch': 1.41752, 'loss': 0.29207639, 'lr': 0, 'params': 206217, 'time_iter': 0.0225, 'accuracy': 0.907, 'f1': 0.90617, 'auc': 0.98393}
+2025-08-26 18:51:36,474 - INFO - > Epoch 48: took 12.7s (avg 12.3s) | Best so far: epoch 39	train_loss: 0.2551 train_accuracy: 0.9169	val_loss: 0.2242 val_accuracy: 0.9340	test_loss: 0.3395 test_accuracy: 0.8890
+2025-08-26 18:51:36,474 - INFO - === Epoch 49 ===
+2025-08-26 18:51:46,271 - INFO - train: {'epoch': 49, 'time_epoch': 9.77992, 'eta': 465.59988, 'eta_hours': 0.12933, 'loss': 0.22490417, 'lr': 0.00030198, 'params': 206217, 'time_iter': 0.04466, 'accuracy': 0.92886, 'f1': 0.92896, 'auc': 0.98872}
+2025-08-26 18:51:47,001 - INFO - val: {'epoch': 49, 'time_epoch': 0.71877, 'loss': 0.20932092, 'lr': 0, 'params': 206217, 'time_iter': 0.02246, 'accuracy': 0.924, 'f1': 0.92514, 'auc': 0.99076}
+2025-08-26 18:51:49,336 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:51:49,344 - INFO - test: {'epoch': 49, 'time_epoch': 1.43612, 'loss': 0.25446023, 'lr': 0, 'params': 206217, 'time_iter': 0.0228, 'accuracy': 0.907, 'f1': 0.90866, 'auc': 0.98771}
+2025-08-26 18:51:49,346 - INFO - > Epoch 49: took 12.9s (avg 12.4s) | Best so far: epoch 39	train_loss: 0.2551 train_accuracy: 0.9169	val_loss: 0.2242 val_accuracy: 0.9340	test_loss: 0.3395 test_accuracy: 0.8890
+2025-08-26 18:51:49,346 - INFO - === Epoch 50 ===
+2025-08-26 18:51:59,023 - INFO - train: {'epoch': 50, 'time_epoch': 9.65988, 'eta': 456.62212, 'eta_hours': 0.12684, 'loss': 0.20453347, 'lr': 0.00029341, 'params': 206217, 'time_iter': 0.04411, 'accuracy': 0.92914, 'f1': 0.92922, 'auc': 0.99026}
+2025-08-26 18:51:59,768 - INFO - val: {'epoch': 50, 'time_epoch': 0.73197, 'loss': 0.22304204, 'lr': 0, 'params': 206217, 'time_iter': 0.02287, 'accuracy': 0.926, 'f1': 0.92622, 'auc': 0.99007}
+2025-08-26 18:52:02,068 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:52:02,078 - INFO - test: {'epoch': 50, 'time_epoch': 1.44344, 'loss': 0.26598866, 'lr': 0, 'params': 206217, 'time_iter': 0.02291, 'accuracy': 0.905, 'f1': 0.90565, 'auc': 0.98763}
+2025-08-26 18:52:02,080 - INFO - > Epoch 50: took 12.7s (avg 12.4s) | Best so far: epoch 39	train_loss: 0.2551 train_accuracy: 0.9169	val_loss: 0.2242 val_accuracy: 0.9340	test_loss: 0.3395 test_accuracy: 0.8890
+2025-08-26 18:52:02,080 - INFO - === Epoch 51 ===
+2025-08-26 18:52:12,169 - INFO - train: {'epoch': 51, 'time_epoch': 10.07212, 'eta': 447.99866, 'eta_hours': 0.12444, 'loss': 0.2180921, 'lr': 0.00028479, 'params': 206217, 'time_iter': 0.04599, 'accuracy': 0.92771, 'f1': 0.92803, 'auc': 0.98934}
+2025-08-26 18:52:12,916 - INFO - val: {'epoch': 51, 'time_epoch': 0.73527, 'loss': 0.23413645, 'lr': 0, 'params': 206217, 'time_iter': 0.02298, 'accuracy': 0.92, 'f1': 0.92137, 'auc': 0.99013}
+2025-08-26 18:52:15,238 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:52:15,247 - INFO - test: {'epoch': 51, 'time_epoch': 1.48653, 'loss': 0.27122351, 'lr': 0, 'params': 206217, 'time_iter': 0.0236, 'accuracy': 0.906, 'f1': 0.90792, 'auc': 0.98608}
+2025-08-26 18:52:15,248 - INFO - > Epoch 51: took 13.2s (avg 12.4s) | Best so far: epoch 39	train_loss: 0.2551 train_accuracy: 0.9169	val_loss: 0.2242 val_accuracy: 0.9340	test_loss: 0.3395 test_accuracy: 0.8890
+2025-08-26 18:52:15,249 - INFO - === Epoch 52 ===
+2025-08-26 18:52:25,360 - INFO - train: {'epoch': 52, 'time_epoch': 10.09546, 'eta': 439.34123, 'eta_hours': 0.12204, 'loss': 0.21642809, 'lr': 0.00027613, 'params': 206217, 'time_iter': 0.0461, 'accuracy': 0.92629, 'f1': 0.92652, 'auc': 0.98994}
+2025-08-26 18:52:26,105 - INFO - val: {'epoch': 52, 'time_epoch': 0.73339, 'loss': 0.21865918, 'lr': 0, 'params': 206217, 'time_iter': 0.02292, 'accuracy': 0.918, 'f1': 0.91767, 'auc': 0.99128}
+2025-08-26 18:52:28,457 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:52:28,467 - INFO - test: {'epoch': 52, 'time_epoch': 1.47459, 'loss': 0.24522331, 'lr': 0, 'params': 206217, 'time_iter': 0.02341, 'accuracy': 0.914, 'f1': 0.91352, 'auc': 0.98767}
+2025-08-26 18:52:28,468 - INFO - > Epoch 52: took 13.2s (avg 12.4s) | Best so far: epoch 39	train_loss: 0.2551 train_accuracy: 0.9169	val_loss: 0.2242 val_accuracy: 0.9340	test_loss: 0.3395 test_accuracy: 0.8890
+2025-08-26 18:52:28,469 - INFO - === Epoch 53 ===
+2025-08-26 18:52:38,177 - INFO - train: {'epoch': 53, 'time_epoch': 9.693, 'eta': 430.2877, 'eta_hours': 0.11952, 'loss': 0.20633717, 'lr': 0.00026744, 'params': 206217, 'time_iter': 0.04426, 'accuracy': 0.93057, 'f1': 0.93094, 'auc': 0.99011}
+2025-08-26 18:52:38,883 - INFO - val: {'epoch': 53, 'time_epoch': 0.6946, 'loss': 0.23281555, 'lr': 0, 'params': 206217, 'time_iter': 0.02171, 'accuracy': 0.922, 'f1': 0.92142, 'auc': 0.98965}
+2025-08-26 18:52:41,104 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:52:41,112 - INFO - test: {'epoch': 53, 'time_epoch': 1.39803, 'loss': 0.26486262, 'lr': 0, 'params': 206217, 'time_iter': 0.02219, 'accuracy': 0.915, 'f1': 0.91473, 'auc': 0.98683}
+2025-08-26 18:52:41,114 - INFO - > Epoch 53: took 12.6s (avg 12.4s) | Best so far: epoch 39	train_loss: 0.2551 train_accuracy: 0.9169	val_loss: 0.2242 val_accuracy: 0.9340	test_loss: 0.3395 test_accuracy: 0.8890
+2025-08-26 18:52:41,114 - INFO - === Epoch 54 ===
+2025-08-26 18:52:50,656 - INFO - train: {'epoch': 54, 'time_epoch': 9.52563, 'eta': 421.07397, 'eta_hours': 0.11696, 'loss': 0.19758121, 'lr': 0.00025872, 'params': 206217, 'time_iter': 0.0435, 'accuracy': 0.92857, 'f1': 0.92867, 'auc': 0.99085}
+2025-08-26 18:52:51,389 - INFO - val: {'epoch': 54, 'time_epoch': 0.72236, 'loss': 0.20792371, 'lr': 0, 'params': 206217, 'time_iter': 0.02257, 'accuracy': 0.926, 'f1': 0.92613, 'auc': 0.99056}
+2025-08-26 18:52:53,735 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:52:53,744 - INFO - test: {'epoch': 54, 'time_epoch': 1.43962, 'loss': 0.24865635, 'lr': 0, 'params': 206217, 'time_iter': 0.02285, 'accuracy': 0.917, 'f1': 0.91725, 'auc': 0.98838}
+2025-08-26 18:52:53,746 - INFO - > Epoch 54: took 12.6s (avg 12.4s) | Best so far: epoch 39	train_loss: 0.2551 train_accuracy: 0.9169	val_loss: 0.2242 val_accuracy: 0.9340	test_loss: 0.3395 test_accuracy: 0.8890
+2025-08-26 18:52:53,746 - INFO - === Epoch 55 ===
+2025-08-26 18:53:03,594 - INFO - train: {'epoch': 55, 'time_epoch': 9.83148, 'eta': 412.08943, 'eta_hours': 0.11447, 'loss': 0.18216452, 'lr': 0.00025, 'params': 206217, 'time_iter': 0.04489, 'accuracy': 0.94229, 'f1': 0.94237, 'auc': 0.99177}
+2025-08-26 18:53:04,326 - INFO - val: {'epoch': 55, 'time_epoch': 0.71968, 'loss': 0.22779312, 'lr': 0, 'params': 206217, 'time_iter': 0.02249, 'accuracy': 0.926, 'f1': 0.92654, 'auc': 0.99037}
+2025-08-26 18:53:06,594 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:53:06,604 - INFO - test: {'epoch': 55, 'time_epoch': 1.43832, 'loss': 0.24726181, 'lr': 0, 'params': 206217, 'time_iter': 0.02283, 'accuracy': 0.916, 'f1': 0.91679, 'auc': 0.98927}
+2025-08-26 18:53:06,607 - INFO - > Epoch 55: took 12.9s (avg 12.4s) | Best so far: epoch 39	train_loss: 0.2551 train_accuracy: 0.9169	val_loss: 0.2242 val_accuracy: 0.9340	test_loss: 0.3395 test_accuracy: 0.8890
+2025-08-26 18:53:06,607 - INFO - === Epoch 56 ===
+2025-08-26 18:53:16,298 - INFO - train: {'epoch': 56, 'time_epoch': 9.67526, 'eta': 402.95731, 'eta_hours': 0.11193, 'loss': 0.1829348, 'lr': 0.00024128, 'params': 206217, 'time_iter': 0.04418, 'accuracy': 0.93943, 'f1': 0.93934, 'auc': 0.9917}
+2025-08-26 18:53:17,033 - INFO - val: {'epoch': 56, 'time_epoch': 0.72209, 'loss': 0.22105251, 'lr': 0, 'params': 206217, 'time_iter': 0.02257, 'accuracy': 0.924, 'f1': 0.9254, 'auc': 0.99037}
+2025-08-26 18:53:19,343 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:53:19,352 - INFO - test: {'epoch': 56, 'time_epoch': 1.44375, 'loss': 0.26940836, 'lr': 0, 'params': 206217, 'time_iter': 0.02292, 'accuracy': 0.904, 'f1': 0.90709, 'auc': 0.98748}
+2025-08-26 18:53:19,354 - INFO - > Epoch 56: took 12.7s (avg 12.4s) | Best so far: epoch 39	train_loss: 0.2551 train_accuracy: 0.9169	val_loss: 0.2242 val_accuracy: 0.9340	test_loss: 0.3395 test_accuracy: 0.8890
+2025-08-26 18:53:19,354 - INFO - === Epoch 57 ===
+2025-08-26 18:53:29,088 - INFO - train: {'epoch': 57, 'time_epoch': 9.71718, 'eta': 393.83683, 'eta_hours': 0.1094, 'loss': 0.18548823, 'lr': 0.00023256, 'params': 206217, 'time_iter': 0.04437, 'accuracy': 0.94086, 'f1': 0.9412, 'auc': 0.99171}
+2025-08-26 18:53:29,837 - INFO - val: {'epoch': 57, 'time_epoch': 0.73684, 'loss': 0.21342121, 'lr': 0, 'params': 206217, 'time_iter': 0.02303, 'accuracy': 0.922, 'f1': 0.92217, 'auc': 0.99015}
+2025-08-26 18:53:32,136 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:53:32,145 - INFO - test: {'epoch': 57, 'time_epoch': 1.46822, 'loss': 0.27050854, 'lr': 0, 'params': 206217, 'time_iter': 0.02331, 'accuracy': 0.914, 'f1': 0.91427, 'auc': 0.98681}
+2025-08-26 18:53:32,147 - INFO - > Epoch 57: took 12.8s (avg 12.4s) | Best so far: epoch 39	train_loss: 0.2551 train_accuracy: 0.9169	val_loss: 0.2242 val_accuracy: 0.9340	test_loss: 0.3395 test_accuracy: 0.8890
+2025-08-26 18:53:32,147 - INFO - === Epoch 58 ===
+2025-08-26 18:53:41,827 - INFO - train: {'epoch': 58, 'time_epoch': 9.6652, 'eta': 384.65999, 'eta_hours': 0.10685, 'loss': 0.19027222, 'lr': 0.00022387, 'params': 206217, 'time_iter': 0.04413, 'accuracy': 0.93914, 'f1': 0.93915, 'auc': 0.99148}
+2025-08-26 18:53:42,549 - INFO - val: {'epoch': 58, 'time_epoch': 0.70993, 'loss': 0.22269753, 'lr': 0, 'params': 206217, 'time_iter': 0.02219, 'accuracy': 0.928, 'f1': 0.92855, 'auc': 0.9908}
+2025-08-26 18:53:44,820 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:53:44,828 - INFO - test: {'epoch': 58, 'time_epoch': 1.43682, 'loss': 0.28531215, 'lr': 0, 'params': 206217, 'time_iter': 0.02281, 'accuracy': 0.902, 'f1': 0.90265, 'auc': 0.9862}
+2025-08-26 18:53:44,830 - INFO - > Epoch 58: took 12.7s (avg 12.4s) | Best so far: epoch 39	train_loss: 0.2551 train_accuracy: 0.9169	val_loss: 0.2242 val_accuracy: 0.9340	test_loss: 0.3395 test_accuracy: 0.8890
+2025-08-26 18:53:44,831 - INFO - === Epoch 59 ===
+2025-08-26 18:53:54,439 - INFO - train: {'epoch': 59, 'time_epoch': 9.59481, 'eta': 375.41994, 'eta_hours': 0.10428, 'loss': 0.18204152, 'lr': 0.00021521, 'params': 206217, 'time_iter': 0.04381, 'accuracy': 0.93857, 'f1': 0.93889, 'auc': 0.99148}
+2025-08-26 18:53:55,170 - INFO - val: {'epoch': 59, 'time_epoch': 0.7186, 'loss': 0.2300247, 'lr': 0, 'params': 206217, 'time_iter': 0.02246, 'accuracy': 0.93, 'f1': 0.93044, 'auc': 0.98998}
+2025-08-26 18:53:57,440 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:53:57,449 - INFO - test: {'epoch': 59, 'time_epoch': 1.44018, 'loss': 0.26044764, 'lr': 0, 'params': 206217, 'time_iter': 0.02286, 'accuracy': 0.91, 'f1': 0.91051, 'auc': 0.98677}
+2025-08-26 18:53:57,450 - INFO - > Epoch 59: took 12.6s (avg 12.4s) | Best so far: epoch 39	train_loss: 0.2551 train_accuracy: 0.9169	val_loss: 0.2242 val_accuracy: 0.9340	test_loss: 0.3395 test_accuracy: 0.8890
+2025-08-26 18:53:57,451 - INFO - === Epoch 60 ===
+2025-08-26 18:54:07,191 - INFO - train: {'epoch': 60, 'time_epoch': 9.72449, 'eta': 366.25118, 'eta_hours': 0.10174, 'loss': 0.19258539, 'lr': 0.00020659, 'params': 206217, 'time_iter': 0.0444, 'accuracy': 0.93486, 'f1': 0.93502, 'auc': 0.99153}
+2025-08-26 18:54:07,910 - INFO - val: {'epoch': 60, 'time_epoch': 0.70742, 'loss': 0.23222887, 'lr': 0, 'params': 206217, 'time_iter': 0.02211, 'accuracy': 0.916, 'f1': 0.91475, 'auc': 0.98959}
+2025-08-26 18:54:10,246 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:54:10,255 - INFO - test: {'epoch': 60, 'time_epoch': 1.44283, 'loss': 0.25840636, 'lr': 0, 'params': 206217, 'time_iter': 0.0229, 'accuracy': 0.912, 'f1': 0.91108, 'auc': 0.98819}
+2025-08-26 18:54:10,256 - INFO - > Epoch 60: took 12.8s (avg 12.4s) | Best so far: epoch 39	train_loss: 0.2551 train_accuracy: 0.9169	val_loss: 0.2242 val_accuracy: 0.9340	test_loss: 0.3395 test_accuracy: 0.8890
+2025-08-26 18:54:10,257 - INFO - === Epoch 61 ===
+2025-08-26 18:54:20,070 - INFO - train: {'epoch': 61, 'time_epoch': 9.79634, 'eta': 357.10852, 'eta_hours': 0.0992, 'loss': 0.17626259, 'lr': 0.00019802, 'params': 206217, 'time_iter': 0.04473, 'accuracy': 0.94, 'f1': 0.94021, 'auc': 0.99247}
+2025-08-26 18:54:20,810 - INFO - val: {'epoch': 61, 'time_epoch': 0.728, 'loss': 0.20905627, 'lr': 0, 'params': 206217, 'time_iter': 0.02275, 'accuracy': 0.926, 'f1': 0.92685, 'auc': 0.99091}
+2025-08-26 18:54:23,346 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:54:23,355 - INFO - test: {'epoch': 61, 'time_epoch': 1.4371, 'loss': 0.24632953, 'lr': 0, 'params': 206217, 'time_iter': 0.02281, 'accuracy': 0.911, 'f1': 0.91291, 'auc': 0.98885}
+2025-08-26 18:54:23,356 - INFO - > Epoch 61: took 13.1s (avg 12.5s) | Best so far: epoch 39	train_loss: 0.2551 train_accuracy: 0.9169	val_loss: 0.2242 val_accuracy: 0.9340	test_loss: 0.3395 test_accuracy: 0.8890
+2025-08-26 18:54:23,357 - INFO - === Epoch 62 ===
+2025-08-26 18:54:33,028 - INFO - train: {'epoch': 62, 'time_epoch': 9.65507, 'eta': 347.86215, 'eta_hours': 0.09663, 'loss': 0.18108608, 'lr': 0.00018952, 'params': 206217, 'time_iter': 0.04409, 'accuracy': 0.94457, 'f1': 0.94482, 'auc': 0.99245}
+2025-08-26 18:54:33,758 - INFO - val: {'epoch': 62, 'time_epoch': 0.71842, 'loss': 0.20560466, 'lr': 0, 'params': 206217, 'time_iter': 0.02245, 'accuracy': 0.936, 'f1': 0.93587, 'auc': 0.99121}
+2025-08-26 18:54:36,096 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:54:36,105 - INFO - test: {'epoch': 62, 'time_epoch': 1.43058, 'loss': 0.25013766, 'lr': 0, 'params': 206217, 'time_iter': 0.02271, 'accuracy': 0.919, 'f1': 0.91925, 'auc': 0.98801}
+2025-08-26 18:54:36,107 - INFO - > Epoch 62: took 12.8s (avg 12.5s) | Best so far: epoch 62	train_loss: 0.1811 train_accuracy: 0.9446	val_loss: 0.2056 val_accuracy: 0.9360	test_loss: 0.2501 test_accuracy: 0.9190
+2025-08-26 18:54:36,107 - INFO - === Epoch 63 ===
+2025-08-26 18:54:45,785 - INFO - train: {'epoch': 63, 'time_epoch': 9.66175, 'eta': 338.60676, 'eta_hours': 0.09406, 'loss': 0.18004251, 'lr': 0.00018109, 'params': 206217, 'time_iter': 0.04412, 'accuracy': 0.94171, 'f1': 0.9417, 'auc': 0.99263}
+2025-08-26 18:54:46,527 - INFO - val: {'epoch': 63, 'time_epoch': 0.72815, 'loss': 0.21736114, 'lr': 0, 'params': 206217, 'time_iter': 0.02275, 'accuracy': 0.93, 'f1': 0.93032, 'auc': 0.98996}
+2025-08-26 18:54:48,801 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:54:48,810 - INFO - test: {'epoch': 63, 'time_epoch': 1.44541, 'loss': 0.24967352, 'lr': 0, 'params': 206217, 'time_iter': 0.02294, 'accuracy': 0.917, 'f1': 0.91735, 'auc': 0.98939}
+2025-08-26 18:54:48,812 - INFO - > Epoch 63: took 12.7s (avg 12.5s) | Best so far: epoch 62	train_loss: 0.1811 train_accuracy: 0.9446	val_loss: 0.2056 val_accuracy: 0.9360	test_loss: 0.2501 test_accuracy: 0.9190
+2025-08-26 18:54:48,813 - INFO - === Epoch 64 ===
+2025-08-26 18:54:58,456 - INFO - train: {'epoch': 64, 'time_epoch': 9.62694, 'eta': 329.32012, 'eta_hours': 0.09148, 'loss': 0.17362651, 'lr': 0.00017275, 'params': 206217, 'time_iter': 0.04396, 'accuracy': 0.94429, 'f1': 0.94464, 'auc': 0.99257}
+2025-08-26 18:54:59,182 - INFO - val: {'epoch': 64, 'time_epoch': 0.7142, 'loss': 0.21825082, 'lr': 0, 'params': 206217, 'time_iter': 0.02232, 'accuracy': 0.922, 'f1': 0.92273, 'auc': 0.9905}
+2025-08-26 18:55:01,447 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:55:01,456 - INFO - test: {'epoch': 64, 'time_epoch': 1.41508, 'loss': 0.23681961, 'lr': 0, 'params': 206217, 'time_iter': 0.02246, 'accuracy': 0.919, 'f1': 0.9198, 'auc': 0.98932}
+2025-08-26 18:55:01,457 - INFO - > Epoch 64: took 12.6s (avg 12.5s) | Best so far: epoch 62	train_loss: 0.1811 train_accuracy: 0.9446	val_loss: 0.2056 val_accuracy: 0.9360	test_loss: 0.2501 test_accuracy: 0.9190
+2025-08-26 18:55:01,457 - INFO - === Epoch 65 ===
+2025-08-26 18:55:11,244 - INFO - train: {'epoch': 65, 'time_epoch': 9.77062, 'eta': 320.09719, 'eta_hours': 0.08892, 'loss': 0.17265981, 'lr': 0.00016449, 'params': 206217, 'time_iter': 0.04461, 'accuracy': 0.94314, 'f1': 0.94327, 'auc': 0.99281}
+2025-08-26 18:55:11,988 - INFO - val: {'epoch': 65, 'time_epoch': 0.73111, 'loss': 0.20259028, 'lr': 0, 'params': 206217, 'time_iter': 0.02285, 'accuracy': 0.932, 'f1': 0.93202, 'auc': 0.99135}
+2025-08-26 18:55:14,285 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:55:14,295 - INFO - test: {'epoch': 65, 'time_epoch': 1.44942, 'loss': 0.25062595, 'lr': 0, 'params': 206217, 'time_iter': 0.02301, 'accuracy': 0.917, 'f1': 0.91728, 'auc': 0.98773}
+2025-08-26 18:55:14,297 - INFO - > Epoch 65: took 12.8s (avg 12.5s) | Best so far: epoch 62	train_loss: 0.1811 train_accuracy: 0.9446	val_loss: 0.2056 val_accuracy: 0.9360	test_loss: 0.2501 test_accuracy: 0.9190
+2025-08-26 18:55:14,297 - INFO - === Epoch 66 ===
+2025-08-26 18:55:24,086 - INFO - train: {'epoch': 66, 'time_epoch': 9.7732, 'eta': 310.85918, 'eta_hours': 0.08635, 'loss': 0.16422345, 'lr': 0.00015635, 'params': 206217, 'time_iter': 0.04463, 'accuracy': 0.94429, 'f1': 0.94438, 'auc': 0.99345}
+2025-08-26 18:55:24,794 - INFO - val: {'epoch': 66, 'time_epoch': 0.69692, 'loss': 0.23603304, 'lr': 0, 'params': 206217, 'time_iter': 0.02178, 'accuracy': 0.922, 'f1': 0.92261, 'auc': 0.99021}
+2025-08-26 18:55:27,066 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:55:27,076 - INFO - test: {'epoch': 66, 'time_epoch': 1.39826, 'loss': 0.25425803, 'lr': 0, 'params': 206217, 'time_iter': 0.02219, 'accuracy': 0.915, 'f1': 0.91586, 'auc': 0.98722}
+2025-08-26 18:55:27,077 - INFO - > Epoch 66: took 12.8s (avg 12.5s) | Best so far: epoch 62	train_loss: 0.1811 train_accuracy: 0.9446	val_loss: 0.2056 val_accuracy: 0.9360	test_loss: 0.2501 test_accuracy: 0.9190
+2025-08-26 18:55:27,078 - INFO - === Epoch 67 ===
+2025-08-26 18:55:36,924 - INFO - train: {'epoch': 67, 'time_epoch': 9.82711, 'eta': 301.6308, 'eta_hours': 0.08379, 'loss': 0.16363474, 'lr': 0.00014832, 'params': 206217, 'time_iter': 0.04487, 'accuracy': 0.94971, 'f1': 0.94983, 'auc': 0.9932}
+2025-08-26 18:55:37,664 - INFO - val: {'epoch': 67, 'time_epoch': 0.72585, 'loss': 0.24034532, 'lr': 0, 'params': 206217, 'time_iter': 0.02268, 'accuracy': 0.926, 'f1': 0.92521, 'auc': 0.98917}
+2025-08-26 18:55:40,061 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:55:40,073 - INFO - test: {'epoch': 67, 'time_epoch': 1.47119, 'loss': 0.26687554, 'lr': 0, 'params': 206217, 'time_iter': 0.02335, 'accuracy': 0.918, 'f1': 0.91728, 'auc': 0.98504}
+2025-08-26 18:55:40,075 - INFO - > Epoch 67: took 13.0s (avg 12.5s) | Best so far: epoch 62	train_loss: 0.1811 train_accuracy: 0.9446	val_loss: 0.2056 val_accuracy: 0.9360	test_loss: 0.2501 test_accuracy: 0.9190
+2025-08-26 18:55:40,075 - INFO - === Epoch 68 ===
+2025-08-26 18:55:49,772 - INFO - train: {'epoch': 68, 'time_epoch': 9.67927, 'eta': 292.31864, 'eta_hours': 0.0812, 'loss': 0.16429025, 'lr': 0.00014041, 'params': 206217, 'time_iter': 0.0442, 'accuracy': 0.94657, 'f1': 0.94655, 'auc': 0.99348}
+2025-08-26 18:55:50,491 - INFO - val: {'epoch': 68, 'time_epoch': 0.7072, 'loss': 0.2317536, 'lr': 0, 'params': 206217, 'time_iter': 0.0221, 'accuracy': 0.928, 'f1': 0.92744, 'auc': 0.9885}
+2025-08-26 18:55:52,709 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:55:52,718 - INFO - test: {'epoch': 68, 'time_epoch': 1.39837, 'loss': 0.24753247, 'lr': 0, 'params': 206217, 'time_iter': 0.0222, 'accuracy': 0.922, 'f1': 0.92186, 'auc': 0.98716}
+2025-08-26 18:55:52,720 - INFO - > Epoch 68: took 12.6s (avg 12.5s) | Best so far: epoch 62	train_loss: 0.1811 train_accuracy: 0.9446	val_loss: 0.2056 val_accuracy: 0.9360	test_loss: 0.2501 test_accuracy: 0.9190
+2025-08-26 18:55:52,720 - INFO - === Epoch 69 ===
+2025-08-26 18:56:02,140 - INFO - train: {'epoch': 69, 'time_epoch': 9.40582, 'eta': 282.8788, 'eta_hours': 0.07858, 'loss': 0.15228953, 'lr': 0.00013263, 'params': 206217, 'time_iter': 0.04295, 'accuracy': 0.94971, 'f1': 0.94967, 'auc': 0.99382}
+2025-08-26 18:56:02,865 - INFO - val: {'epoch': 69, 'time_epoch': 0.713, 'loss': 0.22068701, 'lr': 0, 'params': 206217, 'time_iter': 0.02228, 'accuracy': 0.932, 'f1': 0.93254, 'auc': 0.99028}
+2025-08-26 18:56:05,481 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:56:05,490 - INFO - test: {'epoch': 69, 'time_epoch': 1.42906, 'loss': 0.25170222, 'lr': 0, 'params': 206217, 'time_iter': 0.02268, 'accuracy': 0.92, 'f1': 0.92029, 'auc': 0.98767}
+2025-08-26 18:56:05,491 - INFO - > Epoch 69: took 12.8s (avg 12.5s) | Best so far: epoch 62	train_loss: 0.1811 train_accuracy: 0.9446	val_loss: 0.2056 val_accuracy: 0.9360	test_loss: 0.2501 test_accuracy: 0.9190
+2025-08-26 18:56:05,491 - INFO - === Epoch 70 ===
+2025-08-26 18:56:14,855 - INFO - train: {'epoch': 70, 'time_epoch': 9.34995, 'eta': 273.4171, 'eta_hours': 0.07595, 'loss': 0.16412046, 'lr': 0.000125, 'params': 206217, 'time_iter': 0.04269, 'accuracy': 0.94657, 'f1': 0.9466, 'auc': 0.99341}
+2025-08-26 18:56:15,574 - INFO - val: {'epoch': 70, 'time_epoch': 0.69791, 'loss': 0.21593796, 'lr': 0, 'params': 206217, 'time_iter': 0.02181, 'accuracy': 0.924, 'f1': 0.92414, 'auc': 0.99031}
+2025-08-26 18:56:18,587 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:56:18,598 - INFO - test: {'epoch': 70, 'time_epoch': 1.43882, 'loss': 0.26079752, 'lr': 0, 'params': 206217, 'time_iter': 0.02284, 'accuracy': 0.921, 'f1': 0.92128, 'auc': 0.98611}
+2025-08-26 18:56:18,599 - INFO - > Epoch 70: took 13.1s (avg 12.5s) | Best so far: epoch 62	train_loss: 0.1811 train_accuracy: 0.9446	val_loss: 0.2056 val_accuracy: 0.9360	test_loss: 0.2501 test_accuracy: 0.9190
+2025-08-26 18:56:18,600 - INFO - === Epoch 71 ===
+2025-08-26 18:56:27,921 - INFO - train: {'epoch': 71, 'time_epoch': 9.30593, 'eta': 263.94138, 'eta_hours': 0.07332, 'loss': 0.15635896, 'lr': 0.00011752, 'params': 206217, 'time_iter': 0.04249, 'accuracy': 0.95086, 'f1': 0.95081, 'auc': 0.99323}
+2025-08-26 18:56:28,656 - INFO - val: {'epoch': 71, 'time_epoch': 0.72059, 'loss': 0.20969378, 'lr': 0, 'params': 206217, 'time_iter': 0.02252, 'accuracy': 0.928, 'f1': 0.92785, 'auc': 0.99107}
+2025-08-26 18:56:31,565 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:56:31,575 - INFO - test: {'epoch': 71, 'time_epoch': 1.44283, 'loss': 0.23932769, 'lr': 0, 'params': 206217, 'time_iter': 0.0229, 'accuracy': 0.922, 'f1': 0.92198, 'auc': 0.98913}
+2025-08-26 18:56:31,577 - INFO - > Epoch 71: took 13.0s (avg 12.5s) | Best so far: epoch 62	train_loss: 0.1811 train_accuracy: 0.9446	val_loss: 0.2056 val_accuracy: 0.9360	test_loss: 0.2501 test_accuracy: 0.9190
+2025-08-26 18:56:31,577 - INFO - === Epoch 72 ===
+2025-08-26 18:56:41,053 - INFO - train: {'epoch': 72, 'time_epoch': 9.46164, 'eta': 254.52791, 'eta_hours': 0.0707, 'loss': 0.15039254, 'lr': 0.0001102, 'params': 206217, 'time_iter': 0.0432, 'accuracy': 0.948, 'f1': 0.94806, 'auc': 0.99447}
+2025-08-26 18:56:41,787 - INFO - val: {'epoch': 72, 'time_epoch': 0.72267, 'loss': 0.23510227, 'lr': 0, 'params': 206217, 'time_iter': 0.02258, 'accuracy': 0.932, 'f1': 0.93145, 'auc': 0.98924}
+2025-08-26 18:56:44,273 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:56:44,281 - INFO - test: {'epoch': 72, 'time_epoch': 1.43903, 'loss': 0.26689094, 'lr': 0, 'params': 206217, 'time_iter': 0.02284, 'accuracy': 0.916, 'f1': 0.91458, 'auc': 0.98638}
+2025-08-26 18:56:44,283 - INFO - > Epoch 72: took 12.7s (avg 12.5s) | Best so far: epoch 62	train_loss: 0.1811 train_accuracy: 0.9446	val_loss: 0.2056 val_accuracy: 0.9360	test_loss: 0.2501 test_accuracy: 0.9190
+2025-08-26 18:56:44,283 - INFO - === Epoch 73 ===
+2025-08-26 18:56:53,803 - INFO - train: {'epoch': 73, 'time_epoch': 9.50542, 'eta': 245.12852, 'eta_hours': 0.06809, 'loss': 0.1531478, 'lr': 0.00010305, 'params': 206217, 'time_iter': 0.0434, 'accuracy': 0.94686, 'f1': 0.94698, 'auc': 0.99438}
+2025-08-26 18:56:54,526 - INFO - val: {'epoch': 73, 'time_epoch': 0.71159, 'loss': 0.21801621, 'lr': 0, 'params': 206217, 'time_iter': 0.02224, 'accuracy': 0.93, 'f1': 0.92987, 'auc': 0.98935}
+2025-08-26 18:56:56,782 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:56:56,792 - INFO - test: {'epoch': 73, 'time_epoch': 1.4304, 'loss': 0.24259605, 'lr': 0, 'params': 206217, 'time_iter': 0.0227, 'accuracy': 0.918, 'f1': 0.91785, 'auc': 0.98886}
+2025-08-26 18:56:56,793 - INFO - > Epoch 73: took 12.5s (avg 12.5s) | Best so far: epoch 62	train_loss: 0.1811 train_accuracy: 0.9446	val_loss: 0.2056 val_accuracy: 0.9360	test_loss: 0.2501 test_accuracy: 0.9190
+2025-08-26 18:56:56,794 - INFO - === Epoch 74 ===
+2025-08-26 18:57:06,277 - INFO - train: {'epoch': 74, 'time_epoch': 9.46936, 'eta': 235.71428, 'eta_hours': 0.06548, 'loss': 0.1447857, 'lr': 9.608e-05, 'params': 206217, 'time_iter': 0.04324, 'accuracy': 0.952, 'f1': 0.95203, 'auc': 0.99489}
+2025-08-26 18:57:07,004 - INFO - val: {'epoch': 74, 'time_epoch': 0.71465, 'loss': 0.20868419, 'lr': 0, 'params': 206217, 'time_iter': 0.02233, 'accuracy': 0.934, 'f1': 0.9344, 'auc': 0.99072}
+2025-08-26 18:57:09,247 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:57:09,255 - INFO - test: {'epoch': 74, 'time_epoch': 1.42567, 'loss': 0.26149773, 'lr': 0, 'params': 206217, 'time_iter': 0.02263, 'accuracy': 0.911, 'f1': 0.91138, 'auc': 0.98687}
+2025-08-26 18:57:09,257 - INFO - > Epoch 74: took 12.5s (avg 12.5s) | Best so far: epoch 62	train_loss: 0.1811 train_accuracy: 0.9446	val_loss: 0.2056 val_accuracy: 0.9360	test_loss: 0.2501 test_accuracy: 0.9190
+2025-08-26 18:57:09,257 - INFO - === Epoch 75 ===
+2025-08-26 18:57:18,691 - INFO - train: {'epoch': 75, 'time_epoch': 9.41956, 'eta': 226.28286, 'eta_hours': 0.06286, 'loss': 0.14585695, 'lr': 8.93e-05, 'params': 206217, 'time_iter': 0.04301, 'accuracy': 0.95371, 'f1': 0.95376, 'auc': 0.99492}
+2025-08-26 18:57:19,419 - INFO - val: {'epoch': 75, 'time_epoch': 0.71595, 'loss': 0.22992045, 'lr': 0, 'params': 206217, 'time_iter': 0.02237, 'accuracy': 0.934, 'f1': 0.93369, 'auc': 0.98933}
+2025-08-26 18:57:21,656 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:57:21,665 - INFO - test: {'epoch': 75, 'time_epoch': 1.41642, 'loss': 0.27019713, 'lr': 0, 'params': 206217, 'time_iter': 0.02248, 'accuracy': 0.918, 'f1': 0.91742, 'auc': 0.98609}
+2025-08-26 18:57:21,666 - INFO - > Epoch 75: took 12.4s (avg 12.5s) | Best so far: epoch 62	train_loss: 0.1811 train_accuracy: 0.9446	val_loss: 0.2056 val_accuracy: 0.9360	test_loss: 0.2501 test_accuracy: 0.9190
+2025-08-26 18:57:21,666 - INFO - === Epoch 76 ===
+2025-08-26 18:57:30,970 - INFO - train: {'epoch': 76, 'time_epoch': 9.28339, 'eta': 216.81108, 'eta_hours': 0.06023, 'loss': 0.14177555, 'lr': 8.272e-05, 'params': 206217, 'time_iter': 0.04239, 'accuracy': 0.956, 'f1': 0.95588, 'auc': 0.9951}
+2025-08-26 18:57:31,665 - INFO - val: {'epoch': 76, 'time_epoch': 0.68418, 'loss': 0.20964391, 'lr': 0, 'params': 206217, 'time_iter': 0.02138, 'accuracy': 0.934, 'f1': 0.93406, 'auc': 0.99027}
+2025-08-26 18:57:33,871 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:57:33,879 - INFO - test: {'epoch': 76, 'time_epoch': 1.36666, 'loss': 0.2474319, 'lr': 0, 'params': 206217, 'time_iter': 0.02169, 'accuracy': 0.921, 'f1': 0.92112, 'auc': 0.98786}
+2025-08-26 18:57:33,881 - INFO - > Epoch 76: took 12.2s (avg 12.5s) | Best so far: epoch 62	train_loss: 0.1811 train_accuracy: 0.9446	val_loss: 0.2056 val_accuracy: 0.9360	test_loss: 0.2501 test_accuracy: 0.9190
+2025-08-26 18:57:33,881 - INFO - === Epoch 77 ===
+2025-08-26 18:57:43,817 - INFO - train: {'epoch': 77, 'time_epoch': 9.9197, 'eta': 207.5236, 'eta_hours': 0.05765, 'loss': 0.14349267, 'lr': 7.634e-05, 'params': 206217, 'time_iter': 0.0453, 'accuracy': 0.95057, 'f1': 0.95068, 'auc': 0.99494}
+2025-08-26 18:57:44,559 - INFO - val: {'epoch': 77, 'time_epoch': 0.72877, 'loss': 0.21043394, 'lr': 0, 'params': 206217, 'time_iter': 0.02277, 'accuracy': 0.94, 'f1': 0.93979, 'auc': 0.98954}
+2025-08-26 18:57:46,907 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:57:46,916 - INFO - test: {'epoch': 77, 'time_epoch': 1.44604, 'loss': 0.25282642, 'lr': 0, 'params': 206217, 'time_iter': 0.02295, 'accuracy': 0.915, 'f1': 0.91421, 'auc': 0.98876}
+2025-08-26 18:57:46,918 - INFO - > Epoch 77: took 13.0s (avg 12.5s) | Best so far: epoch 77	train_loss: 0.1435 train_accuracy: 0.9506	val_loss: 0.2104 val_accuracy: 0.9400	test_loss: 0.2528 test_accuracy: 0.9150
+2025-08-26 18:57:46,918 - INFO - === Epoch 78 ===
+2025-08-26 18:57:56,498 - INFO - train: {'epoch': 78, 'time_epoch': 9.56396, 'eta': 198.12555, 'eta_hours': 0.05503, 'loss': 0.14222547, 'lr': 7.017e-05, 'params': 206217, 'time_iter': 0.04367, 'accuracy': 0.95629, 'f1': 0.95618, 'auc': 0.99463}
+2025-08-26 18:57:57,203 - INFO - val: {'epoch': 78, 'time_epoch': 0.69397, 'loss': 0.21030347, 'lr': 0, 'params': 206217, 'time_iter': 0.02169, 'accuracy': 0.934, 'f1': 0.93378, 'auc': 0.99048}
+2025-08-26 18:57:59,523 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:57:59,531 - INFO - test: {'epoch': 78, 'time_epoch': 1.41388, 'loss': 0.24918885, 'lr': 0, 'params': 206217, 'time_iter': 0.02244, 'accuracy': 0.921, 'f1': 0.92061, 'auc': 0.98739}
+2025-08-26 18:57:59,534 - INFO - > Epoch 78: took 12.6s (avg 12.5s) | Best so far: epoch 77	train_loss: 0.1435 train_accuracy: 0.9506	val_loss: 0.2104 val_accuracy: 0.9400	test_loss: 0.2528 test_accuracy: 0.9150
+2025-08-26 18:57:59,534 - INFO - === Epoch 79 ===
+2025-08-26 18:58:09,343 - INFO - train: {'epoch': 79, 'time_epoch': 9.7903, 'eta': 188.77994, 'eta_hours': 0.05244, 'loss': 0.1369101, 'lr': 6.421e-05, 'params': 206217, 'time_iter': 0.0447, 'accuracy': 0.954, 'f1': 0.95404, 'auc': 0.99506}
+2025-08-26 18:58:10,077 - INFO - val: {'epoch': 79, 'time_epoch': 0.72239, 'loss': 0.21535945, 'lr': 0, 'params': 206217, 'time_iter': 0.02257, 'accuracy': 0.932, 'f1': 0.93147, 'auc': 0.98988}
+2025-08-26 18:58:12,496 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:58:12,504 - INFO - test: {'epoch': 79, 'time_epoch': 1.43571, 'loss': 0.25619099, 'lr': 0, 'params': 206217, 'time_iter': 0.02279, 'accuracy': 0.92, 'f1': 0.91926, 'auc': 0.98691}
+2025-08-26 18:58:12,505 - INFO - > Epoch 79: took 13.0s (avg 12.5s) | Best so far: epoch 77	train_loss: 0.1435 train_accuracy: 0.9506	val_loss: 0.2104 val_accuracy: 0.9400	test_loss: 0.2528 test_accuracy: 0.9150
+2025-08-26 18:58:12,506 - INFO - === Epoch 80 ===
+2025-08-26 18:58:22,121 - INFO - train: {'epoch': 80, 'time_epoch': 9.59952, 'eta': 179.37859, 'eta_hours': 0.04983, 'loss': 0.13750161, 'lr': 5.849e-05, 'params': 206217, 'time_iter': 0.04383, 'accuracy': 0.95771, 'f1': 0.95767, 'auc': 0.99508}
+2025-08-26 18:58:22,861 - INFO - val: {'epoch': 80, 'time_epoch': 0.7272, 'loss': 0.20980349, 'lr': 0, 'params': 206217, 'time_iter': 0.02273, 'accuracy': 0.93, 'f1': 0.93032, 'auc': 0.98905}
+2025-08-26 18:58:25,145 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:58:25,154 - INFO - test: {'epoch': 80, 'time_epoch': 1.43683, 'loss': 0.26020244, 'lr': 0, 'params': 206217, 'time_iter': 0.02281, 'accuracy': 0.918, 'f1': 0.91823, 'auc': 0.98724}
+2025-08-26 18:58:25,155 - INFO - > Epoch 80: took 12.6s (avg 12.5s) | Best so far: epoch 77	train_loss: 0.1435 train_accuracy: 0.9506	val_loss: 0.2104 val_accuracy: 0.9400	test_loss: 0.2528 test_accuracy: 0.9150
+2025-08-26 18:58:25,155 - INFO - === Epoch 81 ===
+2025-08-26 18:58:34,838 - INFO - train: {'epoch': 81, 'time_epoch': 9.66656, 'eta': 169.98713, 'eta_hours': 0.04722, 'loss': 0.13607465, 'lr': 5.3e-05, 'params': 206217, 'time_iter': 0.04414, 'accuracy': 0.95714, 'f1': 0.95712, 'auc': 0.99512}
+2025-08-26 18:58:35,573 - INFO - val: {'epoch': 81, 'time_epoch': 0.72263, 'loss': 0.2209775, 'lr': 0, 'params': 206217, 'time_iter': 0.02258, 'accuracy': 0.928, 'f1': 0.92835, 'auc': 0.98922}
+2025-08-26 18:58:37,864 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:58:37,874 - INFO - test: {'epoch': 81, 'time_epoch': 1.44657, 'loss': 0.26090875, 'lr': 0, 'params': 206217, 'time_iter': 0.02296, 'accuracy': 0.919, 'f1': 0.91882, 'auc': 0.98635}
+2025-08-26 18:58:37,876 - INFO - > Epoch 81: took 12.7s (avg 12.5s) | Best so far: epoch 77	train_loss: 0.1435 train_accuracy: 0.9506	val_loss: 0.2104 val_accuracy: 0.9400	test_loss: 0.2528 test_accuracy: 0.9150
+2025-08-26 18:58:37,876 - INFO - === Epoch 82 ===
+2025-08-26 18:58:47,631 - INFO - train: {'epoch': 82, 'time_epoch': 9.7389, 'eta': 160.60386, 'eta_hours': 0.04461, 'loss': 0.1367171, 'lr': 4.775e-05, 'params': 206217, 'time_iter': 0.04447, 'accuracy': 0.956, 'f1': 0.95591, 'auc': 0.99526}
+2025-08-26 18:58:48,373 - INFO - val: {'epoch': 82, 'time_epoch': 0.73079, 'loss': 0.21063463, 'lr': 0, 'params': 206217, 'time_iter': 0.02284, 'accuracy': 0.928, 'f1': 0.92784, 'auc': 0.9897}
+2025-08-26 18:58:50,670 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:58:50,678 - INFO - test: {'epoch': 82, 'time_epoch': 1.44351, 'loss': 0.27442341, 'lr': 0, 'params': 206217, 'time_iter': 0.02291, 'accuracy': 0.916, 'f1': 0.91526, 'auc': 0.98598}
+2025-08-26 18:58:50,679 - INFO - > Epoch 82: took 12.8s (avg 12.5s) | Best so far: epoch 77	train_loss: 0.1435 train_accuracy: 0.9506	val_loss: 0.2104 val_accuracy: 0.9400	test_loss: 0.2528 test_accuracy: 0.9150
+2025-08-26 18:58:50,680 - INFO - === Epoch 83 ===
+2025-08-26 18:59:00,322 - INFO - train: {'epoch': 83, 'time_epoch': 9.62699, 'eta': 151.1908, 'eta_hours': 0.042, 'loss': 0.13434672, 'lr': 4.274e-05, 'params': 206217, 'time_iter': 0.04396, 'accuracy': 0.95371, 'f1': 0.95366, 'auc': 0.99536}
+2025-08-26 18:59:01,059 - INFO - val: {'epoch': 83, 'time_epoch': 0.72103, 'loss': 0.23948263, 'lr': 0, 'params': 206217, 'time_iter': 0.02253, 'accuracy': 0.924, 'f1': 0.92351, 'auc': 0.98895}
+2025-08-26 18:59:05,778 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:59:05,787 - INFO - test: {'epoch': 83, 'time_epoch': 1.42132, 'loss': 0.27926027, 'lr': 0, 'params': 206217, 'time_iter': 0.02256, 'accuracy': 0.915, 'f1': 0.91409, 'auc': 0.98551}
+2025-08-26 18:59:05,789 - INFO - > Epoch 83: took 15.1s (avg 12.6s) | Best so far: epoch 77	train_loss: 0.1435 train_accuracy: 0.9506	val_loss: 0.2104 val_accuracy: 0.9400	test_loss: 0.2528 test_accuracy: 0.9150
+2025-08-26 18:59:05,789 - INFO - === Epoch 84 ===
+2025-08-26 18:59:15,473 - INFO - train: {'epoch': 84, 'time_epoch': 9.66878, 'eta': 141.78009, 'eta_hours': 0.03938, 'loss': 0.14100571, 'lr': 3.799e-05, 'params': 206217, 'time_iter': 0.04415, 'accuracy': 0.95543, 'f1': 0.95537, 'auc': 0.99499}
+2025-08-26 18:59:16,204 - INFO - val: {'epoch': 84, 'time_epoch': 0.71382, 'loss': 0.20556851, 'lr': 0, 'params': 206217, 'time_iter': 0.02231, 'accuracy': 0.93, 'f1': 0.93028, 'auc': 0.98946}
+2025-08-26 18:59:19,682 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:59:19,691 - INFO - test: {'epoch': 84, 'time_epoch': 1.43714, 'loss': 0.25135709, 'lr': 0, 'params': 206217, 'time_iter': 0.02281, 'accuracy': 0.926, 'f1': 0.92592, 'auc': 0.98597}
+2025-08-26 18:59:19,692 - INFO - > Epoch 84: took 13.9s (avg 12.6s) | Best so far: epoch 77	train_loss: 0.1435 train_accuracy: 0.9506	val_loss: 0.2104 val_accuracy: 0.9400	test_loss: 0.2528 test_accuracy: 0.9150
+2025-08-26 18:59:19,692 - INFO - === Epoch 85 ===
+2025-08-26 18:59:29,292 - INFO - train: {'epoch': 85, 'time_epoch': 9.58473, 'eta': 132.34969, 'eta_hours': 0.03676, 'loss': 0.13152949, 'lr': 3.349e-05, 'params': 206217, 'time_iter': 0.04377, 'accuracy': 0.95714, 'f1': 0.95721, 'auc': 0.99537}
+2025-08-26 18:59:30,024 - INFO - val: {'epoch': 85, 'time_epoch': 0.72017, 'loss': 0.2130255, 'lr': 0, 'params': 206217, 'time_iter': 0.02251, 'accuracy': 0.924, 'f1': 0.9241, 'auc': 0.99039}
+2025-08-26 18:59:32,591 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:59:32,599 - INFO - test: {'epoch': 85, 'time_epoch': 1.44282, 'loss': 0.24779038, 'lr': 0, 'params': 206217, 'time_iter': 0.0229, 'accuracy': 0.92, 'f1': 0.91973, 'auc': 0.98791}
+2025-08-26 18:59:32,601 - INFO - > Epoch 85: took 12.9s (avg 12.6s) | Best so far: epoch 77	train_loss: 0.1435 train_accuracy: 0.9506	val_loss: 0.2104 val_accuracy: 0.9400	test_loss: 0.2528 test_accuracy: 0.9150
+2025-08-26 18:59:32,601 - INFO - === Epoch 86 ===
+2025-08-26 18:59:42,268 - INFO - train: {'epoch': 86, 'time_epoch': 9.65291, 'eta': 122.92593, 'eta_hours': 0.03415, 'loss': 0.12293953, 'lr': 2.926e-05, 'params': 206217, 'time_iter': 0.04408, 'accuracy': 0.96, 'f1': 0.95999, 'auc': 0.99569}
+2025-08-26 18:59:42,991 - INFO - val: {'epoch': 86, 'time_epoch': 0.70977, 'loss': 0.21804148, 'lr': 0, 'params': 206217, 'time_iter': 0.02218, 'accuracy': 0.932, 'f1': 0.93179, 'auc': 0.98966}
+2025-08-26 18:59:45,916 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:59:45,925 - INFO - test: {'epoch': 86, 'time_epoch': 1.43532, 'loss': 0.26165406, 'lr': 0, 'params': 206217, 'time_iter': 0.02278, 'accuracy': 0.918, 'f1': 0.91765, 'auc': 0.98661}
+2025-08-26 18:59:45,927 - INFO - > Epoch 86: took 13.3s (avg 12.6s) | Best so far: epoch 77	train_loss: 0.1435 train_accuracy: 0.9506	val_loss: 0.2104 val_accuracy: 0.9400	test_loss: 0.2528 test_accuracy: 0.9150
+2025-08-26 18:59:45,927 - INFO - === Epoch 87 ===
+2025-08-26 18:59:55,477 - INFO - train: {'epoch': 87, 'time_epoch': 9.53468, 'eta': 113.48084, 'eta_hours': 0.03152, 'loss': 0.12713178, 'lr': 2.53e-05, 'params': 206217, 'time_iter': 0.04354, 'accuracy': 0.95971, 'f1': 0.95968, 'auc': 0.99552}
+2025-08-26 18:59:56,214 - INFO - val: {'epoch': 87, 'time_epoch': 0.72273, 'loss': 0.20722339, 'lr': 0, 'params': 206217, 'time_iter': 0.02259, 'accuracy': 0.932, 'f1': 0.93213, 'auc': 0.98998}
+2025-08-26 18:59:59,670 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 18:59:59,679 - INFO - test: {'epoch': 87, 'time_epoch': 1.44385, 'loss': 0.25637017, 'lr': 0, 'params': 206217, 'time_iter': 0.02292, 'accuracy': 0.918, 'f1': 0.91781, 'auc': 0.9871}
+2025-08-26 18:59:59,681 - INFO - > Epoch 87: took 13.8s (avg 12.6s) | Best so far: epoch 77	train_loss: 0.1435 train_accuracy: 0.9506	val_loss: 0.2104 val_accuracy: 0.9400	test_loss: 0.2528 test_accuracy: 0.9150
+2025-08-26 18:59:59,681 - INFO - === Epoch 88 ===
+2025-08-26 19:00:09,475 - INFO - train: {'epoch': 88, 'time_epoch': 9.77832, 'eta': 104.06385, 'eta_hours': 0.02891, 'loss': 0.12344724, 'lr': 2.161e-05, 'params': 206217, 'time_iter': 0.04465, 'accuracy': 0.96057, 'f1': 0.96051, 'auc': 0.99599}
+2025-08-26 19:00:10,207 - INFO - val: {'epoch': 88, 'time_epoch': 0.72042, 'loss': 0.21085954, 'lr': 0, 'params': 206217, 'time_iter': 0.02251, 'accuracy': 0.934, 'f1': 0.93363, 'auc': 0.9901}
+2025-08-26 19:00:12,480 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 19:00:12,489 - INFO - test: {'epoch': 88, 'time_epoch': 1.42697, 'loss': 0.2578834, 'lr': 0, 'params': 206217, 'time_iter': 0.02265, 'accuracy': 0.922, 'f1': 0.92144, 'auc': 0.98592}
+2025-08-26 19:00:12,490 - INFO - > Epoch 88: took 12.8s (avg 12.6s) | Best so far: epoch 77	train_loss: 0.1435 train_accuracy: 0.9506	val_loss: 0.2104 val_accuracy: 0.9400	test_loss: 0.2528 test_accuracy: 0.9150
+2025-08-26 19:00:12,490 - INFO - === Epoch 89 ===
+2025-08-26 19:00:22,251 - INFO - train: {'epoch': 89, 'time_epoch': 9.7448, 'eta': 94.6351, 'eta_hours': 0.02629, 'loss': 0.12965623, 'lr': 1.82e-05, 'params': 206217, 'time_iter': 0.0445, 'accuracy': 0.96057, 'f1': 0.96052, 'auc': 0.99589}
+2025-08-26 19:00:22,978 - INFO - val: {'epoch': 89, 'time_epoch': 0.7161, 'loss': 0.21510848, 'lr': 0, 'params': 206217, 'time_iter': 0.02238, 'accuracy': 0.932, 'f1': 0.93155, 'auc': 0.99018}
+2025-08-26 19:00:25,249 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 19:00:25,259 - INFO - test: {'epoch': 89, 'time_epoch': 1.44095, 'loss': 0.26345185, 'lr': 0, 'params': 206217, 'time_iter': 0.02287, 'accuracy': 0.922, 'f1': 0.92155, 'auc': 0.98679}
+2025-08-26 19:00:25,262 - INFO - > Epoch 89: took 12.8s (avg 12.6s) | Best so far: epoch 77	train_loss: 0.1435 train_accuracy: 0.9506	val_loss: 0.2104 val_accuracy: 0.9400	test_loss: 0.2528 test_accuracy: 0.9150
+2025-08-26 19:00:25,262 - INFO - === Epoch 90 ===
+2025-08-26 19:00:34,942 - INFO - train: {'epoch': 90, 'time_epoch': 9.66464, 'eta': 85.19149, 'eta_hours': 0.02366, 'loss': 0.1264082, 'lr': 1.508e-05, 'params': 206217, 'time_iter': 0.04413, 'accuracy': 0.95771, 'f1': 0.95775, 'auc': 0.99564}
+2025-08-26 19:00:35,681 - INFO - val: {'epoch': 90, 'time_epoch': 0.72708, 'loss': 0.21413144, 'lr': 0, 'params': 206217, 'time_iter': 0.02272, 'accuracy': 0.928, 'f1': 0.92749, 'auc': 0.99024}
+2025-08-26 19:00:37,933 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 19:00:37,942 - INFO - test: {'epoch': 90, 'time_epoch': 1.41554, 'loss': 0.26704659, 'lr': 0, 'params': 206217, 'time_iter': 0.02247, 'accuracy': 0.917, 'f1': 0.91643, 'auc': 0.98677}
+2025-08-26 19:00:37,943 - INFO - > Epoch 90: took 12.7s (avg 12.6s) | Best so far: epoch 77	train_loss: 0.1435 train_accuracy: 0.9506	val_loss: 0.2104 val_accuracy: 0.9400	test_loss: 0.2528 test_accuracy: 0.9150
+2025-08-26 19:00:37,944 - INFO - === Epoch 91 ===
+2025-08-26 19:00:47,573 - INFO - train: {'epoch': 91, 'time_epoch': 9.61433, 'eta': 75.73869, 'eta_hours': 0.02104, 'loss': 0.12421336, 'lr': 1.224e-05, 'params': 206217, 'time_iter': 0.0439, 'accuracy': 0.95743, 'f1': 0.95736, 'auc': 0.99584}
+2025-08-26 19:00:48,298 - INFO - val: {'epoch': 91, 'time_epoch': 0.71328, 'loss': 0.20816772, 'lr': 0, 'params': 206217, 'time_iter': 0.02229, 'accuracy': 0.934, 'f1': 0.93403, 'auc': 0.99038}
+2025-08-26 19:00:50,597 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 19:00:50,605 - INFO - test: {'epoch': 91, 'time_epoch': 1.41915, 'loss': 0.26073835, 'lr': 0, 'params': 206217, 'time_iter': 0.02253, 'accuracy': 0.921, 'f1': 0.92089, 'auc': 0.98694}
+2025-08-26 19:00:50,607 - INFO - > Epoch 91: took 12.7s (avg 12.6s) | Best so far: epoch 77	train_loss: 0.1435 train_accuracy: 0.9506	val_loss: 0.2104 val_accuracy: 0.9400	test_loss: 0.2528 test_accuracy: 0.9150
+2025-08-26 19:00:50,607 - INFO - === Epoch 92 ===
+2025-08-26 19:01:00,211 - INFO - train: {'epoch': 92, 'time_epoch': 9.58898, 'eta': 66.28051, 'eta_hours': 0.01841, 'loss': 0.12642203, 'lr': 9.68e-06, 'params': 206217, 'time_iter': 0.04379, 'accuracy': 0.95886, 'f1': 0.9588, 'auc': 0.99563}
+2025-08-26 19:01:00,954 - INFO - val: {'epoch': 92, 'time_epoch': 0.7317, 'loss': 0.20673158, 'lr': 0, 'params': 206217, 'time_iter': 0.02287, 'accuracy': 0.938, 'f1': 0.93792, 'auc': 0.99027}
+2025-08-26 19:01:03,237 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 19:01:03,246 - INFO - test: {'epoch': 92, 'time_epoch': 1.44805, 'loss': 0.26139133, 'lr': 0, 'params': 206217, 'time_iter': 0.02298, 'accuracy': 0.923, 'f1': 0.92271, 'auc': 0.98689}
+2025-08-26 19:01:03,248 - INFO - > Epoch 92: took 12.6s (avg 12.6s) | Best so far: epoch 77	train_loss: 0.1435 train_accuracy: 0.9506	val_loss: 0.2104 val_accuracy: 0.9400	test_loss: 0.2528 test_accuracy: 0.9150
+2025-08-26 19:01:03,248 - INFO - === Epoch 93 ===
+2025-08-26 19:01:12,929 - INFO - train: {'epoch': 93, 'time_epoch': 9.66541, 'eta': 56.82442, 'eta_hours': 0.01578, 'loss': 0.12227801, 'lr': 7.43e-06, 'params': 206217, 'time_iter': 0.04413, 'accuracy': 0.95914, 'f1': 0.95911, 'auc': 0.99649}
+2025-08-26 19:01:13,659 - INFO - val: {'epoch': 93, 'time_epoch': 0.71827, 'loss': 0.21219013, 'lr': 0, 'params': 206217, 'time_iter': 0.02245, 'accuracy': 0.938, 'f1': 0.93788, 'auc': 0.99002}
+2025-08-26 19:01:15,923 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 19:01:15,932 - INFO - test: {'epoch': 93, 'time_epoch': 1.43128, 'loss': 0.26367174, 'lr': 0, 'params': 206217, 'time_iter': 0.02272, 'accuracy': 0.92, 'f1': 0.91962, 'auc': 0.98692}
+2025-08-26 19:01:15,934 - INFO - > Epoch 93: took 12.7s (avg 12.6s) | Best so far: epoch 77	train_loss: 0.1435 train_accuracy: 0.9506	val_loss: 0.2104 val_accuracy: 0.9400	test_loss: 0.2528 test_accuracy: 0.9150
+2025-08-26 19:01:15,934 - INFO - === Epoch 94 ===
+2025-08-26 19:01:25,642 - INFO - train: {'epoch': 94, 'time_epoch': 9.69166, 'eta': 47.36531, 'eta_hours': 0.01316, 'loss': 0.12392982, 'lr': 5.46e-06, 'params': 206217, 'time_iter': 0.04425, 'accuracy': 0.96, 'f1': 0.96005, 'auc': 0.99583}
+2025-08-26 19:01:26,378 - INFO - val: {'epoch': 94, 'time_epoch': 0.72493, 'loss': 0.20856829, 'lr': 0, 'params': 206217, 'time_iter': 0.02265, 'accuracy': 0.936, 'f1': 0.93595, 'auc': 0.99071}
+2025-08-26 19:01:28,693 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 19:01:28,702 - INFO - test: {'epoch': 94, 'time_epoch': 1.44926, 'loss': 0.26022646, 'lr': 0, 'params': 206217, 'time_iter': 0.023, 'accuracy': 0.92, 'f1': 0.91977, 'auc': 0.98721}
+2025-08-26 19:01:28,704 - INFO - > Epoch 94: took 12.8s (avg 12.6s) | Best so far: epoch 77	train_loss: 0.1435 train_accuracy: 0.9506	val_loss: 0.2104 val_accuracy: 0.9400	test_loss: 0.2528 test_accuracy: 0.9150
+2025-08-26 19:01:28,704 - INFO - === Epoch 95 ===
+2025-08-26 19:01:38,394 - INFO - train: {'epoch': 95, 'time_epoch': 9.67609, 'eta': 37.90071, 'eta_hours': 0.01053, 'loss': 0.13176018, 'lr': 3.8e-06, 'params': 206217, 'time_iter': 0.04418, 'accuracy': 0.95657, 'f1': 0.95649, 'auc': 0.99557}
+2025-08-26 19:01:39,131 - INFO - val: {'epoch': 95, 'time_epoch': 0.72509, 'loss': 0.20822715, 'lr': 0, 'params': 206217, 'time_iter': 0.02266, 'accuracy': 0.936, 'f1': 0.93595, 'auc': 0.99053}
+2025-08-26 19:01:41,406 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 19:01:41,415 - INFO - test: {'epoch': 95, 'time_epoch': 1.42449, 'loss': 0.26181208, 'lr': 0, 'params': 206217, 'time_iter': 0.02261, 'accuracy': 0.922, 'f1': 0.92175, 'auc': 0.98712}
+2025-08-26 19:01:41,416 - INFO - > Epoch 95: took 12.7s (avg 12.6s) | Best so far: epoch 77	train_loss: 0.1435 train_accuracy: 0.9506	val_loss: 0.2104 val_accuracy: 0.9400	test_loss: 0.2528 test_accuracy: 0.9150
+2025-08-26 19:01:41,416 - INFO - === Epoch 96 ===
+2025-08-26 19:01:51,181 - INFO - train: {'epoch': 96, 'time_epoch': 9.74831, 'eta': 28.43398, 'eta_hours': 0.0079, 'loss': 0.12038052, 'lr': 2.43e-06, 'params': 206217, 'time_iter': 0.04451, 'accuracy': 0.96171, 'f1': 0.96169, 'auc': 0.99564}
+2025-08-26 19:01:51,913 - INFO - val: {'epoch': 96, 'time_epoch': 0.72091, 'loss': 0.21119316, 'lr': 0, 'params': 206217, 'time_iter': 0.02253, 'accuracy': 0.934, 'f1': 0.93368, 'auc': 0.98956}
+2025-08-26 19:01:54,184 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 19:01:54,193 - INFO - test: {'epoch': 96, 'time_epoch': 1.4498, 'loss': 0.26391886, 'lr': 0, 'params': 206217, 'time_iter': 0.02301, 'accuracy': 0.923, 'f1': 0.92271, 'auc': 0.98701}
+2025-08-26 19:01:54,195 - INFO - > Epoch 96: took 12.8s (avg 12.6s) | Best so far: epoch 77	train_loss: 0.1435 train_accuracy: 0.9506	val_loss: 0.2104 val_accuracy: 0.9400	test_loss: 0.2528 test_accuracy: 0.9150
+2025-08-26 19:01:54,195 - INFO - === Epoch 97 ===
+2025-08-26 19:02:03,892 - INFO - train: {'epoch': 97, 'time_epoch': 9.68139, 'eta': 18.96014, 'eta_hours': 0.00527, 'loss': 0.12299099, 'lr': 1.37e-06, 'params': 206217, 'time_iter': 0.04421, 'accuracy': 0.96, 'f1': 0.95998, 'auc': 0.99601}
+2025-08-26 19:02:04,622 - INFO - val: {'epoch': 97, 'time_epoch': 0.71832, 'loss': 0.21035286, 'lr': 0, 'params': 206217, 'time_iter': 0.02245, 'accuracy': 0.936, 'f1': 0.9359, 'auc': 0.99006}
+2025-08-26 19:02:06,866 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 19:02:06,875 - INFO - test: {'epoch': 97, 'time_epoch': 1.41995, 'loss': 0.25912958, 'lr': 0, 'params': 206217, 'time_iter': 0.02254, 'accuracy': 0.923, 'f1': 0.923, 'auc': 0.98664}
+2025-08-26 19:02:06,877 - INFO - > Epoch 97: took 12.7s (avg 12.6s) | Best so far: epoch 77	train_loss: 0.1435 train_accuracy: 0.9506	val_loss: 0.2104 val_accuracy: 0.9400	test_loss: 0.2528 test_accuracy: 0.9150
+2025-08-26 19:02:06,877 - INFO - === Epoch 98 ===
+2025-08-26 19:02:16,466 - INFO - train: {'epoch': 98, 'time_epoch': 9.57282, 'eta': 9.48101, 'eta_hours': 0.00263, 'loss': 0.12566294, 'lr': 6.1e-07, 'params': 206217, 'time_iter': 0.04371, 'accuracy': 0.95971, 'f1': 0.95968, 'auc': 0.99578}
+2025-08-26 19:02:17,197 - INFO - val: {'epoch': 98, 'time_epoch': 0.71925, 'loss': 0.21164218, 'lr': 0, 'params': 206217, 'time_iter': 0.02248, 'accuracy': 0.932, 'f1': 0.93158, 'auc': 0.99023}
+2025-08-26 19:02:19,450 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 19:02:19,458 - INFO - test: {'epoch': 98, 'time_epoch': 1.43958, 'loss': 0.26283613, 'lr': 0, 'params': 206217, 'time_iter': 0.02285, 'accuracy': 0.92, 'f1': 0.91947, 'auc': 0.98725}
+2025-08-26 19:02:19,460 - INFO - > Epoch 98: took 12.6s (avg 12.6s) | Best so far: epoch 77	train_loss: 0.1435 train_accuracy: 0.9506	val_loss: 0.2104 val_accuracy: 0.9400	test_loss: 0.2528 test_accuracy: 0.9150
+2025-08-26 19:02:19,460 - INFO - === Epoch 99 ===
+2025-08-26 19:02:29,196 - INFO - train: {'epoch': 99, 'time_epoch': 9.71992, 'eta': 0.0, 'eta_hours': 0.0, 'loss': 0.12060489, 'lr': 1.5e-07, 'params': 206217, 'time_iter': 0.04438, 'accuracy': 0.962, 'f1': 0.96199, 'auc': 0.99593}
+2025-08-26 19:02:29,931 - INFO - val: {'epoch': 99, 'time_epoch': 0.72379, 'loss': 0.20781879, 'lr': 0, 'params': 206217, 'time_iter': 0.02262, 'accuracy': 0.936, 'f1': 0.93603, 'auc': 0.99017}
+2025-08-26 19:02:32,206 - INFO - Saved test results for 1000 graphs to results/MALNET/MALNET-E-45/test_results
+2025-08-26 19:02:32,214 - INFO - test: {'epoch': 99, 'time_epoch': 1.43979, 'loss': 0.25205562, 'lr': 0, 'params': 206217, 'time_iter': 0.02285, 'accuracy': 0.923, 'f1': 0.92292, 'auc': 0.98737}
+2025-08-26 19:02:32,277 - INFO - > Epoch 99: took 12.8s (avg 12.6s) | Best so far: epoch 77	train_loss: 0.1435 train_accuracy: 0.9506	val_loss: 0.2104 val_accuracy: 0.9400	test_loss: 0.2528 test_accuracy: 0.9150
+2025-08-26 19:02:32,277 - INFO - ================================================================================
+2025-08-26 19:02:32,277 - INFO - NAS TRAINING COMPLETED SUCCESSFULLY
+2025-08-26 19:02:32,277 - INFO - ================================================================================
+2025-08-26 19:02:32,277 - INFO - Avg time per epoch: 12.61s
+2025-08-26 19:02:32,277 - INFO - Total train loop time: 0.35h
+2025-08-26 19:02:32,277 - INFO - Routing mode: nas
+2025-08-26 19:02:32,278 - INFO - Final optimal weights: {'layer_0': 1, 'layer_1': 0, 'layer_2': 0, 'layer_3': 0}
+2025-08-26 19:02:32,278 - INFO - Results include routing uncertainty (test only, NO variance)
+2025-08-26 19:02:32,279 - INFO - Task done, results saved in results/MALNET/MALNET-E-45
+2025-08-26 19:02:32,280 - INFO - Total time: 1728.51s (0.48h)
+2025-08-26 19:02:32,281 - INFO - Results aggregated across runs saved in results/MALNET/MALNET-E-45/agg
+2025-08-26 19:02:32,281 - INFO - === OPTIMIZED TRAINING COMPLETED SUCCESSFULLY! ===
+2025-08-26 19:02:32,281 - INFO - Results saved in: results/MALNET/MALNET-E-45
+2025-08-26 19:02:32,281 - INFO - Test results JSON files saved in: results/MALNET/MALNET-E-45/test_results/
+Completed seed 45. Results saved in results/MALNET/MALNET-E-45
+----------------------------------------
+Submitting next job for seed 47
+Submitted batch job 5495152

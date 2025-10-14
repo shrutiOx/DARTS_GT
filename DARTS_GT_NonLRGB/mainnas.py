@@ -13,13 +13,13 @@ import logging
 # Change to your script directory
 
 
-os.chdir("D:/MY_FOLDER/ABLATION_FINAL/MAIN_PACKAGE/Not_LRGB")
+os.chdir("D:/MY_FOLDER/DARTS_GT/DARTS_GT_NonLRGB") ###Put your script directory here
 
 
 print(f"Changed working directory to: {os.getcwd()}")
 
 
-'''%run -i D:/MY_FOLDER/NAS_Mix_UQ/MOLHIV/main.py --cfg config.yaml'''
+
 
 
 import dartsgt  # noqa, register custom modules
@@ -54,11 +54,7 @@ from dartsgt.finetuning import load_pretrained_model_cfg, \
 from dartsgt.logger import create_logger
 from yacs.config import CfgNode as CN
 from dartsgt.network.gps_model import GPSModel
-#from dartsgt.train.custom_train import custom_train
-#from dartsgt.network.NAS_model import NASModel 
-# IMPORT OPTIMIZED TRAINING FUNCTION
-#from dartsgt.train.uncertainty_train import uncertainty_train
-#from dartsgt.train.NAS_uncertainty_train import nas_uncertainty_train
+
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -77,8 +73,8 @@ def main():
     args = parse_args()
     
     # Fix: Set the full path to the config file
-    args.cfg_file = os.path.join(os.getcwd(), "confignasZINC.yaml")  # Use optimized config
-    #args.cfg_file = os.path.join(os.getcwd(), "NAS_config.yaml")  # Use optimized config
+    args.cfg_file = os.path.join(os.getcwd(), "confignas_sparse_molhiv.yaml")  # Use YOUR config file here
+
     print(f"Loading config from: {args.cfg_file}")
     
     # Check if file exists
