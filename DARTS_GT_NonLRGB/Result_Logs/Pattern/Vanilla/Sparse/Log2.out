@@ -1,0 +1,935 @@
+Lmod has detected the following error: The following module(s) are unknown:
+"cuda/12.0"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore-cache load "cuda/12.0"
+
+Also make sure that all modulefiles written in TCL start with the string
+#%Module
+
+
+
+              total        used        free      shared  buff/cache   available
+Mem:          251Gi        16Gi       218Gi       1.7Gi        15Gi       230Gi
+Swap:         1.9Gi       1.0Mi       1.9Gi
+Sat Jul  5 02:28:51 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 560.35.03              Driver Version: 560.35.03      CUDA Version: 12.6     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA TITAN RTX               On  |   00000000:1B:00.0 Off |                  N/A |
+| 41%   53C    P8             33W /  280W |       1MiB /  24576MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Running experiment with seed: 41
+Starting training for seed 41...
+Changed working directory to: /data/coml-deepcmb/lady6973/ABLATION_FINAL/GET_VANILLA/PATTERN
+Loading config from: /data/coml-deepcmb/lady6973/ABLATION_FINAL/GET_VANILLA/PATTERN/confignas.yaml
+Using device: cuda
+2025-07-05 02:29:01,491 - INFO - GPU Mem: 25.2GB
+2025-07-05 02:29:01,491 - INFO - Run directory: results/pattern/pattern-Vanilla-41
+2025-07-05 02:29:01,491 - INFO - Seed: 41
+2025-07-05 02:29:01,491 - INFO - === OPTIMIZED MOE CONFIGURATION ===
+2025-07-05 02:29:01,491 - INFO - Routing mode: uniform
+2025-07-05 02:29:01,491 - INFO - Expert types: ['GINE', 'CustomGatedGCN', 'GAT', 'PNA']
+2025-07-05 02:29:01,491 - INFO - Number of layers: 10
+2025-07-05 02:29:01,491 - INFO - Uncertainty enabled: True
+2025-07-05 02:29:01,491 - INFO - Training mode: custom
+2025-07-05 02:29:01,491 - INFO - Optimization: Uncertainty only for last layer + test/val
+2025-07-05 02:29:01,491 - INFO - Additional features: Router weights logging + JSON export
+2025-07-05 02:29:20,645 - INFO - [*] Loaded dataset 'PATTERN' from 'PyG-GNNBenchmarkDataset':
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/torch_geometric/data/in_memory_dataset.py:300: UserWarning: It is not recommended to directly access the internal storage format `data` of an 'InMemoryDataset'. If you are absolutely certain what you are doing, access the internal storage via `InMemoryDataset._data` instead to suppress this warning. Alternatively, you can access stacked individual attributes of every graph via `dataset.{attr_name}`.
+  warnings.warn(msg)
+2025-07-05 02:29:20,647 - INFO -   Data(x=[1664491, 3], edge_index=[2, 85099952], y=[1664491])
+2025-07-05 02:29:20,648 - INFO -   undirected: True
+2025-07-05 02:29:20,648 - INFO -   num graphs: 14000
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/torch_geometric/data/in_memory_dataset.py:300: UserWarning: It is not recommended to directly access the internal storage format `data` of an 'InMemoryDataset'. The data of the dataset is already cached, so any modifications to `data` will not be reflected when accessing its elements. Clearing the cache now by removing all elements in `dataset._data_list`. If you are absolutely certain what you are doing, access the internal storage via `InMemoryDataset._data` instead to suppress this warning. Alternatively, you can access stacked individual attributes of every graph via `dataset.{attr_name}`.
+  warnings.warn(msg)
+2025-07-05 02:29:20,649 - INFO -   avg num_nodes/graph: 118
+2025-07-05 02:29:20,649 - INFO -   num node features: 3
+2025-07-05 02:29:20,649 - INFO -   num edge features: 0
+2025-07-05 02:29:20,650 - INFO -   num classes: 2
+2025-07-05 02:29:20,650 - INFO - Precomputing Positional Encoding statistics: ['LapPE'] for all graphs...
+2025-07-05 02:29:20,660 - INFO -   ...estimated to be undirected: True
+  0%|          | 0/14000 [00:00<?, ?it/s] 20%|█▉        | 2744/14000 [00:10<00:41, 274.33it/s] 39%|███▉      | 5498/14000 [00:20<00:30, 274.95it/s] 58%|█████▊    | 8173/14000 [00:30<00:21, 271.53it/s] 79%|███████▊  | 11012/14000 [00:40<00:10, 276.40it/s] 98%|█████████▊| 13694/14000 [00:50<00:01, 273.37it/s]100%|██████████| 14000/14000 [00:51<00:00, 274.27it/s]
+2025-07-05 02:30:12,641 - INFO - Done! Took 00:00:51.99
+2025-07-05 02:30:12,666 - INFO - [*] Loaded dataset 'PATTERN' from 'PyG-GNNBenchmarkDataset'
+2025-07-05 02:30:12,882 - INFO - Created model type: <class 'torch_geometric.graphgym.model_builder.GraphGymModule'>
+2025-07-05 02:30:12,882 - INFO - Inner model type: <class 'graphgps.network.vanilla_model.VanillaModel'>
+2025-07-05 02:30:12,882 - INFO - Inner model has get_darts_model: False
+2025-07-05 02:30:12,883 - INFO - GraphGymModule(
+  (model): VanillaModel(
+    (encoder): FeatureEncoder(
+      (node_encoder): LapPENodeEncoder(
+        (linear_x): Linear(in_features=3, out_features=48, bias=True)
+        (linear_A): Linear(in_features=2, out_features=32, bias=True)
+        (pe_encoder): Sequential(
+          (0): ReLU()
+          (1): Linear(in_features=32, out_features=16, bias=True)
+          (2): ReLU()
+        )
+      )
+      (edge_encoder): DummyEdgeEncoder(
+        (encoder): Embedding(1, 64)
+      )
+    )
+    (layers): Sequential(
+      (0): VANLayer(
+        summary: dim_h=64, global_model_type=SparseTransformer, heads=4
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=64, out_features=64, bias=True)
+          (W_v): Linear(in_features=64, out_features=64, bias=True)
+          (W_o): Linear(in_features=64, out_features=64, bias=True)
+        )
+        (norm1_attn): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=64, out_features=128, bias=True)
+        (ff_linear2): Linear(in_features=128, out_features=64, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+      (1): VANLayer(
+        summary: dim_h=64, global_model_type=SparseTransformer, heads=4
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=64, out_features=64, bias=True)
+          (W_v): Linear(in_features=64, out_features=64, bias=True)
+          (W_o): Linear(in_features=64, out_features=64, bias=True)
+        )
+        (norm1_attn): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=64, out_features=128, bias=True)
+        (ff_linear2): Linear(in_features=128, out_features=64, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+      (2): VANLayer(
+        summary: dim_h=64, global_model_type=SparseTransformer, heads=4
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=64, out_features=64, bias=True)
+          (W_v): Linear(in_features=64, out_features=64, bias=True)
+          (W_o): Linear(in_features=64, out_features=64, bias=True)
+        )
+        (norm1_attn): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=64, out_features=128, bias=True)
+        (ff_linear2): Linear(in_features=128, out_features=64, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+      (3): VANLayer(
+        summary: dim_h=64, global_model_type=SparseTransformer, heads=4
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=64, out_features=64, bias=True)
+          (W_v): Linear(in_features=64, out_features=64, bias=True)
+          (W_o): Linear(in_features=64, out_features=64, bias=True)
+        )
+        (norm1_attn): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=64, out_features=128, bias=True)
+        (ff_linear2): Linear(in_features=128, out_features=64, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+      (4): VANLayer(
+        summary: dim_h=64, global_model_type=SparseTransformer, heads=4
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=64, out_features=64, bias=True)
+          (W_v): Linear(in_features=64, out_features=64, bias=True)
+          (W_o): Linear(in_features=64, out_features=64, bias=True)
+        )
+        (norm1_attn): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=64, out_features=128, bias=True)
+        (ff_linear2): Linear(in_features=128, out_features=64, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+      (5): VANLayer(
+        summary: dim_h=64, global_model_type=SparseTransformer, heads=4
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=64, out_features=64, bias=True)
+          (W_v): Linear(in_features=64, out_features=64, bias=True)
+          (W_o): Linear(in_features=64, out_features=64, bias=True)
+        )
+        (norm1_attn): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=64, out_features=128, bias=True)
+        (ff_linear2): Linear(in_features=128, out_features=64, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+      (6): VANLayer(
+        summary: dim_h=64, global_model_type=SparseTransformer, heads=4
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=64, out_features=64, bias=True)
+          (W_v): Linear(in_features=64, out_features=64, bias=True)
+          (W_o): Linear(in_features=64, out_features=64, bias=True)
+        )
+        (norm1_attn): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=64, out_features=128, bias=True)
+        (ff_linear2): Linear(in_features=128, out_features=64, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+      (7): VANLayer(
+        summary: dim_h=64, global_model_type=SparseTransformer, heads=4
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=64, out_features=64, bias=True)
+          (W_v): Linear(in_features=64, out_features=64, bias=True)
+          (W_o): Linear(in_features=64, out_features=64, bias=True)
+        )
+        (norm1_attn): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=64, out_features=128, bias=True)
+        (ff_linear2): Linear(in_features=128, out_features=64, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+      (8): VANLayer(
+        summary: dim_h=64, global_model_type=SparseTransformer, heads=4
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=64, out_features=64, bias=True)
+          (W_v): Linear(in_features=64, out_features=64, bias=True)
+          (W_o): Linear(in_features=64, out_features=64, bias=True)
+        )
+        (norm1_attn): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=64, out_features=128, bias=True)
+        (ff_linear2): Linear(in_features=128, out_features=64, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+      (9): VANLayer(
+        summary: dim_h=64, global_model_type=SparseTransformer, heads=4
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=64, out_features=64, bias=True)
+          (W_v): Linear(in_features=64, out_features=64, bias=True)
+          (W_o): Linear(in_features=64, out_features=64, bias=True)
+        )
+        (norm1_attn): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=64, out_features=128, bias=True)
+        (ff_linear2): Linear(in_features=128, out_features=64, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+    )
+    (post_mp): GNNInductiveNodeHead(
+      (layer_post_mp): MLP(
+        (model): Sequential(
+          (0): GeneralMultiLayer(
+            (Layer_0): GeneralLayer(
+              (layer): Linear(
+                (model): Linear(64, 64, bias=True)
+              )
+              (post_layer): Sequential(
+                (0): ReLU()
+              )
+            )
+            (Layer_1): GeneralLayer(
+              (layer): Linear(
+                (model): Linear(64, 64, bias=True)
+              )
+              (post_layer): Sequential(
+                (0): ReLU()
+              )
+            )
+          )
+          (1): Linear(
+            (model): Linear(64, 1, bias=True)
+          )
+        )
+      )
+    )
+  )
+)
+2025-07-05 02:30:12,885 - INFO - Number of parameters: 302,385
+2025-07-05 02:30:12,885 - INFO - Starting optimized training: 2025-07-05 02:30:12.885938
+2025-07-05 02:30:19,800 - INFO - [*] Loaded dataset 'PATTERN' from 'PyG-GNNBenchmarkDataset':
+2025-07-05 02:30:19,800 - INFO -   Data(x=[1664491, 3], edge_index=[2, 85099952], y=[1664491])
+2025-07-05 02:30:19,801 - INFO -   undirected: True
+2025-07-05 02:30:19,801 - INFO -   num graphs: 14000
+2025-07-05 02:30:19,802 - INFO -   avg num_nodes/graph: 118
+2025-07-05 02:30:19,802 - INFO -   num node features: 3
+2025-07-05 02:30:19,802 - INFO -   num edge features: 0
+2025-07-05 02:30:19,803 - INFO -   num classes: 2
+2025-07-05 02:30:19,803 - INFO - Precomputing Positional Encoding statistics: ['LapPE'] for all graphs...
+2025-07-05 02:30:19,813 - INFO -   ...estimated to be undirected: True
+  0%|          | 0/14000 [00:00<?, ?it/s] 19%|█▉        | 2697/14000 [00:10<00:41, 269.64it/s] 39%|███▊      | 5419/14000 [00:20<00:31, 271.11it/s] 58%|█████▊    | 8121/14000 [00:30<00:21, 270.67it/s] 78%|███████▊  | 10964/14000 [00:40<00:10, 276.03it/s] 98%|█████████▊| 13656/14000 [00:50<00:01, 273.56it/s]100%|██████████| 14000/14000 [00:51<00:00, 273.53it/s]
+2025-07-05 02:31:11,933 - INFO - Done! Took 00:00:52.13
+2025-07-05 02:31:11,961 - INFO - [*] Loaded dataset 'PATTERN' from 'PyG-GNNBenchmarkDataset'
+2025-07-05 02:31:11,967 - INFO - === STARTING OPTIMIZED TRAINING ===
+2025-07-05 02:31:11,967 - INFO - Start from epoch 0
+2025-07-05 02:31:33,429 - INFO - train: {'epoch': 0, 'time_epoch': 20.01473, 'eta': 1981.45848, 'eta_hours': 0.55041, 'loss': 0.20138312, 'lr': 0.0, 'params': 302385, 'time_iter': 0.06394, 'accuracy': 0.48039, 'precision': 0.18016, 'recall': 0.54744, 'f1': 0.27111, 'auc': 0.50438, 'accuracy-SBM': 0.50673}
+2025-07-05 02:31:33,433 - INFO - ...computing epoch stats took: 1.44s
+2025-07-05 02:31:35,686 - INFO - val: {'epoch': 0, 'time_epoch': 1.98752, 'loss': 0.19987153, 'lr': 0, 'params': 302385, 'time_iter': 0.03155, 'accuracy': 0.43966, 'precision': 0.18445, 'recall': 0.6329, 'f1': 0.28566, 'auc': 0.51752, 'accuracy-SBM': 0.51549}
+2025-07-05 02:31:35,689 - INFO - ...computing epoch stats took: 0.27s
+2025-07-05 02:31:38,184 - INFO - test: {'epoch': 0, 'time_epoch': 2.23079, 'loss': 0.19923946, 'lr': 0, 'params': 302385, 'time_iter': 0.03541, 'accuracy': 0.43696, 'precision': 0.18104, 'recall': 0.62299, 'f1': 0.28056, 'auc': 0.51153, 'accuracy-SBM': 0.51007}
+2025-07-05 02:31:38,186 - INFO - ...computing epoch stats took: 0.26s
+2025-07-05 02:31:38,186 - INFO - > Epoch 0: took 26.2s (avg 26.2s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:31:57,552 - INFO - train: {'epoch': 1, 'time_epoch': 17.93483, 'eta': 1859.52854, 'eta_hours': 0.51654, 'loss': 0.19850416, 'lr': 0.0001, 'params': 302385, 'time_iter': 0.0573, 'accuracy': 0.52224, 'precision': 0.20982, 'recall': 0.617, 'f1': 0.31315, 'auc': 0.58193, 'accuracy-SBM': 0.55947}
+2025-07-05 02:31:57,555 - INFO - ...computing epoch stats took: 1.43s
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:31:59,579 - INFO - val: {'epoch': 1, 'time_epoch': 1.75038, 'loss': 0.20402929, 'lr': 0, 'params': 302385, 'time_iter': 0.02778, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48929, 'accuracy-SBM': 0.5}
+2025-07-05 02:31:59,581 - INFO - ...computing epoch stats took: 0.27s
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:32:01,598 - INFO - test: {'epoch': 1, 'time_epoch': 1.76701, 'loss': 0.20317369, 'lr': 0, 'params': 302385, 'time_iter': 0.02805, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.49404, 'accuracy-SBM': 0.5}
+2025-07-05 02:32:01,599 - INFO - ...computing epoch stats took: 0.25s
+2025-07-05 02:32:01,600 - INFO - > Epoch 1: took 23.4s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:32:20,855 - INFO - train: {'epoch': 2, 'time_epoch': 17.86591, 'eta': 1804.70039, 'eta_hours': 0.50131, 'loss': 0.19329403, 'lr': 0.0002, 'params': 302385, 'time_iter': 0.05708, 'accuracy': 0.56827, 'precision': 0.23666, 'recall': 0.6497, 'f1': 0.34694, 'auc': 0.63638, 'accuracy-SBM': 0.60025}
+2025-07-05 02:32:20,858 - INFO - ...computing epoch stats took: 1.38s
+2025-07-05 02:32:22,873 - INFO - val: {'epoch': 2, 'time_epoch': 1.7533, 'loss': 0.20035653, 'lr': 0, 'params': 302385, 'time_iter': 0.02783, 'accuracy': 0.44014, 'precision': 0.17513, 'recall': 0.58292, 'f1': 0.26934, 'auc': 0.49351, 'accuracy-SBM': 0.49617}
+2025-07-05 02:32:22,874 - INFO - ...computing epoch stats took: 0.26s
+2025-07-05 02:32:24,896 - INFO - test: {'epoch': 2, 'time_epoch': 1.7611, 'loss': 0.19975679, 'lr': 0, 'params': 302385, 'time_iter': 0.02795, 'accuracy': 0.44616, 'precision': 0.17468, 'recall': 0.57532, 'f1': 0.26799, 'auc': 0.49264, 'accuracy-SBM': 0.49692}
+2025-07-05 02:32:24,897 - INFO - ...computing epoch stats took: 0.26s
+2025-07-05 02:32:24,898 - INFO - > Epoch 2: took 23.3s (avg 24.3s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:32:45,587 - INFO - train: {'epoch': 3, 'time_epoch': 18.0447, 'eta': 1772.6442, 'eta_hours': 0.4924, 'loss': 0.18861929, 'lr': 0.0003, 'params': 302385, 'time_iter': 0.05765, 'accuracy': 0.5985, 'precision': 0.25463, 'recall': 0.66132, 'f1': 0.36768, 'auc': 0.66905, 'accuracy-SBM': 0.62318}
+2025-07-05 02:32:47,831 - INFO - val: {'epoch': 3, 'time_epoch': 1.79818, 'loss': 0.19988552, 'lr': 0, 'params': 302385, 'time_iter': 0.02854, 'accuracy': 0.51725, 'precision': 0.18039, 'recall': 0.4874, 'f1': 0.26332, 'auc': 0.50929, 'accuracy-SBM': 0.50553}
+2025-07-05 02:32:49,896 - INFO - test: {'epoch': 3, 'time_epoch': 1.79383, 'loss': 0.19929536, 'lr': 0, 'params': 302385, 'time_iter': 0.02847, 'accuracy': 0.53029, 'precision': 0.17839, 'recall': 0.46191, 'f1': 0.25738, 'auc': 0.50494, 'accuracy-SBM': 0.50342}
+2025-07-05 02:32:49,898 - INFO - > Epoch 3: took 25.0s (avg 24.5s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:33:09,551 - INFO - train: {'epoch': 4, 'time_epoch': 18.19698, 'eta': 1749.08595, 'eta_hours': 0.48586, 'loss': 0.18394811, 'lr': 0.0004, 'params': 302385, 'time_iter': 0.05814, 'accuracy': 0.62693, 'precision': 0.27261, 'recall': 0.66749, 'f1': 0.38712, 'auc': 0.69558, 'accuracy-SBM': 0.64286}
+2025-07-05 02:33:11,739 - INFO - val: {'epoch': 4, 'time_epoch': 1.74534, 'loss': 0.20619254, 'lr': 0, 'params': 302385, 'time_iter': 0.0277, 'accuracy': 0.53319, 'precision': 0.17149, 'recall': 0.4273, 'f1': 0.24476, 'auc': 0.48823, 'accuracy-SBM': 0.49163}
+2025-07-05 02:33:13,959 - INFO - test: {'epoch': 4, 'time_epoch': 1.77103, 'loss': 0.20577139, 'lr': 0, 'params': 302385, 'time_iter': 0.02811, 'accuracy': 0.53622, 'precision': 0.17219, 'recall': 0.42856, 'f1': 0.24567, 'auc': 0.49251, 'accuracy-SBM': 0.49391}
+2025-07-05 02:33:13,961 - INFO - > Epoch 4: took 24.1s (avg 24.4s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:33:33,577 - INFO - train: {'epoch': 5, 'time_epoch': 18.1964, 'eta': 1727.30566, 'eta_hours': 0.47981, 'loss': 0.18192983, 'lr': 0.0005, 'params': 302385, 'time_iter': 0.05814, 'accuracy': 0.63681, 'precision': 0.27922, 'recall': 0.66876, 'f1': 0.39396, 'auc': 0.70491, 'accuracy-SBM': 0.64936}
+2025-07-05 02:33:35,629 - INFO - val: {'epoch': 5, 'time_epoch': 1.78143, 'loss': 0.20232143, 'lr': 0, 'params': 302385, 'time_iter': 0.02828, 'accuracy': 0.30828, 'precision': 0.17485, 'recall': 0.78178, 'f1': 0.28578, 'auc': 0.48513, 'accuracy-SBM': 0.4941}
+2025-07-05 02:33:37,673 - INFO - test: {'epoch': 5, 'time_epoch': 1.78872, 'loss': 0.20155811, 'lr': 0, 'params': 302385, 'time_iter': 0.02839, 'accuracy': 0.30308, 'precision': 0.17453, 'recall': 0.79226, 'f1': 0.28605, 'auc': 0.49168, 'accuracy-SBM': 0.49535}
+2025-07-05 02:33:37,675 - INFO - > Epoch 5: took 23.7s (avg 24.3s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:33:57,348 - INFO - train: {'epoch': 6, 'time_epoch': 18.25979, 'eta': 1707.39159, 'eta_hours': 0.47428, 'loss': 0.19418864, 'lr': 0.00049986, 'params': 302385, 'time_iter': 0.05834, 'accuracy': 0.5586, 'precision': 0.22786, 'recall': 0.6282, 'f1': 0.33442, 'auc': 0.62257, 'accuracy-SBM': 0.58594}
+2025-07-05 02:33:59,388 - INFO - val: {'epoch': 6, 'time_epoch': 1.78816, 'loss': 0.20865089, 'lr': 0, 'params': 302385, 'time_iter': 0.02838, 'accuracy': 0.17702, 'precision': 0.17702, 'recall': 1.0, 'f1': 0.3008, 'auc': 0.51355, 'accuracy-SBM': 0.5}
+2025-07-05 02:34:01,421 - INFO - test: {'epoch': 6, 'time_epoch': 1.78755, 'loss': 0.20806347, 'lr': 0, 'params': 302385, 'time_iter': 0.02837, 'accuracy': 0.17622, 'precision': 0.17622, 'recall': 1.0, 'f1': 0.29964, 'auc': 0.51188, 'accuracy-SBM': 0.5}
+2025-07-05 02:34:01,422 - INFO - > Epoch 6: took 23.7s (avg 24.2s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:34:21,079 - INFO - train: {'epoch': 7, 'time_epoch': 18.26824, 'eta': 1687.9882, 'eta_hours': 0.46889, 'loss': 0.19571143, 'lr': 0.00049945, 'params': 302385, 'time_iter': 0.05836, 'accuracy': 0.54657, 'precision': 0.2212, 'recall': 0.62233, 'f1': 0.32639, 'auc': 0.60806, 'accuracy-SBM': 0.57633}
+2025-07-05 02:34:23,106 - INFO - val: {'epoch': 7, 'time_epoch': 1.76888, 'loss': 0.20531615, 'lr': 0, 'params': 302385, 'time_iter': 0.02808, 'accuracy': 0.17702, 'precision': 0.17702, 'recall': 1.0, 'f1': 0.3008, 'auc': 0.51804, 'accuracy-SBM': 0.5}
+2025-07-05 02:34:25,153 - INFO - test: {'epoch': 7, 'time_epoch': 1.7886, 'loss': 0.20461662, 'lr': 0, 'params': 302385, 'time_iter': 0.02839, 'accuracy': 0.17622, 'precision': 0.17622, 'recall': 1.0, 'f1': 0.29964, 'auc': 0.51303, 'accuracy-SBM': 0.5}
+2025-07-05 02:34:25,155 - INFO - > Epoch 7: took 23.7s (avg 24.1s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:34:44,921 - INFO - train: {'epoch': 8, 'time_epoch': 18.38102, 'eta': 1669.97741, 'eta_hours': 0.46388, 'loss': 0.19447706, 'lr': 0.00049877, 'params': 302385, 'time_iter': 0.05873, 'accuracy': 0.54526, 'precision': 0.22502, 'recall': 0.64493, 'f1': 0.33364, 'auc': 0.62022, 'accuracy-SBM': 0.58441}
+2025-07-05 02:34:46,963 - INFO - val: {'epoch': 8, 'time_epoch': 1.7843, 'loss': 0.21266774, 'lr': 0, 'params': 302385, 'time_iter': 0.02832, 'accuracy': 0.17702, 'precision': 0.17702, 'recall': 1.0, 'f1': 0.3008, 'auc': 0.50962, 'accuracy-SBM': 0.5}
+2025-07-05 02:34:49,046 - INFO - test: {'epoch': 8, 'time_epoch': 1.81418, 'loss': 0.21177095, 'lr': 0, 'params': 302385, 'time_iter': 0.0288, 'accuracy': 0.17622, 'precision': 0.17622, 'recall': 1.0, 'f1': 0.29964, 'auc': 0.50659, 'accuracy-SBM': 0.5}
+2025-07-05 02:34:49,048 - INFO - > Epoch 8: took 23.9s (avg 24.1s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:35:09,103 - INFO - train: {'epoch': 9, 'time_epoch': 18.56508, 'eta': 1653.54917, 'eta_hours': 0.45932, 'loss': 0.19194534, 'lr': 0.00049782, 'params': 302385, 'time_iter': 0.05931, 'accuracy': 0.56428, 'precision': 0.23529, 'recall': 0.65264, 'f1': 0.34589, 'auc': 0.64039, 'accuracy-SBM': 0.59899}
+2025-07-05 02:35:11,130 - INFO - val: {'epoch': 9, 'time_epoch': 1.77277, 'loss': 0.20377076, 'lr': 0, 'params': 302385, 'time_iter': 0.02814, 'accuracy': 0.17702, 'precision': 0.17702, 'recall': 1.0, 'f1': 0.3008, 'auc': 0.48177, 'accuracy-SBM': 0.5}
+2025-07-05 02:35:13,185 - INFO - test: {'epoch': 9, 'time_epoch': 1.79558, 'loss': 0.20303574, 'lr': 0, 'params': 302385, 'time_iter': 0.0285, 'accuracy': 0.17622, 'precision': 0.17622, 'recall': 1.0, 'f1': 0.29964, 'auc': 0.48674, 'accuracy-SBM': 0.5}
+2025-07-05 02:35:13,187 - INFO - > Epoch 9: took 24.1s (avg 24.1s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:35:33,298 - INFO - train: {'epoch': 10, 'time_epoch': 18.63142, 'eta': 1637.26911, 'eta_hours': 0.4548, 'loss': 0.19085241, 'lr': 0.00049659, 'params': 302385, 'time_iter': 0.05953, 'accuracy': 0.57281, 'precision': 0.23986, 'recall': 0.65469, 'f1': 0.35109, 'auc': 0.64827, 'accuracy-SBM': 0.60498}
+2025-07-05 02:35:35,524 - INFO - val: {'epoch': 10, 'time_epoch': 1.80492, 'loss': 0.20395194, 'lr': 0, 'params': 302385, 'time_iter': 0.02865, 'accuracy': 0.81896, 'precision': 0.17239, 'recall': 0.00598, 'f1': 0.01156, 'auc': 0.48223, 'accuracy-SBM': 0.4999}
+2025-07-05 02:35:37,771 - INFO - test: {'epoch': 10, 'time_epoch': 1.81358, 'loss': 0.20332015, 'lr': 0, 'params': 302385, 'time_iter': 0.02879, 'accuracy': 0.82065, 'precision': 0.16889, 'recall': 0.00453, 'f1': 0.00882, 'auc': 0.48624, 'accuracy-SBM': 0.49988}
+2025-07-05 02:35:37,773 - INFO - > Epoch 10: took 24.6s (avg 24.2s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:35:56,884 - INFO - train: {'epoch': 11, 'time_epoch': 18.68315, 'eta': 1620.97655, 'eta_hours': 0.45027, 'loss': 0.19026895, 'lr': 0.00049509, 'params': 302385, 'time_iter': 0.05969, 'accuracy': 0.57798, 'precision': 0.24223, 'recall': 0.65349, 'f1': 0.35345, 'auc': 0.65249, 'accuracy-SBM': 0.60764}
+2025-07-05 02:35:58,930 - INFO - val: {'epoch': 11, 'time_epoch': 1.79909, 'loss': 0.21261468, 'lr': 0, 'params': 302385, 'time_iter': 0.02856, 'accuracy': 0.17702, 'precision': 0.17702, 'recall': 1.0, 'f1': 0.3008, 'auc': 0.48597, 'accuracy-SBM': 0.5}
+2025-07-05 02:36:00,982 - INFO - test: {'epoch': 11, 'time_epoch': 1.80648, 'loss': 0.21179069, 'lr': 0, 'params': 302385, 'time_iter': 0.02867, 'accuracy': 0.17622, 'precision': 0.17622, 'recall': 1.0, 'f1': 0.29964, 'auc': 0.49062, 'accuracy-SBM': 0.5}
+2025-07-05 02:36:00,983 - INFO - > Epoch 11: took 23.2s (avg 24.1s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:36:21,327 - INFO - train: {'epoch': 12, 'time_epoch': 18.7451, 'eta': 1604.7308, 'eta_hours': 0.44576, 'loss': 0.18858682, 'lr': 0.00049333, 'params': 302385, 'time_iter': 0.05989, 'accuracy': 0.58796, 'precision': 0.24897, 'recall': 0.6617, 'f1': 0.36181, 'auc': 0.66382, 'accuracy-SBM': 0.61692}
+2025-07-05 02:36:23,591 - INFO - val: {'epoch': 12, 'time_epoch': 1.83088, 'loss': 0.20001532, 'lr': 0, 'params': 302385, 'time_iter': 0.02906, 'accuracy': 0.63894, 'precision': 0.18381, 'recall': 0.30217, 'f1': 0.22857, 'auc': 0.51779, 'accuracy-SBM': 0.50678}
+2025-07-05 02:36:25,685 - INFO - test: {'epoch': 12, 'time_epoch': 1.83073, 'loss': 0.19937865, 'lr': 0, 'params': 302385, 'time_iter': 0.02906, 'accuracy': 0.62753, 'precision': 0.18127, 'recall': 0.31667, 'f1': 0.23056, 'auc': 0.51377, 'accuracy-SBM': 0.50535}
+2025-07-05 02:36:25,687 - INFO - > Epoch 12: took 24.7s (avg 24.1s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:36:45,965 - INFO - train: {'epoch': 13, 'time_epoch': 18.81473, 'eta': 1588.55571, 'eta_hours': 0.44127, 'loss': 0.18714874, 'lr': 0.0004913, 'params': 302385, 'time_iter': 0.06011, 'accuracy': 0.59836, 'precision': 0.25471, 'recall': 0.66219, 'f1': 0.36791, 'auc': 0.67291, 'accuracy-SBM': 0.62343}
+2025-07-05 02:36:48,007 - INFO - val: {'epoch': 13, 'time_epoch': 1.78633, 'loss': 0.2031132, 'lr': 0, 'params': 302385, 'time_iter': 0.02835, 'accuracy': 0.17702, 'precision': 0.17702, 'recall': 1.0, 'f1': 0.3008, 'auc': 0.49205, 'accuracy-SBM': 0.5}
+2025-07-05 02:36:50,051 - INFO - test: {'epoch': 13, 'time_epoch': 1.79099, 'loss': 0.20285791, 'lr': 0, 'params': 302385, 'time_iter': 0.02843, 'accuracy': 0.17622, 'precision': 0.17622, 'recall': 1.0, 'f1': 0.29964, 'auc': 0.49512, 'accuracy-SBM': 0.5}
+2025-07-05 02:36:50,052 - INFO - > Epoch 13: took 24.4s (avg 24.1s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:37:10,296 - INFO - train: {'epoch': 14, 'time_epoch': 18.822, 'eta': 1572.06988, 'eta_hours': 0.43669, 'loss': 0.18572694, 'lr': 0.00048901, 'params': 302385, 'time_iter': 0.06013, 'accuracy': 0.60741, 'precision': 0.25972, 'recall': 0.66158, 'f1': 0.37301, 'auc': 0.68139, 'accuracy-SBM': 0.62869}
+2025-07-05 02:37:12,546 - INFO - val: {'epoch': 14, 'time_epoch': 1.82427, 'loss': 0.20380843, 'lr': 0, 'params': 302385, 'time_iter': 0.02896, 'accuracy': 0.62909, 'precision': 0.16402, 'recall': 0.26734, 'f1': 0.2033, 'auc': 0.48216, 'accuracy-SBM': 0.48712}
+2025-07-05 02:37:14,808 - INFO - test: {'epoch': 14, 'time_epoch': 1.8356, 'loss': 0.20337174, 'lr': 0, 'params': 302385, 'time_iter': 0.02914, 'accuracy': 0.62365, 'precision': 0.16661, 'recall': 0.28378, 'f1': 0.20995, 'auc': 0.4862, 'accuracy-SBM': 0.49006}
+2025-07-05 02:37:14,810 - INFO - > Epoch 14: took 24.8s (avg 24.2s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:37:34,151 - INFO - train: {'epoch': 15, 'time_epoch': 18.88293, 'eta': 1555.61187, 'eta_hours': 0.43211, 'loss': 0.18523243, 'lr': 0.00048645, 'params': 302385, 'time_iter': 0.06033, 'accuracy': 0.61539, 'precision': 0.26331, 'recall': 0.65576, 'f1': 0.37575, 'auc': 0.68448, 'accuracy-SBM': 0.63125}
+2025-07-05 02:37:36,229 - INFO - val: {'epoch': 15, 'time_epoch': 1.81837, 'loss': 0.20625949, 'lr': 0, 'params': 302385, 'time_iter': 0.02886, 'accuracy': 0.17769, 'precision': 0.17704, 'recall': 0.99909, 'f1': 0.30078, 'auc': 0.48306, 'accuracy-SBM': 0.50005}
+2025-07-05 02:37:38,307 - INFO - test: {'epoch': 15, 'time_epoch': 1.82112, 'loss': 0.20541288, 'lr': 0, 'params': 302385, 'time_iter': 0.02891, 'accuracy': 0.17635, 'precision': 0.17623, 'recall': 0.99986, 'f1': 0.29964, 'auc': 0.48713, 'accuracy-SBM': 0.50003}
+2025-07-05 02:37:38,309 - INFO - > Epoch 15: took 23.5s (avg 24.1s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:37:58,698 - INFO - train: {'epoch': 16, 'time_epoch': 18.92703, 'eta': 1539.08393, 'eta_hours': 0.42752, 'loss': 0.18381501, 'lr': 0.00048364, 'params': 302385, 'time_iter': 0.06047, 'accuracy': 0.62379, 'precision': 0.26922, 'recall': 0.65987, 'f1': 0.38241, 'auc': 0.69261, 'accuracy-SBM': 0.63796}
+2025-07-05 02:38:00,783 - INFO - val: {'epoch': 16, 'time_epoch': 1.82631, 'loss': 0.20317012, 'lr': 0, 'params': 302385, 'time_iter': 0.02899, 'accuracy': 0.17702, 'precision': 0.17702, 'recall': 1.0, 'f1': 0.3008, 'auc': 0.48598, 'accuracy-SBM': 0.5}
+2025-07-05 02:38:02,871 - INFO - test: {'epoch': 16, 'time_epoch': 1.832, 'loss': 0.20238941, 'lr': 0, 'params': 302385, 'time_iter': 0.02908, 'accuracy': 0.17622, 'precision': 0.17622, 'recall': 1.0, 'f1': 0.29964, 'auc': 0.4895, 'accuracy-SBM': 0.5}
+2025-07-05 02:38:02,873 - INFO - > Epoch 16: took 24.6s (avg 24.2s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:38:24,533 - INFO - train: {'epoch': 17, 'time_epoch': 19.06606, 'eta': 1522.92274, 'eta_hours': 0.42303, 'loss': 0.18217524, 'lr': 0.00048057, 'params': 302385, 'time_iter': 0.06091, 'accuracy': 0.63099, 'precision': 0.27487, 'recall': 0.66569, 'f1': 0.38908, 'auc': 0.70143, 'accuracy-SBM': 0.64462}
+2025-07-05 02:38:26,587 - INFO - val: {'epoch': 17, 'time_epoch': 1.7967, 'loss': 0.22292744, 'lr': 0, 'params': 302385, 'time_iter': 0.02852, 'accuracy': 0.17702, 'precision': 0.17702, 'recall': 1.0, 'f1': 0.3008, 'auc': 0.48334, 'accuracy-SBM': 0.5}
+2025-07-05 02:38:28,646 - INFO - test: {'epoch': 17, 'time_epoch': 1.79819, 'loss': 0.22208403, 'lr': 0, 'params': 302385, 'time_iter': 0.02854, 'accuracy': 0.17635, 'precision': 0.17623, 'recall': 0.99986, 'f1': 0.29964, 'auc': 0.48743, 'accuracy-SBM': 0.50003}
+2025-07-05 02:38:28,648 - INFO - > Epoch 17: took 25.8s (avg 24.3s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:38:48,985 - INFO - train: {'epoch': 18, 'time_epoch': 18.87036, 'eta': 1505.62147, 'eta_hours': 0.41823, 'loss': 0.18076723, 'lr': 0.00047725, 'params': 302385, 'time_iter': 0.06029, 'accuracy': 0.63757, 'precision': 0.28015, 'recall': 0.67109, 'f1': 0.39529, 'auc': 0.70878, 'accuracy-SBM': 0.65073}
+2025-07-05 02:38:51,067 - INFO - val: {'epoch': 18, 'time_epoch': 1.82361, 'loss': 0.20024498, 'lr': 0, 'params': 302385, 'time_iter': 0.02895, 'accuracy': 0.17702, 'precision': 0.17702, 'recall': 1.0, 'f1': 0.3008, 'auc': 0.49356, 'accuracy-SBM': 0.5}
+2025-07-05 02:38:53,158 - INFO - test: {'epoch': 18, 'time_epoch': 1.83324, 'loss': 0.19953588, 'lr': 0, 'params': 302385, 'time_iter': 0.0291, 'accuracy': 0.17622, 'precision': 0.17622, 'recall': 1.0, 'f1': 0.29964, 'auc': 0.49274, 'accuracy-SBM': 0.5}
+2025-07-05 02:38:53,160 - INFO - > Epoch 18: took 24.5s (avg 24.3s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:39:13,551 - INFO - train: {'epoch': 19, 'time_epoch': 18.90867, 'eta': 1488.31656, 'eta_hours': 0.41342, 'loss': 0.17950015, 'lr': 0.00047368, 'params': 302385, 'time_iter': 0.06041, 'accuracy': 0.64423, 'precision': 0.28478, 'recall': 0.67188, 'f1': 0.40002, 'auc': 0.7148, 'accuracy-SBM': 0.65509}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:39:15,629 - INFO - val: {'epoch': 19, 'time_epoch': 1.8181, 'loss': 0.20966987, 'lr': 0, 'params': 302385, 'time_iter': 0.02886, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48693, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:39:17,712 - INFO - test: {'epoch': 19, 'time_epoch': 1.82507, 'loss': 0.2089432, 'lr': 0, 'params': 302385, 'time_iter': 0.02897, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48927, 'accuracy-SBM': 0.5}
+2025-07-05 02:39:17,714 - INFO - > Epoch 19: took 24.6s (avg 24.3s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:39:38,444 - INFO - train: {'epoch': 20, 'time_epoch': 18.97041, 'eta': 1471.09118, 'eta_hours': 0.40864, 'loss': 0.17777212, 'lr': 0.00046987, 'params': 302385, 'time_iter': 0.06061, 'accuracy': 0.64856, 'precision': 0.28951, 'recall': 0.68152, 'f1': 0.40639, 'auc': 0.723, 'accuracy-SBM': 0.6615}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:39:40,631 - INFO - val: {'epoch': 20, 'time_epoch': 1.93017, 'loss': 0.36893752, 'lr': 0, 'params': 302385, 'time_iter': 0.03064, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51574, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:39:42,686 - INFO - test: {'epoch': 20, 'time_epoch': 1.79851, 'loss': 0.36766475, 'lr': 0, 'params': 302385, 'time_iter': 0.02855, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51308, 'accuracy-SBM': 0.5}
+2025-07-05 02:39:42,687 - INFO - > Epoch 20: took 25.0s (avg 24.3s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:40:02,743 - INFO - train: {'epoch': 21, 'time_epoch': 19.66116, 'eta': 1456.15616, 'eta_hours': 0.40449, 'loss': 0.17626708, 'lr': 0.00046581, 'params': 302385, 'time_iter': 0.06282, 'accuracy': 0.6558, 'precision': 0.2951, 'recall': 0.6841, 'f1': 0.41234, 'auc': 0.7298, 'accuracy-SBM': 0.66692}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:40:04,919 - INFO - val: {'epoch': 21, 'time_epoch': 1.90608, 'loss': 0.37755024, 'lr': 0, 'params': 302385, 'time_iter': 0.03026, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48294, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:40:07,110 - INFO - test: {'epoch': 21, 'time_epoch': 1.92494, 'loss': 0.3762254, 'lr': 0, 'params': 302385, 'time_iter': 0.03055, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48664, 'accuracy-SBM': 0.5}
+2025-07-05 02:40:07,112 - INFO - > Epoch 21: took 24.4s (avg 24.3s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:40:29,397 - INFO - train: {'epoch': 22, 'time_epoch': 19.60633, 'eta': 1440.62661, 'eta_hours': 0.40017, 'loss': 0.17497617, 'lr': 0.00046152, 'params': 302385, 'time_iter': 0.06264, 'accuracy': 0.65826, 'precision': 0.29823, 'recall': 0.69176, 'f1': 0.41678, 'auc': 0.73529, 'accuracy-SBM': 0.67142}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:40:31,617 - INFO - val: {'epoch': 22, 'time_epoch': 1.95432, 'loss': 0.3842721, 'lr': 0, 'params': 302385, 'time_iter': 0.03102, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51282, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:40:33,824 - INFO - test: {'epoch': 22, 'time_epoch': 1.9484, 'loss': 0.38294354, 'lr': 0, 'params': 302385, 'time_iter': 0.03093, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51022, 'accuracy-SBM': 0.5}
+2025-07-05 02:40:33,825 - INFO - > Epoch 22: took 26.7s (avg 24.4s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:40:54,585 - INFO - train: {'epoch': 23, 'time_epoch': 19.30001, 'eta': 1423.78731, 'eta_hours': 0.3955, 'loss': 0.17366507, 'lr': 0.000457, 'params': 302385, 'time_iter': 0.06166, 'accuracy': 0.66407, 'precision': 0.30323, 'recall': 0.69582, 'f1': 0.42238, 'auc': 0.74115, 'accuracy-SBM': 0.67654}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:40:56,673 - INFO - val: {'epoch': 23, 'time_epoch': 1.83625, 'loss': 0.39104761, 'lr': 0, 'params': 302385, 'time_iter': 0.02915, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51203, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:40:58,789 - INFO - test: {'epoch': 23, 'time_epoch': 1.86282, 'loss': 0.38970548, 'lr': 0, 'params': 302385, 'time_iter': 0.02957, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.50931, 'accuracy-SBM': 0.5}
+2025-07-05 02:40:58,791 - INFO - > Epoch 23: took 25.0s (avg 24.5s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:41:19,546 - INFO - train: {'epoch': 24, 'time_epoch': 19.26298, 'eta': 1406.64007, 'eta_hours': 0.39073, 'loss': 0.17256328, 'lr': 0.00045225, 'params': 302385, 'time_iter': 0.06154, 'accuracy': 0.66773, 'precision': 0.30639, 'recall': 0.6982, 'f1': 0.42589, 'auc': 0.74552, 'accuracy-SBM': 0.6797}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:41:21,683 - INFO - val: {'epoch': 24, 'time_epoch': 1.86563, 'loss': 0.33470125, 'lr': 0, 'params': 302385, 'time_iter': 0.02961, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51767, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:41:23,827 - INFO - test: {'epoch': 24, 'time_epoch': 1.88005, 'loss': 0.33362433, 'lr': 0, 'params': 302385, 'time_iter': 0.02984, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.5138, 'accuracy-SBM': 0.5}
+2025-07-05 02:41:23,829 - INFO - > Epoch 24: took 25.0s (avg 24.5s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:41:44,478 - INFO - train: {'epoch': 25, 'time_epoch': 19.21215, 'eta': 1389.18541, 'eta_hours': 0.38588, 'loss': 0.17150568, 'lr': 0.00044729, 'params': 302385, 'time_iter': 0.06138, 'accuracy': 0.66887, 'precision': 0.30837, 'recall': 0.70477, 'f1': 0.42903, 'auc': 0.74979, 'accuracy-SBM': 0.68297}
+2025-07-05 02:41:46,551 - INFO - val: {'epoch': 25, 'time_epoch': 1.82414, 'loss': 0.19963824, 'lr': 0, 'params': 302385, 'time_iter': 0.02895, 'accuracy': 0.26474, 'precision': 0.18024, 'recall': 0.8888, 'f1': 0.29971, 'auc': 0.51089, 'accuracy-SBM': 0.50965}
+2025-07-05 02:41:48,644 - INFO - test: {'epoch': 25, 'time_epoch': 1.84464, 'loss': 0.19894251, 'lr': 0, 'params': 302385, 'time_iter': 0.02928, 'accuracy': 0.26712, 'precision': 0.17929, 'recall': 0.88297, 'f1': 0.29806, 'auc': 0.50811, 'accuracy-SBM': 0.50917}
+2025-07-05 02:41:48,646 - INFO - > Epoch 25: took 24.8s (avg 24.5s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:42:09,269 - INFO - train: {'epoch': 26, 'time_epoch': 19.09235, 'eta': 1371.27667, 'eta_hours': 0.38091, 'loss': 0.17070741, 'lr': 0.0004421, 'params': 302385, 'time_iter': 0.061, 'accuracy': 0.67314, 'precision': 0.3116, 'recall': 0.70433, 'f1': 0.43205, 'auc': 0.75303, 'accuracy-SBM': 0.68539}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:42:11,454 - INFO - val: {'epoch': 26, 'time_epoch': 1.91859, 'loss': 0.42086134, 'lr': 0, 'params': 302385, 'time_iter': 0.03045, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48535, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:42:13,596 - INFO - test: {'epoch': 26, 'time_epoch': 1.88656, 'loss': 0.41939397, 'lr': 0, 'params': 302385, 'time_iter': 0.02995, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48836, 'accuracy-SBM': 0.5}
+2025-07-05 02:42:13,597 - INFO - > Epoch 26: took 25.0s (avg 24.5s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:42:35,508 - INFO - train: {'epoch': 27, 'time_epoch': 19.28243, 'eta': 1353.77216, 'eta_hours': 0.37605, 'loss': 0.16977076, 'lr': 0.00043671, 'params': 302385, 'time_iter': 0.06161, 'accuracy': 0.67516, 'precision': 0.31383, 'recall': 0.7082, 'f1': 0.43493, 'auc': 0.75641, 'accuracy-SBM': 0.68814}
+2025-07-05 02:42:37,623 - INFO - val: {'epoch': 27, 'time_epoch': 1.85173, 'loss': 0.20172069, 'lr': 0, 'params': 302385, 'time_iter': 0.02939, 'accuracy': 0.18374, 'precision': 0.17721, 'recall': 0.99126, 'f1': 0.30067, 'auc': 0.48679, 'accuracy-SBM': 0.50065}
+2025-07-05 02:42:39,739 - INFO - test: {'epoch': 27, 'time_epoch': 1.85112, 'loss': 0.2010097, 'lr': 0, 'params': 302385, 'time_iter': 0.02938, 'accuracy': 0.18162, 'precision': 0.17629, 'recall': 0.99223, 'f1': 0.29938, 'auc': 0.4898, 'accuracy-SBM': 0.50022}
+2025-07-05 02:42:39,741 - INFO - > Epoch 27: took 26.1s (avg 24.6s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:43:01,300 - INFO - train: {'epoch': 28, 'time_epoch': 19.03655, 'eta': 1335.54305, 'eta_hours': 0.37098, 'loss': 0.16955158, 'lr': 0.00043111, 'params': 302385, 'time_iter': 0.06082, 'accuracy': 0.67539, 'precision': 0.31444, 'recall': 0.71085, 'f1': 0.43601, 'auc': 0.75753, 'accuracy-SBM': 0.68932}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:43:03,421 - INFO - val: {'epoch': 28, 'time_epoch': 1.86807, 'loss': 0.23098992, 'lr': 0, 'params': 302385, 'time_iter': 0.02965, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51666, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:43:05,534 - INFO - test: {'epoch': 28, 'time_epoch': 1.86594, 'loss': 0.23027151, 'lr': 0, 'params': 302385, 'time_iter': 0.02962, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51244, 'accuracy-SBM': 0.5}
+2025-07-05 02:43:05,535 - INFO - > Epoch 28: took 25.8s (avg 24.6s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:43:26,015 - INFO - train: {'epoch': 29, 'time_epoch': 19.07111, 'eta': 1317.34075, 'eta_hours': 0.36593, 'loss': 0.16863515, 'lr': 0.00042531, 'params': 302385, 'time_iter': 0.06093, 'accuracy': 0.67987, 'precision': 0.31811, 'recall': 0.71143, 'f1': 0.43964, 'auc': 0.76108, 'accuracy-SBM': 0.69227}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:43:28,105 - INFO - val: {'epoch': 29, 'time_epoch': 1.83819, 'loss': 0.37025186, 'lr': 0, 'params': 302385, 'time_iter': 0.02918, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48218, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:43:30,193 - INFO - test: {'epoch': 29, 'time_epoch': 1.83702, 'loss': 0.36865468, 'lr': 0, 'params': 302385, 'time_iter': 0.02916, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48623, 'accuracy-SBM': 0.5}
+2025-07-05 02:43:30,195 - INFO - > Epoch 29: took 24.7s (avg 24.6s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:43:49,889 - INFO - train: {'epoch': 30, 'time_epoch': 19.22097, 'eta': 1299.41597, 'eta_hours': 0.36095, 'loss': 0.16776081, 'lr': 0.00041932, 'params': 302385, 'time_iter': 0.06141, 'accuracy': 0.68227, 'precision': 0.32063, 'recall': 0.71496, 'f1': 0.44272, 'auc': 0.76427, 'accuracy-SBM': 0.69512}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:43:52,017 - INFO - val: {'epoch': 30, 'time_epoch': 1.86536, 'loss': 0.40858158, 'lr': 0, 'params': 302385, 'time_iter': 0.02961, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.4843, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:43:54,161 - INFO - test: {'epoch': 30, 'time_epoch': 1.88171, 'loss': 0.4065527, 'lr': 0, 'params': 302385, 'time_iter': 0.02987, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48775, 'accuracy-SBM': 0.5}
+2025-07-05 02:43:54,163 - INFO - > Epoch 30: took 24.0s (avg 24.6s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:44:14,923 - INFO - train: {'epoch': 31, 'time_epoch': 19.25503, 'eta': 1281.48255, 'eta_hours': 0.35597, 'loss': 0.16711693, 'lr': 0.00041315, 'params': 302385, 'time_iter': 0.06152, 'accuracy': 0.68609, 'precision': 0.32362, 'recall': 0.71403, 'f1': 0.44538, 'auc': 0.7666, 'accuracy-SBM': 0.69707}
+2025-07-05 02:44:17,063 - INFO - val: {'epoch': 31, 'time_epoch': 1.88251, 'loss': 0.20499997, 'lr': 0, 'params': 302385, 'time_iter': 0.02988, 'accuracy': 0.21539, 'precision': 0.17859, 'recall': 0.9536, 'f1': 0.30085, 'auc': 0.50728, 'accuracy-SBM': 0.5051}
+2025-07-05 02:44:19,211 - INFO - test: {'epoch': 31, 'time_epoch': 1.89564, 'loss': 0.20420676, 'lr': 0, 'params': 302385, 'time_iter': 0.03009, 'accuracy': 0.21069, 'precision': 0.17743, 'recall': 0.95686, 'f1': 0.29935, 'auc': 0.50507, 'accuracy-SBM': 0.50396}
+2025-07-05 02:44:19,213 - INFO - > Epoch 31: took 25.0s (avg 24.6s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:44:41,059 - INFO - train: {'epoch': 32, 'time_epoch': 19.29084, 'eta': 1263.54174, 'eta_hours': 0.35098, 'loss': 0.16671085, 'lr': 0.00040679, 'params': 302385, 'time_iter': 0.06163, 'accuracy': 0.68479, 'precision': 0.32323, 'recall': 0.71836, 'f1': 0.44585, 'auc': 0.76809, 'accuracy-SBM': 0.69798}
+2025-07-05 02:44:43,140 - INFO - val: {'epoch': 32, 'time_epoch': 1.82801, 'loss': 0.20174717, 'lr': 0, 'params': 302385, 'time_iter': 0.02902, 'accuracy': 0.17702, 'precision': 0.17702, 'recall': 1.0, 'f1': 0.3008, 'auc': 0.48118, 'accuracy-SBM': 0.5}
+2025-07-05 02:44:45,218 - INFO - test: {'epoch': 32, 'time_epoch': 1.83346, 'loss': 0.20102983, 'lr': 0, 'params': 302385, 'time_iter': 0.0291, 'accuracy': 0.17622, 'precision': 0.17622, 'recall': 1.0, 'f1': 0.29964, 'auc': 0.48705, 'accuracy-SBM': 0.5}
+2025-07-05 02:44:45,220 - INFO - > Epoch 32: took 26.0s (avg 24.6s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:45:05,626 - INFO - train: {'epoch': 33, 'time_epoch': 18.99523, 'eta': 1244.94767, 'eta_hours': 0.34582, 'loss': 0.16620296, 'lr': 0.00040027, 'params': 302385, 'time_iter': 0.06069, 'accuracy': 0.68664, 'precision': 0.32486, 'recall': 0.71899, 'f1': 0.44752, 'auc': 0.76983, 'accuracy-SBM': 0.69935}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:45:07,695 - INFO - val: {'epoch': 33, 'time_epoch': 1.82, 'loss': 0.20541119, 'lr': 0, 'params': 302385, 'time_iter': 0.02889, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51852, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:45:09,780 - INFO - test: {'epoch': 33, 'time_epoch': 1.83622, 'loss': 0.20478156, 'lr': 0, 'params': 302385, 'time_iter': 0.02915, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51291, 'accuracy-SBM': 0.5}
+2025-07-05 02:45:09,782 - INFO - > Epoch 33: took 24.6s (avg 24.6s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:45:30,217 - INFO - train: {'epoch': 34, 'time_epoch': 18.99083, 'eta': 1226.32253, 'eta_hours': 0.34065, 'loss': 0.16574065, 'lr': 0.00039358, 'params': 302385, 'time_iter': 0.06067, 'accuracy': 0.68903, 'precision': 0.32684, 'recall': 0.71881, 'f1': 0.44935, 'auc': 0.77172, 'accuracy-SBM': 0.70073}
+2025-07-05 02:45:32,295 - INFO - val: {'epoch': 34, 'time_epoch': 1.83062, 'loss': 0.2198131, 'lr': 0, 'params': 302385, 'time_iter': 0.02906, 'accuracy': 0.17702, 'precision': 0.17702, 'recall': 1.0, 'f1': 0.3008, 'auc': 0.51781, 'accuracy-SBM': 0.5}
+2025-07-05 02:45:34,377 - INFO - test: {'epoch': 34, 'time_epoch': 1.83625, 'loss': 0.21903741, 'lr': 0, 'params': 302385, 'time_iter': 0.02915, 'accuracy': 0.17622, 'precision': 0.17622, 'recall': 1.0, 'f1': 0.29964, 'auc': 0.51109, 'accuracy-SBM': 0.5}
+2025-07-05 02:45:34,379 - INFO - > Epoch 34: took 24.6s (avg 24.6s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:45:54,799 - INFO - train: {'epoch': 35, 'time_epoch': 19.01832, 'eta': 1207.72592, 'eta_hours': 0.33548, 'loss': 0.16543951, 'lr': 0.00038674, 'params': 302385, 'time_iter': 0.06076, 'accuracy': 0.68885, 'precision': 0.32715, 'recall': 0.72177, 'f1': 0.45023, 'auc': 0.77275, 'accuracy-SBM': 0.70178}
+2025-07-05 02:45:56,867 - INFO - val: {'epoch': 35, 'time_epoch': 1.81923, 'loss': 0.21580568, 'lr': 0, 'params': 302385, 'time_iter': 0.02888, 'accuracy': 0.17702, 'precision': 0.17702, 'recall': 1.0, 'f1': 0.3008, 'auc': 0.48872, 'accuracy-SBM': 0.5}
+2025-07-05 02:45:58,947 - INFO - test: {'epoch': 35, 'time_epoch': 1.83572, 'loss': 0.21505301, 'lr': 0, 'params': 302385, 'time_iter': 0.02914, 'accuracy': 0.17622, 'precision': 0.17622, 'recall': 1.0, 'f1': 0.29964, 'auc': 0.48819, 'accuracy-SBM': 0.5}
+2025-07-05 02:45:58,948 - INFO - > Epoch 35: took 24.6s (avg 24.6s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:46:19,360 - INFO - train: {'epoch': 36, 'time_epoch': 19.02121, 'eta': 1189.11146, 'eta_hours': 0.33031, 'loss': 0.16435472, 'lr': 0.00037974, 'params': 302385, 'time_iter': 0.06077, 'accuracy': 0.69457, 'precision': 0.33207, 'recall': 0.72212, 'f1': 0.45494, 'auc': 0.77673, 'accuracy-SBM': 0.70539}
+2025-07-05 02:46:21,444 - INFO - val: {'epoch': 36, 'time_epoch': 1.83818, 'loss': 0.21778802, 'lr': 0, 'params': 302385, 'time_iter': 0.02918, 'accuracy': 0.17702, 'precision': 0.17702, 'recall': 1.0, 'f1': 0.3008, 'auc': 0.51979, 'accuracy-SBM': 0.5}
+2025-07-05 02:46:23,560 - INFO - test: {'epoch': 36, 'time_epoch': 1.86671, 'loss': 0.21702213, 'lr': 0, 'params': 302385, 'time_iter': 0.02963, 'accuracy': 0.17622, 'precision': 0.17622, 'recall': 1.0, 'f1': 0.29964, 'auc': 0.51316, 'accuracy-SBM': 0.5}
+2025-07-05 02:46:23,562 - INFO - > Epoch 36: took 24.6s (avg 24.6s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:46:44,092 - INFO - train: {'epoch': 37, 'time_epoch': 19.07597, 'eta': 1170.56491, 'eta_hours': 0.32516, 'loss': 0.16389317, 'lr': 0.00037261, 'params': 302385, 'time_iter': 0.06095, 'accuracy': 0.69493, 'precision': 0.33252, 'recall': 0.72294, 'f1': 0.45552, 'auc': 0.77825, 'accuracy-SBM': 0.70593}
+2025-07-05 02:46:46,174 - INFO - val: {'epoch': 37, 'time_epoch': 1.82551, 'loss': 0.20328633, 'lr': 0, 'params': 302385, 'time_iter': 0.02898, 'accuracy': 0.17702, 'precision': 0.17702, 'recall': 1.0, 'f1': 0.3008, 'auc': 0.51782, 'accuracy-SBM': 0.5}
+2025-07-05 02:46:48,259 - INFO - test: {'epoch': 37, 'time_epoch': 1.83044, 'loss': 0.20258832, 'lr': 0, 'params': 302385, 'time_iter': 0.02905, 'accuracy': 0.17622, 'precision': 0.17622, 'recall': 1.0, 'f1': 0.29964, 'auc': 0.51382, 'accuracy-SBM': 0.5}
+2025-07-05 02:46:48,261 - INFO - > Epoch 37: took 24.7s (avg 24.6s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:47:07,614 - INFO - train: {'epoch': 38, 'time_epoch': 18.92274, 'eta': 1151.75156, 'eta_hours': 0.31993, 'loss': 0.16328404, 'lr': 0.00036534, 'params': 302385, 'time_iter': 0.06046, 'accuracy': 0.69611, 'precision': 0.33394, 'recall': 0.72555, 'f1': 0.45737, 'auc': 0.78015, 'accuracy-SBM': 0.70767}
+2025-07-05 02:47:09,689 - INFO - val: {'epoch': 38, 'time_epoch': 1.81939, 'loss': 0.20053593, 'lr': 0, 'params': 302385, 'time_iter': 0.02888, 'accuracy': 0.17809, 'precision': 0.17702, 'recall': 0.99833, 'f1': 0.30072, 'auc': 0.50804, 'accuracy-SBM': 0.5}
+2025-07-05 02:47:11,762 - INFO - test: {'epoch': 38, 'time_epoch': 1.82202, 'loss': 0.19983249, 'lr': 0, 'params': 302385, 'time_iter': 0.02892, 'accuracy': 0.17737, 'precision': 0.17626, 'recall': 0.99855, 'f1': 0.29962, 'auc': 0.5069, 'accuracy-SBM': 0.50012}
+2025-07-05 02:47:11,765 - INFO - > Epoch 38: took 23.5s (avg 24.6s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:47:32,390 - INFO - train: {'epoch': 39, 'time_epoch': 19.17305, 'eta': 1133.3082, 'eta_hours': 0.31481, 'loss': 0.16310907, 'lr': 0.00035794, 'params': 302385, 'time_iter': 0.06126, 'accuracy': 0.69586, 'precision': 0.33393, 'recall': 0.72688, 'f1': 0.45762, 'auc': 0.78084, 'accuracy-SBM': 0.70805}
+2025-07-05 02:47:34,615 - INFO - val: {'epoch': 39, 'time_epoch': 1.96258, 'loss': 0.22017834, 'lr': 0, 'params': 302385, 'time_iter': 0.03115, 'accuracy': 0.17702, 'precision': 0.17702, 'recall': 1.0, 'f1': 0.3008, 'auc': 0.4941, 'accuracy-SBM': 0.5}
+2025-07-05 02:47:36,773 - INFO - test: {'epoch': 39, 'time_epoch': 1.89685, 'loss': 0.21941797, 'lr': 0, 'params': 302385, 'time_iter': 0.03011, 'accuracy': 0.17622, 'precision': 0.17622, 'recall': 1.0, 'f1': 0.29964, 'auc': 0.49449, 'accuracy-SBM': 0.5}
+2025-07-05 02:47:36,774 - INFO - > Epoch 39: took 25.0s (avg 24.6s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:47:58,992 - INFO - train: {'epoch': 40, 'time_epoch': 19.71805, 'eta': 1115.61352, 'eta_hours': 0.30989, 'loss': 0.16306556, 'lr': 0.00035042, 'params': 302385, 'time_iter': 0.063, 'accuracy': 0.69714, 'precision': 0.33508, 'recall': 0.72709, 'f1': 0.45874, 'auc': 0.78114, 'accuracy-SBM': 0.70891}
+2025-07-05 02:48:01,115 - INFO - val: {'epoch': 40, 'time_epoch': 1.87014, 'loss': 0.20637934, 'lr': 0, 'params': 302385, 'time_iter': 0.02968, 'accuracy': 0.17702, 'precision': 0.17702, 'recall': 1.0, 'f1': 0.3008, 'auc': 0.51781, 'accuracy-SBM': 0.5}
+2025-07-05 02:48:03,222 - INFO - test: {'epoch': 40, 'time_epoch': 1.84786, 'loss': 0.20579131, 'lr': 0, 'params': 302385, 'time_iter': 0.02933, 'accuracy': 0.17622, 'precision': 0.17622, 'recall': 1.0, 'f1': 0.29964, 'auc': 0.51377, 'accuracy-SBM': 0.5}
+2025-07-05 02:48:03,224 - INFO - > Epoch 40: took 26.4s (avg 24.7s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:48:23,710 - INFO - train: {'epoch': 41, 'time_epoch': 19.08943, 'eta': 1096.95439, 'eta_hours': 0.30471, 'loss': 0.16339033, 'lr': 0.0003428, 'params': 302385, 'time_iter': 0.06099, 'accuracy': 0.69564, 'precision': 0.33383, 'recall': 0.72752, 'f1': 0.45766, 'auc': 0.77991, 'accuracy-SBM': 0.70816}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:48:25,803 - INFO - val: {'epoch': 41, 'time_epoch': 1.84083, 'loss': 0.49459112, 'lr': 0, 'params': 302385, 'time_iter': 0.02922, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48208, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:48:27,883 - INFO - test: {'epoch': 41, 'time_epoch': 1.83196, 'loss': 0.49242272, 'lr': 0, 'params': 302385, 'time_iter': 0.02908, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48635, 'accuracy-SBM': 0.5}
+2025-07-05 02:48:27,884 - INFO - > Epoch 41: took 24.7s (avg 24.7s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:48:48,335 - INFO - train: {'epoch': 42, 'time_epoch': 19.05677, 'eta': 1078.23195, 'eta_hours': 0.29951, 'loss': 0.16298809, 'lr': 0.00033507, 'params': 302385, 'time_iter': 0.06088, 'accuracy': 0.69863, 'precision': 0.33619, 'recall': 0.72579, 'f1': 0.45952, 'auc': 0.78141, 'accuracy-SBM': 0.7093}
+2025-07-05 02:48:50,399 - INFO - val: {'epoch': 42, 'time_epoch': 1.81822, 'loss': 0.21632772, 'lr': 0, 'params': 302385, 'time_iter': 0.02886, 'accuracy': 0.19095, 'precision': 0.17752, 'recall': 0.98275, 'f1': 0.30073, 'auc': 0.51585, 'accuracy-SBM': 0.50169}
+2025-07-05 02:48:52,470 - INFO - test: {'epoch': 42, 'time_epoch': 1.82724, 'loss': 0.21562334, 'lr': 0, 'params': 302385, 'time_iter': 0.029, 'accuracy': 0.19018, 'precision': 0.17639, 'recall': 0.9799, 'f1': 0.29896, 'auc': 0.51269, 'accuracy-SBM': 0.50057}
+2025-07-05 02:48:52,472 - INFO - > Epoch 42: took 24.6s (avg 24.7s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:49:13,908 - INFO - train: {'epoch': 43, 'time_epoch': 18.96298, 'eta': 1059.37495, 'eta_hours': 0.29427, 'loss': 0.16239697, 'lr': 0.00032725, 'params': 302385, 'time_iter': 0.06058, 'accuracy': 0.6989, 'precision': 0.33656, 'recall': 0.72668, 'f1': 0.46005, 'auc': 0.7832, 'accuracy-SBM': 0.70981}
+2025-07-05 02:49:15,976 - INFO - val: {'epoch': 43, 'time_epoch': 1.82185, 'loss': 0.20391983, 'lr': 0, 'params': 302385, 'time_iter': 0.02892, 'accuracy': 0.30779, 'precision': 0.18147, 'recall': 0.82901, 'f1': 0.29776, 'auc': 0.50933, 'accuracy-SBM': 0.51234}
+2025-07-05 02:49:18,062 - INFO - test: {'epoch': 43, 'time_epoch': 1.83171, 'loss': 0.20360965, 'lr': 0, 'params': 302385, 'time_iter': 0.02907, 'accuracy': 0.31147, 'precision': 0.17949, 'recall': 0.81403, 'f1': 0.29413, 'auc': 0.50656, 'accuracy-SBM': 0.509}
+2025-07-05 02:49:18,063 - INFO - > Epoch 43: took 25.6s (avg 24.7s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:49:39,684 - INFO - train: {'epoch': 44, 'time_epoch': 18.98581, 'eta': 1040.54113, 'eta_hours': 0.28904, 'loss': 0.1623573, 'lr': 0.00031935, 'params': 302385, 'time_iter': 0.06066, 'accuracy': 0.69837, 'precision': 0.33661, 'recall': 0.7301, 'f1': 0.46078, 'auc': 0.78341, 'accuracy-SBM': 0.71083}
+2025-07-05 02:49:41,941 - INFO - val: {'epoch': 44, 'time_epoch': 1.83468, 'loss': 0.27427197, 'lr': 0, 'params': 302385, 'time_iter': 0.02912, 'accuracy': 0.79845, 'precision': 0.16034, 'recall': 0.03271, 'f1': 0.05433, 'auc': 0.5082, 'accuracy-SBM': 0.49793}
+2025-07-05 02:49:44,208 - INFO - test: {'epoch': 44, 'time_epoch': 1.84342, 'loss': 0.27669426, 'lr': 0, 'params': 302385, 'time_iter': 0.02926, 'accuracy': 0.79348, 'precision': 0.15568, 'recall': 0.03888, 'f1': 0.06222, 'auc': 0.49966, 'accuracy-SBM': 0.49689}
+2025-07-05 02:49:44,210 - INFO - > Epoch 44: took 26.1s (avg 24.7s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:50:05,759 - INFO - train: {'epoch': 45, 'time_epoch': 18.9444, 'eta': 1021.6521, 'eta_hours': 0.28379, 'loss': 0.16208042, 'lr': 0.00031137, 'params': 302385, 'time_iter': 0.06053, 'accuracy': 0.6984, 'precision': 0.33684, 'recall': 0.7315, 'f1': 0.46127, 'auc': 0.78424, 'accuracy-SBM': 0.7114}
+2025-07-05 02:50:08,004 - INFO - val: {'epoch': 45, 'time_epoch': 1.82439, 'loss': 0.20848892, 'lr': 0, 'params': 302385, 'time_iter': 0.02896, 'accuracy': 0.7267, 'precision': 0.15786, 'recall': 0.12546, 'f1': 0.13981, 'auc': 0.48275, 'accuracy-SBM': 0.49074}
+2025-07-05 02:50:10,257 - INFO - test: {'epoch': 45, 'time_epoch': 1.82595, 'loss': 0.20760604, 'lr': 0, 'params': 302385, 'time_iter': 0.02898, 'accuracy': 0.72012, 'precision': 0.15949, 'recall': 0.13776, 'f1': 0.14783, 'auc': 0.48636, 'accuracy-SBM': 0.49123}
+2025-07-05 02:50:10,259 - INFO - > Epoch 45: took 26.0s (avg 24.7s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:50:30,600 - INFO - train: {'epoch': 46, 'time_epoch': 18.93595, 'eta': 1002.75119, 'eta_hours': 0.27854, 'loss': 0.16200893, 'lr': 0.00030332, 'params': 302385, 'time_iter': 0.0605, 'accuracy': 0.69973, 'precision': 0.33781, 'recall': 0.73012, 'f1': 0.46191, 'auc': 0.78466, 'accuracy-SBM': 0.71167}
+2025-07-05 02:50:32,796 - INFO - val: {'epoch': 46, 'time_epoch': 1.79832, 'loss': 0.2421794, 'lr': 0, 'params': 302385, 'time_iter': 0.02854, 'accuracy': 0.82283, 'precision': 0.13043, 'recall': 0.00014, 'f1': 0.00029, 'auc': 0.51793, 'accuracy-SBM': 0.49997}
+2025-07-05 02:50:35,021 - INFO - test: {'epoch': 46, 'time_epoch': 1.82349, 'loss': 0.2419897, 'lr': 0, 'params': 302385, 'time_iter': 0.02894, 'accuracy': 0.82365, 'precision': 0.13636, 'recall': 0.00014, 'f1': 0.00029, 'auc': 0.51353, 'accuracy-SBM': 0.49997}
+2025-07-05 02:50:35,022 - INFO - > Epoch 46: took 24.8s (avg 24.7s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:50:55,453 - INFO - train: {'epoch': 47, 'time_epoch': 18.97568, 'eta': 983.89185, 'eta_hours': 0.2733, 'loss': 0.16169238, 'lr': 0.00029522, 'params': 302385, 'time_iter': 0.06063, 'accuracy': 0.70078, 'precision': 0.3386, 'recall': 0.72917, 'f1': 0.46245, 'auc': 0.78565, 'accuracy-SBM': 0.71193}
+2025-07-05 02:50:57,711 - INFO - val: {'epoch': 47, 'time_epoch': 1.85502, 'loss': 0.31604921, 'lr': 0, 'params': 302385, 'time_iter': 0.02944, 'accuracy': 0.81499, 'precision': 0.15639, 'recall': 0.01027, 'f1': 0.01927, 'auc': 0.48453, 'accuracy-SBM': 0.49918}
+2025-07-05 02:50:59,976 - INFO - test: {'epoch': 47, 'time_epoch': 1.86054, 'loss': 0.31710318, 'lr': 0, 'params': 302385, 'time_iter': 0.02953, 'accuracy': 0.81651, 'precision': 0.15717, 'recall': 0.00946, 'f1': 0.01784, 'auc': 0.48711, 'accuracy-SBM': 0.4993}
+2025-07-05 02:50:59,978 - INFO - > Epoch 47: took 25.0s (avg 24.7s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:51:20,494 - INFO - train: {'epoch': 48, 'time_epoch': 19.08241, 'eta': 965.13886, 'eta_hours': 0.26809, 'loss': 0.16181393, 'lr': 0.00028707, 'params': 302385, 'time_iter': 0.06097, 'accuracy': 0.70043, 'precision': 0.33843, 'recall': 0.73005, 'f1': 0.46247, 'auc': 0.78526, 'accuracy-SBM': 0.71207}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:51:22,578 - INFO - val: {'epoch': 48, 'time_epoch': 1.82401, 'loss': 0.30721615, 'lr': 0, 'params': 302385, 'time_iter': 0.02895, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.49899, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:51:24,683 - INFO - test: {'epoch': 48, 'time_epoch': 1.8519, 'loss': 0.31089821, 'lr': 0, 'params': 302385, 'time_iter': 0.0294, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.49894, 'accuracy-SBM': 0.5}
+2025-07-05 02:51:24,685 - INFO - > Epoch 48: took 24.7s (avg 24.7s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:51:46,380 - INFO - train: {'epoch': 49, 'time_epoch': 19.09541, 'eta': 946.38569, 'eta_hours': 0.26288, 'loss': 0.16139007, 'lr': 0.00027887, 'params': 302385, 'time_iter': 0.06101, 'accuracy': 0.7014, 'precision': 0.3396, 'recall': 0.73216, 'f1': 0.46399, 'auc': 0.78668, 'accuracy-SBM': 0.71348}
+2025-07-05 02:51:48,651 - INFO - val: {'epoch': 49, 'time_epoch': 1.86654, 'loss': 0.25099647, 'lr': 0, 'params': 302385, 'time_iter': 0.02963, 'accuracy': 0.82283, 'precision': 0.13043, 'recall': 0.00014, 'f1': 0.00029, 'auc': 0.51444, 'accuracy-SBM': 0.49997}
+2025-07-05 02:51:50,926 - INFO - test: {'epoch': 49, 'time_epoch': 1.8625, 'loss': 0.25364426, 'lr': 0, 'params': 302385, 'time_iter': 0.02956, 'accuracy': 0.82365, 'precision': 0.13636, 'recall': 0.00014, 'f1': 0.00029, 'auc': 0.51084, 'accuracy-SBM': 0.49997}
+2025-07-05 02:51:50,928 - INFO - > Epoch 49: took 26.2s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:52:11,738 - INFO - train: {'epoch': 50, 'time_epoch': 19.39674, 'eta': 927.90861, 'eta_hours': 0.25775, 'loss': 0.16099919, 'lr': 0.00027064, 'params': 302385, 'time_iter': 0.06197, 'accuracy': 0.70217, 'precision': 0.34014, 'recall': 0.73115, 'f1': 0.46429, 'auc': 0.78777, 'accuracy-SBM': 0.71355}
+2025-07-05 02:52:14,000 - INFO - val: {'epoch': 50, 'time_epoch': 1.84035, 'loss': 0.29301976, 'lr': 0, 'params': 302385, 'time_iter': 0.02921, 'accuracy': 0.82118, 'precision': 0.16796, 'recall': 0.00257, 'f1': 0.00507, 'auc': 0.50208, 'accuracy-SBM': 0.49992}
+2025-07-05 02:52:16,285 - INFO - test: {'epoch': 50, 'time_epoch': 1.86366, 'loss': 0.28979739, 'lr': 0, 'params': 302385, 'time_iter': 0.02958, 'accuracy': 0.82242, 'precision': 0.14815, 'recall': 0.00162, 'f1': 0.0032, 'auc': 0.50055, 'accuracy-SBM': 0.49981}
+2025-07-05 02:52:16,287 - INFO - > Epoch 50: took 25.4s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:52:36,837 - INFO - train: {'epoch': 51, 'time_epoch': 19.14175, 'eta': 909.16078, 'eta_hours': 0.25254, 'loss': 0.16091491, 'lr': 0.0002624, 'params': 302385, 'time_iter': 0.06116, 'accuracy': 0.70185, 'precision': 0.34012, 'recall': 0.73293, 'f1': 0.46462, 'auc': 0.78793, 'accuracy-SBM': 0.71406}
+2025-07-05 02:52:39,067 - INFO - val: {'epoch': 51, 'time_epoch': 1.82811, 'loss': 0.22053546, 'lr': 0, 'params': 302385, 'time_iter': 0.02902, 'accuracy': 0.73265, 'precision': 0.15544, 'recall': 0.1151, 'f1': 0.13226, 'auc': 0.48083, 'accuracy-SBM': 0.49029}
+2025-07-05 02:52:41,304 - INFO - test: {'epoch': 51, 'time_epoch': 1.82759, 'loss': 0.21926288, 'lr': 0, 'params': 302385, 'time_iter': 0.02901, 'accuracy': 0.72992, 'precision': 0.15703, 'recall': 0.12194, 'f1': 0.13728, 'auc': 0.48657, 'accuracy-SBM': 0.49096}
+2025-07-05 02:52:41,306 - INFO - > Epoch 51: took 25.0s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:53:00,673 - INFO - train: {'epoch': 52, 'time_epoch': 18.97514, 'eta': 890.25034, 'eta_hours': 0.24729, 'loss': 0.16096817, 'lr': 0.00025413, 'params': 302385, 'time_iter': 0.06062, 'accuracy': 0.70279, 'precision': 0.34074, 'recall': 0.73144, 'f1': 0.46491, 'auc': 0.78808, 'accuracy-SBM': 0.71405}
+2025-07-05 02:53:02,754 - INFO - val: {'epoch': 52, 'time_epoch': 1.8301, 'loss': 0.21224177, 'lr': 0, 'params': 302385, 'time_iter': 0.02905, 'accuracy': 0.42279, 'precision': 0.18229, 'recall': 0.64857, 'f1': 0.2846, 'auc': 0.51743, 'accuracy-SBM': 0.5114}
+2025-07-05 02:53:04,833 - INFO - test: {'epoch': 52, 'time_epoch': 1.83209, 'loss': 0.21122802, 'lr': 0, 'params': 302385, 'time_iter': 0.02908, 'accuracy': 0.42122, 'precision': 0.18159, 'recall': 0.65141, 'f1': 0.28401, 'auc': 0.51303, 'accuracy-SBM': 0.51169}
+2025-07-05 02:53:04,835 - INFO - > Epoch 52: took 23.5s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:53:26,550 - INFO - train: {'epoch': 53, 'time_epoch': 19.14823, 'eta': 871.48496, 'eta_hours': 0.24208, 'loss': 0.16046942, 'lr': 0.00024587, 'params': 302385, 'time_iter': 0.06118, 'accuracy': 0.70524, 'precision': 0.34275, 'recall': 0.73002, 'f1': 0.46648, 'auc': 0.78965, 'accuracy-SBM': 0.71497}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:53:28,618 - INFO - val: {'epoch': 53, 'time_epoch': 1.82114, 'loss': 0.45524693, 'lr': 0, 'params': 302385, 'time_iter': 0.02891, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48841, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:53:30,678 - INFO - test: {'epoch': 53, 'time_epoch': 1.81468, 'loss': 0.44829775, 'lr': 0, 'params': 302385, 'time_iter': 0.0288, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48881, 'accuracy-SBM': 0.5}
+2025-07-05 02:53:30,680 - INFO - > Epoch 53: took 25.8s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:53:50,128 - INFO - train: {'epoch': 54, 'time_epoch': 19.0139, 'eta': 852.59574, 'eta_hours': 0.23683, 'loss': 0.16018421, 'lr': 0.0002376, 'params': 302385, 'time_iter': 0.06075, 'accuracy': 0.70546, 'precision': 0.34353, 'recall': 0.73395, 'f1': 0.468, 'auc': 0.79059, 'accuracy-SBM': 0.71665}
+2025-07-05 02:53:52,395 - INFO - val: {'epoch': 54, 'time_epoch': 1.84156, 'loss': 0.21588671, 'lr': 0, 'params': 302385, 'time_iter': 0.02923, 'accuracy': 0.71505, 'precision': 0.16845, 'recall': 0.15488, 'f1': 0.16138, 'auc': 0.48547, 'accuracy-SBM': 0.49521}
+2025-07-05 02:53:54,680 - INFO - test: {'epoch': 54, 'time_epoch': 1.8493, 'loss': 0.21576761, 'lr': 0, 'params': 302385, 'time_iter': 0.02935, 'accuracy': 0.71799, 'precision': 0.16522, 'recall': 0.14814, 'f1': 0.15622, 'auc': 0.48752, 'accuracy-SBM': 0.49402}
+2025-07-05 02:53:54,682 - INFO - > Epoch 54: took 24.0s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:54:15,283 - INFO - train: {'epoch': 55, 'time_epoch': 19.10738, 'eta': 833.77551, 'eta_hours': 0.2316, 'loss': 0.16024369, 'lr': 0.00022936, 'params': 302385, 'time_iter': 0.06105, 'accuracy': 0.70477, 'precision': 0.34309, 'recall': 0.73522, 'f1': 0.46785, 'auc': 0.79052, 'accuracy-SBM': 0.71673}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:54:17,384 - INFO - val: {'epoch': 55, 'time_epoch': 1.84244, 'loss': 0.20297296, 'lr': 0, 'params': 302385, 'time_iter': 0.02925, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48893, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:54:19,493 - INFO - test: {'epoch': 55, 'time_epoch': 1.85034, 'loss': 0.20223234, 'lr': 0, 'params': 302385, 'time_iter': 0.02937, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.4951, 'accuracy-SBM': 0.5}
+2025-07-05 02:54:19,495 - INFO - > Epoch 55: took 24.8s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:54:39,192 - INFO - train: {'epoch': 56, 'time_epoch': 19.29343, 'eta': 815.08556, 'eta_hours': 0.22641, 'loss': 0.16043249, 'lr': 0.00022113, 'params': 302385, 'time_iter': 0.06164, 'accuracy': 0.70487, 'precision': 0.34283, 'recall': 0.73289, 'f1': 0.46715, 'auc': 0.7899, 'accuracy-SBM': 0.71588}
+2025-07-05 02:54:41,339 - INFO - val: {'epoch': 56, 'time_epoch': 1.88751, 'loss': 0.20700886, 'lr': 0, 'params': 302385, 'time_iter': 0.02996, 'accuracy': 0.17702, 'precision': 0.17702, 'recall': 1.0, 'f1': 0.3008, 'auc': 0.48203, 'accuracy-SBM': 0.5}
+2025-07-05 02:54:43,491 - INFO - test: {'epoch': 56, 'time_epoch': 1.89974, 'loss': 0.20632196, 'lr': 0, 'params': 302385, 'time_iter': 0.03015, 'accuracy': 0.17622, 'precision': 0.17622, 'recall': 1.0, 'f1': 0.29964, 'auc': 0.48878, 'accuracy-SBM': 0.5}
+2025-07-05 02:54:43,493 - INFO - > Epoch 56: took 24.0s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:55:05,402 - INFO - train: {'epoch': 57, 'time_epoch': 19.24475, 'eta': 796.33956, 'eta_hours': 0.22121, 'loss': 0.15980595, 'lr': 0.00021293, 'params': 302385, 'time_iter': 0.06148, 'accuracy': 0.70663, 'precision': 0.3447, 'recall': 0.73467, 'f1': 0.46924, 'auc': 0.79187, 'accuracy-SBM': 0.71765}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:55:07,509 - INFO - val: {'epoch': 57, 'time_epoch': 1.84901, 'loss': 0.43132849, 'lr': 0, 'params': 302385, 'time_iter': 0.02935, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48078, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:55:09,638 - INFO - test: {'epoch': 57, 'time_epoch': 1.85869, 'loss': 0.42597804, 'lr': 0, 'params': 302385, 'time_iter': 0.0295, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48696, 'accuracy-SBM': 0.5}
+2025-07-05 02:55:09,639 - INFO - > Epoch 57: took 26.1s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:55:30,400 - INFO - train: {'epoch': 58, 'time_epoch': 19.26992, 'eta': 777.59414, 'eta_hours': 0.216, 'loss': 0.16013117, 'lr': 0.00020478, 'params': 302385, 'time_iter': 0.06157, 'accuracy': 0.70468, 'precision': 0.34301, 'recall': 0.73523, 'f1': 0.46778, 'auc': 0.79085, 'accuracy-SBM': 0.71668}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:55:32,550 - INFO - val: {'epoch': 58, 'time_epoch': 1.88278, 'loss': 0.42974489, 'lr': 0, 'params': 302385, 'time_iter': 0.02989, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48132, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:55:34,710 - INFO - test: {'epoch': 58, 'time_epoch': 1.89675, 'loss': 0.42367359, 'lr': 0, 'params': 302385, 'time_iter': 0.03011, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48876, 'accuracy-SBM': 0.5}
+2025-07-05 02:55:34,712 - INFO - > Epoch 58: took 25.1s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:55:55,562 - INFO - train: {'epoch': 59, 'time_epoch': 19.41721, 'eta': 758.92943, 'eta_hours': 0.21081, 'loss': 0.15995284, 'lr': 0.00019668, 'params': 302385, 'time_iter': 0.06204, 'accuracy': 0.70501, 'precision': 0.34318, 'recall': 0.7344, 'f1': 0.46777, 'auc': 0.79128, 'accuracy-SBM': 0.71655}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:55:57,678 - INFO - val: {'epoch': 59, 'time_epoch': 1.8529, 'loss': 0.27650046, 'lr': 0, 'params': 302385, 'time_iter': 0.02941, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48556, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:55:59,811 - INFO - test: {'epoch': 59, 'time_epoch': 1.87342, 'loss': 0.27978325, 'lr': 0, 'params': 302385, 'time_iter': 0.02974, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48969, 'accuracy-SBM': 0.5}
+2025-07-05 02:55:59,812 - INFO - > Epoch 59: took 25.1s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:56:19,467 - INFO - train: {'epoch': 60, 'time_epoch': 19.22826, 'eta': 740.11924, 'eta_hours': 0.20559, 'loss': 0.15937731, 'lr': 0.00018863, 'params': 302385, 'time_iter': 0.06143, 'accuracy': 0.70792, 'precision': 0.34588, 'recall': 0.73459, 'f1': 0.47031, 'auc': 0.79327, 'accuracy-SBM': 0.7184}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:56:21,564 - INFO - val: {'epoch': 60, 'time_epoch': 1.84362, 'loss': 0.24993947, 'lr': 0, 'params': 302385, 'time_iter': 0.02926, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.4821, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:56:23,660 - INFO - test: {'epoch': 60, 'time_epoch': 1.85023, 'loss': 0.25027454, 'lr': 0, 'params': 302385, 'time_iter': 0.02937, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48622, 'accuracy-SBM': 0.5}
+2025-07-05 02:56:23,662 - INFO - > Epoch 60: took 23.8s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:56:43,127 - INFO - train: {'epoch': 61, 'time_epoch': 19.08145, 'eta': 721.20558, 'eta_hours': 0.20033, 'loss': 0.15946343, 'lr': 0.00018065, 'params': 302385, 'time_iter': 0.06096, 'accuracy': 0.70642, 'precision': 0.34479, 'recall': 0.7366, 'f1': 0.46971, 'auc': 0.79282, 'accuracy-SBM': 0.71828}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:56:45,208 - INFO - val: {'epoch': 61, 'time_epoch': 1.83037, 'loss': 0.28639108, 'lr': 0, 'params': 302385, 'time_iter': 0.02905, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51825, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:56:47,290 - INFO - test: {'epoch': 61, 'time_epoch': 1.83617, 'loss': 0.28745633, 'lr': 0, 'params': 302385, 'time_iter': 0.02915, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.5134, 'accuracy-SBM': 0.5}
+2025-07-05 02:56:47,292 - INFO - > Epoch 61: took 23.6s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:57:08,986 - INFO - train: {'epoch': 62, 'time_epoch': 19.17068, 'eta': 702.339, 'eta_hours': 0.19509, 'loss': 0.15880331, 'lr': 0.00017275, 'params': 302385, 'time_iter': 0.06125, 'accuracy': 0.70912, 'precision': 0.34735, 'recall': 0.73707, 'f1': 0.47218, 'auc': 0.79506, 'accuracy-SBM': 0.7201}
+2025-07-05 02:57:11,215 - INFO - val: {'epoch': 62, 'time_epoch': 1.82552, 'loss': 0.51456391, 'lr': 0, 'params': 302385, 'time_iter': 0.02898, 'accuracy': 0.82271, 'precision': 0.17526, 'recall': 0.0004, 'f1': 0.00081, 'auc': 0.48197, 'accuracy-SBM': 0.5}
+2025-07-05 02:57:13,439 - INFO - test: {'epoch': 62, 'time_epoch': 1.82164, 'loss': 0.51155345, 'lr': 0, 'params': 302385, 'time_iter': 0.02891, 'accuracy': 0.82349, 'precision': 0.12766, 'recall': 0.00029, 'f1': 0.00057, 'auc': 0.48642, 'accuracy-SBM': 0.49993}
+2025-07-05 02:57:13,442 - INFO - > Epoch 62: took 26.1s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:57:33,761 - INFO - train: {'epoch': 63, 'time_epoch': 18.9186, 'eta': 683.32113, 'eta_hours': 0.18981, 'loss': 0.15919476, 'lr': 0.00016493, 'params': 302385, 'time_iter': 0.06044, 'accuracy': 0.70869, 'precision': 0.34665, 'recall': 0.73502, 'f1': 0.47111, 'auc': 0.79388, 'accuracy-SBM': 0.71903}
+2025-07-05 02:57:35,831 - INFO - val: {'epoch': 63, 'time_epoch': 1.8229, 'loss': 0.20049231, 'lr': 0, 'params': 302385, 'time_iter': 0.02893, 'accuracy': 0.17702, 'precision': 0.17702, 'recall': 1.0, 'f1': 0.3008, 'auc': 0.48219, 'accuracy-SBM': 0.5}
+2025-07-05 02:57:37,908 - INFO - test: {'epoch': 63, 'time_epoch': 1.83072, 'loss': 0.19973229, 'lr': 0, 'params': 302385, 'time_iter': 0.02906, 'accuracy': 0.17622, 'precision': 0.17622, 'recall': 1.0, 'f1': 0.29964, 'auc': 0.48623, 'accuracy-SBM': 0.5}
+2025-07-05 02:57:37,911 - INFO - > Epoch 63: took 24.5s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:57:58,310 - INFO - train: {'epoch': 64, 'time_epoch': 18.99277, 'eta': 664.34625, 'eta_hours': 0.18454, 'loss': 0.15899564, 'lr': 0.0001572, 'params': 302385, 'time_iter': 0.06068, 'accuracy': 0.70766, 'precision': 0.34621, 'recall': 0.73857, 'f1': 0.47143, 'auc': 0.79452, 'accuracy-SBM': 0.7198}
+2025-07-05 02:58:00,384 - INFO - val: {'epoch': 64, 'time_epoch': 1.8246, 'loss': 0.19970929, 'lr': 0, 'params': 302385, 'time_iter': 0.02896, 'accuracy': 0.17702, 'precision': 0.17702, 'recall': 1.0, 'f1': 0.3008, 'auc': 0.49619, 'accuracy-SBM': 0.5}
+2025-07-05 02:58:02,488 - INFO - test: {'epoch': 64, 'time_epoch': 1.84821, 'loss': 0.19902302, 'lr': 0, 'params': 302385, 'time_iter': 0.02934, 'accuracy': 0.17622, 'precision': 0.17622, 'recall': 1.0, 'f1': 0.29964, 'auc': 0.4961, 'accuracy-SBM': 0.5}
+2025-07-05 02:58:02,489 - INFO - > Epoch 64: took 24.6s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:58:24,062 - INFO - train: {'epoch': 65, 'time_epoch': 19.07149, 'eta': 645.41137, 'eta_hours': 0.17928, 'loss': 0.15814443, 'lr': 0.00014958, 'params': 302385, 'time_iter': 0.06093, 'accuracy': 0.71089, 'precision': 0.34952, 'recall': 0.7408, 'f1': 0.47495, 'auc': 0.79712, 'accuracy-SBM': 0.72264}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:58:26,170 - INFO - val: {'epoch': 65, 'time_epoch': 1.85671, 'loss': 0.53267274, 'lr': 0, 'params': 302385, 'time_iter': 0.02947, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48082, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:58:28,285 - INFO - test: {'epoch': 65, 'time_epoch': 1.86568, 'loss': 0.52990686, 'lr': 0, 'params': 302385, 'time_iter': 0.02961, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48729, 'accuracy-SBM': 0.5}
+2025-07-05 02:58:28,287 - INFO - > Epoch 65: took 25.8s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:58:48,866 - INFO - train: {'epoch': 66, 'time_epoch': 19.12821, 'eta': 626.50036, 'eta_hours': 0.17403, 'loss': 0.15832252, 'lr': 0.00014206, 'params': 302385, 'time_iter': 0.06111, 'accuracy': 0.71037, 'precision': 0.34862, 'recall': 0.73784, 'f1': 0.47351, 'auc': 0.79669, 'accuracy-SBM': 0.72116}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:58:50,941 - INFO - val: {'epoch': 66, 'time_epoch': 1.82581, 'loss': 0.21266222, 'lr': 0, 'params': 302385, 'time_iter': 0.02898, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.50907, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:58:53,039 - INFO - test: {'epoch': 66, 'time_epoch': 1.83733, 'loss': 0.21196905, 'lr': 0, 'params': 302385, 'time_iter': 0.02916, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.50252, 'accuracy-SBM': 0.5}
+2025-07-05 02:58:53,040 - INFO - > Epoch 66: took 24.8s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:59:13,863 - INFO - train: {'epoch': 67, 'time_epoch': 19.29985, 'eta': 607.66373, 'eta_hours': 0.1688, 'loss': 0.15848644, 'lr': 0.00013466, 'params': 302385, 'time_iter': 0.06166, 'accuracy': 0.70967, 'precision': 0.34783, 'recall': 0.7369, 'f1': 0.47259, 'auc': 0.79606, 'accuracy-SBM': 0.72037}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:59:16,006 - INFO - val: {'epoch': 67, 'time_epoch': 1.88313, 'loss': 0.54215319, 'lr': 0, 'params': 302385, 'time_iter': 0.02989, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51752, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:59:18,147 - INFO - test: {'epoch': 67, 'time_epoch': 1.88709, 'loss': 0.54047606, 'lr': 0, 'params': 302385, 'time_iter': 0.02995, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51133, 'accuracy-SBM': 0.5}
+2025-07-05 02:59:18,149 - INFO - > Epoch 67: took 25.1s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 02:59:40,078 - INFO - train: {'epoch': 68, 'time_epoch': 19.366, 'eta': 588.84339, 'eta_hours': 0.16357, 'loss': 0.15841706, 'lr': 0.00012739, 'params': 302385, 'time_iter': 0.06187, 'accuracy': 0.70987, 'precision': 0.34822, 'recall': 0.73831, 'f1': 0.47324, 'auc': 0.79635, 'accuracy-SBM': 0.72104}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:59:42,175 - INFO - val: {'epoch': 68, 'time_epoch': 1.84664, 'loss': 0.36419893, 'lr': 0, 'params': 302385, 'time_iter': 0.02931, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51766, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 02:59:44,314 - INFO - test: {'epoch': 68, 'time_epoch': 1.88833, 'loss': 0.36565368, 'lr': 0, 'params': 302385, 'time_iter': 0.02997, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51383, 'accuracy-SBM': 0.5}
+2025-07-05 02:59:44,316 - INFO - > Epoch 68: took 26.2s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:00:05,057 - INFO - train: {'epoch': 69, 'time_epoch': 19.2148, 'eta': 569.94267, 'eta_hours': 0.15832, 'loss': 0.15816815, 'lr': 0.00012026, 'params': 302385, 'time_iter': 0.06139, 'accuracy': 0.71125, 'precision': 0.34948, 'recall': 0.73808, 'f1': 0.47435, 'auc': 0.79715, 'accuracy-SBM': 0.72179}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:00:07,164 - INFO - val: {'epoch': 69, 'time_epoch': 1.84629, 'loss': 0.56411553, 'lr': 0, 'params': 302385, 'time_iter': 0.02931, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51079, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:00:09,290 - INFO - test: {'epoch': 69, 'time_epoch': 1.86426, 'loss': 0.56217421, 'lr': 0, 'params': 302385, 'time_iter': 0.02959, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.50725, 'accuracy-SBM': 0.5}
+2025-07-05 03:00:09,292 - INFO - > Epoch 69: took 25.0s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:00:28,892 - INFO - train: {'epoch': 70, 'time_epoch': 19.16727, 'eta': 551.01368, 'eta_hours': 0.15306, 'loss': 0.15779353, 'lr': 0.00011326, 'params': 302385, 'time_iter': 0.06124, 'accuracy': 0.71208, 'precision': 0.35067, 'recall': 0.74103, 'f1': 0.47606, 'auc': 0.79839, 'accuracy-SBM': 0.72345}
+2025-07-05 03:00:30,985 - INFO - val: {'epoch': 70, 'time_epoch': 1.83502, 'loss': 0.20370541, 'lr': 0, 'params': 302385, 'time_iter': 0.02913, 'accuracy': 0.17702, 'precision': 0.17702, 'recall': 1.0, 'f1': 0.3008, 'auc': 0.49244, 'accuracy-SBM': 0.5}
+2025-07-05 03:00:33,097 - INFO - test: {'epoch': 70, 'time_epoch': 1.85531, 'loss': 0.20294119, 'lr': 0, 'params': 302385, 'time_iter': 0.02945, 'accuracy': 0.17622, 'precision': 0.17622, 'recall': 1.0, 'f1': 0.29964, 'auc': 0.4941, 'accuracy-SBM': 0.5}
+2025-07-05 03:00:33,099 - INFO - > Epoch 70: took 23.8s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:00:52,541 - INFO - train: {'epoch': 71, 'time_epoch': 19.0704, 'eta': 532.0404, 'eta_hours': 0.14779, 'loss': 0.15796668, 'lr': 0.00010642, 'params': 302385, 'time_iter': 0.06093, 'accuracy': 0.71167, 'precision': 0.34998, 'recall': 0.73883, 'f1': 0.47497, 'auc': 0.79775, 'accuracy-SBM': 0.72234}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:00:54,646 - INFO - val: {'epoch': 71, 'time_epoch': 1.84275, 'loss': 0.4740281, 'lr': 0, 'params': 302385, 'time_iter': 0.02925, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.50475, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:00:56,763 - INFO - test: {'epoch': 71, 'time_epoch': 1.85584, 'loss': 0.47337439, 'lr': 0, 'params': 302385, 'time_iter': 0.02946, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.50087, 'accuracy-SBM': 0.5}
+2025-07-05 03:00:56,765 - INFO - > Epoch 71: took 23.7s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:01:18,474 - INFO - train: {'epoch': 72, 'time_epoch': 19.07141, 'eta': 513.06484, 'eta_hours': 0.14252, 'loss': 0.15778104, 'lr': 9.973e-05, 'params': 302385, 'time_iter': 0.06093, 'accuracy': 0.71121, 'precision': 0.35005, 'recall': 0.74238, 'f1': 0.47576, 'auc': 0.7983, 'accuracy-SBM': 0.72346}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:01:20,651 - INFO - val: {'epoch': 72, 'time_epoch': 1.90732, 'loss': 0.49828508, 'lr': 0, 'params': 302385, 'time_iter': 0.03027, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51759, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:01:22,831 - INFO - test: {'epoch': 72, 'time_epoch': 1.91191, 'loss': 0.49764942, 'lr': 0, 'params': 302385, 'time_iter': 0.03035, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51097, 'accuracy-SBM': 0.5}
+2025-07-05 03:01:22,833 - INFO - > Epoch 72: took 26.1s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:01:44,268 - INFO - train: {'epoch': 73, 'time_epoch': 18.96326, 'eta': 494.04868, 'eta_hours': 0.13724, 'loss': 0.15791097, 'lr': 9.321e-05, 'params': 302385, 'time_iter': 0.06059, 'accuracy': 0.7121, 'precision': 0.3502, 'recall': 0.73762, 'f1': 0.47492, 'auc': 0.79798, 'accuracy-SBM': 0.72212}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:01:46,345 - INFO - val: {'epoch': 73, 'time_epoch': 1.82819, 'loss': 0.30237363, 'lr': 0, 'params': 302385, 'time_iter': 0.02902, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.4858, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:01:48,430 - INFO - test: {'epoch': 73, 'time_epoch': 1.8307, 'loss': 0.30237297, 'lr': 0, 'params': 302385, 'time_iter': 0.02906, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48989, 'accuracy-SBM': 0.5}
+2025-07-05 03:01:48,433 - INFO - > Epoch 73: took 25.6s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:02:08,793 - INFO - train: {'epoch': 74, 'time_epoch': 18.90999, 'eta': 475.01618, 'eta_hours': 0.13195, 'loss': 0.15743821, 'lr': 8.685e-05, 'params': 302385, 'time_iter': 0.06042, 'accuracy': 0.71297, 'precision': 0.35148, 'recall': 0.7408, 'f1': 0.47675, 'auc': 0.79948, 'accuracy-SBM': 0.7239}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:02:10,922 - INFO - val: {'epoch': 74, 'time_epoch': 1.86782, 'loss': 0.5186136, 'lr': 0, 'params': 302385, 'time_iter': 0.02965, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.50986, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:02:13,072 - INFO - test: {'epoch': 74, 'time_epoch': 1.88188, 'loss': 0.51822365, 'lr': 0, 'params': 302385, 'time_iter': 0.02987, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.50446, 'accuracy-SBM': 0.5}
+2025-07-05 03:02:13,076 - INFO - > Epoch 74: took 24.6s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:02:33,637 - INFO - train: {'epoch': 75, 'time_epoch': 19.15714, 'eta': 456.06496, 'eta_hours': 0.12668, 'loss': 0.15743661, 'lr': 8.068e-05, 'params': 302385, 'time_iter': 0.0612, 'accuracy': 0.71208, 'precision': 0.35091, 'recall': 0.74273, 'f1': 0.47663, 'auc': 0.79942, 'accuracy-SBM': 0.72412}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:02:35,728 - INFO - val: {'epoch': 75, 'time_epoch': 1.84013, 'loss': 0.20414224, 'lr': 0, 'params': 302385, 'time_iter': 0.02921, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.4979, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:02:37,834 - INFO - test: {'epoch': 75, 'time_epoch': 1.84896, 'loss': 0.20475014, 'lr': 0, 'params': 302385, 'time_iter': 0.02935, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.49893, 'accuracy-SBM': 0.5}
+2025-07-05 03:02:37,835 - INFO - > Epoch 75: took 24.8s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:02:58,635 - INFO - train: {'epoch': 76, 'time_epoch': 19.28089, 'eta': 437.14534, 'eta_hours': 0.12143, 'loss': 0.15724819, 'lr': 7.469e-05, 'params': 302385, 'time_iter': 0.0616, 'accuracy': 0.71357, 'precision': 0.35213, 'recall': 0.74139, 'f1': 0.47748, 'auc': 0.80012, 'accuracy-SBM': 0.7245}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:03:00,769 - INFO - val: {'epoch': 76, 'time_epoch': 1.86503, 'loss': 0.4635809, 'lr': 0, 'params': 302385, 'time_iter': 0.0296, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48213, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:03:02,912 - INFO - test: {'epoch': 76, 'time_epoch': 1.87785, 'loss': 0.46041063, 'lr': 0, 'params': 302385, 'time_iter': 0.02981, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48936, 'accuracy-SBM': 0.5}
+2025-07-05 03:03:02,913 - INFO - > Epoch 76: took 25.1s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:03:23,818 - INFO - train: {'epoch': 77, 'time_epoch': 19.39414, 'eta': 418.24841, 'eta_hours': 0.11618, 'loss': 0.15738277, 'lr': 6.889e-05, 'params': 302385, 'time_iter': 0.06196, 'accuracy': 0.71296, 'precision': 0.35162, 'recall': 0.74187, 'f1': 0.47711, 'auc': 0.79968, 'accuracy-SBM': 0.72432}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:03:25,954 - INFO - val: {'epoch': 77, 'time_epoch': 1.86407, 'loss': 0.43766068, 'lr': 0, 'params': 302385, 'time_iter': 0.02959, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48326, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:03:28,086 - INFO - test: {'epoch': 77, 'time_epoch': 1.86556, 'loss': 0.43602137, 'lr': 0, 'params': 302385, 'time_iter': 0.02961, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48839, 'accuracy-SBM': 0.5}
+2025-07-05 03:03:28,088 - INFO - > Epoch 77: took 25.2s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:03:47,673 - INFO - train: {'epoch': 78, 'time_epoch': 19.19459, 'eta': 399.28584, 'eta_hours': 0.11091, 'loss': 0.15741479, 'lr': 6.329e-05, 'params': 302385, 'time_iter': 0.06132, 'accuracy': 0.71281, 'precision': 0.35135, 'recall': 0.74097, 'f1': 0.47667, 'auc': 0.79945, 'accuracy-SBM': 0.72387}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:03:49,740 - INFO - val: {'epoch': 78, 'time_epoch': 1.81872, 'loss': 0.42242797, 'lr': 0, 'params': 302385, 'time_iter': 0.02887, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.5169, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:03:51,824 - INFO - test: {'epoch': 78, 'time_epoch': 1.83786, 'loss': 0.41929991, 'lr': 0, 'params': 302385, 'time_iter': 0.02917, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.5121, 'accuracy-SBM': 0.5}
+2025-07-05 03:03:51,826 - INFO - > Epoch 78: took 23.7s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:04:12,330 - INFO - train: {'epoch': 79, 'time_epoch': 19.03088, 'eta': 380.27655, 'eta_hours': 0.10563, 'loss': 0.15682302, 'lr': 5.79e-05, 'params': 302385, 'time_iter': 0.0608, 'accuracy': 0.71328, 'precision': 0.35213, 'recall': 0.74332, 'f1': 0.47787, 'auc': 0.8013, 'accuracy-SBM': 0.72508}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:04:14,455 - INFO - val: {'epoch': 79, 'time_epoch': 1.86094, 'loss': 0.56925871, 'lr': 0, 'params': 302385, 'time_iter': 0.02954, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48276, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:04:16,578 - INFO - test: {'epoch': 79, 'time_epoch': 1.86198, 'loss': 0.56721456, 'lr': 0, 'params': 302385, 'time_iter': 0.02956, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48768, 'accuracy-SBM': 0.5}
+2025-07-05 03:04:16,580 - INFO - > Epoch 79: took 24.8s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:04:36,120 - INFO - train: {'epoch': 80, 'time_epoch': 19.13311, 'eta': 361.2907, 'eta_hours': 0.10036, 'loss': 0.15725272, 'lr': 5.271e-05, 'params': 302385, 'time_iter': 0.06113, 'accuracy': 0.71329, 'precision': 0.35198, 'recall': 0.74227, 'f1': 0.47752, 'auc': 0.80008, 'accuracy-SBM': 0.72467}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:04:38,222 - INFO - val: {'epoch': 80, 'time_epoch': 1.8447, 'loss': 0.56571723, 'lr': 0, 'params': 302385, 'time_iter': 0.02928, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.50593, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:04:40,334 - INFO - test: {'epoch': 80, 'time_epoch': 1.85289, 'loss': 0.56381006, 'lr': 0, 'params': 302385, 'time_iter': 0.02941, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.50184, 'accuracy-SBM': 0.5}
+2025-07-05 03:04:40,336 - INFO - > Epoch 80: took 23.8s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:05:00,934 - INFO - train: {'epoch': 81, 'time_epoch': 19.18131, 'eta': 342.31184, 'eta_hours': 0.09509, 'loss': 0.15676592, 'lr': 4.775e-05, 'params': 302385, 'time_iter': 0.06128, 'accuracy': 0.71408, 'precision': 0.35277, 'recall': 0.74248, 'f1': 0.47829, 'auc': 0.80146, 'accuracy-SBM': 0.72524}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:05:03,709 - INFO - val: {'epoch': 81, 'time_epoch': 1.82105, 'loss': 0.56530788, 'lr': 0, 'params': 302385, 'time_iter': 0.02891, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48217, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:05:05,812 - INFO - test: {'epoch': 81, 'time_epoch': 1.856, 'loss': 0.5633007, 'lr': 0, 'params': 302385, 'time_iter': 0.02946, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48691, 'accuracy-SBM': 0.5}
+2025-07-05 03:05:05,814 - INFO - > Epoch 81: took 25.5s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:05:27,276 - INFO - train: {'epoch': 82, 'time_epoch': 18.94574, 'eta': 323.27986, 'eta_hours': 0.0898, 'loss': 0.15705278, 'lr': 4.3e-05, 'params': 302385, 'time_iter': 0.06053, 'accuracy': 0.71387, 'precision': 0.35241, 'recall': 0.74143, 'f1': 0.47775, 'auc': 0.80058, 'accuracy-SBM': 0.72469}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:05:29,359 - INFO - val: {'epoch': 82, 'time_epoch': 1.83046, 'loss': 0.21472145, 'lr': 0, 'params': 302385, 'time_iter': 0.02905, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48403, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:05:31,431 - INFO - test: {'epoch': 82, 'time_epoch': 1.82526, 'loss': 0.21393257, 'lr': 0, 'params': 302385, 'time_iter': 0.02897, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48836, 'accuracy-SBM': 0.5}
+2025-07-05 03:05:31,433 - INFO - > Epoch 82: took 25.6s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:05:53,077 - INFO - train: {'epoch': 83, 'time_epoch': 18.96844, 'eta': 304.25425, 'eta_hours': 0.08452, 'loss': 0.15665067, 'lr': 3.848e-05, 'params': 302385, 'time_iter': 0.0606, 'accuracy': 0.71461, 'precision': 0.35333, 'recall': 0.74293, 'f1': 0.4789, 'auc': 0.80195, 'accuracy-SBM': 0.72573}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:05:55,205 - INFO - val: {'epoch': 83, 'time_epoch': 1.86446, 'loss': 0.57195736, 'lr': 0, 'params': 302385, 'time_iter': 0.02959, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48553, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:05:57,331 - INFO - test: {'epoch': 83, 'time_epoch': 1.86626, 'loss': 0.5699966, 'lr': 0, 'params': 302385, 'time_iter': 0.02962, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48701, 'accuracy-SBM': 0.5}
+2025-07-05 03:05:57,334 - INFO - > Epoch 83: took 25.9s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:06:17,984 - INFO - train: {'epoch': 84, 'time_epoch': 19.13263, 'eta': 285.25896, 'eta_hours': 0.07924, 'loss': 0.15660577, 'lr': 3.419e-05, 'params': 302385, 'time_iter': 0.06113, 'accuracy': 0.71463, 'precision': 0.35355, 'recall': 0.7444, 'f1': 0.47941, 'auc': 0.80208, 'accuracy-SBM': 0.72632}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:06:20,095 - INFO - val: {'epoch': 84, 'time_epoch': 1.84736, 'loss': 0.55606741, 'lr': 0, 'params': 302385, 'time_iter': 0.02932, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48424, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:06:22,237 - INFO - test: {'epoch': 84, 'time_epoch': 1.86592, 'loss': 0.55403486, 'lr': 0, 'params': 302385, 'time_iter': 0.02962, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48784, 'accuracy-SBM': 0.5}
+2025-07-05 03:06:22,239 - INFO - > Epoch 84: took 24.9s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:06:44,018 - INFO - train: {'epoch': 85, 'time_epoch': 19.21813, 'eta': 266.27439, 'eta_hours': 0.07397, 'loss': 0.1567576, 'lr': 3.013e-05, 'params': 302385, 'time_iter': 0.0614, 'accuracy': 0.7146, 'precision': 0.35317, 'recall': 0.74181, 'f1': 0.47852, 'auc': 0.80151, 'accuracy-SBM': 0.72529}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:06:46,107 - INFO - val: {'epoch': 85, 'time_epoch': 1.8364, 'loss': 0.55088605, 'lr': 0, 'params': 302385, 'time_iter': 0.02915, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48205, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:06:48,198 - INFO - test: {'epoch': 85, 'time_epoch': 1.84563, 'loss': 0.54833139, 'lr': 0, 'params': 302385, 'time_iter': 0.0293, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.48985, 'accuracy-SBM': 0.5}
+2025-07-05 03:06:48,200 - INFO - > Epoch 85: took 26.0s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:07:08,806 - INFO - train: {'epoch': 86, 'time_epoch': 19.08986, 'eta': 247.26529, 'eta_hours': 0.06868, 'loss': 0.15652349, 'lr': 2.632e-05, 'params': 302385, 'time_iter': 0.06099, 'accuracy': 0.71466, 'precision': 0.3537, 'recall': 0.74526, 'f1': 0.47973, 'auc': 0.8023, 'accuracy-SBM': 0.72668}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:07:10,914 - INFO - val: {'epoch': 86, 'time_epoch': 1.85066, 'loss': 0.56175482, 'lr': 0, 'params': 302385, 'time_iter': 0.02938, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.50681, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:07:13,023 - INFO - test: {'epoch': 86, 'time_epoch': 1.85905, 'loss': 0.55747733, 'lr': 0, 'params': 302385, 'time_iter': 0.02951, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.5055, 'accuracy-SBM': 0.5}
+2025-07-05 03:07:13,025 - INFO - > Epoch 86: took 24.8s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:07:34,779 - INFO - train: {'epoch': 87, 'time_epoch': 19.11687, 'eta': 228.25804, 'eta_hours': 0.06341, 'loss': 0.1564102, 'lr': 2.275e-05, 'params': 302385, 'time_iter': 0.06108, 'accuracy': 0.71486, 'precision': 0.35358, 'recall': 0.74302, 'f1': 0.47915, 'auc': 0.80245, 'accuracy-SBM': 0.72592}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:07:36,896 - INFO - val: {'epoch': 87, 'time_epoch': 1.85913, 'loss': 0.56317554, 'lr': 0, 'params': 302385, 'time_iter': 0.02951, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.49822, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:07:38,995 - INFO - test: {'epoch': 87, 'time_epoch': 1.84298, 'loss': 0.56119845, 'lr': 0, 'params': 302385, 'time_iter': 0.02925, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.50032, 'accuracy-SBM': 0.5}
+2025-07-05 03:07:38,997 - INFO - > Epoch 87: took 26.0s (avg 24.9s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:07:59,437 - INFO - train: {'epoch': 88, 'time_epoch': 19.02864, 'eta': 209.23742, 'eta_hours': 0.05812, 'loss': 0.15671096, 'lr': 1.943e-05, 'params': 302385, 'time_iter': 0.06079, 'accuracy': 0.71395, 'precision': 0.35265, 'recall': 0.74253, 'f1': 0.47819, 'auc': 0.80158, 'accuracy-SBM': 0.72517}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:08:01,478 - INFO - val: {'epoch': 88, 'time_epoch': 1.79573, 'loss': 0.50724019, 'lr': 0, 'params': 302385, 'time_iter': 0.0285, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51414, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:08:03,534 - INFO - test: {'epoch': 88, 'time_epoch': 1.8095, 'loss': 0.50439998, 'lr': 0, 'params': 302385, 'time_iter': 0.02872, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.5102, 'accuracy-SBM': 0.5}
+2025-07-05 03:08:03,535 - INFO - > Epoch 88: took 24.5s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:08:23,966 - INFO - train: {'epoch': 89, 'time_epoch': 18.9311, 'eta': 190.20578, 'eta_hours': 0.05283, 'loss': 0.15645274, 'lr': 1.636e-05, 'params': 302385, 'time_iter': 0.06048, 'accuracy': 0.71515, 'precision': 0.35405, 'recall': 0.74438, 'f1': 0.47986, 'auc': 0.80244, 'accuracy-SBM': 0.72663}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:08:26,020 - INFO - val: {'epoch': 89, 'time_epoch': 1.80665, 'loss': 0.46001135, 'lr': 0, 'params': 302385, 'time_iter': 0.02868, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51682, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:08:28,084 - INFO - test: {'epoch': 89, 'time_epoch': 1.81576, 'loss': 0.45439039, 'lr': 0, 'params': 302385, 'time_iter': 0.02882, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51232, 'accuracy-SBM': 0.5}
+2025-07-05 03:08:28,086 - INFO - > Epoch 89: took 24.6s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:08:48,394 - INFO - train: {'epoch': 90, 'time_epoch': 18.91478, 'eta': 171.17474, 'eta_hours': 0.04755, 'loss': 0.15649254, 'lr': 1.355e-05, 'params': 302385, 'time_iter': 0.06043, 'accuracy': 0.71457, 'precision': 0.35359, 'recall': 0.74503, 'f1': 0.47957, 'auc': 0.80243, 'accuracy-SBM': 0.72654}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:08:50,464 - INFO - val: {'epoch': 90, 'time_epoch': 1.81775, 'loss': 0.54814676, 'lr': 0, 'params': 302385, 'time_iter': 0.02885, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51703, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:08:52,525 - INFO - test: {'epoch': 90, 'time_epoch': 1.81677, 'loss': 0.54547986, 'lr': 0, 'params': 302385, 'time_iter': 0.02884, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51271, 'accuracy-SBM': 0.5}
+2025-07-05 03:08:52,527 - INFO - > Epoch 90: took 24.4s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:09:12,987 - INFO - train: {'epoch': 91, 'time_epoch': 19.05579, 'eta': 152.15849, 'eta_hours': 0.04227, 'loss': 0.15669494, 'lr': 1.099e-05, 'params': 302385, 'time_iter': 0.06088, 'accuracy': 0.71529, 'precision': 0.35387, 'recall': 0.74212, 'f1': 0.47923, 'auc': 0.80177, 'accuracy-SBM': 0.72583}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:09:15,049 - INFO - val: {'epoch': 91, 'time_epoch': 1.80694, 'loss': 0.38227642, 'lr': 0, 'params': 302385, 'time_iter': 0.02868, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.49302, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:09:17,125 - INFO - test: {'epoch': 91, 'time_epoch': 1.82225, 'loss': 0.38425703, 'lr': 0, 'params': 302385, 'time_iter': 0.02892, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.49343, 'accuracy-SBM': 0.5}
+2025-07-05 03:09:17,127 - INFO - > Epoch 91: took 24.6s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:09:38,730 - INFO - train: {'epoch': 92, 'time_epoch': 19.01504, 'eta': 133.13832, 'eta_hours': 0.03698, 'loss': 0.15636536, 'lr': 8.7e-06, 'params': 302385, 'time_iter': 0.06075, 'accuracy': 0.71553, 'precision': 0.35429, 'recall': 0.74352, 'f1': 0.4799, 'auc': 0.80276, 'accuracy-SBM': 0.72652}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:09:40,811 - INFO - val: {'epoch': 92, 'time_epoch': 1.82301, 'loss': 0.54304063, 'lr': 0, 'params': 302385, 'time_iter': 0.02894, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51765, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:09:42,892 - INFO - test: {'epoch': 92, 'time_epoch': 1.82962, 'loss': 0.54036492, 'lr': 0, 'params': 302385, 'time_iter': 0.02904, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51394, 'accuracy-SBM': 0.5}
+2025-07-05 03:09:42,893 - INFO - > Epoch 92: took 25.8s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:10:03,346 - INFO - train: {'epoch': 93, 'time_epoch': 19.02922, 'eta': 114.11916, 'eta_hours': 0.0317, 'loss': 0.15650412, 'lr': 6.67e-06, 'params': 302385, 'time_iter': 0.0608, 'accuracy': 0.71434, 'precision': 0.35307, 'recall': 0.74295, 'f1': 0.47867, 'auc': 0.80217, 'accuracy-SBM': 0.72558}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:10:05,415 - INFO - val: {'epoch': 93, 'time_epoch': 1.81808, 'loss': 0.54551286, 'lr': 0, 'params': 302385, 'time_iter': 0.02886, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.5158, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:10:07,482 - INFO - test: {'epoch': 93, 'time_epoch': 1.81625, 'loss': 0.54260024, 'lr': 0, 'params': 302385, 'time_iter': 0.02883, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51151, 'accuracy-SBM': 0.5}
+2025-07-05 03:10:07,484 - INFO - > Epoch 93: took 24.6s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:10:29,167 - INFO - train: {'epoch': 94, 'time_epoch': 19.07987, 'eta': 95.10246, 'eta_hours': 0.02642, 'loss': 0.1563283, 'lr': 4.91e-06, 'params': 302385, 'time_iter': 0.06096, 'accuracy': 0.71571, 'precision': 0.35458, 'recall': 0.74433, 'f1': 0.48034, 'auc': 0.80294, 'accuracy-SBM': 0.72695}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:10:31,277 - INFO - val: {'epoch': 94, 'time_epoch': 1.84944, 'loss': 0.51679335, 'lr': 0, 'params': 302385, 'time_iter': 0.02936, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51647, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:10:33,381 - INFO - test: {'epoch': 94, 'time_epoch': 1.8481, 'loss': 0.5165534, 'lr': 0, 'params': 302385, 'time_iter': 0.02933, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.50943, 'accuracy-SBM': 0.5}
+2025-07-05 03:10:33,383 - INFO - > Epoch 94: took 25.9s (avg 24.9s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:10:53,949 - INFO - train: {'epoch': 95, 'time_epoch': 19.03151, 'eta': 76.08243, 'eta_hours': 0.02113, 'loss': 0.1565393, 'lr': 3.41e-06, 'params': 302385, 'time_iter': 0.0608, 'accuracy': 0.71498, 'precision': 0.35367, 'recall': 0.74285, 'f1': 0.4792, 'auc': 0.80222, 'accuracy-SBM': 0.72593}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:10:56,063 - INFO - val: {'epoch': 95, 'time_epoch': 1.84429, 'loss': 0.53940014, 'lr': 0, 'params': 302385, 'time_iter': 0.02927, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51376, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:10:58,182 - INFO - test: {'epoch': 95, 'time_epoch': 1.86145, 'loss': 0.53788363, 'lr': 0, 'params': 302385, 'time_iter': 0.02955, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.50896, 'accuracy-SBM': 0.5}
+2025-07-05 03:10:58,183 - INFO - > Epoch 95: took 24.8s (avg 24.9s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:11:18,626 - INFO - train: {'epoch': 96, 'time_epoch': 18.99148, 'eta': 57.06092, 'eta_hours': 0.01585, 'loss': 0.15624859, 'lr': 2.18e-06, 'params': 302385, 'time_iter': 0.06068, 'accuracy': 0.71595, 'precision': 0.35466, 'recall': 0.74328, 'f1': 0.48019, 'auc': 0.80308, 'accuracy-SBM': 0.72668}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:11:20,710 - INFO - val: {'epoch': 96, 'time_epoch': 1.82818, 'loss': 0.44709381, 'lr': 0, 'params': 302385, 'time_iter': 0.02902, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.4986, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:11:22,828 - INFO - test: {'epoch': 96, 'time_epoch': 1.83793, 'loss': 0.44880123, 'lr': 0, 'params': 302385, 'time_iter': 0.02917, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.49647, 'accuracy-SBM': 0.5}
+2025-07-05 03:11:22,830 - INFO - > Epoch 96: took 24.6s (avg 24.9s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:11:43,251 - INFO - train: {'epoch': 97, 'time_epoch': 19.01033, 'eta': 38.04041, 'eta_hours': 0.01057, 'loss': 0.1564783, 'lr': 1.23e-06, 'params': 302385, 'time_iter': 0.06074, 'accuracy': 0.71478, 'precision': 0.35354, 'recall': 0.74327, 'f1': 0.47916, 'auc': 0.80233, 'accuracy-SBM': 0.72597}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:11:45,284 - INFO - val: {'epoch': 97, 'time_epoch': 1.78398, 'loss': 0.52404369, 'lr': 0, 'params': 302385, 'time_iter': 0.02832, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.50364, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:11:47,326 - INFO - test: {'epoch': 97, 'time_epoch': 1.79772, 'loss': 0.5235654, 'lr': 0, 'params': 302385, 'time_iter': 0.02854, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.4997, 'accuracy-SBM': 0.5}
+2025-07-05 03:11:47,328 - INFO - > Epoch 97: took 24.5s (avg 24.9s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:12:08,539 - INFO - train: {'epoch': 98, 'time_epoch': 18.7274, 'eta': 19.01725, 'eta_hours': 0.00528, 'loss': 0.15622987, 'lr': 5.5e-07, 'params': 302385, 'time_iter': 0.05983, 'accuracy': 0.71605, 'precision': 0.3549, 'recall': 0.74428, 'f1': 0.48062, 'auc': 0.80316, 'accuracy-SBM': 0.72714}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:12:10,570 - INFO - val: {'epoch': 98, 'time_epoch': 1.78579, 'loss': 0.52638651, 'lr': 0, 'params': 302385, 'time_iter': 0.02835, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.4912, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:12:12,606 - INFO - test: {'epoch': 98, 'time_epoch': 1.79064, 'loss': 0.52541003, 'lr': 0, 'params': 302385, 'time_iter': 0.02842, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.49263, 'accuracy-SBM': 0.5}
+2025-07-05 03:12:12,607 - INFO - > Epoch 98: took 25.3s (avg 24.9s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:12:31,669 - INFO - train: {'epoch': 99, 'time_epoch': 18.68867, 'eta': 0.0, 'eta_hours': 0.0, 'loss': 0.15664838, 'lr': 1.4e-07, 'params': 302385, 'time_iter': 0.05971, 'accuracy': 0.71493, 'precision': 0.35354, 'recall': 0.7422, 'f1': 0.47894, 'auc': 0.80177, 'accuracy-SBM': 0.72565}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:12:33,710 - INFO - val: {'epoch': 99, 'time_epoch': 1.79429, 'loss': 0.54658292, 'lr': 0, 'params': 302385, 'time_iter': 0.02848, 'accuracy': 0.82298, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.51174, 'accuracy-SBM': 0.5}
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+2025-07-05 03:12:35,761 - INFO - test: {'epoch': 99, 'time_epoch': 1.8071, 'loss': 0.54530393, 'lr': 0, 'params': 302385, 'time_iter': 0.02868, 'accuracy': 0.82378, 'precision': 0.0, 'recall': 0.0, 'f1': 0.0, 'auc': 0.50518, 'accuracy-SBM': 0.5}
+2025-07-05 03:12:35,864 - INFO - > Epoch 99: took 23.2s (avg 24.8s) | Best so far: epoch 0	train_loss: 0.2014 train_accuracy-SBM: 0.5067	val_loss: 0.1999 val_accuracy-SBM: 0.5155	test_loss: 0.1992 test_accuracy-SBM: 0.5101
+2025-07-05 03:12:35,864 - INFO - Avg time per epoch: 24.84s
+2025-07-05 03:12:35,864 - INFO - Total train loop time: 0.69h
+2025-07-05 03:12:35,877 - INFO - Task done, results saved in results/pattern/pattern-Vanilla-41
+2025-07-05 03:12:35,877 - INFO - Total time: 2542.99s (0.71h)
+2025-07-05 03:12:35,937 - INFO - Results aggregated across runs saved in results/pattern/pattern-Vanilla-41/agg
+2025-07-05 03:12:35,937 - INFO - === OPTIMIZED TRAINING COMPLETED SUCCESSFULLY! ===
+2025-07-05 03:12:35,937 - INFO - Results saved in: results/pattern/pattern-Vanilla-41
+2025-07-05 03:12:35,937 - INFO - Test results JSON files saved in: results/pattern/pattern-Vanilla-41/test_results/
+Completed seed 41. Results saved in results/pattern/pattern-Vanilla-41
+----------------------------------------
+All experiments completed!
