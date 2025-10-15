@@ -6,18 +6,20 @@
 
 
 ## Overview
-Graph Transformers combine attention with graph inductive biases but suffer from:
 
-Rigid architectures - commit to fixed GNN types across all layers
-Black-box predictions - lack quantifiable methods to identify which components drive predictions
+Graph Transformers combine attention with graph structure, but face key limitations:
 
-## DARTS-GT addresses both:
+**Current Limitations:**
+- **Rigid architectures** - commit to fixed GNN types across all layers
+- **Black-box predictions** - lack quantifiable methods to identify what drives decisions
 
- **DARTS-GT** redesigns Graph Transformer attention through **asymmetry** and **differentiable architecture search**, while introducing the first **quantitative interpretability framework** for Graph Transformers.
+**DARTS-GT redesigns address these limitations:**
 
-**The problem:** Current GTs commit to fixed GNN types across layers and lack quantifiable methods to identify which components drive predictions—making it difficult to understand what the model actually learned.
+- **DARTS-based architecture search** - automated depth-wise GNN selection within attention blocks
+- **Asymmetric attention mechanism** - queries from features, keys/values from GNN transformations avoiding parallel MPNN+Transformer paths (GPS, UGAS etc)
+- **First quantitative interpretability framework** - causal ablation via Head-deviation, Specialization, and Focus metrics
 
-**Our solution:** Causal ablation-based interpretability that reveals which heads and nodes matter for each prediction.
+**Key Result:** Competitive SOTA without parallel MPNNs + quantifiable interpretability for Graph Transformers.
 
 
 
