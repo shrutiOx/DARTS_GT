@@ -64,7 +64,7 @@ cd ../DARTS_GT_LRGB
 python mainnas.py --cfg Configs/Peptides-func/Darts-Gt/confignas_dense.yaml
 ```
 
-**Expected runtime:** ~15 hours on single GPU (architecture search + training)
+
 
 ## Acknowledgments
 
