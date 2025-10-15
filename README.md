@@ -96,6 +96,7 @@ DARTS_GT/
 
 
 **For configuration options, see [CONFIG_GUIDE.md](CONFIG_GUIDE.md)**
+
 **Understanding Different Methods - DARTS-GT supports multiple Graph Transformer variants with different training strategies. The key differences between methods are captured in their configuration files .To understand any method, check its config file.**
 ```bash
 
