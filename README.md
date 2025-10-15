@@ -42,6 +42,15 @@ Competitive performance on PATTERN, CLUSTER, MolHIV, MolPCBA.
 - Visual attention salience does NOT always correlate with causal importance 
 - Our metrics reveal which heads and nodes actually drive predictions
 
+## Installation
+```bash
+# Clone repository
+git clone https://github.com/shrutiOx/DARTS_GT.git
+cd DARTS_GT
+
+# Install dependencies (Python ≥3.8, PyTorch ≥1.12, PyG ≥2.1)
+pip install -r requirements.txt
+```
 
 ## Acknowledgments
 
