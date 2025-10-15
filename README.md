@@ -36,13 +36,11 @@ Competitive performance on PATTERN, CLUSTER, MolHIV, MolPCBA.
 
 **Architecture Discovery:**
 - Dataset-specific patterns emerge: from highly specialized (81% GINE on MolPCBA) to balanced (ZINC)
-- <img width="643" height="487" alt="image" src="https://github.com/user-attachments/assets/ed7c84e7-a279-4b17-be40-ec75af0801be" />
-- Example of Discovered architecture by DARTS
-- <img width="433" height="521" alt="image" src="https://github.com/user-attachments/assets/6ad258c4-83fa-4df4-a2a1-fbf55a09ae01" />
+- <img width="487" height="487" alt="image" src="https://github.com/user-attachments/assets/ed7c84e7-a279-4b17-be40-ec75af0801be" />
+
 
 
 - Heterogeneous architectures consistently produce more interpretable models than other baseline GTs
-- ## TABLE VII: Quantitative Interpretability Metrics Across Architectures
 
 Median Specialization: concentration of importance in fewer heads; Median Focus: consensus on important nodes. Best values in **bold** while second-best are *italized*.
 
@@ -64,8 +62,6 @@ Median Specialization: concentration of importance in fewer heads; Median Focus:
 
 
 - Our metrics reveal which heads and nodes actually drive predictions
-
-<img width="642" height="791" alt="image" src="https://github.com/user-attachments/assets/295d5ef4-8f7a-4c2c-b0ab-6c72654661c2" />
 
 **See paper Section III-C and IV-F,G for detailed methodology.**
 
