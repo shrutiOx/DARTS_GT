@@ -28,7 +28,7 @@ Graph Transformers combine attention with graph structure, but face key limitati
 | Dataset | Metric | DARTS-GT | Previous Best |
 |---------|--------|----------|---------------|
 | ZINC | MAE ↓ | **0.066 ± 0.003** | 0.070 (GPS) |
-| MalNet-Tiny | Acc ↑ | **0.9325 ± 0.006** | 92.64 (GPS) |
+| MalNet-Tiny | Acc ↑ | **0.9325 ± 0.006** | 0.9264 (GPS) |
 | Peptides-Func | AP ↑ | **0.669 ± 0.004** | 0.667 (UGAS) |
 | Peptides-Struct | MAE ↓ | **0.246 ± 0.0006** | 0.247 (UGAS) |
 
