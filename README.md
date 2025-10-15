@@ -36,11 +36,34 @@ Competitive performance on PATTERN, CLUSTER, MolHIV, MolPCBA.
 
 **Architecture Discovery:**
 - Dataset-specific patterns emerge: from highly specialized (81% GINE on MolPCBA) to balanced (ZINC)
-- Heterogeneous architectures consistently produce more interpretable models than other baseline GTs 
+- <img width="487" height="487" alt="image" src="https://github.com/user-attachments/assets/ed7c84e7-a279-4b17-be40-ec75af0801be" />
+
+
+
+- Heterogeneous architectures consistently produce more interpretable models than other baseline GTs
+
+Median Specialization: concentration of importance in fewer heads; Median Focus: consensus on important nodes. Best values in **bold** while second-best are *italized*.
+
+| Dataset | Model | Specialization | Focus |
+|---------|-------|----------------|-------|
+| MolHIV | Vanilla-GT (sparse) | 0.000634 | 0.533 |
+| | GPS (sparse) | 0.000044 | **0.5734** |
+| | GPS (dense) | *0.000091* | 0.111 |
+| | **DARTS-GT (sparse)** | **0.00124** | *0.555* |
+| Pep-Struc | Vanilla-GT (dense) | **0.055** | 0.067 |
+| | GPS (dense) | 0.038 | *0.085* |
+| | **DARTS-GT (dense)** | *0.044* | **0.129** |
 
 **Interpretability Insight:**
-- Visual attention salience does NOT always correlate with causal importance 
+- Visual attention salience does NOT always correlate with causal importance and  attention-based visualization or entropy heuristics cannot
+ substitute for causal ablation methods.
+
+<img width="882" height="276" alt="image" src="https://github.com/user-attachments/assets/d62d0970-66a6-4e44-8946-c14f90918671" />
+
+
 - Our metrics reveal which heads and nodes actually drive predictions
+
+**See paper Section III-C and IV-F,G for detailed methodology.**
 
 ## Installation
 ```bash
@@ -158,10 +181,7 @@ python mainnas.py --cfg Configs/Peptides-Struc/Darts-Gt/config_dense_interpret.y
 - Live runs: `{out_dir}/pk_explainer_results/`
 - Paper results: `Explainer.zip` files contain our interpretability analyses (MolHIV in `DARTS_GT_NonLRGB/`, Peptides-Struct in `DARTS_GT_LRGB/`) with per-instance metrics (Json files), attention heatmaps, and plots
 
-**Key finding:** Visual attention salience does NOT always correlate with causal importance and  attention-based visualization or entropy heuristics cannot
- substitute for causal ablation methods.. Our metrics reveal which heads and nodes actually drive predictions.
 
-**See paper Section III-C and IV-F,G for detailed methodology.**
 
 
 ## Acknowledgments
@@ -169,6 +189,7 @@ python mainnas.py --cfg Configs/Peptides-Struc/Darts-Gt/config_dense_interpret.y
 This codebase builds upon and extends:
 - **[GraphGPS](https://github.com/rampasek/GraphGPS)** (Rampášek et al., NeurIPS 2022) - MIT License
 - **[LRGB Benchmarks](https://github.com/vijaydwivedi75/lrgb)** (Dwivedi et al., NeurIPS 2022) - MIT License
+- ***[Microsoft NNI] (https://github.com/microsoft/nni)** - MIT License
 
 We extend sincere gratitude to the authors for open-sourcing their implementations.
 
