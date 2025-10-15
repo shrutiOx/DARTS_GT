@@ -51,6 +51,20 @@ cd DARTS_GT
 # Install dependencies (Python ≥3.8, PyTorch ≥1.12, PyG ≥2.1)
 pip install -r requirements.txt
 ```
+## Quick Start
+```bash
+# Navigate to the directory
+cd DARTS_GT_NonLRGB
+
+# Run DARTS search + training
+python mainnas.py --cfg Configs/Zinc/confignas_sparse.yaml
+
+# For LRGB datasets
+cd ../DARTS_GT_LRGB
+python mainnas.py --cfg Configs/Peptides-func/Darts-Gt/confignas_dense.yaml
+```
+
+**Expected runtime:** ~15 hours on single GPU (architecture search + training)
 
 ## Acknowledgments
 
