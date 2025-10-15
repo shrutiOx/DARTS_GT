@@ -94,8 +94,14 @@ DARTS_GT/
 └── README.md                   # This file
 ```
 
-**For detailed code documentation, see [CODE_STRUCTURE.md](CODE_STRUCTURE.md)**  
+
 **For configuration options, see [CONFIG_GUIDE.md](CONFIG_GUIDE.md)**
+## Understanding Different Methods
+
+DARTS-GT supports multiple Graph Transformer variants with different training strategies. The key differences between methods are captured in their configuration files
+
+**To understand any method, check its config file:**
+```bash
 
 ## Reproducing Paper Results
 
