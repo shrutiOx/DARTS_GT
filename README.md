@@ -70,7 +70,7 @@ DARTS_GT/
 │   ├── dartsgt/                # Core implementation
 │   │   ├── layer/              # GT layers and GNN operators
 │   │   ├── network/            # Model architectures
-│   │   └── ..../               # Prediction heads
+│   │   └── ..../               # others
 │   ├── Configs/                # Configuration files by dataset
 │   │   ├── Pep-func/           # Peptides-Func configs
 │   │   └── Pep-struc/          # Peptides-Struct configs
