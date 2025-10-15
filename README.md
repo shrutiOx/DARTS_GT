@@ -203,4 +203,4 @@ This repository introduces several novel components:
 While our implementation leverages the GraphGPS infrastructure (data loaders, training loops, configuration system, hyperparameters), the core methodological contributions—architecture search, interpretability analysis, and asymmetric attention design—are original to this work.
 
 ### License
-This project is released under the MIT License, consistent with the original GraphGPS and LRGB codebases. See [LICENSE](LICENSE) for details.
+This project is released under the MIT License, consistent with the original GraphGPS ,NNI and LRGB codebases. See [LICENSE](LICENSE) for details.
