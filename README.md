@@ -189,6 +189,7 @@ python mainnas.py --cfg Configs/Peptides-Struc/Darts-Gt/config_dense_interpret.y
 This codebase builds upon and extends:
 - **[GraphGPS](https://github.com/rampasek/GraphGPS)** (Rampášek et al., NeurIPS 2022) - MIT License
 - **[LRGB Benchmarks](https://github.com/vijaydwivedi75/lrgb)** (Dwivedi et al., NeurIPS 2022) - MIT License
+- ***[Microsoft NNI] (https://github.com/microsoft/nni)** - MIT License
 
 We extend sincere gratitude to the authors for open-sourcing their implementations.
 
