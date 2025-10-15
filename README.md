@@ -28,7 +28,7 @@ Graph Transformers combine attention with graph structure, but face key limitati
 | Dataset | Metric | DARTS-GT | Previous Best |
 |---------|--------|----------|---------------|
 | ZINC | MAE ↓ | **0.066 ± 0.003** | 0.070 (GPS) |
-| MalNet-Tiny | Acc ↑ | **0.9325 ± 0.006** | 92.64 (GPS) |
+| MalNet-Tiny | Acc ↑ | **0.9325 ± 0.006** | 0.9264 (GPS) |
 | Peptides-Func | AP ↑ | **0.669 ± 0.004** | 0.667 (UGAS) |
 | Peptides-Struct | MAE ↓ | **0.246 ± 0.0006** | 0.247 (UGAS) |
 
@@ -70,7 +70,7 @@ DARTS_GT/
 │   ├── dartsgt/                # Core implementation
 │   │   ├── layer/              # GT layers and GNN operators
 │   │   ├── network/            # Model architectures
-│   │   └── ..../               # Prediction heads
+│   │   └── ..../               # others
 │   ├── Configs/                # Configuration files by dataset
 │   │   ├── Pep-func/           # Peptides-Func configs
 │   │   └── Pep-struc/          # Peptides-Struct configs
@@ -94,8 +94,11 @@ DARTS_GT/
 └── README.md                   # This file
 ```
 
-**For detailed code documentation, see [CODE_STRUCTURE.md](CODE_STRUCTURE.md)**  
+
 **For configuration options, see [CONFIG_GUIDE.md](CONFIG_GUIDE.md)**
+
+**Understanding Different Methods - DARTS-GT supports multiple Graph Transformer variants with different training strategies. The key differences between methods are captured in their configuration files .To understand any method, check its config file.**
+```bash
 
 ## Reproducing Paper Results
 
@@ -129,6 +132,36 @@ python mainnas.py --cfg Configs/Cluster/Symmetric/confignas_syym.yaml
 
 **Outputs:** Results saved to directory specified by `out_dir:` in config file, containing logs, metrics, and interpretability analysis.
 
+## Interpretability Analysis
+
+Our framework provides quantitative, causal interpretability via head ablation.
+
+**Run interpretability analysis:**
+```bash
+cd DARTS_GT_NonLRGB
+python mainnas.py --cfg Configs/MolHIV/DARTS_GT/confignas_sparse_interpret_on.yaml
+
+# For LRGB
+cd DARTS_GT_LRGB  
+python mainnas.py --cfg Configs/Peptides-Struc/Darts-Gt/config_dense_interpret.yaml
+```
+
+**Enable in any config:** Set `cfg.gt.pk_explainer.enabled = True` in your YAML file.
+
+**Output metrics:**
+
+- **Head-Deviation (δ):** Prediction change when masking head m in layer ℓ (higher in positive number = more important)
+- **Specialization:** Standard deviation of head impacts (high = few heads dominate; low = uniform importance)
+- **Focus:** Jaccard similarity of top-k heads' attended nodes (high = consensus on substructures; low = divergent attention)
+
+**Results location:**
+- Live runs: `{out_dir}/pk_explainer_results/`
+- Paper results: `Explainer.zip` files contain our interpretability analyses (MolHIV in `DARTS_GT_NonLRGB/`, Peptides-Struct in `DARTS_GT_LRGB/`) with per-instance metrics (Json files), attention heatmaps, and plots
+
+**Key finding:** Visual attention salience does NOT always correlate with causal importance and  attention-based visualization or entropy heuristics cannot
+ substitute for causal ablation methods.. Our metrics reveal which heads and nodes actually drive predictions.
+
+**See paper Section III-C and IV-F,G for detailed methodology.**
 
 
 ## Acknowledgments
