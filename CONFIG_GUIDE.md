@@ -9,7 +9,7 @@ This guide documents the **DARTS-GT specific parameters** and **actively modifie
 - [Architecture Search (NAS)](#architecture-search-nas)
 - [Interpretability (PK-Explainer)](#interpretability-pk-explainer)
 - [Actively Modified GPS Parameters](#actively-modified-gps-parameters)
-- [Complete LRGB Example](#complete-lrgb-example)
+
 
 ---
 
@@ -107,11 +107,11 @@ gt:
 
 ---
 
-### `residual_mult`
+### `edge_startup`
 **Type:** `float`  
 **Default:** `0.1`
 
-Multiplier for edge connections in the model. 
+Multiplier for edge gate  in the model ( use only if using corresponding code for edge-residual). 
 ```yaml
 gt:
   residual_mult: 0.1
