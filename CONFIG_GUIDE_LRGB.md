@@ -23,8 +23,7 @@ All DARTS-GT specific parameters are under the `gt:` section.
 **Default:** `'nas'`
 
 Controls how GNN experts are selected at each layer:
-- `'uniform'`: All experts equally weighted (baseline)
-- `'random'`: Random expert selection each forward pass
+- `'none'`: Non NAS based methods
 - `'nas'`: DARTS-based architecture search to find optimal expert per layer
 ```yaml
 gt:
@@ -56,6 +55,13 @@ gt:
 
 ---
 
+### `attn_gnn_uni`
+**Type:** `str`  
+**Options:** `'None'`,  or GNNs like `'GINE'`  
+**Default:** `'None'`
+It is true (not None) when running Uniform architectures
+-----
+
 ### `weight_fix`
 **Type:** `str`  
 **Options:** `'individual'`, `'all_single'`, or custom patterns like `'3:3:2'`  
@@ -76,12 +82,12 @@ gt:
 
 ### `weight_type`
 **Type:** `str`  
-**Options:** `'nas'`, `'softmax'`  
+**Options:** `'nas'`, `'none'`  
 **Default:** `'nas'`
 
 Determines how expert selection is implemented:
 - `'nas'`: Uses DARTS architecture search
-- `'softmax'`: Softmax-based expert mixing
+- `'none'`: Non DARTS mode
 ```yaml
 gt:
   weight_type: 'nas'
@@ -93,10 +99,10 @@ gt:
 **Type:** `int`  
 **Default:** `2`
 
-Number of GNN expert types actively used during architecture search. Must be ≤ `len(head_gnn_types)`.
+Types of GNN expert types actively used during architecture search. 2 indicates ['GINE,'GATV2',GATEDGCN'] and 1 indicates ['GCN','GIN','GAT'].
 ```yaml
 gt:
-  gnns_type_used: 2  # Use 2 out of 3 available expert types
+  gnns_type_used: 2  # Use 2 
 ```
 
 ---
@@ -105,7 +111,7 @@ gt:
 **Type:** `float`  
 **Default:** `0.1`
 
-Multiplier for residual connections in the model. Controls the strength of skip connections.
+Multiplier for edge connections in the model. 
 ```yaml
 gt:
   residual_mult: 0.1
@@ -121,7 +127,7 @@ All NAS-specific parameters are under `gt.nas:`.
 **Type:** `bool`  
 **Default:** `true`
 
-Enable/disable DARTS architecture search. When `false`, uses default expert selection based on `routing_mode`.
+Enable/disable DARTS architecture search. When `false`, uses default expert selection based on `train code used`.
 ```yaml
 gt:
   nas:
@@ -136,7 +142,7 @@ gt:
 
 Number of epochs for DARTS architecture search phase. Only used when `routing_mode='nas'`.
 
-**Note:** For `routing_mode='uniform'` or `'random'`, DARTS runs for 2 epochs regardless of this value.
+
 ```yaml
 gt:
   nas:
@@ -365,81 +371,7 @@ Standard GraphGPS parameters actively used. See [GraphGPS docs](https://github.c
 
 ---
 
-## Complete LRGB Example
 
-Here's a complete configuration for LRGB datasets:
-```yaml
-out_dir: results
-train:
-  mode: custom
-  
-model:
-  type: NASModelEdge  # Or NASModelQ for Q-projection variant
-
-gt:
-  # === DARTS-GT Core ===
-  routing_mode: 'nas'
-  head_gnn_types: ['GINE', 'CustomGatedGCN', 'GATV2']
-  weight_fix: '1:1'  # Independent weights for 2 layers
-  weight_type: 'nas'
-  gnns_type_used: 2
-  residual_mult: 0.1
-  
-  # === Architecture Search ===
-  nas:
-    enabled: true
-    darts_epochs: 50
-    darts_split_ratio: 0.6
-    arc_learning_rate: 4.0e-4
-    grad_clip: 5.0
-    unrolled: false
-    darts_lr_schedule:
-      lr_reduce_factor: 0.5
-      lr_schedule_patience: 10
-      min_lr: 1.0e-6
-      init_lr: 0.0025
-      weight_decay: 3e-4
-  
-  # === Interpretability ===
-  pk_explainer:
-    enabled: true
-    visualization: true
-    save_attention: false
-    k_heads: 5
-    # graph_ids: [0, 10, 100]  # Optional: specific graphs to visualize
-  
-  # === GPS Parameters (actively used) ===
-  layer_type: 'None+Transformer'
-  layers: 2
-  dim_hidden: 64
-  n_heads: 4
-  dropout: 0.1
-  attn_dropout: 0.1
-```
-
----
-
-## Usage Notes
-
-1. **Routing Modes:**
-   - Use `'nas'` for full architecture search
-   - Use `'uniform'` or `'random'` as baselines (runs 2 DARTS epochs)
-
-2. **Weight Sharing:**
-   - `weight_fix='individual'`: Maximum flexibility, longer search
-   - `weight_fix='all_single'`: Fastest search, less flexibility
-   - Custom patterns like `'2:2:2'`: Balance flexibility and speed
-
-3. **PK-Explainer:**
-   - Enable after training completes
-   - For large datasets, set `save_attention: false` to save memory
-   - Use `graph_ids` to visualize specific interesting graphs
-
-4. **Expert Selection:**
-   - More experts in `head_gnn_types` = longer search but potentially better results
-   - Limit `gnns_type_used` to speed up search
-
----
 
 ## See Also
 
