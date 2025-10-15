@@ -10,10 +10,17 @@ import os
 import sys
 import logging
 
-# Change to your script directory
+# ===== FIX UTF-8 ENCODING FOR WINDOWS =====
+import io
+from yacs.config import CfgNode
 
 
-os.chdir("D:/MY_FOLDER/DARTS_GT/DARTS_GT_NonLRGB") ###Put your script directory here
+
+
+#os.chdir("D:/MY_FOLDER/DARTS_GT/DARTS_GT_NonLRGB") ###Put your script directory here
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+os.chdir(SCRIPT_DIR)
+print(f"Working directory: {os.getcwd()}")
 
 
 print(f"Changed working directory to: {os.getcwd()}")
@@ -73,14 +80,14 @@ def main():
     args = parse_args()
     
     # Fix: Set the full path to the config file
-    args.cfg_file = os.path.join(os.getcwd(), "confignas_sparse.yaml")  # Use YOUR config file here
+    #args.cfg_file = os.path.join(os.getcwd(), "confignas_sparse_zinc.yaml")  # Use YOUR config file here
+    # Get command line arguments
 
     print(f"Loading config from: {args.cfg_file}")
     
     # Check if file exists
     if not os.path.exists(args.cfg_file):
         raise FileNotFoundError(f"Config file not found at {args.cfg_file}")
-    
     # Initialize the configuration
     set_cfg(cfg)
     

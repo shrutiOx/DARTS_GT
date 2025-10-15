@@ -13,11 +13,18 @@ import logging
 # Change to your script directory
 
 
-os.chdir("D:/MY_FOLDER/DARTS_GT/DARTS_GT_LRGB") ###Put your script directory here
+#os.chdir("D:/MY_FOLDER/DARTS_GT/DARTS_GT_LRGB") ###Put your script directory here
 
+
+#os.chdir("D:/MY_FOLDER/DARTS_GT/DARTS_GT_NonLRGB") ###Put your script directory here
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+os.chdir(SCRIPT_DIR)
+print(f"Working directory: {os.getcwd()}")
 
 
 print(f"Changed working directory to: {os.getcwd()}")
+
+
 
 
 '''%run -i D:/MY_FOLDER/NAS_Mix_UQ/MOLHIV/main.py --cfg config.yaml'''
@@ -78,7 +85,7 @@ def main():
     args = parse_args()
     
     # Fix: Set the full path to the config file
-    args.cfg_file = os.path.join(os.getcwd(), "confignas_dense.yaml")  # Use optimized config
+    #args.cfg_file = os.path.join(os.getcwd(), "confignas_dense.yaml")  # Use optimized config
     #args.cfg_file = os.path.join(os.getcwd(), "NAS_config.yaml")  # Use optimized config
     print(f"Loading config from: {args.cfg_file}")
     
