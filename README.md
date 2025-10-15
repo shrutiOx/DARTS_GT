@@ -63,7 +63,39 @@ python mainnas.py --cfg Configs/Zinc/confignas_sparse.yaml
 cd ../DARTS_GT_LRGB
 python mainnas.py --cfg Configs/Peptides-func/Darts-Gt/confignas_dense.yaml
 ```
+## Repository Structure
+```
+DARTS_GT/
+├── DARTS_GT_LRGB/              # Long-Range Graph Benchmarks (Peptides)
+│   ├── dartsgt/                # Core implementation
+│   │   ├── layer/              # GT layers and GNN operators
+│   │   ├── network/            # Model architectures
+│   │   └── ..../               # Prediction heads
+│   ├── Configs/                # Configuration files by dataset
+│   │   ├── Pep-func/           # Peptides-Func configs
+│   │   └── Pep-struc/          # Peptides-Struct configs
+│   ├── ResultsLogs/            # Experimental results (all seeds)
+│   ├── ExplainerPepStruc.zip           # Interpretability analysis outputs
+│   └── mainnas.py              # Main training script
+│
+├── DARTS_GT_NonLRGB/           # Standard benchmarks
+│   ├── dartsgt/                # Core implementation
+│   ├── Configs/                # Per-dataset configurations
+│   │   ├── Zinc/               # ZINC configs (Darts_gt, Vanilla, etc.)
+│   │   ├── MolHIV/             # MolHIV configs
+│   │   ├── Cluster/            # CLUSTER configs
+│   │   ├── Pattern/            # PATTERN configs
+│   │   └── ...                 # MolPCBA, MalNet configs
+│   ├── Result_Logs/            # Experimental results
+│   ├── ExplainerMolHIV.zip           # Interpretability analysis outputs
+│   └── mainnas.py              # Main training script
+│
+├── LICENSE                     # MIT License
+└── README.md                   # This file
+```
 
+**For detailed code documentation, see [CODE_STRUCTURE.md](CODE_STRUCTURE.md)**  
+**For configuration options, see [CONFIG_GUIDE.md](CONFIG_GUIDE.md)**
 
 
 ## Acknowledgments
