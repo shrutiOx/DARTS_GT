@@ -1,0 +1,1005 @@
+Lmod has detected the following error: The following module(s) are unknown:
+"cuda/12.0"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore-cache load "cuda/12.0"
+
+Also make sure that all modulefiles written in TCL start with the string
+#%Module
+
+
+
+              total        used        free      shared  buff/cache   available
+Mem:          251Gi        10Gi       217Gi       1.0Gi        22Gi       237Gi
+Swap:         1.9Gi        19Mi       1.8Gi
+Fri Jul 11 12:07:11 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 560.35.03              Driver Version: 560.35.03      CUDA Version: 12.6     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA TITAN RTX               On  |   00000000:1B:00.0 Off |                  N/A |
+| 41%   50C    P8             33W /  280W |       1MiB /  24576MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Running experiment with seed: 47
+Starting training for seed 47...
+Changed working directory to: /data/coml-deepcmb/lady6973/ABLATION_FINAL/RACE_TO_SUP/CLUSTER/FINAL_SINGLE/SPARSE_E/UNI_GT/GATV2
+Loading config from: /data/coml-deepcmb/lady6973/ABLATION_FINAL/RACE_TO_SUP/CLUSTER/FINAL_SINGLE/SPARSE_E/UNI_GT/GATV2/confignas.yaml
+Using device: cuda
+2025-07-11 12:08:28,151 - INFO - GPU Mem: 25.2GB
+2025-07-11 12:08:28,151 - INFO - Run directory: results/Cluster/Cluster-GATV2-47
+2025-07-11 12:08:28,151 - INFO - Seed: 47
+2025-07-11 12:08:28,151 - INFO - === OPTIMIZED MOE CONFIGURATION ===
+2025-07-11 12:08:28,151 - INFO - Routing mode: none
+2025-07-11 12:08:28,151 - INFO - Expert types: ['GINE', 'CustomGatedGCN', 'GATV2']
+2025-07-11 12:08:28,151 - INFO - Number of layers: 16
+2025-07-11 12:08:28,151 - INFO - Uncertainty enabled: False
+2025-07-11 12:08:28,151 - INFO - Training mode: custom
+2025-07-11 12:08:28,151 - INFO - Optimization: Uncertainty only for last layer + test/val
+2025-07-11 12:08:28,152 - INFO - Additional features: Router weights logging + JSON export
+2025-07-11 12:08:41,787 - INFO - [*] Loaded dataset 'CLUSTER' from 'PyG-GNNBenchmarkDataset':
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/torch_geometric/data/in_memory_dataset.py:300: UserWarning: It is not recommended to directly access the internal storage format `data` of an 'InMemoryDataset'. If you are absolutely certain what you are doing, access the internal storage via `InMemoryDataset._data` instead to suppress this warning. Alternatively, you can access stacked individual attributes of every graph via `dataset.{attr_name}`.
+  warnings.warn(msg)
+2025-07-11 12:08:41,797 - INFO -   Data(x=[1406436, 7], edge_index=[2, 51620680], y=[1406436])
+2025-07-11 12:08:41,857 - INFO -   undirected: True
+2025-07-11 12:08:41,857 - INFO -   num graphs: 12000
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/torch_geometric/data/in_memory_dataset.py:300: UserWarning: It is not recommended to directly access the internal storage format `data` of an 'InMemoryDataset'. The data of the dataset is already cached, so any modifications to `data` will not be reflected when accessing its elements. Clearing the cache now by removing all elements in `dataset._data_list`. If you are absolutely certain what you are doing, access the internal storage via `InMemoryDataset._data` instead to suppress this warning. Alternatively, you can access stacked individual attributes of every graph via `dataset.{attr_name}`.
+  warnings.warn(msg)
+2025-07-11 12:08:41,857 - INFO -   avg num_nodes/graph: 117
+2025-07-11 12:08:41,857 - INFO -   num node features: 7
+2025-07-11 12:08:41,858 - INFO -   num edge features: 0
+2025-07-11 12:08:41,859 - INFO -   num classes: 6
+2025-07-11 12:08:41,859 - INFO - Parsed RWSE PE kernel times / steps: [1, 2, 4, 8, 16]
+2025-07-11 12:08:41,859 - INFO - Precomputing Positional Encoding statistics: ['LapPE', 'RWSE'] for all graphs...
+2025-07-11 12:08:41,867 - INFO -   ...estimated to be undirected: True
+  0%|          | 0/12000 [00:00<?, ?it/s] 14%|█▍        | 1732/12000 [00:10<00:59, 173.10it/s] 29%|██▉       | 3452/12000 [00:20<00:49, 172.43it/s] 43%|████▎     | 5133/12000 [00:30<00:40, 170.41it/s] 57%|█████▋    | 6849/12000 [00:40<00:30, 170.87it/s] 71%|███████▏  | 8558/12000 [00:50<00:20, 170.84it/s] 85%|████████▌ | 10225/12000 [01:00<00:10, 169.41it/s] 99%|█████████▉| 11929/12000 [01:10<00:00, 169.73it/s]100%|██████████| 12000/12000 [01:10<00:00, 170.38it/s]
+2025-07-11 12:09:53,078 - INFO - Done! Took 00:01:11.22
+2025-07-11 12:09:53,101 - INFO - [*] Loaded dataset 'CLUSTER' from 'PyG-GNNBenchmarkDataset'
+2025-07-11 12:09:53,658 - INFO - Created model type: <class 'torch_geometric.graphgym.model_builder.GraphGymModule'>
+2025-07-11 12:09:53,658 - INFO - Inner model type: <class 'graphgps.network.uniform_gt_model_edge.UNIFORM_GTModelEdge'>
+2025-07-11 12:09:53,658 - INFO - Inner model has get_darts_model: False
+2025-07-11 12:09:53,666 - INFO - GraphGymModule(
+  (model): UNIFORM_GTModelEdge(
+    (encoder): FeatureEncoder(
+      (node_encoder): LapPENodeEncoder(
+        (linear_x): Linear(in_features=7, out_features=32, bias=True)
+        (linear_A): Linear(in_features=2, out_features=32, bias=True)
+        (pe_encoder): Sequential(
+          (0): ReLU()
+          (1): Linear(in_features=32, out_features=16, bias=True)
+          (2): ReLU()
+        )
+      )
+      (edge_encoder): DummyEdgeEncoder(
+        (encoder): Embedding(1, 48)
+      )
+    )
+    (layers): Sequential(
+      (0): UNIFORMGTLayer(
+        summary: dim_h=48, global_model_type=SparseTransformer, heads=8
+        (edge_processor): Sequential(
+          (0): Linear(in_features=48, out_features=48, bias=True)
+          (1): ReLU()
+          (2): Dropout(p=0.0, inplace=False)
+          (3): Linear(in_features=48, out_features=48, bias=True)
+          (4): Dropout(p=0.0, inplace=False)
+        )
+        (kv_model): GATv2Conv(48, 6, heads=8)
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=48, out_features=48, bias=True)
+          (W_v): Linear(in_features=48, out_features=48, bias=True)
+          (W_o): Linear(in_features=48, out_features=48, bias=True)
+        )
+        (norm1_local): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_kv): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_attn): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_local): Dropout(p=0.0, inplace=False)
+        (dropout_kv): Dropout(p=0.0, inplace=False)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=48, out_features=96, bias=True)
+        (ff_linear2): Linear(in_features=96, out_features=48, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+      (1): UNIFORMGTLayer(
+        summary: dim_h=48, global_model_type=SparseTransformer, heads=8
+        (edge_processor): Sequential(
+          (0): Linear(in_features=48, out_features=48, bias=True)
+          (1): ReLU()
+          (2): Dropout(p=0.0, inplace=False)
+          (3): Linear(in_features=48, out_features=48, bias=True)
+          (4): Dropout(p=0.0, inplace=False)
+        )
+        (kv_model): GATv2Conv(48, 6, heads=8)
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=48, out_features=48, bias=True)
+          (W_v): Linear(in_features=48, out_features=48, bias=True)
+          (W_o): Linear(in_features=48, out_features=48, bias=True)
+        )
+        (norm1_local): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_kv): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_attn): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_local): Dropout(p=0.0, inplace=False)
+        (dropout_kv): Dropout(p=0.0, inplace=False)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=48, out_features=96, bias=True)
+        (ff_linear2): Linear(in_features=96, out_features=48, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+      (2): UNIFORMGTLayer(
+        summary: dim_h=48, global_model_type=SparseTransformer, heads=8
+        (edge_processor): Sequential(
+          (0): Linear(in_features=48, out_features=48, bias=True)
+          (1): ReLU()
+          (2): Dropout(p=0.0, inplace=False)
+          (3): Linear(in_features=48, out_features=48, bias=True)
+          (4): Dropout(p=0.0, inplace=False)
+        )
+        (kv_model): GATv2Conv(48, 6, heads=8)
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=48, out_features=48, bias=True)
+          (W_v): Linear(in_features=48, out_features=48, bias=True)
+          (W_o): Linear(in_features=48, out_features=48, bias=True)
+        )
+        (norm1_local): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_kv): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_attn): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_local): Dropout(p=0.0, inplace=False)
+        (dropout_kv): Dropout(p=0.0, inplace=False)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=48, out_features=96, bias=True)
+        (ff_linear2): Linear(in_features=96, out_features=48, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+      (3): UNIFORMGTLayer(
+        summary: dim_h=48, global_model_type=SparseTransformer, heads=8
+        (edge_processor): Sequential(
+          (0): Linear(in_features=48, out_features=48, bias=True)
+          (1): ReLU()
+          (2): Dropout(p=0.0, inplace=False)
+          (3): Linear(in_features=48, out_features=48, bias=True)
+          (4): Dropout(p=0.0, inplace=False)
+        )
+        (kv_model): GATv2Conv(48, 6, heads=8)
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=48, out_features=48, bias=True)
+          (W_v): Linear(in_features=48, out_features=48, bias=True)
+          (W_o): Linear(in_features=48, out_features=48, bias=True)
+        )
+        (norm1_local): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_kv): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_attn): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_local): Dropout(p=0.0, inplace=False)
+        (dropout_kv): Dropout(p=0.0, inplace=False)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=48, out_features=96, bias=True)
+        (ff_linear2): Linear(in_features=96, out_features=48, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+      (4): UNIFORMGTLayer(
+        summary: dim_h=48, global_model_type=SparseTransformer, heads=8
+        (edge_processor): Sequential(
+          (0): Linear(in_features=48, out_features=48, bias=True)
+          (1): ReLU()
+          (2): Dropout(p=0.0, inplace=False)
+          (3): Linear(in_features=48, out_features=48, bias=True)
+          (4): Dropout(p=0.0, inplace=False)
+        )
+        (kv_model): GATv2Conv(48, 6, heads=8)
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=48, out_features=48, bias=True)
+          (W_v): Linear(in_features=48, out_features=48, bias=True)
+          (W_o): Linear(in_features=48, out_features=48, bias=True)
+        )
+        (norm1_local): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_kv): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_attn): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_local): Dropout(p=0.0, inplace=False)
+        (dropout_kv): Dropout(p=0.0, inplace=False)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=48, out_features=96, bias=True)
+        (ff_linear2): Linear(in_features=96, out_features=48, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+      (5): UNIFORMGTLayer(
+        summary: dim_h=48, global_model_type=SparseTransformer, heads=8
+        (edge_processor): Sequential(
+          (0): Linear(in_features=48, out_features=48, bias=True)
+          (1): ReLU()
+          (2): Dropout(p=0.0, inplace=False)
+          (3): Linear(in_features=48, out_features=48, bias=True)
+          (4): Dropout(p=0.0, inplace=False)
+        )
+        (kv_model): GATv2Conv(48, 6, heads=8)
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=48, out_features=48, bias=True)
+          (W_v): Linear(in_features=48, out_features=48, bias=True)
+          (W_o): Linear(in_features=48, out_features=48, bias=True)
+        )
+        (norm1_local): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_kv): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_attn): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_local): Dropout(p=0.0, inplace=False)
+        (dropout_kv): Dropout(p=0.0, inplace=False)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=48, out_features=96, bias=True)
+        (ff_linear2): Linear(in_features=96, out_features=48, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+      (6): UNIFORMGTLayer(
+        summary: dim_h=48, global_model_type=SparseTransformer, heads=8
+        (edge_processor): Sequential(
+          (0): Linear(in_features=48, out_features=48, bias=True)
+          (1): ReLU()
+          (2): Dropout(p=0.0, inplace=False)
+          (3): Linear(in_features=48, out_features=48, bias=True)
+          (4): Dropout(p=0.0, inplace=False)
+        )
+        (kv_model): GATv2Conv(48, 6, heads=8)
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=48, out_features=48, bias=True)
+          (W_v): Linear(in_features=48, out_features=48, bias=True)
+          (W_o): Linear(in_features=48, out_features=48, bias=True)
+        )
+        (norm1_local): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_kv): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_attn): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_local): Dropout(p=0.0, inplace=False)
+        (dropout_kv): Dropout(p=0.0, inplace=False)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=48, out_features=96, bias=True)
+        (ff_linear2): Linear(in_features=96, out_features=48, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+      (7): UNIFORMGTLayer(
+        summary: dim_h=48, global_model_type=SparseTransformer, heads=8
+        (edge_processor): Sequential(
+          (0): Linear(in_features=48, out_features=48, bias=True)
+          (1): ReLU()
+          (2): Dropout(p=0.0, inplace=False)
+          (3): Linear(in_features=48, out_features=48, bias=True)
+          (4): Dropout(p=0.0, inplace=False)
+        )
+        (kv_model): GATv2Conv(48, 6, heads=8)
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=48, out_features=48, bias=True)
+          (W_v): Linear(in_features=48, out_features=48, bias=True)
+          (W_o): Linear(in_features=48, out_features=48, bias=True)
+        )
+        (norm1_local): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_kv): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_attn): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_local): Dropout(p=0.0, inplace=False)
+        (dropout_kv): Dropout(p=0.0, inplace=False)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=48, out_features=96, bias=True)
+        (ff_linear2): Linear(in_features=96, out_features=48, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+      (8): UNIFORMGTLayer(
+        summary: dim_h=48, global_model_type=SparseTransformer, heads=8
+        (edge_processor): Sequential(
+          (0): Linear(in_features=48, out_features=48, bias=True)
+          (1): ReLU()
+          (2): Dropout(p=0.0, inplace=False)
+          (3): Linear(in_features=48, out_features=48, bias=True)
+          (4): Dropout(p=0.0, inplace=False)
+        )
+        (kv_model): GATv2Conv(48, 6, heads=8)
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=48, out_features=48, bias=True)
+          (W_v): Linear(in_features=48, out_features=48, bias=True)
+          (W_o): Linear(in_features=48, out_features=48, bias=True)
+        )
+        (norm1_local): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_kv): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_attn): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_local): Dropout(p=0.0, inplace=False)
+        (dropout_kv): Dropout(p=0.0, inplace=False)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=48, out_features=96, bias=True)
+        (ff_linear2): Linear(in_features=96, out_features=48, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+      (9): UNIFORMGTLayer(
+        summary: dim_h=48, global_model_type=SparseTransformer, heads=8
+        (edge_processor): Sequential(
+          (0): Linear(in_features=48, out_features=48, bias=True)
+          (1): ReLU()
+          (2): Dropout(p=0.0, inplace=False)
+          (3): Linear(in_features=48, out_features=48, bias=True)
+          (4): Dropout(p=0.0, inplace=False)
+        )
+        (kv_model): GATv2Conv(48, 6, heads=8)
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=48, out_features=48, bias=True)
+          (W_v): Linear(in_features=48, out_features=48, bias=True)
+          (W_o): Linear(in_features=48, out_features=48, bias=True)
+        )
+        (norm1_local): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_kv): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_attn): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_local): Dropout(p=0.0, inplace=False)
+        (dropout_kv): Dropout(p=0.0, inplace=False)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=48, out_features=96, bias=True)
+        (ff_linear2): Linear(in_features=96, out_features=48, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+      (10): UNIFORMGTLayer(
+        summary: dim_h=48, global_model_type=SparseTransformer, heads=8
+        (edge_processor): Sequential(
+          (0): Linear(in_features=48, out_features=48, bias=True)
+          (1): ReLU()
+          (2): Dropout(p=0.0, inplace=False)
+          (3): Linear(in_features=48, out_features=48, bias=True)
+          (4): Dropout(p=0.0, inplace=False)
+        )
+        (kv_model): GATv2Conv(48, 6, heads=8)
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=48, out_features=48, bias=True)
+          (W_v): Linear(in_features=48, out_features=48, bias=True)
+          (W_o): Linear(in_features=48, out_features=48, bias=True)
+        )
+        (norm1_local): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_kv): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_attn): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_local): Dropout(p=0.0, inplace=False)
+        (dropout_kv): Dropout(p=0.0, inplace=False)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=48, out_features=96, bias=True)
+        (ff_linear2): Linear(in_features=96, out_features=48, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+      (11): UNIFORMGTLayer(
+        summary: dim_h=48, global_model_type=SparseTransformer, heads=8
+        (edge_processor): Sequential(
+          (0): Linear(in_features=48, out_features=48, bias=True)
+          (1): ReLU()
+          (2): Dropout(p=0.0, inplace=False)
+          (3): Linear(in_features=48, out_features=48, bias=True)
+          (4): Dropout(p=0.0, inplace=False)
+        )
+        (kv_model): GATv2Conv(48, 6, heads=8)
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=48, out_features=48, bias=True)
+          (W_v): Linear(in_features=48, out_features=48, bias=True)
+          (W_o): Linear(in_features=48, out_features=48, bias=True)
+        )
+        (norm1_local): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_kv): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_attn): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_local): Dropout(p=0.0, inplace=False)
+        (dropout_kv): Dropout(p=0.0, inplace=False)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=48, out_features=96, bias=True)
+        (ff_linear2): Linear(in_features=96, out_features=48, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+      (12): UNIFORMGTLayer(
+        summary: dim_h=48, global_model_type=SparseTransformer, heads=8
+        (edge_processor): Sequential(
+          (0): Linear(in_features=48, out_features=48, bias=True)
+          (1): ReLU()
+          (2): Dropout(p=0.0, inplace=False)
+          (3): Linear(in_features=48, out_features=48, bias=True)
+          (4): Dropout(p=0.0, inplace=False)
+        )
+        (kv_model): GATv2Conv(48, 6, heads=8)
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=48, out_features=48, bias=True)
+          (W_v): Linear(in_features=48, out_features=48, bias=True)
+          (W_o): Linear(in_features=48, out_features=48, bias=True)
+        )
+        (norm1_local): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_kv): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_attn): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_local): Dropout(p=0.0, inplace=False)
+        (dropout_kv): Dropout(p=0.0, inplace=False)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=48, out_features=96, bias=True)
+        (ff_linear2): Linear(in_features=96, out_features=48, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+      (13): UNIFORMGTLayer(
+        summary: dim_h=48, global_model_type=SparseTransformer, heads=8
+        (edge_processor): Sequential(
+          (0): Linear(in_features=48, out_features=48, bias=True)
+          (1): ReLU()
+          (2): Dropout(p=0.0, inplace=False)
+          (3): Linear(in_features=48, out_features=48, bias=True)
+          (4): Dropout(p=0.0, inplace=False)
+        )
+        (kv_model): GATv2Conv(48, 6, heads=8)
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=48, out_features=48, bias=True)
+          (W_v): Linear(in_features=48, out_features=48, bias=True)
+          (W_o): Linear(in_features=48, out_features=48, bias=True)
+        )
+        (norm1_local): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_kv): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_attn): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_local): Dropout(p=0.0, inplace=False)
+        (dropout_kv): Dropout(p=0.0, inplace=False)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=48, out_features=96, bias=True)
+        (ff_linear2): Linear(in_features=96, out_features=48, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+      (14): UNIFORMGTLayer(
+        summary: dim_h=48, global_model_type=SparseTransformer, heads=8
+        (edge_processor): Sequential(
+          (0): Linear(in_features=48, out_features=48, bias=True)
+          (1): ReLU()
+          (2): Dropout(p=0.0, inplace=False)
+          (3): Linear(in_features=48, out_features=48, bias=True)
+          (4): Dropout(p=0.0, inplace=False)
+        )
+        (kv_model): GATv2Conv(48, 6, heads=8)
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=48, out_features=48, bias=True)
+          (W_v): Linear(in_features=48, out_features=48, bias=True)
+          (W_o): Linear(in_features=48, out_features=48, bias=True)
+        )
+        (norm1_local): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_kv): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_attn): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_local): Dropout(p=0.0, inplace=False)
+        (dropout_kv): Dropout(p=0.0, inplace=False)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=48, out_features=96, bias=True)
+        (ff_linear2): Linear(in_features=96, out_features=48, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+      (15): UNIFORMGTLayer(
+        summary: dim_h=48, global_model_type=SparseTransformer, heads=8
+        (edge_processor): Sequential(
+          (0): Linear(in_features=48, out_features=48, bias=True)
+          (1): ReLU()
+          (2): Dropout(p=0.0, inplace=False)
+          (3): Linear(in_features=48, out_features=48, bias=True)
+          (4): Dropout(p=0.0, inplace=False)
+        )
+        (kv_model): GATv2Conv(48, 6, heads=8)
+        (self_attn): SparseGraphAttention(
+          (W_k): Linear(in_features=48, out_features=48, bias=True)
+          (W_v): Linear(in_features=48, out_features=48, bias=True)
+          (W_o): Linear(in_features=48, out_features=48, bias=True)
+        )
+        (norm1_local): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_kv): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_attn): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_local): Dropout(p=0.0, inplace=False)
+        (dropout_kv): Dropout(p=0.0, inplace=False)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=48, out_features=96, bias=True)
+        (ff_linear2): Linear(in_features=96, out_features=48, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+    )
+    (post_mp): GNNInductiveNodeHead(
+      (layer_post_mp): MLP(
+        (model): Sequential(
+          (0): GeneralMultiLayer(
+            (Layer_0): GeneralLayer(
+              (layer): Linear(
+                (model): Linear(48, 48, bias=True)
+              )
+              (post_layer): Sequential(
+                (0): ReLU()
+              )
+            )
+            (Layer_1): GeneralLayer(
+              (layer): Linear(
+                (model): Linear(48, 48, bias=True)
+              )
+              (post_layer): Sequential(
+                (0): ReLU()
+              )
+            )
+          )
+          (1): Linear(
+            (model): Linear(48, 6, bias=True)
+          )
+        )
+      )
+    )
+  )
+)
+2025-07-11 12:09:53,671 - INFO - Number of parameters: 463,670
+2025-07-11 12:09:53,671 - INFO - Starting optimized training: 2025-07-11 12:09:53.671373
+2025-07-11 12:09:59,613 - INFO - [*] Loaded dataset 'CLUSTER' from 'PyG-GNNBenchmarkDataset':
+2025-07-11 12:09:59,613 - INFO -   Data(x=[1406436, 7], edge_index=[2, 51620680], y=[1406436])
+2025-07-11 12:09:59,614 - INFO -   undirected: True
+2025-07-11 12:09:59,614 - INFO -   num graphs: 12000
+2025-07-11 12:09:59,614 - INFO -   avg num_nodes/graph: 117
+2025-07-11 12:09:59,615 - INFO -   num node features: 7
+2025-07-11 12:09:59,615 - INFO -   num edge features: 0
+2025-07-11 12:09:59,616 - INFO -   num classes: 6
+2025-07-11 12:09:59,616 - INFO - Parsed RWSE PE kernel times / steps: [1, 2, 4, 8, 16]
+2025-07-11 12:09:59,616 - INFO - Precomputing Positional Encoding statistics: ['LapPE', 'RWSE'] for all graphs...
+2025-07-11 12:09:59,625 - INFO -   ...estimated to be undirected: True
+  0%|          | 0/12000 [00:00<?, ?it/s] 14%|█▍        | 1734/12000 [00:10<00:59, 173.30it/s] 29%|██▉       | 3461/12000 [00:20<00:49, 172.90it/s] 43%|████▎     | 5145/12000 [00:30<00:40, 170.83it/s] 57%|█████▋    | 6865/12000 [00:40<00:29, 171.27it/s] 72%|███████▏  | 8589/12000 [00:50<00:19, 171.66it/s] 86%|████████▌ | 10314/12000 [01:00<00:09, 171.92it/s]100%|██████████| 12000/12000 [01:09<00:00, 171.44it/s]
+2025-07-11 12:11:10,379 - INFO - Done! Took 00:01:10.76
+2025-07-11 12:11:10,404 - INFO - [*] Loaded dataset 'CLUSTER' from 'PyG-GNNBenchmarkDataset'
+2025-07-11 12:11:10,418 - INFO - === STARTING OPTIMIZED TRAINING ===
+2025-07-11 12:11:10,418 - INFO - Start from epoch 0
+2025-07-11 12:12:53,217 - INFO - train: {'epoch': 0, 'time_epoch': 101.73308, 'eta': 10071.57449, 'eta_hours': 2.79766, 'loss': 1.80046012, 'lr': 0.0, 'params': 463670, 'time_iter': 0.16277, 'accuracy': 0.16614, 'f1': 0.08987, 'accuracy-SBM': 0.16611, 'auc': 0.49868}
+2025-07-11 12:12:53,229 - INFO - ...computing epoch stats took: 1.06s
+2025-07-11 12:12:58,202 - INFO - val: {'epoch': 0, 'time_epoch': 4.91233, 'loss': 1.80016662, 'lr': 0, 'params': 463670, 'time_iter': 0.07797, 'accuracy': 0.16875, 'f1': 0.08626, 'accuracy-SBM': 0.16893, 'auc': 0.49862}
+2025-07-11 12:12:58,205 - INFO - ...computing epoch stats took: 0.06s
+2025-07-11 12:13:03,203 - INFO - test: {'epoch': 0, 'time_epoch': 4.93897, 'loss': 1.80090737, 'lr': 0, 'params': 463670, 'time_iter': 0.0784, 'accuracy': 0.16861, 'f1': 0.08546, 'accuracy-SBM': 0.16851, 'auc': 0.49894}
+2025-07-11 12:13:03,213 - INFO - ...computing epoch stats took: 0.06s
+2025-07-11 12:13:03,213 - INFO - > Epoch 0: took 112.8s (avg 112.8s) | Best so far: epoch 0	train_loss: 1.8005 train_accuracy-SBM: 0.1661	val_loss: 1.8002 val_accuracy-SBM: 0.1689	test_loss: 1.8009 test_accuracy-SBM: 0.1685
+2025-07-11 12:14:40,638 - INFO - train: {'epoch': 1, 'time_epoch': 97.16891, 'eta': 9746.19745, 'eta_hours': 2.70728, 'loss': 1.6572816, 'lr': 0.0002, 'params': 463670, 'time_iter': 0.15547, 'accuracy': 0.34778, 'f1': 0.33793, 'accuracy-SBM': 0.3477, 'auc': 0.69322}
+2025-07-11 12:14:40,652 - INFO - ...computing epoch stats took: 0.25s
+2025-07-11 12:14:45,491 - INFO - val: {'epoch': 1, 'time_epoch': 4.7686, 'loss': 1.61920532, 'lr': 0, 'params': 463670, 'time_iter': 0.07569, 'accuracy': 0.3574, 'f1': 0.33947, 'accuracy-SBM': 0.35572, 'auc': 0.7683}
+2025-07-11 12:14:45,494 - INFO - ...computing epoch stats took: 0.07s
+2025-07-11 12:14:50,302 - INFO - test: {'epoch': 1, 'time_epoch': 4.749, 'loss': 1.6133, 'lr': 0, 'params': 463670, 'time_iter': 0.07538, 'accuracy': 0.36547, 'f1': 0.3485, 'accuracy-SBM': 0.36328, 'auc': 0.76883}
+2025-07-11 12:14:50,305 - INFO - ...computing epoch stats took: 0.06s
+2025-07-11 12:14:50,306 - INFO - > Epoch 1: took 107.1s (avg 109.9s) | Best so far: epoch 1	train_loss: 1.6573 train_accuracy-SBM: 0.3477	val_loss: 1.6192 val_accuracy-SBM: 0.3557	test_loss: 1.6133 test_accuracy-SBM: 0.3633
+2025-07-11 12:16:28,716 - INFO - train: {'epoch': 2, 'time_epoch': 98.14818, 'eta': 9604.62196, 'eta_hours': 2.66795, 'loss': 1.32228403, 'lr': 0.0004, 'params': 463670, 'time_iter': 0.15704, 'accuracy': 0.53483, 'f1': 0.5279, 'accuracy-SBM': 0.53484, 'auc': 0.82795}
+2025-07-11 12:16:28,727 - INFO - ...computing epoch stats took: 0.25s
+2025-07-11 12:16:33,536 - INFO - val: {'epoch': 2, 'time_epoch': 4.74089, 'loss': 1.63081986, 'lr': 0, 'params': 463670, 'time_iter': 0.07525, 'accuracy': 0.35669, 'f1': 0.32966, 'accuracy-SBM': 0.35491, 'auc': 0.79356}
+2025-07-11 12:16:33,539 - INFO - ...computing epoch stats took: 0.07s
+2025-07-11 12:16:38,322 - INFO - test: {'epoch': 2, 'time_epoch': 4.73012, 'loss': 1.61981303, 'lr': 0, 'params': 463670, 'time_iter': 0.07508, 'accuracy': 0.36278, 'f1': 0.33623, 'accuracy-SBM': 0.36123, 'auc': 0.79204}
+2025-07-11 12:16:38,329 - INFO - ...computing epoch stats took: 0.06s
+2025-07-11 12:16:38,330 - INFO - > Epoch 2: took 108.0s (avg 109.3s) | Best so far: epoch 1	train_loss: 1.6573 train_accuracy-SBM: 0.3477	val_loss: 1.6192 val_accuracy-SBM: 0.3557	test_loss: 1.6133 test_accuracy-SBM: 0.3633
+2025-07-11 12:18:17,027 - INFO - train: {'epoch': 3, 'time_epoch': 98.32715, 'eta': 9489.05563, 'eta_hours': 2.63585, 'loss': 1.10781433, 'lr': 0.0006, 'params': 463670, 'time_iter': 0.15732, 'accuracy': 0.61364, 'f1': 0.61238, 'accuracy-SBM': 0.61365, 'auc': 0.88053}
+2025-07-11 12:18:21,819 - INFO - val: {'epoch': 3, 'time_epoch': 4.73299, 'loss': 1.12356018, 'lr': 0, 'params': 463670, 'time_iter': 0.07513, 'accuracy': 0.59715, 'f1': 0.59865, 'accuracy-SBM': 0.59527, 'auc': 0.89721}
+2025-07-11 12:18:26,543 - INFO - test: {'epoch': 3, 'time_epoch': 4.68345, 'loss': 1.12308714, 'lr': 0, 'params': 463670, 'time_iter': 0.07434, 'accuracy': 0.59664, 'f1': 0.59783, 'accuracy-SBM': 0.59662, 'auc': 0.89693}
+2025-07-11 12:18:26,545 - INFO - > Epoch 3: took 108.2s (avg 109.0s) | Best so far: epoch 3	train_loss: 1.1078 train_accuracy-SBM: 0.6137	val_loss: 1.1236 val_accuracy-SBM: 0.5953	test_loss: 1.1231 test_accuracy-SBM: 0.5966
+2025-07-11 12:20:05,492 - INFO - train: {'epoch': 4, 'time_epoch': 98.68514, 'eta': 9387.18663, 'eta_hours': 2.60755, 'loss': 0.95383389, 'lr': 0.0008, 'params': 463670, 'time_iter': 0.1579, 'accuracy': 0.66517, 'f1': 0.66516, 'accuracy-SBM': 0.66518, 'auc': 0.912}
+2025-07-11 12:20:10,275 - INFO - val: {'epoch': 4, 'time_epoch': 4.73345, 'loss': 1.19597968, 'lr': 0, 'params': 463670, 'time_iter': 0.07513, 'accuracy': 0.57369, 'f1': 0.56708, 'accuracy-SBM': 0.57236, 'auc': 0.87793}
+2025-07-11 12:20:15,054 - INFO - test: {'epoch': 4, 'time_epoch': 4.73197, 'loss': 1.18283766, 'lr': 0, 'params': 463670, 'time_iter': 0.07511, 'accuracy': 0.57831, 'f1': 0.57195, 'accuracy-SBM': 0.57893, 'auc': 0.88284}
+2025-07-11 12:20:15,059 - INFO - > Epoch 4: took 108.5s (avg 108.9s) | Best so far: epoch 3	train_loss: 1.1078 train_accuracy-SBM: 0.6137	val_loss: 1.1236 val_accuracy-SBM: 0.5953	test_loss: 1.1231 test_accuracy-SBM: 0.5966
+2025-07-11 12:21:54,080 - INFO - train: {'epoch': 5, 'time_epoch': 98.74389, 'eta': 9287.2994, 'eta_hours': 2.57981, 'loss': 0.88687796, 'lr': 0.001, 'params': 463670, 'time_iter': 0.15799, 'accuracy': 0.68383, 'f1': 0.68383, 'accuracy-SBM': 0.68383, 'auc': 0.92282}
+2025-07-11 12:21:58,864 - INFO - val: {'epoch': 5, 'time_epoch': 4.71792, 'loss': 0.8802368, 'lr': 0, 'params': 463670, 'time_iter': 0.07489, 'accuracy': 0.68414, 'f1': 0.68468, 'accuracy-SBM': 0.68405, 'auc': 0.92593}
+2025-07-11 12:22:03,641 - INFO - test: {'epoch': 5, 'time_epoch': 4.73437, 'loss': 0.86764531, 'lr': 0, 'params': 463670, 'time_iter': 0.07515, 'accuracy': 0.68801, 'f1': 0.68856, 'accuracy-SBM': 0.68813, 'auc': 0.92878}
+2025-07-11 12:22:03,649 - INFO - > Epoch 5: took 108.6s (avg 108.9s) | Best so far: epoch 5	train_loss: 0.8869 train_accuracy-SBM: 0.6838	val_loss: 0.8802 val_accuracy-SBM: 0.6841	test_loss: 0.8676 test_accuracy-SBM: 0.6881
+2025-07-11 12:23:42,491 - INFO - train: {'epoch': 6, 'time_epoch': 98.58354, 'eta': 9185.60844, 'eta_hours': 2.55156, 'loss': 0.83283431, 'lr': 0.00099973, 'params': 463670, 'time_iter': 0.15773, 'accuracy': 0.70174, 'f1': 0.70174, 'accuracy-SBM': 0.70174, 'auc': 0.93146}
+2025-07-11 12:23:47,248 - INFO - val: {'epoch': 6, 'time_epoch': 4.70593, 'loss': 0.92455575, 'lr': 0, 'params': 463670, 'time_iter': 0.0747, 'accuracy': 0.66808, 'f1': 0.66553, 'accuracy-SBM': 0.66896, 'auc': 0.92272}
+2025-07-11 12:23:51,979 - INFO - test: {'epoch': 6, 'time_epoch': 4.69106, 'loss': 0.90835794, 'lr': 0, 'params': 463670, 'time_iter': 0.07446, 'accuracy': 0.67908, 'f1': 0.67638, 'accuracy-SBM': 0.67878, 'auc': 0.92593}
+2025-07-11 12:23:51,982 - INFO - > Epoch 6: took 108.3s (avg 108.8s) | Best so far: epoch 5	train_loss: 0.8869 train_accuracy-SBM: 0.6838	val_loss: 0.8802 val_accuracy-SBM: 0.6841	test_loss: 0.8676 test_accuracy-SBM: 0.6881
+2025-07-11 12:25:31,277 - INFO - train: {'epoch': 7, 'time_epoch': 99.03602, 'eta': 9089.89787, 'eta_hours': 2.52497, 'loss': 0.80171212, 'lr': 0.00099891, 'params': 463670, 'time_iter': 0.15846, 'accuracy': 0.71159, 'f1': 0.71159, 'accuracy-SBM': 0.71159, 'auc': 0.93624}
+2025-07-11 12:25:36,024 - INFO - val: {'epoch': 7, 'time_epoch': 4.69721, 'loss': 0.84093418, 'lr': 0, 'params': 463670, 'time_iter': 0.07456, 'accuracy': 0.69905, 'f1': 0.69866, 'accuracy-SBM': 0.69879, 'auc': 0.93138}
+2025-07-11 12:25:40,755 - INFO - test: {'epoch': 7, 'time_epoch': 4.69618, 'loss': 0.82276243, 'lr': 0, 'params': 463670, 'time_iter': 0.07454, 'accuracy': 0.70683, 'f1': 0.70665, 'accuracy-SBM': 0.70689, 'auc': 0.93461}
+2025-07-11 12:25:40,757 - INFO - > Epoch 7: took 108.8s (avg 108.8s) | Best so far: epoch 7	train_loss: 0.8017 train_accuracy-SBM: 0.7116	val_loss: 0.8409 val_accuracy-SBM: 0.6988	test_loss: 0.8228 test_accuracy-SBM: 0.7069
+2025-07-11 12:27:19,895 - INFO - train: {'epoch': 8, 'time_epoch': 98.87632, 'eta': 8991.83362, 'eta_hours': 2.49773, 'loss': 0.78669357, 'lr': 0.00099754, 'params': 463670, 'time_iter': 0.1582, 'accuracy': 0.71617, 'f1': 0.71617, 'accuracy-SBM': 0.71617, 'auc': 0.93844}
+2025-07-11 12:27:24,660 - INFO - val: {'epoch': 8, 'time_epoch': 4.68972, 'loss': 0.78661678, 'lr': 0, 'params': 463670, 'time_iter': 0.07444, 'accuracy': 0.71788, 'f1': 0.71814, 'accuracy-SBM': 0.71814, 'auc': 0.93953}
+2025-07-11 12:27:29,491 - INFO - test: {'epoch': 8, 'time_epoch': 4.68793, 'loss': 0.76152033, 'lr': 0, 'params': 463670, 'time_iter': 0.07441, 'accuracy': 0.726, 'f1': 0.72595, 'accuracy-SBM': 0.7261, 'auc': 0.94389}
+2025-07-11 12:27:29,493 - INFO - > Epoch 8: took 108.7s (avg 108.8s) | Best so far: epoch 8	train_loss: 0.7867 train_accuracy-SBM: 0.7162	val_loss: 0.7866 val_accuracy-SBM: 0.7181	test_loss: 0.7615 test_accuracy-SBM: 0.7261
+2025-07-11 12:29:08,448 - INFO - train: {'epoch': 9, 'time_epoch': 98.69111, 'eta': 8891.93999, 'eta_hours': 2.46998, 'loss': 0.76975699, 'lr': 0.00099563, 'params': 463670, 'time_iter': 0.15791, 'accuracy': 0.72161, 'f1': 0.72161, 'accuracy-SBM': 0.72161, 'auc': 0.94097}
+2025-07-11 12:29:13,232 - INFO - val: {'epoch': 9, 'time_epoch': 4.71422, 'loss': 0.77207226, 'lr': 0, 'params': 463670, 'time_iter': 0.07483, 'accuracy': 0.71927, 'f1': 0.7187, 'accuracy-SBM': 0.71938, 'auc': 0.94183}
+2025-07-11 12:29:17,989 - INFO - test: {'epoch': 9, 'time_epoch': 4.69729, 'loss': 0.76140074, 'lr': 0, 'params': 463670, 'time_iter': 0.07456, 'accuracy': 0.72552, 'f1': 0.72511, 'accuracy-SBM': 0.72531, 'auc': 0.94325}
+2025-07-11 12:29:17,993 - INFO - > Epoch 9: took 108.5s (avg 108.8s) | Best so far: epoch 9	train_loss: 0.7698 train_accuracy-SBM: 0.7216	val_loss: 0.7721 val_accuracy-SBM: 0.7194	test_loss: 0.7614 test_accuracy-SBM: 0.7253
+2025-07-11 12:30:57,139 - INFO - train: {'epoch': 10, 'time_epoch': 98.77423, 'eta': 8792.93758, 'eta_hours': 2.44248, 'loss': 0.75826089, 'lr': 0.00099318, 'params': 463670, 'time_iter': 0.15804, 'accuracy': 0.72638, 'f1': 0.72638, 'accuracy-SBM': 0.72638, 'auc': 0.94263}
+2025-07-11 12:31:01,923 - INFO - val: {'epoch': 10, 'time_epoch': 4.72834, 'loss': 0.731448, 'lr': 0, 'params': 463670, 'time_iter': 0.07505, 'accuracy': 0.7351, 'f1': 0.73454, 'accuracy-SBM': 0.73463, 'auc': 0.94786}
+2025-07-11 12:31:06,668 - INFO - test: {'epoch': 10, 'time_epoch': 4.70917, 'loss': 0.73279261, 'lr': 0, 'params': 463670, 'time_iter': 0.07475, 'accuracy': 0.73241, 'f1': 0.73218, 'accuracy-SBM': 0.73218, 'auc': 0.94777}
+2025-07-11 12:31:06,669 - INFO - > Epoch 10: took 108.7s (avg 108.7s) | Best so far: epoch 10	train_loss: 0.7583 train_accuracy-SBM: 0.7264	val_loss: 0.7314 val_accuracy-SBM: 0.7346	test_loss: 0.7328 test_accuracy-SBM: 0.7322
+2025-07-11 12:32:45,766 - INFO - train: {'epoch': 11, 'time_epoch': 98.60444, 'eta': 8692.72804, 'eta_hours': 2.41465, 'loss': 0.74923331, 'lr': 0.00099019, 'params': 463670, 'time_iter': 0.15777, 'accuracy': 0.72935, 'f1': 0.72935, 'accuracy-SBM': 0.72935, 'auc': 0.94395}
+2025-07-11 12:32:50,545 - INFO - val: {'epoch': 11, 'time_epoch': 4.72707, 'loss': 0.71332958, 'lr': 0, 'params': 463670, 'time_iter': 0.07503, 'accuracy': 0.74492, 'f1': 0.74469, 'accuracy-SBM': 0.74485, 'auc': 0.95015}
+2025-07-11 12:32:55,300 - INFO - test: {'epoch': 11, 'time_epoch': 4.71223, 'loss': 0.70748436, 'lr': 0, 'params': 463670, 'time_iter': 0.0748, 'accuracy': 0.74368, 'f1': 0.74349, 'accuracy-SBM': 0.7435, 'auc': 0.95108}
+2025-07-11 12:32:55,301 - INFO - > Epoch 11: took 108.6s (avg 108.7s) | Best so far: epoch 11	train_loss: 0.7492 train_accuracy-SBM: 0.7294	val_loss: 0.7133 val_accuracy-SBM: 0.7449	test_loss: 0.7075 test_accuracy-SBM: 0.7435
+2025-07-11 12:34:33,654 - INFO - train: {'epoch': 12, 'time_epoch': 98.1001, 'eta': 8589.39023, 'eta_hours': 2.38594, 'loss': 0.74010804, 'lr': 0.00098666, 'params': 463670, 'time_iter': 0.15696, 'accuracy': 0.73234, 'f1': 0.73234, 'accuracy-SBM': 0.73234, 'auc': 0.94526}
+2025-07-11 12:34:38,086 - INFO - val: {'epoch': 12, 'time_epoch': 4.38296, 'loss': 0.7238293, 'lr': 0, 'params': 463670, 'time_iter': 0.06957, 'accuracy': 0.73892, 'f1': 0.73895, 'accuracy-SBM': 0.73902, 'auc': 0.948}
+2025-07-11 12:34:42,466 - INFO - test: {'epoch': 12, 'time_epoch': 4.34537, 'loss': 0.71098901, 'lr': 0, 'params': 463670, 'time_iter': 0.06897, 'accuracy': 0.74275, 'f1': 0.74262, 'accuracy-SBM': 0.74279, 'auc': 0.95003}
+2025-07-11 12:34:42,467 - INFO - > Epoch 12: took 107.2s (avg 108.6s) | Best so far: epoch 11	train_loss: 0.7492 train_accuracy-SBM: 0.7294	val_loss: 0.7133 val_accuracy-SBM: 0.7449	test_loss: 0.7075 test_accuracy-SBM: 0.7435
+2025-07-11 12:36:16,908 - INFO - train: {'epoch': 13, 'time_epoch': 94.18289, 'eta': 8462.7378, 'eta_hours': 2.35076, 'loss': 0.73482633, 'lr': 0.0009826, 'params': 463670, 'time_iter': 0.15069, 'accuracy': 0.73459, 'f1': 0.73459, 'accuracy-SBM': 0.73459, 'auc': 0.94602}
+2025-07-11 12:36:21,406 - INFO - val: {'epoch': 13, 'time_epoch': 4.44824, 'loss': 0.72734049, 'lr': 0, 'params': 463670, 'time_iter': 0.07061, 'accuracy': 0.73795, 'f1': 0.73764, 'accuracy-SBM': 0.73807, 'auc': 0.94828}
+2025-07-11 12:36:25,866 - INFO - test: {'epoch': 13, 'time_epoch': 4.41715, 'loss': 0.71396399, 'lr': 0, 'params': 463670, 'time_iter': 0.07011, 'accuracy': 0.74273, 'f1': 0.74232, 'accuracy-SBM': 0.74282, 'auc': 0.95019}
+2025-07-11 12:36:25,868 - INFO - > Epoch 13: took 103.4s (avg 108.2s) | Best so far: epoch 11	train_loss: 0.7492 train_accuracy-SBM: 0.7294	val_loss: 0.7133 val_accuracy-SBM: 0.7449	test_loss: 0.7075 test_accuracy-SBM: 0.7435
+2025-07-11 12:38:00,123 - INFO - train: {'epoch': 14, 'time_epoch': 93.89231, 'eta': 8338.76802, 'eta_hours': 2.31632, 'loss': 0.728327, 'lr': 0.00097802, 'params': 463670, 'time_iter': 0.15023, 'accuracy': 0.73605, 'f1': 0.73605, 'accuracy-SBM': 0.73605, 'auc': 0.94698}
+2025-07-11 12:38:04,613 - INFO - val: {'epoch': 14, 'time_epoch': 4.44125, 'loss': 0.73421454, 'lr': 0, 'params': 463670, 'time_iter': 0.0705, 'accuracy': 0.73748, 'f1': 0.73741, 'accuracy-SBM': 0.73736, 'auc': 0.94793}
+2025-07-11 12:38:09,163 - INFO - test: {'epoch': 14, 'time_epoch': 4.51459, 'loss': 0.72798002, 'lr': 0, 'params': 463670, 'time_iter': 0.07166, 'accuracy': 0.73807, 'f1': 0.73813, 'accuracy-SBM': 0.73787, 'auc': 0.94885}
+2025-07-11 12:38:09,165 - INFO - > Epoch 14: took 103.3s (avg 107.9s) | Best so far: epoch 11	train_loss: 0.7492 train_accuracy-SBM: 0.7294	val_loss: 0.7133 val_accuracy-SBM: 0.7449	test_loss: 0.7075 test_accuracy-SBM: 0.7435
+2025-07-11 12:39:43,853 - INFO - train: {'epoch': 15, 'time_epoch': 94.33287, 'eta': 8220.87087, 'eta_hours': 2.28358, 'loss': 0.72006904, 'lr': 0.00097291, 'params': 463670, 'time_iter': 0.15093, 'accuracy': 0.73952, 'f1': 0.73952, 'accuracy-SBM': 0.73952, 'auc': 0.94814}
+2025-07-11 12:39:48,321 - INFO - val: {'epoch': 15, 'time_epoch': 4.42041, 'loss': 0.72173536, 'lr': 0, 'params': 463670, 'time_iter': 0.07017, 'accuracy': 0.74072, 'f1': 0.74078, 'accuracy-SBM': 0.74085, 'auc': 0.94865}
+2025-07-11 12:39:52,712 - INFO - test: {'epoch': 15, 'time_epoch': 4.35799, 'loss': 0.71868884, 'lr': 0, 'params': 463670, 'time_iter': 0.06917, 'accuracy': 0.74086, 'f1': 0.74096, 'accuracy-SBM': 0.74101, 'auc': 0.94932}
+2025-07-11 12:39:52,715 - INFO - > Epoch 15: took 103.5s (avg 107.6s) | Best so far: epoch 11	train_loss: 0.7492 train_accuracy-SBM: 0.7294	val_loss: 0.7133 val_accuracy-SBM: 0.7449	test_loss: 0.7075 test_accuracy-SBM: 0.7435
+2025-07-11 12:41:27,399 - INFO - train: {'epoch': 16, 'time_epoch': 94.44174, 'eta': 8106.27752, 'eta_hours': 2.25174, 'loss': 0.71736825, 'lr': 0.00096728, 'params': 463670, 'time_iter': 0.15111, 'accuracy': 0.7401, 'f1': 0.7401, 'accuracy-SBM': 0.7401, 'auc': 0.94852}
+2025-07-11 12:41:31,763 - INFO - val: {'epoch': 16, 'time_epoch': 4.31844, 'loss': 0.73100523, 'lr': 0, 'params': 463670, 'time_iter': 0.06855, 'accuracy': 0.74096, 'f1': 0.74102, 'accuracy-SBM': 0.74084, 'auc': 0.94806}
+2025-07-11 12:41:36,164 - INFO - test: {'epoch': 16, 'time_epoch': 4.367, 'loss': 0.72123739, 'lr': 0, 'params': 463670, 'time_iter': 0.06932, 'accuracy': 0.74371, 'f1': 0.74364, 'accuracy-SBM': 0.74376, 'auc': 0.94962}
+2025-07-11 12:41:36,166 - INFO - > Epoch 16: took 103.5s (avg 107.4s) | Best so far: epoch 11	train_loss: 0.7492 train_accuracy-SBM: 0.7294	val_loss: 0.7133 val_accuracy-SBM: 0.7449	test_loss: 0.7075 test_accuracy-SBM: 0.7435
+2025-07-11 12:43:10,095 - INFO - train: {'epoch': 17, 'time_epoch': 93.68454, 'eta': 7990.4738, 'eta_hours': 2.21958, 'loss': 0.7133739, 'lr': 0.00096114, 'params': 463670, 'time_iter': 0.1499, 'accuracy': 0.74166, 'f1': 0.74166, 'accuracy-SBM': 0.74166, 'auc': 0.94907}
+2025-07-11 12:43:14,643 - INFO - val: {'epoch': 17, 'time_epoch': 4.4864, 'loss': 0.6997755, 'lr': 0, 'params': 463670, 'time_iter': 0.07121, 'accuracy': 0.74769, 'f1': 0.74773, 'accuracy-SBM': 0.74757, 'auc': 0.95182}
+2025-07-11 12:43:19,106 - INFO - test: {'epoch': 17, 'time_epoch': 4.42789, 'loss': 0.693676, 'lr': 0, 'params': 463670, 'time_iter': 0.07028, 'accuracy': 0.74695, 'f1': 0.74723, 'accuracy-SBM': 0.74682, 'auc': 0.95275}
+2025-07-11 12:43:19,108 - INFO - > Epoch 17: took 102.9s (avg 107.1s) | Best so far: epoch 17	train_loss: 0.7134 train_accuracy-SBM: 0.7417	val_loss: 0.6998 val_accuracy-SBM: 0.7476	test_loss: 0.6937 test_accuracy-SBM: 0.7468
+2025-07-11 12:44:53,558 - INFO - train: {'epoch': 18, 'time_epoch': 94.20423, 'eta': 7879.21394, 'eta_hours': 2.18867, 'loss': 0.70712001, 'lr': 0.0009545, 'params': 463670, 'time_iter': 0.15073, 'accuracy': 0.74398, 'f1': 0.74398, 'accuracy-SBM': 0.74398, 'auc': 0.94996}
+2025-07-11 12:44:58,054 - INFO - val: {'epoch': 18, 'time_epoch': 4.44057, 'loss': 0.69431743, 'lr': 0, 'params': 463670, 'time_iter': 0.07049, 'accuracy': 0.74948, 'f1': 0.74958, 'accuracy-SBM': 0.74959, 'auc': 0.95212}
+2025-07-11 12:45:02,577 - INFO - test: {'epoch': 18, 'time_epoch': 4.48836, 'loss': 0.68195121, 'lr': 0, 'params': 463670, 'time_iter': 0.07124, 'accuracy': 0.75158, 'f1': 0.7516, 'accuracy-SBM': 0.75171, 'auc': 0.954}
+2025-07-11 12:45:02,579 - INFO - > Epoch 18: took 103.5s (avg 107.0s) | Best so far: epoch 18	train_loss: 0.7071 train_accuracy-SBM: 0.7440	val_loss: 0.6943 val_accuracy-SBM: 0.7496	test_loss: 0.6820 test_accuracy-SBM: 0.7517
+2025-07-11 12:46:37,271 - INFO - train: {'epoch': 19, 'time_epoch': 94.34527, 'eta': 7770.22381, 'eta_hours': 2.1584, 'loss': 0.70670766, 'lr': 0.00094736, 'params': 463670, 'time_iter': 0.15095, 'accuracy': 0.74399, 'f1': 0.74399, 'accuracy-SBM': 0.74399, 'auc': 0.95001}
+2025-07-11 12:46:41,735 - INFO - val: {'epoch': 19, 'time_epoch': 4.41766, 'loss': 0.71098592, 'lr': 0, 'params': 463670, 'time_iter': 0.07012, 'accuracy': 0.74389, 'f1': 0.7439, 'accuracy-SBM': 0.74378, 'auc': 0.95}
+2025-07-11 12:46:46,109 - INFO - test: {'epoch': 19, 'time_epoch': 4.34214, 'loss': 0.69396121, 'lr': 0, 'params': 463670, 'time_iter': 0.06892, 'accuracy': 0.74809, 'f1': 0.74809, 'accuracy-SBM': 0.74812, 'auc': 0.9526}
+2025-07-11 12:46:46,111 - INFO - > Epoch 19: took 103.5s (avg 106.8s) | Best so far: epoch 18	train_loss: 0.7071 train_accuracy-SBM: 0.7440	val_loss: 0.6943 val_accuracy-SBM: 0.7496	test_loss: 0.6820 test_accuracy-SBM: 0.7517
+2025-07-11 12:48:20,001 - INFO - train: {'epoch': 20, 'time_epoch': 93.64104, 'eta': 7659.97914, 'eta_hours': 2.12777, 'loss': 0.69995928, 'lr': 0.00093974, 'params': 463670, 'time_iter': 0.14983, 'accuracy': 0.74641, 'f1': 0.74641, 'accuracy-SBM': 0.74641, 'auc': 0.95096}
+2025-07-11 12:48:24,421 - INFO - val: {'epoch': 20, 'time_epoch': 4.3638, 'loss': 0.70398381, 'lr': 0, 'params': 463670, 'time_iter': 0.06927, 'accuracy': 0.7475, 'f1': 0.74706, 'accuracy-SBM': 0.7474, 'auc': 0.95078}
+2025-07-11 12:48:28,823 - INFO - test: {'epoch': 20, 'time_epoch': 4.36805, 'loss': 0.70031314, 'lr': 0, 'params': 463670, 'time_iter': 0.06933, 'accuracy': 0.74507, 'f1': 0.74465, 'accuracy-SBM': 0.74494, 'auc': 0.95141}
+2025-07-11 12:48:28,825 - INFO - > Epoch 20: took 102.7s (avg 106.6s) | Best so far: epoch 18	train_loss: 0.7071 train_accuracy-SBM: 0.7440	val_loss: 0.6943 val_accuracy-SBM: 0.7496	test_loss: 0.6820 test_accuracy-SBM: 0.7517
+2025-07-11 12:50:03,225 - INFO - train: {'epoch': 21, 'time_epoch': 93.93893, 'eta': 7552.30007, 'eta_hours': 2.09786, 'loss': 0.6963096, 'lr': 0.00093163, 'params': 463670, 'time_iter': 0.1503, 'accuracy': 0.74844, 'f1': 0.74844, 'accuracy-SBM': 0.74844, 'auc': 0.95145}
+2025-07-11 12:50:07,750 - INFO - val: {'epoch': 21, 'time_epoch': 4.47835, 'loss': 0.69512162, 'lr': 0, 'params': 463670, 'time_iter': 0.07108, 'accuracy': 0.75167, 'f1': 0.75177, 'accuracy-SBM': 0.75175, 'auc': 0.9519}
+2025-07-11 12:50:12,193 - INFO - test: {'epoch': 21, 'time_epoch': 4.40863, 'loss': 0.69165969, 'lr': 0, 'params': 463670, 'time_iter': 0.06998, 'accuracy': 0.74916, 'f1': 0.74913, 'accuracy-SBM': 0.74932, 'auc': 0.95273}
+2025-07-11 12:50:12,196 - INFO - > Epoch 21: took 103.4s (avg 106.4s) | Best so far: epoch 21	train_loss: 0.6963 train_accuracy-SBM: 0.7484	val_loss: 0.6951 val_accuracy-SBM: 0.7518	test_loss: 0.6917 test_accuracy-SBM: 0.7493
+2025-07-11 12:51:46,754 - INFO - train: {'epoch': 22, 'time_epoch': 94.30389, 'eta': 7447.03761, 'eta_hours': 2.06862, 'loss': 0.69265486, 'lr': 0.00092305, 'params': 463670, 'time_iter': 0.15089, 'accuracy': 0.74918, 'f1': 0.74918, 'accuracy-SBM': 0.74918, 'auc': 0.95195}
+2025-07-11 12:51:51,417 - INFO - val: {'epoch': 22, 'time_epoch': 4.48862, 'loss': 0.6717695, 'lr': 0, 'params': 463670, 'time_iter': 0.07125, 'accuracy': 0.75865, 'f1': 0.75828, 'accuracy-SBM': 0.75837, 'auc': 0.95528}
+2025-07-11 12:51:55,919 - INFO - test: {'epoch': 22, 'time_epoch': 4.46102, 'loss': 0.67118427, 'lr': 0, 'params': 463670, 'time_iter': 0.07081, 'accuracy': 0.75807, 'f1': 0.75801, 'accuracy-SBM': 0.75801, 'auc': 0.95553}
+2025-07-11 12:51:55,921 - INFO - > Epoch 22: took 103.7s (avg 106.3s) | Best so far: epoch 22	train_loss: 0.6927 train_accuracy-SBM: 0.7492	val_loss: 0.6718 val_accuracy-SBM: 0.7584	test_loss: 0.6712 test_accuracy-SBM: 0.7580
+2025-07-11 12:53:30,513 - INFO - train: {'epoch': 23, 'time_epoch': 94.24243, 'eta': 7342.49374, 'eta_hours': 2.03958, 'loss': 0.69145282, 'lr': 0.000914, 'params': 463670, 'time_iter': 0.15079, 'accuracy': 0.74986, 'f1': 0.74986, 'accuracy-SBM': 0.74986, 'auc': 0.95213}
+2025-07-11 12:53:35,060 - INFO - val: {'epoch': 23, 'time_epoch': 4.49953, 'loss': 0.67094241, 'lr': 0, 'params': 463670, 'time_iter': 0.07142, 'accuracy': 0.76114, 'f1': 0.76112, 'accuracy-SBM': 0.76097, 'auc': 0.95541}
+2025-07-11 12:53:39,510 - INFO - test: {'epoch': 23, 'time_epoch': 4.41549, 'loss': 0.67640962, 'lr': 0, 'params': 463670, 'time_iter': 0.07009, 'accuracy': 0.75683, 'f1': 0.75697, 'accuracy-SBM': 0.75689, 'auc': 0.95478}
+2025-07-11 12:53:39,511 - INFO - > Epoch 23: took 103.6s (avg 106.2s) | Best so far: epoch 23	train_loss: 0.6915 train_accuracy-SBM: 0.7499	val_loss: 0.6709 val_accuracy-SBM: 0.7610	test_loss: 0.6764 test_accuracy-SBM: 0.7569
+2025-07-11 12:55:15,252 - INFO - train: {'epoch': 24, 'time_epoch': 95.35549, 'eta': 7242.11317, 'eta_hours': 2.0117, 'loss': 0.68473851, 'lr': 0.00090451, 'params': 463670, 'time_iter': 0.15257, 'accuracy': 0.75252, 'f1': 0.75252, 'accuracy-SBM': 0.75252, 'auc': 0.95304}
+2025-07-11 12:55:19,832 - INFO - val: {'epoch': 24, 'time_epoch': 4.53214, 'loss': 0.66406025, 'lr': 0, 'params': 463670, 'time_iter': 0.07194, 'accuracy': 0.76081, 'f1': 0.76077, 'accuracy-SBM': 0.76074, 'auc': 0.95633}
+2025-07-11 12:55:24,299 - INFO - test: {'epoch': 24, 'time_epoch': 4.42371, 'loss': 0.67227848, 'lr': 0, 'params': 463670, 'time_iter': 0.07022, 'accuracy': 0.75864, 'f1': 0.75864, 'accuracy-SBM': 0.75865, 'auc': 0.95513}
+2025-07-11 12:55:24,301 - INFO - > Epoch 24: took 104.8s (avg 106.2s) | Best so far: epoch 23	train_loss: 0.6915 train_accuracy-SBM: 0.7499	val_loss: 0.6709 val_accuracy-SBM: 0.7610	test_loss: 0.6764 test_accuracy-SBM: 0.7569
+2025-07-11 12:56:59,159 - INFO - train: {'epoch': 25, 'time_epoch': 94.49646, 'eta': 7139.6742, 'eta_hours': 1.98324, 'loss': 0.68455996, 'lr': 0.00089457, 'params': 463670, 'time_iter': 0.15119, 'accuracy': 0.75237, 'f1': 0.75237, 'accuracy-SBM': 0.75237, 'auc': 0.95309}
+2025-07-11 12:57:03,748 - INFO - val: {'epoch': 25, 'time_epoch': 4.54163, 'loss': 0.66747204, 'lr': 0, 'params': 463670, 'time_iter': 0.07209, 'accuracy': 0.76034, 'f1': 0.76021, 'accuracy-SBM': 0.7601, 'auc': 0.95562}
+2025-07-11 12:57:08,285 - INFO - test: {'epoch': 25, 'time_epoch': 4.50219, 'loss': 0.66583626, 'lr': 0, 'params': 463670, 'time_iter': 0.07146, 'accuracy': 0.7574, 'f1': 0.75731, 'accuracy-SBM': 0.75738, 'auc': 0.95596}
+2025-07-11 12:57:08,287 - INFO - > Epoch 25: took 104.0s (avg 106.1s) | Best so far: epoch 23	train_loss: 0.6915 train_accuracy-SBM: 0.7499	val_loss: 0.6709 val_accuracy-SBM: 0.7610	test_loss: 0.6764 test_accuracy-SBM: 0.7569
+2025-07-11 12:58:42,691 - INFO - train: {'epoch': 26, 'time_epoch': 94.15144, 'eta': 7036.89074, 'eta_hours': 1.95469, 'loss': 0.67940946, 'lr': 0.0008842, 'params': 463670, 'time_iter': 0.15064, 'accuracy': 0.75303, 'f1': 0.75303, 'accuracy-SBM': 0.75303, 'auc': 0.95381}
+2025-07-11 12:58:47,206 - INFO - val: {'epoch': 26, 'time_epoch': 4.46831, 'loss': 0.66884521, 'lr': 0, 'params': 463670, 'time_iter': 0.07093, 'accuracy': 0.75996, 'f1': 0.76009, 'accuracy-SBM': 0.76, 'auc': 0.95547}
+2025-07-11 12:58:51,618 - INFO - test: {'epoch': 26, 'time_epoch': 4.37799, 'loss': 0.66991292, 'lr': 0, 'params': 463670, 'time_iter': 0.06949, 'accuracy': 0.75771, 'f1': 0.75781, 'accuracy-SBM': 0.75789, 'auc': 0.95553}
+2025-07-11 12:58:51,620 - INFO - > Epoch 26: took 103.3s (avg 106.0s) | Best so far: epoch 23	train_loss: 0.6915 train_accuracy-SBM: 0.7499	val_loss: 0.6709 val_accuracy-SBM: 0.7610	test_loss: 0.6764 test_accuracy-SBM: 0.7569
+2025-07-11 13:00:26,375 - INFO - train: {'epoch': 27, 'time_epoch': 94.39442, 'eta': 6935.34867, 'eta_hours': 1.92649, 'loss': 0.67741462, 'lr': 0.00087341, 'params': 463670, 'time_iter': 0.15103, 'accuracy': 0.75461, 'f1': 0.75461, 'accuracy-SBM': 0.75461, 'auc': 0.95407}
+2025-07-11 13:00:30,927 - INFO - val: {'epoch': 27, 'time_epoch': 4.50383, 'loss': 0.67141026, 'lr': 0, 'params': 463670, 'time_iter': 0.07149, 'accuracy': 0.76063, 'f1': 0.76053, 'accuracy-SBM': 0.76059, 'auc': 0.95517}
+2025-07-11 13:00:35,442 - INFO - test: {'epoch': 27, 'time_epoch': 4.47941, 'loss': 0.66867214, 'lr': 0, 'params': 463670, 'time_iter': 0.0711, 'accuracy': 0.75909, 'f1': 0.75907, 'accuracy-SBM': 0.75904, 'auc': 0.95556}
+2025-07-11 13:00:35,445 - INFO - > Epoch 27: took 103.8s (avg 105.9s) | Best so far: epoch 23	train_loss: 0.6915 train_accuracy-SBM: 0.7499	val_loss: 0.6709 val_accuracy-SBM: 0.7610	test_loss: 0.6764 test_accuracy-SBM: 0.7569
+2025-07-11 13:02:10,111 - INFO - train: {'epoch': 28, 'time_epoch': 94.41072, 'eta': 6834.33945, 'eta_hours': 1.89843, 'loss': 0.67321684, 'lr': 0.00086221, 'params': 463670, 'time_iter': 0.15106, 'accuracy': 0.7562, 'f1': 0.7562, 'accuracy-SBM': 0.7562, 'auc': 0.9546}
+2025-07-11 13:02:14,636 - INFO - val: {'epoch': 28, 'time_epoch': 4.47738, 'loss': 0.66002675, 'lr': 0, 'params': 463670, 'time_iter': 0.07107, 'accuracy': 0.75885, 'f1': 0.75883, 'accuracy-SBM': 0.75876, 'auc': 0.95661}
+2025-07-11 13:02:19,174 - INFO - test: {'epoch': 28, 'time_epoch': 4.50337, 'loss': 0.66175079, 'lr': 0, 'params': 463670, 'time_iter': 0.07148, 'accuracy': 0.75968, 'f1': 0.75962, 'accuracy-SBM': 0.75965, 'auc': 0.95643}
+2025-07-11 13:02:19,176 - INFO - > Epoch 28: took 103.7s (avg 105.8s) | Best so far: epoch 23	train_loss: 0.6915 train_accuracy-SBM: 0.7499	val_loss: 0.6709 val_accuracy-SBM: 0.7610	test_loss: 0.6764 test_accuracy-SBM: 0.7569
+2025-07-11 13:03:53,739 - INFO - train: {'epoch': 29, 'time_epoch': 94.3161, 'eta': 6733.54934, 'eta_hours': 1.87043, 'loss': 0.66700316, 'lr': 0.00085062, 'params': 463670, 'time_iter': 0.15091, 'accuracy': 0.7581, 'f1': 0.7581, 'accuracy-SBM': 0.7581, 'auc': 0.95547}
+2025-07-11 13:03:58,199 - INFO - val: {'epoch': 29, 'time_epoch': 4.41139, 'loss': 0.65248687, 'lr': 0, 'params': 463670, 'time_iter': 0.07002, 'accuracy': 0.76519, 'f1': 0.76525, 'accuracy-SBM': 0.76533, 'auc': 0.95762}
+2025-07-11 13:04:02,636 - INFO - test: {'epoch': 29, 'time_epoch': 4.40529, 'loss': 0.65718492, 'lr': 0, 'params': 463670, 'time_iter': 0.06993, 'accuracy': 0.76381, 'f1': 0.76378, 'accuracy-SBM': 0.76385, 'auc': 0.95701}
+2025-07-11 13:04:02,639 - INFO - > Epoch 29: took 103.5s (avg 105.7s) | Best so far: epoch 29	train_loss: 0.6670 train_accuracy-SBM: 0.7581	val_loss: 0.6525 val_accuracy-SBM: 0.7653	test_loss: 0.6572 test_accuracy-SBM: 0.7639
+2025-07-11 13:05:36,743 - INFO - train: {'epoch': 30, 'time_epoch': 93.85802, 'eta': 6632.15732, 'eta_hours': 1.84227, 'loss': 0.66798166, 'lr': 0.00083864, 'params': 463670, 'time_iter': 0.15017, 'accuracy': 0.75803, 'f1': 0.75803, 'accuracy-SBM': 0.75803, 'auc': 0.95533}
+2025-07-11 13:05:41,104 - INFO - val: {'epoch': 30, 'time_epoch': 4.3149, 'loss': 0.6525005, 'lr': 0, 'params': 463670, 'time_iter': 0.06849, 'accuracy': 0.76676, 'f1': 0.76676, 'accuracy-SBM': 0.76669, 'auc': 0.95754}
+2025-07-11 13:05:45,464 - INFO - test: {'epoch': 30, 'time_epoch': 4.32535, 'loss': 0.65061411, 'lr': 0, 'params': 463670, 'time_iter': 0.06866, 'accuracy': 0.76501, 'f1': 0.76494, 'accuracy-SBM': 0.765, 'auc': 0.95779}
+2025-07-11 13:05:45,466 - INFO - > Epoch 30: took 102.8s (avg 105.6s) | Best so far: epoch 30	train_loss: 0.6680 train_accuracy-SBM: 0.7580	val_loss: 0.6525 val_accuracy-SBM: 0.7667	test_loss: 0.6506 test_accuracy-SBM: 0.7650
+2025-07-11 13:07:19,106 - INFO - train: {'epoch': 31, 'time_epoch': 93.3912, 'eta': 6530.24416, 'eta_hours': 1.81396, 'loss': 0.66536094, 'lr': 0.00082629, 'params': 463670, 'time_iter': 0.14943, 'accuracy': 0.75943, 'f1': 0.75944, 'accuracy-SBM': 0.75944, 'auc': 0.95566}
+2025-07-11 13:07:23,444 - INFO - val: {'epoch': 31, 'time_epoch': 4.29087, 'loss': 0.65882472, 'lr': 0, 'params': 463670, 'time_iter': 0.06811, 'accuracy': 0.76434, 'f1': 0.7642, 'accuracy-SBM': 0.76409, 'auc': 0.95694}
+2025-07-11 13:07:27,739 - INFO - test: {'epoch': 31, 'time_epoch': 4.262, 'loss': 0.65546431, 'lr': 0, 'params': 463670, 'time_iter': 0.06765, 'accuracy': 0.76556, 'f1': 0.76544, 'accuracy-SBM': 0.76552, 'auc': 0.95727}
+2025-07-11 13:07:27,741 - INFO - > Epoch 31: took 102.3s (avg 105.5s) | Best so far: epoch 30	train_loss: 0.6680 train_accuracy-SBM: 0.7580	val_loss: 0.6525 val_accuracy-SBM: 0.7667	test_loss: 0.6506 test_accuracy-SBM: 0.7650
+2025-07-11 13:09:00,910 - INFO - train: {'epoch': 32, 'time_epoch': 92.82266, 'eta': 6427.69319, 'eta_hours': 1.78547, 'loss': 0.66248092, 'lr': 0.00081359, 'params': 463670, 'time_iter': 0.14852, 'accuracy': 0.76018, 'f1': 0.76018, 'accuracy-SBM': 0.76018, 'auc': 0.95606}
+2025-07-11 13:09:05,325 - INFO - val: {'epoch': 32, 'time_epoch': 4.36947, 'loss': 0.6564616, 'lr': 0, 'params': 463670, 'time_iter': 0.06936, 'accuracy': 0.76361, 'f1': 0.76351, 'accuracy-SBM': 0.7634, 'auc': 0.95695}
+2025-07-11 13:09:09,699 - INFO - test: {'epoch': 32, 'time_epoch': 4.3393, 'loss': 0.65557864, 'lr': 0, 'params': 463670, 'time_iter': 0.06888, 'accuracy': 0.7626, 'f1': 0.76257, 'accuracy-SBM': 0.76258, 'auc': 0.95713}
+2025-07-11 13:09:09,701 - INFO - > Epoch 32: took 102.0s (avg 105.4s) | Best so far: epoch 30	train_loss: 0.6680 train_accuracy-SBM: 0.7580	val_loss: 0.6525 val_accuracy-SBM: 0.7667	test_loss: 0.6506 test_accuracy-SBM: 0.7650
+2025-07-11 13:10:43,086 - INFO - train: {'epoch': 33, 'time_epoch': 92.91597, 'eta': 6325.89559, 'eta_hours': 1.75719, 'loss': 0.65869688, 'lr': 0.00080054, 'params': 463670, 'time_iter': 0.14867, 'accuracy': 0.76164, 'f1': 0.76164, 'accuracy-SBM': 0.76164, 'auc': 0.95656}
+2025-07-11 13:10:47,523 - INFO - val: {'epoch': 33, 'time_epoch': 4.38806, 'loss': 0.64534968, 'lr': 0, 'params': 463670, 'time_iter': 0.06965, 'accuracy': 0.76795, 'f1': 0.76794, 'accuracy-SBM': 0.76784, 'auc': 0.95837}
+2025-07-11 13:10:51,871 - INFO - test: {'epoch': 33, 'time_epoch': 4.31345, 'loss': 0.64778754, 'lr': 0, 'params': 463670, 'time_iter': 0.06847, 'accuracy': 0.76562, 'f1': 0.76572, 'accuracy-SBM': 0.76574, 'auc': 0.9582}
+2025-07-11 13:10:51,873 - INFO - > Epoch 33: took 102.2s (avg 105.3s) | Best so far: epoch 33	train_loss: 0.6587 train_accuracy-SBM: 0.7616	val_loss: 0.6453 val_accuracy-SBM: 0.7678	test_loss: 0.6478 test_accuracy-SBM: 0.7657
+2025-07-11 13:12:23,896 - INFO - train: {'epoch': 34, 'time_epoch': 91.77562, 'eta': 6222.48773, 'eta_hours': 1.72847, 'loss': 0.6568443, 'lr': 0.00078716, 'params': 463670, 'time_iter': 0.14684, 'accuracy': 0.76171, 'f1': 0.76171, 'accuracy-SBM': 0.76171, 'auc': 0.95681}
+2025-07-11 13:12:28,339 - INFO - val: {'epoch': 34, 'time_epoch': 4.39618, 'loss': 0.65509345, 'lr': 0, 'params': 463670, 'time_iter': 0.06978, 'accuracy': 0.76322, 'f1': 0.7632, 'accuracy-SBM': 0.76317, 'auc': 0.95744}
+2025-07-11 13:12:32,693 - INFO - test: {'epoch': 34, 'time_epoch': 4.31973, 'loss': 0.64875982, 'lr': 0, 'params': 463670, 'time_iter': 0.06857, 'accuracy': 0.76231, 'f1': 0.76228, 'accuracy-SBM': 0.76223, 'auc': 0.95833}
+2025-07-11 13:12:32,695 - INFO - > Epoch 34: took 100.8s (avg 105.2s) | Best so far: epoch 33	train_loss: 0.6587 train_accuracy-SBM: 0.7616	val_loss: 0.6453 val_accuracy-SBM: 0.7678	test_loss: 0.6478 test_accuracy-SBM: 0.7657
+2025-07-11 13:14:04,860 - INFO - train: {'epoch': 35, 'time_epoch': 91.92404, 'eta': 6119.98996, 'eta_hours': 1.7, 'loss': 0.653131, 'lr': 0.00077347, 'params': 463670, 'time_iter': 0.14708, 'accuracy': 0.7632, 'f1': 0.76321, 'accuracy-SBM': 0.7632, 'auc': 0.95729}
+2025-07-11 13:14:09,278 - INFO - val: {'epoch': 35, 'time_epoch': 4.34835, 'loss': 0.6519294, 'lr': 0, 'params': 463670, 'time_iter': 0.06902, 'accuracy': 0.76591, 'f1': 0.76587, 'accuracy-SBM': 0.76589, 'auc': 0.95758}
+2025-07-11 13:14:13,635 - INFO - test: {'epoch': 35, 'time_epoch': 4.32309, 'loss': 0.64629576, 'lr': 0, 'params': 463670, 'time_iter': 0.06862, 'accuracy': 0.7666, 'f1': 0.76655, 'accuracy-SBM': 0.76663, 'auc': 0.95838}
+2025-07-11 13:14:13,637 - INFO - > Epoch 35: took 100.9s (avg 105.1s) | Best so far: epoch 33	train_loss: 0.6587 train_accuracy-SBM: 0.7616	val_loss: 0.6453 val_accuracy-SBM: 0.7678	test_loss: 0.6478 test_accuracy-SBM: 0.7657
+2025-07-11 13:15:45,956 - INFO - train: {'epoch': 36, 'time_epoch': 91.97491, 'eta': 6018.15036, 'eta_hours': 1.67171, 'loss': 0.65297059, 'lr': 0.00075948, 'params': 463670, 'time_iter': 0.14716, 'accuracy': 0.76315, 'f1': 0.76315, 'accuracy-SBM': 0.76315, 'auc': 0.95731}
+2025-07-11 13:15:50,379 - INFO - val: {'epoch': 36, 'time_epoch': 4.37602, 'loss': 0.64958363, 'lr': 0, 'params': 463670, 'time_iter': 0.06946, 'accuracy': 0.7658, 'f1': 0.76574, 'accuracy-SBM': 0.76591, 'auc': 0.9581}
+2025-07-11 13:15:54,740 - INFO - test: {'epoch': 36, 'time_epoch': 4.32368, 'loss': 0.6545645, 'lr': 0, 'params': 463670, 'time_iter': 0.06863, 'accuracy': 0.76224, 'f1': 0.76226, 'accuracy-SBM': 0.76232, 'auc': 0.95753}
+2025-07-11 13:15:54,743 - INFO - > Epoch 36: took 101.1s (avg 105.0s) | Best so far: epoch 33	train_loss: 0.6587 train_accuracy-SBM: 0.7616	val_loss: 0.6453 val_accuracy-SBM: 0.7678	test_loss: 0.6478 test_accuracy-SBM: 0.7657
+2025-07-11 13:17:26,530 - INFO - train: {'epoch': 37, 'time_epoch': 91.52746, 'eta': 5916.09992, 'eta_hours': 1.64336, 'loss': 0.64517856, 'lr': 0.00074521, 'params': 463670, 'time_iter': 0.14644, 'accuracy': 0.76605, 'f1': 0.76605, 'accuracy-SBM': 0.76605, 'auc': 0.95834}
+2025-07-11 13:17:30,905 - INFO - val: {'epoch': 37, 'time_epoch': 4.32888, 'loss': 0.64481564, 'lr': 0, 'params': 463670, 'time_iter': 0.06871, 'accuracy': 0.76876, 'f1': 0.76872, 'accuracy-SBM': 0.76869, 'auc': 0.9585}
+2025-07-11 13:17:35,230 - INFO - test: {'epoch': 37, 'time_epoch': 4.28976, 'loss': 0.64221863, 'lr': 0, 'params': 463670, 'time_iter': 0.06809, 'accuracy': 0.76819, 'f1': 0.76809, 'accuracy-SBM': 0.76825, 'auc': 0.95888}
+2025-07-11 13:17:35,233 - INFO - > Epoch 37: took 100.5s (avg 104.9s) | Best so far: epoch 37	train_loss: 0.6452 train_accuracy-SBM: 0.7661	val_loss: 0.6448 val_accuracy-SBM: 0.7687	test_loss: 0.6422 test_accuracy-SBM: 0.7682
+2025-07-11 13:19:07,208 - INFO - train: {'epoch': 38, 'time_epoch': 91.72762, 'eta': 5814.90219, 'eta_hours': 1.61525, 'loss': 0.6442107, 'lr': 0.00073067, 'params': 463670, 'time_iter': 0.14676, 'accuracy': 0.76677, 'f1': 0.76677, 'accuracy-SBM': 0.76677, 'auc': 0.95845}
+2025-07-11 13:19:11,611 - INFO - val: {'epoch': 38, 'time_epoch': 4.35678, 'loss': 0.65999346, 'lr': 0, 'params': 463670, 'time_iter': 0.06916, 'accuracy': 0.76456, 'f1': 0.7644, 'accuracy-SBM': 0.76453, 'auc': 0.95657}
+2025-07-11 13:19:15,981 - INFO - test: {'epoch': 38, 'time_epoch': 4.32851, 'loss': 0.65220069, 'lr': 0, 'params': 463670, 'time_iter': 0.06871, 'accuracy': 0.76532, 'f1': 0.76527, 'accuracy-SBM': 0.76524, 'auc': 0.95766}
+2025-07-11 13:19:15,983 - INFO - > Epoch 38: took 100.8s (avg 104.8s) | Best so far: epoch 37	train_loss: 0.6452 train_accuracy-SBM: 0.7661	val_loss: 0.6448 val_accuracy-SBM: 0.7687	test_loss: 0.6422 test_accuracy-SBM: 0.7682
+2025-07-11 13:20:47,446 - INFO - train: {'epoch': 39, 'time_epoch': 91.21752, 'eta': 5713.4128, 'eta_hours': 1.58706, 'loss': 0.64407019, 'lr': 0.00071588, 'params': 463670, 'time_iter': 0.14595, 'accuracy': 0.76641, 'f1': 0.76641, 'accuracy-SBM': 0.76641, 'auc': 0.95846}
+2025-07-11 13:20:51,786 - INFO - val: {'epoch': 39, 'time_epoch': 4.29375, 'loss': 0.64595588, 'lr': 0, 'params': 463670, 'time_iter': 0.06815, 'accuracy': 0.76577, 'f1': 0.76587, 'accuracy-SBM': 0.76572, 'auc': 0.95858}
+2025-07-11 13:20:56,112 - INFO - test: {'epoch': 39, 'time_epoch': 4.2823, 'loss': 0.65189169, 'lr': 0, 'params': 463670, 'time_iter': 0.06797, 'accuracy': 0.76399, 'f1': 0.76409, 'accuracy-SBM': 0.76403, 'auc': 0.9579}
+2025-07-11 13:20:56,118 - INFO - > Epoch 39: took 100.1s (avg 104.6s) | Best so far: epoch 37	train_loss: 0.6452 train_accuracy-SBM: 0.7661	val_loss: 0.6448 val_accuracy-SBM: 0.7687	test_loss: 0.6422 test_accuracy-SBM: 0.7682
+2025-07-11 13:22:27,825 - INFO - train: {'epoch': 40, 'time_epoch': 91.45907, 'eta': 5612.77208, 'eta_hours': 1.5591, 'loss': 0.63924215, 'lr': 0.00070085, 'params': 463670, 'time_iter': 0.14633, 'accuracy': 0.76791, 'f1': 0.76792, 'accuracy-SBM': 0.76792, 'auc': 0.9591}
+2025-07-11 13:22:32,222 - INFO - val: {'epoch': 40, 'time_epoch': 4.35047, 'loss': 0.65705298, 'lr': 0, 'params': 463670, 'time_iter': 0.06906, 'accuracy': 0.76503, 'f1': 0.765, 'accuracy-SBM': 0.76496, 'auc': 0.95709}
+2025-07-11 13:22:36,580 - INFO - test: {'epoch': 40, 'time_epoch': 4.31732, 'loss': 0.65562948, 'lr': 0, 'params': 463670, 'time_iter': 0.06853, 'accuracy': 0.76315, 'f1': 0.76293, 'accuracy-SBM': 0.76305, 'auc': 0.9573}
+2025-07-11 13:22:36,582 - INFO - > Epoch 40: took 100.5s (avg 104.5s) | Best so far: epoch 37	train_loss: 0.6452 train_accuracy-SBM: 0.7661	val_loss: 0.6448 val_accuracy-SBM: 0.7687	test_loss: 0.6422 test_accuracy-SBM: 0.7682
+2025-07-11 13:24:08,345 - INFO - train: {'epoch': 41, 'time_epoch': 91.52615, 'eta': 5512.66121, 'eta_hours': 1.53129, 'loss': 0.63688713, 'lr': 0.0006856, 'params': 463670, 'time_iter': 0.14644, 'accuracy': 0.76854, 'f1': 0.76854, 'accuracy-SBM': 0.76854, 'auc': 0.9594}
+2025-07-11 13:24:12,742 - INFO - val: {'epoch': 41, 'time_epoch': 4.34153, 'loss': 0.65630035, 'lr': 0, 'params': 463670, 'time_iter': 0.06891, 'accuracy': 0.76551, 'f1': 0.76549, 'accuracy-SBM': 0.76548, 'auc': 0.95727}
+2025-07-11 13:24:17,029 - INFO - test: {'epoch': 41, 'time_epoch': 4.25445, 'loss': 0.66844182, 'lr': 0, 'params': 463670, 'time_iter': 0.06753, 'accuracy': 0.76159, 'f1': 0.76161, 'accuracy-SBM': 0.76174, 'auc': 0.95592}
+2025-07-11 13:24:17,031 - INFO - > Epoch 41: took 100.4s (avg 104.4s) | Best so far: epoch 37	train_loss: 0.6452 train_accuracy-SBM: 0.7661	val_loss: 0.6448 val_accuracy-SBM: 0.7687	test_loss: 0.6422 test_accuracy-SBM: 0.7682
+2025-07-11 13:25:49,162 - INFO - train: {'epoch': 42, 'time_epoch': 91.87616, 'eta': 5413.4136, 'eta_hours': 1.50373, 'loss': 0.63610139, 'lr': 0.00067015, 'params': 463670, 'time_iter': 0.147, 'accuracy': 0.76918, 'f1': 0.76918, 'accuracy-SBM': 0.76918, 'auc': 0.9595}
+2025-07-11 13:25:53,544 - INFO - val: {'epoch': 42, 'time_epoch': 4.33509, 'loss': 0.64693423, 'lr': 0, 'params': 463670, 'time_iter': 0.06881, 'accuracy': 0.77075, 'f1': 0.77057, 'accuracy-SBM': 0.77061, 'auc': 0.95859}
+2025-07-11 13:25:57,911 - INFO - test: {'epoch': 42, 'time_epoch': 4.33205, 'loss': 0.6459255, 'lr': 0, 'params': 463670, 'time_iter': 0.06876, 'accuracy': 0.76911, 'f1': 0.76891, 'accuracy-SBM': 0.76893, 'auc': 0.95863}
+2025-07-11 13:25:57,913 - INFO - > Epoch 42: took 100.9s (avg 104.4s) | Best so far: epoch 42	train_loss: 0.6361 train_accuracy-SBM: 0.7692	val_loss: 0.6469 val_accuracy-SBM: 0.7706	test_loss: 0.6459 test_accuracy-SBM: 0.7689
+2025-07-11 13:27:29,759 - INFO - train: {'epoch': 43, 'time_epoch': 91.49119, 'eta': 5314.01109, 'eta_hours': 1.47611, 'loss': 0.63236356, 'lr': 0.00065451, 'params': 463670, 'time_iter': 0.14639, 'accuracy': 0.77053, 'f1': 0.77054, 'accuracy-SBM': 0.77054, 'auc': 0.95997}
+2025-07-11 13:27:34,183 - INFO - val: {'epoch': 43, 'time_epoch': 4.37666, 'loss': 0.63877473, 'lr': 0, 'params': 463670, 'time_iter': 0.06947, 'accuracy': 0.77185, 'f1': 0.77179, 'accuracy-SBM': 0.77158, 'auc': 0.95938}
+2025-07-11 13:27:38,583 - INFO - test: {'epoch': 43, 'time_epoch': 4.35741, 'loss': 0.63556326, 'lr': 0, 'params': 463670, 'time_iter': 0.06917, 'accuracy': 0.77107, 'f1': 0.77104, 'accuracy-SBM': 0.77103, 'auc': 0.95993}
+2025-07-11 13:27:38,585 - INFO - > Epoch 43: took 100.7s (avg 104.3s) | Best so far: epoch 43	train_loss: 0.6324 train_accuracy-SBM: 0.7705	val_loss: 0.6388 val_accuracy-SBM: 0.7716	test_loss: 0.6356 test_accuracy-SBM: 0.7710
+2025-07-11 13:29:10,357 - INFO - train: {'epoch': 44, 'time_epoch': 91.53072, 'eta': 5215.00852, 'eta_hours': 1.44861, 'loss': 0.62797469, 'lr': 0.0006387, 'params': 463670, 'time_iter': 0.14645, 'accuracy': 0.7723, 'f1': 0.7723, 'accuracy-SBM': 0.7723, 'auc': 0.96053}
+2025-07-11 13:29:14,755 - INFO - val: {'epoch': 44, 'time_epoch': 4.35061, 'loss': 0.63948144, 'lr': 0, 'params': 463670, 'time_iter': 0.06906, 'accuracy': 0.77007, 'f1': 0.77009, 'accuracy-SBM': 0.76996, 'auc': 0.9591}
+2025-07-11 13:29:19,029 - INFO - test: {'epoch': 44, 'time_epoch': 4.23864, 'loss': 0.64946741, 'lr': 0, 'params': 463670, 'time_iter': 0.06728, 'accuracy': 0.76587, 'f1': 0.7659, 'accuracy-SBM': 0.76601, 'auc': 0.95804}
+2025-07-11 13:29:19,031 - INFO - > Epoch 44: took 100.4s (avg 104.2s) | Best so far: epoch 43	train_loss: 0.6324 train_accuracy-SBM: 0.7705	val_loss: 0.6388 val_accuracy-SBM: 0.7716	test_loss: 0.6356 test_accuracy-SBM: 0.7710
+2025-07-11 13:30:50,585 - INFO - train: {'epoch': 45, 'time_epoch': 91.30904, 'eta': 5116.07057, 'eta_hours': 1.42113, 'loss': 0.62767386, 'lr': 0.00062274, 'params': 463670, 'time_iter': 0.14609, 'accuracy': 0.77212, 'f1': 0.77212, 'accuracy-SBM': 0.77212, 'auc': 0.96057}
+2025-07-11 13:30:54,927 - INFO - val: {'epoch': 45, 'time_epoch': 4.29631, 'loss': 0.64509759, 'lr': 0, 'params': 463670, 'time_iter': 0.0682, 'accuracy': 0.76814, 'f1': 0.76796, 'accuracy-SBM': 0.76795, 'auc': 0.95851}
+2025-07-11 13:30:59,277 - INFO - test: {'epoch': 45, 'time_epoch': 4.29639, 'loss': 0.63232444, 'lr': 0, 'params': 463670, 'time_iter': 0.0682, 'accuracy': 0.77167, 'f1': 0.7715, 'accuracy-SBM': 0.77153, 'auc': 0.96017}
+2025-07-11 13:30:59,283 - INFO - > Epoch 45: took 100.3s (avg 104.1s) | Best so far: epoch 43	train_loss: 0.6324 train_accuracy-SBM: 0.7705	val_loss: 0.6388 val_accuracy-SBM: 0.7716	test_loss: 0.6356 test_accuracy-SBM: 0.7710
+2025-07-11 13:32:30,974 - INFO - train: {'epoch': 46, 'time_epoch': 91.33772, 'eta': 5017.4896, 'eta_hours': 1.39375, 'loss': 0.62477706, 'lr': 0.00060665, 'params': 463670, 'time_iter': 0.14614, 'accuracy': 0.77314, 'f1': 0.77314, 'accuracy-SBM': 0.77314, 'auc': 0.96093}
+2025-07-11 13:32:35,384 - INFO - val: {'epoch': 46, 'time_epoch': 4.36079, 'loss': 0.63456238, 'lr': 0, 'params': 463670, 'time_iter': 0.06922, 'accuracy': 0.77211, 'f1': 0.77204, 'accuracy-SBM': 0.77209, 'auc': 0.96016}
+2025-07-11 13:32:39,745 - INFO - test: {'epoch': 46, 'time_epoch': 4.31528, 'loss': 0.63235723, 'lr': 0, 'params': 463670, 'time_iter': 0.0685, 'accuracy': 0.77257, 'f1': 0.77242, 'accuracy-SBM': 0.77246, 'auc': 0.96034}
+2025-07-11 13:32:39,747 - INFO - > Epoch 46: took 100.5s (avg 104.0s) | Best so far: epoch 46	train_loss: 0.6248 train_accuracy-SBM: 0.7731	val_loss: 0.6346 val_accuracy-SBM: 0.7721	test_loss: 0.6324 test_accuracy-SBM: 0.7725
+2025-07-11 13:34:11,535 - INFO - train: {'epoch': 47, 'time_epoch': 91.53945, 'eta': 4919.42898, 'eta_hours': 1.36651, 'loss': 0.62358209, 'lr': 0.00059044, 'params': 463670, 'time_iter': 0.14646, 'accuracy': 0.77396, 'f1': 0.77396, 'accuracy-SBM': 0.77396, 'auc': 0.96107}
+2025-07-11 13:34:15,939 - INFO - val: {'epoch': 47, 'time_epoch': 4.3555, 'loss': 0.63344746, 'lr': 0, 'params': 463670, 'time_iter': 0.06913, 'accuracy': 0.77382, 'f1': 0.77371, 'accuracy-SBM': 0.7737, 'auc': 0.96003}
+2025-07-11 13:34:20,323 - INFO - test: {'epoch': 47, 'time_epoch': 4.34979, 'loss': 0.63970313, 'lr': 0, 'params': 463670, 'time_iter': 0.06904, 'accuracy': 0.77092, 'f1': 0.77097, 'accuracy-SBM': 0.77095, 'auc': 0.95928}
+2025-07-11 13:34:20,326 - INFO - > Epoch 47: took 100.6s (avg 104.0s) | Best so far: epoch 47	train_loss: 0.6236 train_accuracy-SBM: 0.7740	val_loss: 0.6334 val_accuracy-SBM: 0.7737	test_loss: 0.6397 test_accuracy-SBM: 0.7710
+2025-07-11 13:35:52,048 - INFO - train: {'epoch': 48, 'time_epoch': 91.47969, 'eta': 4821.57232, 'eta_hours': 1.33933, 'loss': 0.61898411, 'lr': 0.00057413, 'params': 463670, 'time_iter': 0.14637, 'accuracy': 0.77511, 'f1': 0.77511, 'accuracy-SBM': 0.77511, 'auc': 0.96166}
+2025-07-11 13:35:56,396 - INFO - val: {'epoch': 48, 'time_epoch': 4.30152, 'loss': 0.63897519, 'lr': 0, 'params': 463670, 'time_iter': 0.06828, 'accuracy': 0.77157, 'f1': 0.77142, 'accuracy-SBM': 0.7714, 'auc': 0.95948}
+2025-07-11 13:36:00,742 - INFO - test: {'epoch': 48, 'time_epoch': 4.3129, 'loss': 0.63017906, 'lr': 0, 'params': 463670, 'time_iter': 0.06846, 'accuracy': 0.77334, 'f1': 0.77323, 'accuracy-SBM': 0.77322, 'auc': 0.96055}
+2025-07-11 13:36:00,744 - INFO - > Epoch 48: took 100.4s (avg 103.9s) | Best so far: epoch 47	train_loss: 0.6236 train_accuracy-SBM: 0.7740	val_loss: 0.6334 val_accuracy-SBM: 0.7737	test_loss: 0.6397 test_accuracy-SBM: 0.7710
+2025-07-11 13:37:32,538 - INFO - train: {'epoch': 49, 'time_epoch': 91.54954, 'eta': 4724.04059, 'eta_hours': 1.31223, 'loss': 0.61788834, 'lr': 0.00055774, 'params': 463670, 'time_iter': 0.14648, 'accuracy': 0.77587, 'f1': 0.77587, 'accuracy-SBM': 0.77587, 'auc': 0.96177}
+2025-07-11 13:37:36,912 - INFO - val: {'epoch': 49, 'time_epoch': 4.32728, 'loss': 0.63049243, 'lr': 0, 'params': 463670, 'time_iter': 0.06869, 'accuracy': 0.77589, 'f1': 0.77573, 'accuracy-SBM': 0.77572, 'auc': 0.96044}
+2025-07-11 13:37:41,251 - INFO - test: {'epoch': 49, 'time_epoch': 4.3062, 'loss': 0.6331848, 'lr': 0, 'params': 463670, 'time_iter': 0.06835, 'accuracy': 0.77324, 'f1': 0.77334, 'accuracy-SBM': 0.77324, 'auc': 0.96011}
+2025-07-11 13:37:41,253 - INFO - > Epoch 49: took 100.5s (avg 103.8s) | Best so far: epoch 49	train_loss: 0.6179 train_accuracy-SBM: 0.7759	val_loss: 0.6305 val_accuracy-SBM: 0.7757	test_loss: 0.6332 test_accuracy-SBM: 0.7732
+2025-07-11 13:39:13,188 - INFO - train: {'epoch': 50, 'time_epoch': 91.68908, 'eta': 4626.87752, 'eta_hours': 1.28524, 'loss': 0.61500573, 'lr': 0.00054129, 'params': 463670, 'time_iter': 0.1467, 'accuracy': 0.77646, 'f1': 0.77647, 'accuracy-SBM': 0.77647, 'auc': 0.96215}
+2025-07-11 13:39:17,545 - INFO - val: {'epoch': 50, 'time_epoch': 4.30318, 'loss': 0.63694382, 'lr': 0, 'params': 463670, 'time_iter': 0.0683, 'accuracy': 0.77075, 'f1': 0.77078, 'accuracy-SBM': 0.77084, 'auc': 0.95948}
+2025-07-11 13:39:21,934 - INFO - test: {'epoch': 50, 'time_epoch': 4.35549, 'loss': 0.63146258, 'lr': 0, 'params': 463670, 'time_iter': 0.06913, 'accuracy': 0.77269, 'f1': 0.77276, 'accuracy-SBM': 0.77273, 'auc': 0.96015}
+2025-07-11 13:39:21,936 - INFO - > Epoch 50: took 100.7s (avg 103.8s) | Best so far: epoch 49	train_loss: 0.6179 train_accuracy-SBM: 0.7759	val_loss: 0.6305 val_accuracy-SBM: 0.7757	test_loss: 0.6332 test_accuracy-SBM: 0.7732
+2025-07-11 13:40:54,375 - INFO - train: {'epoch': 51, 'time_epoch': 92.1946, 'eta': 4530.39163, 'eta_hours': 1.25844, 'loss': 0.61410342, 'lr': 0.00052479, 'params': 463670, 'time_iter': 0.14751, 'accuracy': 0.77702, 'f1': 0.77703, 'accuracy-SBM': 0.77702, 'auc': 0.96226}
+2025-07-11 13:40:58,833 - INFO - val: {'epoch': 51, 'time_epoch': 4.40394, 'loss': 0.62741247, 'lr': 0, 'params': 463670, 'time_iter': 0.0699, 'accuracy': 0.77603, 'f1': 0.77585, 'accuracy-SBM': 0.77586, 'auc': 0.9607}
+2025-07-11 13:41:03,172 - INFO - test: {'epoch': 51, 'time_epoch': 4.30425, 'loss': 0.6301075, 'lr': 0, 'params': 463670, 'time_iter': 0.06832, 'accuracy': 0.77317, 'f1': 0.77317, 'accuracy-SBM': 0.77306, 'auc': 0.96045}
+2025-07-11 13:41:03,174 - INFO - > Epoch 51: took 101.2s (avg 103.7s) | Best so far: epoch 51	train_loss: 0.6141 train_accuracy-SBM: 0.7770	val_loss: 0.6274 val_accuracy-SBM: 0.7759	test_loss: 0.6301 test_accuracy-SBM: 0.7731
+2025-07-11 13:42:35,147 - INFO - train: {'epoch': 52, 'time_epoch': 91.62923, 'eta': 4433.56631, 'eta_hours': 1.23155, 'loss': 0.60923484, 'lr': 0.00050827, 'params': 463670, 'time_iter': 0.14661, 'accuracy': 0.77865, 'f1': 0.77865, 'accuracy-SBM': 0.77865, 'auc': 0.96285}
+2025-07-11 13:42:39,559 - INFO - val: {'epoch': 52, 'time_epoch': 4.36663, 'loss': 0.62713474, 'lr': 0, 'params': 463670, 'time_iter': 0.06931, 'accuracy': 0.77711, 'f1': 0.77702, 'accuracy-SBM': 0.77705, 'auc': 0.96069}
+2025-07-11 13:42:43,916 - INFO - test: {'epoch': 52, 'time_epoch': 4.32249, 'loss': 0.63130539, 'lr': 0, 'params': 463670, 'time_iter': 0.06861, 'accuracy': 0.7747, 'f1': 0.77472, 'accuracy-SBM': 0.77473, 'auc': 0.96024}
+2025-07-11 13:42:43,918 - INFO - > Epoch 52: took 100.7s (avg 103.7s) | Best so far: epoch 52	train_loss: 0.6092 train_accuracy-SBM: 0.7786	val_loss: 0.6271 val_accuracy-SBM: 0.7771	test_loss: 0.6313 test_accuracy-SBM: 0.7747
+2025-07-11 13:44:15,699 - INFO - train: {'epoch': 53, 'time_epoch': 91.52526, 'eta': 4336.84487, 'eta_hours': 1.20468, 'loss': 0.60647155, 'lr': 0.00049173, 'params': 463670, 'time_iter': 0.14644, 'accuracy': 0.77925, 'f1': 0.77925, 'accuracy-SBM': 0.77925, 'auc': 0.9632}
+2025-07-11 13:44:20,150 - INFO - val: {'epoch': 53, 'time_epoch': 4.40424, 'loss': 0.63138317, 'lr': 0, 'params': 463670, 'time_iter': 0.06991, 'accuracy': 0.77496, 'f1': 0.77485, 'accuracy-SBM': 0.77485, 'auc': 0.96041}
+2025-07-11 13:44:24,519 - INFO - test: {'epoch': 53, 'time_epoch': 4.33478, 'loss': 0.62863553, 'lr': 0, 'params': 463670, 'time_iter': 0.06881, 'accuracy': 0.77427, 'f1': 0.7743, 'accuracy-SBM': 0.77432, 'auc': 0.96079}
+2025-07-11 13:44:24,521 - INFO - > Epoch 53: took 100.6s (avg 103.6s) | Best so far: epoch 52	train_loss: 0.6092 train_accuracy-SBM: 0.7786	val_loss: 0.6271 val_accuracy-SBM: 0.7771	test_loss: 0.6313 test_accuracy-SBM: 0.7747
+2025-07-11 13:45:56,461 - INFO - train: {'epoch': 54, 'time_epoch': 91.70479, 'eta': 4240.45927, 'eta_hours': 1.17791, 'loss': 0.60520907, 'lr': 0.00047521, 'params': 463670, 'time_iter': 0.14673, 'accuracy': 0.78029, 'f1': 0.7803, 'accuracy-SBM': 0.7803, 'auc': 0.96335}
+2025-07-11 13:46:00,848 - INFO - val: {'epoch': 54, 'time_epoch': 4.34031, 'loss': 0.63160509, 'lr': 0, 'params': 463670, 'time_iter': 0.06889, 'accuracy': 0.77524, 'f1': 0.77527, 'accuracy-SBM': 0.77528, 'auc': 0.96018}
+2025-07-11 13:46:05,239 - INFO - test: {'epoch': 54, 'time_epoch': 4.35553, 'loss': 0.63011276, 'lr': 0, 'params': 463670, 'time_iter': 0.06914, 'accuracy': 0.77411, 'f1': 0.77414, 'accuracy-SBM': 0.77413, 'auc': 0.96035}
+2025-07-11 13:46:05,240 - INFO - > Epoch 54: took 100.7s (avg 103.5s) | Best so far: epoch 52	train_loss: 0.6092 train_accuracy-SBM: 0.7786	val_loss: 0.6271 val_accuracy-SBM: 0.7771	test_loss: 0.6313 test_accuracy-SBM: 0.7747
+2025-07-11 13:47:37,086 - INFO - train: {'epoch': 55, 'time_epoch': 91.59935, 'eta': 4144.15799, 'eta_hours': 1.15115, 'loss': 0.60327451, 'lr': 0.00045871, 'params': 463670, 'time_iter': 0.14656, 'accuracy': 0.78118, 'f1': 0.78118, 'accuracy-SBM': 0.78118, 'auc': 0.96357}
+2025-07-11 13:47:41,390 - INFO - val: {'epoch': 55, 'time_epoch': 4.25742, 'loss': 0.62761285, 'lr': 0, 'params': 463670, 'time_iter': 0.06758, 'accuracy': 0.77535, 'f1': 0.77537, 'accuracy-SBM': 0.7753, 'auc': 0.96075}
+2025-07-11 13:47:45,659 - INFO - test: {'epoch': 55, 'time_epoch': 4.23381, 'loss': 0.62575209, 'lr': 0, 'params': 463670, 'time_iter': 0.0672, 'accuracy': 0.77449, 'f1': 0.77445, 'accuracy-SBM': 0.77452, 'auc': 0.961}
+2025-07-11 13:47:45,661 - INFO - > Epoch 55: took 100.4s (avg 103.5s) | Best so far: epoch 52	train_loss: 0.6092 train_accuracy-SBM: 0.7786	val_loss: 0.6271 val_accuracy-SBM: 0.7771	test_loss: 0.6313 test_accuracy-SBM: 0.7747
+2025-07-11 13:49:17,316 - INFO - train: {'epoch': 56, 'time_epoch': 91.4133, 'eta': 4047.88134, 'eta_hours': 1.12441, 'loss': 0.59871621, 'lr': 0.00044226, 'params': 463670, 'time_iter': 0.14626, 'accuracy': 0.78232, 'f1': 0.78233, 'accuracy-SBM': 0.78232, 'auc': 0.96412}
+2025-07-11 13:49:21,612 - INFO - val: {'epoch': 56, 'time_epoch': 4.2521, 'loss': 0.63248915, 'lr': 0, 'params': 463670, 'time_iter': 0.06749, 'accuracy': 0.77555, 'f1': 0.77548, 'accuracy-SBM': 0.77544, 'auc': 0.95993}
+2025-07-11 13:49:25,929 - INFO - test: {'epoch': 56, 'time_epoch': 4.28274, 'loss': 0.6280854, 'lr': 0, 'params': 463670, 'time_iter': 0.06798, 'accuracy': 0.77581, 'f1': 0.77581, 'accuracy-SBM': 0.77585, 'auc': 0.96054}
+2025-07-11 13:49:25,931 - INFO - > Epoch 56: took 100.3s (avg 103.4s) | Best so far: epoch 52	train_loss: 0.6092 train_accuracy-SBM: 0.7786	val_loss: 0.6271 val_accuracy-SBM: 0.7771	test_loss: 0.6313 test_accuracy-SBM: 0.7747
+2025-07-11 13:50:58,012 - INFO - train: {'epoch': 57, 'time_epoch': 91.82976, 'eta': 3952.07397, 'eta_hours': 1.0978, 'loss': 0.59625221, 'lr': 0.00042587, 'params': 463670, 'time_iter': 0.14693, 'accuracy': 0.78355, 'f1': 0.78355, 'accuracy-SBM': 0.78355, 'auc': 0.96441}
+2025-07-11 13:51:02,428 - INFO - val: {'epoch': 57, 'time_epoch': 4.36166, 'loss': 0.62851141, 'lr': 0, 'params': 463670, 'time_iter': 0.06923, 'accuracy': 0.77605, 'f1': 0.77594, 'accuracy-SBM': 0.77598, 'auc': 0.96042}
+2025-07-11 13:51:06,761 - INFO - test: {'epoch': 57, 'time_epoch': 4.29801, 'loss': 0.62837917, 'lr': 0, 'params': 463670, 'time_iter': 0.06822, 'accuracy': 0.77391, 'f1': 0.7739, 'accuracy-SBM': 0.77392, 'auc': 0.96052}
+2025-07-11 13:51:06,763 - INFO - > Epoch 57: took 100.8s (avg 103.4s) | Best so far: epoch 52	train_loss: 0.6092 train_accuracy-SBM: 0.7786	val_loss: 0.6271 val_accuracy-SBM: 0.7771	test_loss: 0.6313 test_accuracy-SBM: 0.7747
+2025-07-11 13:52:38,874 - INFO - train: {'epoch': 58, 'time_epoch': 91.75187, 'eta': 3856.3473, 'eta_hours': 1.07121, 'loss': 0.59332129, 'lr': 0.00040956, 'params': 463670, 'time_iter': 0.1468, 'accuracy': 0.78408, 'f1': 0.78408, 'accuracy-SBM': 0.78408, 'auc': 0.96478}
+2025-07-11 13:52:43,231 - INFO - val: {'epoch': 58, 'time_epoch': 4.30815, 'loss': 0.62563018, 'lr': 0, 'params': 463670, 'time_iter': 0.06838, 'accuracy': 0.77649, 'f1': 0.77632, 'accuracy-SBM': 0.77639, 'auc': 0.96097}
+2025-07-11 13:52:47,563 - INFO - test: {'epoch': 58, 'time_epoch': 4.29741, 'loss': 0.62927482, 'lr': 0, 'params': 463670, 'time_iter': 0.06821, 'accuracy': 0.77487, 'f1': 0.77494, 'accuracy-SBM': 0.77487, 'auc': 0.96057}
+2025-07-11 13:52:47,565 - INFO - > Epoch 58: took 100.8s (avg 103.3s) | Best so far: epoch 52	train_loss: 0.6092 train_accuracy-SBM: 0.7786	val_loss: 0.6271 val_accuracy-SBM: 0.7771	test_loss: 0.6313 test_accuracy-SBM: 0.7747
+2025-07-11 13:54:19,366 - INFO - train: {'epoch': 59, 'time_epoch': 91.55569, 'eta': 3760.62234, 'eta_hours': 1.04462, 'loss': 0.59139439, 'lr': 0.00039335, 'params': 463670, 'time_iter': 0.14649, 'accuracy': 0.78476, 'f1': 0.78476, 'accuracy-SBM': 0.78476, 'auc': 0.965}
+2025-07-11 13:54:23,802 - INFO - val: {'epoch': 59, 'time_epoch': 4.38879, 'loss': 0.62751044, 'lr': 0, 'params': 463670, 'time_iter': 0.06966, 'accuracy': 0.77751, 'f1': 0.77743, 'accuracy-SBM': 0.77738, 'auc': 0.96067}
+2025-07-11 13:54:28,260 - INFO - test: {'epoch': 59, 'time_epoch': 4.42301, 'loss': 0.6270004, 'lr': 0, 'params': 463670, 'time_iter': 0.07021, 'accuracy': 0.77535, 'f1': 0.77526, 'accuracy-SBM': 0.77533, 'auc': 0.96074}
+2025-07-11 13:54:28,262 - INFO - > Epoch 59: took 100.7s (avg 103.3s) | Best so far: epoch 59	train_loss: 0.5914 train_accuracy-SBM: 0.7848	val_loss: 0.6275 val_accuracy-SBM: 0.7774	test_loss: 0.6270 test_accuracy-SBM: 0.7753
+2025-07-11 13:56:00,704 - INFO - train: {'epoch': 60, 'time_epoch': 92.091, 'eta': 3665.37633, 'eta_hours': 1.01816, 'loss': 0.58820746, 'lr': 0.00037726, 'params': 463670, 'time_iter': 0.14735, 'accuracy': 0.7861, 'f1': 0.7861, 'accuracy-SBM': 0.7861, 'auc': 0.96539}
+2025-07-11 13:56:05,067 - INFO - val: {'epoch': 60, 'time_epoch': 4.31703, 'loss': 0.63075252, 'lr': 0, 'params': 463670, 'time_iter': 0.06852, 'accuracy': 0.77682, 'f1': 0.77671, 'accuracy-SBM': 0.77673, 'auc': 0.96028}
+2025-07-11 13:56:09,389 - INFO - test: {'epoch': 60, 'time_epoch': 4.28987, 'loss': 0.62892256, 'lr': 0, 'params': 463670, 'time_iter': 0.06809, 'accuracy': 0.77552, 'f1': 0.77544, 'accuracy-SBM': 0.77544, 'auc': 0.96051}
+2025-07-11 13:56:09,391 - INFO - > Epoch 60: took 101.1s (avg 103.3s) | Best so far: epoch 59	train_loss: 0.5914 train_accuracy-SBM: 0.7848	val_loss: 0.6275 val_accuracy-SBM: 0.7774	test_loss: 0.6270 test_accuracy-SBM: 0.7753
+2025-07-11 13:57:41,362 - INFO - train: {'epoch': 61, 'time_epoch': 91.72559, 'eta': 3570.00813, 'eta_hours': 0.99167, 'loss': 0.588091, 'lr': 0.0003613, 'params': 463670, 'time_iter': 0.14676, 'accuracy': 0.7866, 'f1': 0.7866, 'accuracy-SBM': 0.7866, 'auc': 0.96539}
+2025-07-11 13:57:45,743 - INFO - val: {'epoch': 61, 'time_epoch': 4.32881, 'loss': 0.62667107, 'lr': 0, 'params': 463670, 'time_iter': 0.06871, 'accuracy': 0.77875, 'f1': 0.7787, 'accuracy-SBM': 0.77869, 'auc': 0.96067}
+2025-07-11 13:57:49,996 - INFO - test: {'epoch': 61, 'time_epoch': 4.21954, 'loss': 0.62163111, 'lr': 0, 'params': 463670, 'time_iter': 0.06698, 'accuracy': 0.77705, 'f1': 0.77704, 'accuracy-SBM': 0.77706, 'auc': 0.96134}
+2025-07-11 13:57:49,998 - INFO - > Epoch 61: took 100.6s (avg 103.2s) | Best so far: epoch 61	train_loss: 0.5881 train_accuracy-SBM: 0.7866	val_loss: 0.6267 val_accuracy-SBM: 0.7787	test_loss: 0.6216 test_accuracy-SBM: 0.7771
+2025-07-11 13:59:21,721 - INFO - train: {'epoch': 62, 'time_epoch': 91.47631, 'eta': 3474.60917, 'eta_hours': 0.96517, 'loss': 0.58291047, 'lr': 0.00034549, 'params': 463670, 'time_iter': 0.14636, 'accuracy': 0.78833, 'f1': 0.78833, 'accuracy-SBM': 0.78833, 'auc': 0.966}
+2025-07-11 13:59:26,125 - INFO - val: {'epoch': 62, 'time_epoch': 4.35642, 'loss': 0.63324096, 'lr': 0, 'params': 463670, 'time_iter': 0.06915, 'accuracy': 0.77519, 'f1': 0.77501, 'accuracy-SBM': 0.77501, 'auc': 0.95995}
+2025-07-11 13:59:30,523 - INFO - test: {'epoch': 62, 'time_epoch': 4.36205, 'loss': 0.63380887, 'lr': 0, 'params': 463670, 'time_iter': 0.06924, 'accuracy': 0.77338, 'f1': 0.77339, 'accuracy-SBM': 0.7733, 'auc': 0.95986}
+2025-07-11 13:59:30,525 - INFO - > Epoch 62: took 100.5s (avg 103.2s) | Best so far: epoch 61	train_loss: 0.5881 train_accuracy-SBM: 0.7866	val_loss: 0.6267 val_accuracy-SBM: 0.7787	test_loss: 0.6216 test_accuracy-SBM: 0.7771
+2025-07-11 14:01:02,581 - INFO - train: {'epoch': 63, 'time_epoch': 91.81141, 'eta': 3379.52128, 'eta_hours': 0.93876, 'loss': 0.58123088, 'lr': 0.00032985, 'params': 463670, 'time_iter': 0.1469, 'accuracy': 0.78829, 'f1': 0.78829, 'accuracy-SBM': 0.78829, 'auc': 0.9662}
+2025-07-11 14:01:06,907 - INFO - val: {'epoch': 63, 'time_epoch': 4.28078, 'loss': 0.6294552, 'lr': 0, 'params': 463670, 'time_iter': 0.06795, 'accuracy': 0.7767, 'f1': 0.77664, 'accuracy-SBM': 0.77665, 'auc': 0.96063}
+2025-07-11 14:01:11,310 - INFO - test: {'epoch': 63, 'time_epoch': 4.36013, 'loss': 0.6317795, 'lr': 0, 'params': 463670, 'time_iter': 0.06921, 'accuracy': 0.77599, 'f1': 0.776, 'accuracy-SBM': 0.77601, 'auc': 0.96046}
+2025-07-11 14:01:11,312 - INFO - > Epoch 63: took 100.8s (avg 103.1s) | Best so far: epoch 61	train_loss: 0.5881 train_accuracy-SBM: 0.7866	val_loss: 0.6267 val_accuracy-SBM: 0.7787	test_loss: 0.6216 test_accuracy-SBM: 0.7771
+2025-07-11 14:02:43,088 - INFO - train: {'epoch': 64, 'time_epoch': 91.51668, 'eta': 3284.3755, 'eta_hours': 0.91233, 'loss': 0.58050327, 'lr': 0.0003144, 'params': 463670, 'time_iter': 0.14643, 'accuracy': 0.78911, 'f1': 0.78911, 'accuracy-SBM': 0.78911, 'auc': 0.96627}
+2025-07-11 14:02:47,536 - INFO - val: {'epoch': 64, 'time_epoch': 4.40018, 'loss': 0.62751144, 'lr': 0, 'params': 463670, 'time_iter': 0.06984, 'accuracy': 0.77659, 'f1': 0.77646, 'accuracy-SBM': 0.77644, 'auc': 0.96062}
+2025-07-11 14:02:51,947 - INFO - test: {'epoch': 64, 'time_epoch': 4.37786, 'loss': 0.6234397, 'lr': 0, 'params': 463670, 'time_iter': 0.06949, 'accuracy': 0.77834, 'f1': 0.77834, 'accuracy-SBM': 0.7783, 'auc': 0.96112}
+2025-07-11 14:02:51,949 - INFO - > Epoch 64: took 100.6s (avg 103.1s) | Best so far: epoch 61	train_loss: 0.5881 train_accuracy-SBM: 0.7866	val_loss: 0.6267 val_accuracy-SBM: 0.7787	test_loss: 0.6216 test_accuracy-SBM: 0.7771
+2025-07-11 14:04:24,129 - INFO - train: {'epoch': 65, 'time_epoch': 91.8388, 'eta': 3189.50564, 'eta_hours': 0.88597, 'loss': 0.57721421, 'lr': 0.00029915, 'params': 463670, 'time_iter': 0.14694, 'accuracy': 0.79011, 'f1': 0.79011, 'accuracy-SBM': 0.79011, 'auc': 0.96667}
+2025-07-11 14:04:28,386 - INFO - val: {'epoch': 65, 'time_epoch': 4.20849, 'loss': 0.62595895, 'lr': 0, 'params': 463670, 'time_iter': 0.0668, 'accuracy': 0.77862, 'f1': 0.7785, 'accuracy-SBM': 0.77847, 'auc': 0.96083}
+2025-07-11 14:04:32,717 - INFO - test: {'epoch': 65, 'time_epoch': 4.29801, 'loss': 0.62454421, 'lr': 0, 'params': 463670, 'time_iter': 0.06822, 'accuracy': 0.77793, 'f1': 0.77787, 'accuracy-SBM': 0.77787, 'auc': 0.96104}
+2025-07-11 14:04:32,719 - INFO - > Epoch 65: took 100.8s (avg 103.1s) | Best so far: epoch 61	train_loss: 0.5881 train_accuracy-SBM: 0.7866	val_loss: 0.6267 val_accuracy-SBM: 0.7787	test_loss: 0.6216 test_accuracy-SBM: 0.7771
+2025-07-11 14:06:04,829 - INFO - train: {'epoch': 66, 'time_epoch': 91.85746, 'eta': 3094.73545, 'eta_hours': 0.85965, 'loss': 0.57614557, 'lr': 0.00028412, 'params': 463670, 'time_iter': 0.14697, 'accuracy': 0.79004, 'f1': 0.79004, 'accuracy-SBM': 0.79004, 'auc': 0.96679}
+2025-07-11 14:06:09,287 - INFO - val: {'epoch': 66, 'time_epoch': 4.40968, 'loss': 0.63120791, 'lr': 0, 'params': 463670, 'time_iter': 0.06999, 'accuracy': 0.77798, 'f1': 0.77784, 'accuracy-SBM': 0.77783, 'auc': 0.96026}
+2025-07-11 14:06:13,693 - INFO - test: {'epoch': 66, 'time_epoch': 4.37011, 'loss': 0.62068448, 'lr': 0, 'params': 463670, 'time_iter': 0.06937, 'accuracy': 0.77974, 'f1': 0.77971, 'accuracy-SBM': 0.7797, 'auc': 0.96149}
+2025-07-11 14:06:13,696 - INFO - > Epoch 66: took 101.0s (avg 103.0s) | Best so far: epoch 61	train_loss: 0.5881 train_accuracy-SBM: 0.7866	val_loss: 0.6267 val_accuracy-SBM: 0.7787	test_loss: 0.6216 test_accuracy-SBM: 0.7771
+2025-07-11 14:07:45,626 - INFO - train: {'epoch': 67, 'time_epoch': 91.68928, 'eta': 2999.97178, 'eta_hours': 0.83333, 'loss': 0.57236913, 'lr': 0.00026933, 'params': 463670, 'time_iter': 0.1467, 'accuracy': 0.79192, 'f1': 0.79192, 'accuracy-SBM': 0.79192, 'auc': 0.96724}
+2025-07-11 14:07:50,004 - INFO - val: {'epoch': 67, 'time_epoch': 4.33199, 'loss': 0.6287421, 'lr': 0, 'params': 463670, 'time_iter': 0.06876, 'accuracy': 0.77786, 'f1': 0.77776, 'accuracy-SBM': 0.77778, 'auc': 0.96069}
+2025-07-11 14:07:54,384 - INFO - test: {'epoch': 67, 'time_epoch': 4.32559, 'loss': 0.6244473, 'lr': 0, 'params': 463670, 'time_iter': 0.06866, 'accuracy': 0.77913, 'f1': 0.77913, 'accuracy-SBM': 0.77911, 'auc': 0.96127}
+2025-07-11 14:07:54,386 - INFO - > Epoch 67: took 100.7s (avg 103.0s) | Best so far: epoch 61	train_loss: 0.5881 train_accuracy-SBM: 0.7866	val_loss: 0.6267 val_accuracy-SBM: 0.7787	test_loss: 0.6216 test_accuracy-SBM: 0.7771
+2025-07-11 14:09:26,967 - INFO - train: {'epoch': 68, 'time_epoch': 92.19204, 'eta': 2905.52311, 'eta_hours': 0.80709, 'loss': 0.56881232, 'lr': 0.00025479, 'params': 463670, 'time_iter': 0.14751, 'accuracy': 0.79284, 'f1': 0.79284, 'accuracy-SBM': 0.79284, 'auc': 0.96765}
+2025-07-11 14:09:31,458 - INFO - val: {'epoch': 68, 'time_epoch': 4.44326, 'loss': 0.62247582, 'lr': 0, 'params': 463670, 'time_iter': 0.07053, 'accuracy': 0.77862, 'f1': 0.77851, 'accuracy-SBM': 0.77854, 'auc': 0.96117}
+2025-07-11 14:09:35,935 - INFO - test: {'epoch': 68, 'time_epoch': 4.44304, 'loss': 0.62350281, 'lr': 0, 'params': 463670, 'time_iter': 0.07052, 'accuracy': 0.77672, 'f1': 0.77672, 'accuracy-SBM': 0.77673, 'auc': 0.9611}
+2025-07-11 14:09:35,938 - INFO - > Epoch 68: took 101.6s (avg 103.0s) | Best so far: epoch 61	train_loss: 0.5881 train_accuracy-SBM: 0.7866	val_loss: 0.6267 val_accuracy-SBM: 0.7787	test_loss: 0.6216 test_accuracy-SBM: 0.7771
+2025-07-11 14:11:08,179 - INFO - train: {'epoch': 69, 'time_epoch': 92.00243, 'eta': 2811.05765, 'eta_hours': 0.78085, 'loss': 0.56757267, 'lr': 0.00024052, 'params': 463670, 'time_iter': 0.1472, 'accuracy': 0.79342, 'f1': 0.79342, 'accuracy-SBM': 0.79342, 'auc': 0.96779}
+2025-07-11 14:11:12,589 - INFO - val: {'epoch': 69, 'time_epoch': 4.35753, 'loss': 0.62589513, 'lr': 0, 'params': 463670, 'time_iter': 0.06917, 'accuracy': 0.77968, 'f1': 0.7796, 'accuracy-SBM': 0.77958, 'auc': 0.96084}
+2025-07-11 14:11:16,987 - INFO - test: {'epoch': 69, 'time_epoch': 4.36336, 'loss': 0.62196475, 'lr': 0, 'params': 463670, 'time_iter': 0.06926, 'accuracy': 0.77907, 'f1': 0.77909, 'accuracy-SBM': 0.7791, 'auc': 0.96135}
+2025-07-11 14:11:16,989 - INFO - > Epoch 69: took 101.1s (avg 103.0s) | Best so far: epoch 69	train_loss: 0.5676 train_accuracy-SBM: 0.7934	val_loss: 0.6259 val_accuracy-SBM: 0.7796	test_loss: 0.6220 test_accuracy-SBM: 0.7791
+2025-07-11 14:12:48,937 - INFO - train: {'epoch': 70, 'time_epoch': 91.70288, 'eta': 2716.53921, 'eta_hours': 0.75459, 'loss': 0.56466041, 'lr': 0.00022653, 'params': 463670, 'time_iter': 0.14672, 'accuracy': 0.79485, 'f1': 0.79485, 'accuracy-SBM': 0.79485, 'auc': 0.9681}
+2025-07-11 14:12:53,386 - INFO - val: {'epoch': 70, 'time_epoch': 4.39564, 'loss': 0.62957912, 'lr': 0, 'params': 463670, 'time_iter': 0.06977, 'accuracy': 0.77772, 'f1': 0.77768, 'accuracy-SBM': 0.77769, 'auc': 0.96055}
+2025-07-11 14:12:57,815 - INFO - test: {'epoch': 70, 'time_epoch': 4.39426, 'loss': 0.62322976, 'lr': 0, 'params': 463670, 'time_iter': 0.06975, 'accuracy': 0.77901, 'f1': 0.77899, 'accuracy-SBM': 0.77903, 'auc': 0.96129}
+2025-07-11 14:12:57,827 - INFO - > Epoch 70: took 100.8s (avg 102.9s) | Best so far: epoch 69	train_loss: 0.5676 train_accuracy-SBM: 0.7934	val_loss: 0.6259 val_accuracy-SBM: 0.7796	test_loss: 0.6220 test_accuracy-SBM: 0.7791
+2025-07-11 14:14:29,949 - INFO - train: {'epoch': 71, 'time_epoch': 91.77711, 'eta': 2622.12786, 'eta_hours': 0.72837, 'loss': 0.56220464, 'lr': 0.00021284, 'params': 463670, 'time_iter': 0.14684, 'accuracy': 0.79547, 'f1': 0.79547, 'accuracy-SBM': 0.79547, 'auc': 0.96838}
+2025-07-11 14:14:34,302 - INFO - val: {'epoch': 71, 'time_epoch': 4.3023, 'loss': 0.63150365, 'lr': 0, 'params': 463670, 'time_iter': 0.06829, 'accuracy': 0.77988, 'f1': 0.7798, 'accuracy-SBM': 0.77978, 'auc': 0.9607}
+2025-07-11 14:14:38,712 - INFO - test: {'epoch': 71, 'time_epoch': 4.36816, 'loss': 0.63433989, 'lr': 0, 'params': 463670, 'time_iter': 0.06934, 'accuracy': 0.77713, 'f1': 0.77711, 'accuracy-SBM': 0.77715, 'auc': 0.96032}
+2025-07-11 14:14:38,715 - INFO - > Epoch 71: took 100.9s (avg 102.9s) | Best so far: epoch 71	train_loss: 0.5622 train_accuracy-SBM: 0.7955	val_loss: 0.6315 val_accuracy-SBM: 0.7798	test_loss: 0.6343 test_accuracy-SBM: 0.7772
+2025-07-11 14:16:10,678 - INFO - train: {'epoch': 72, 'time_epoch': 91.70032, 'eta': 2527.76027, 'eta_hours': 0.70216, 'loss': 0.56044952, 'lr': 0.00019946, 'params': 463670, 'time_iter': 0.14672, 'accuracy': 0.79607, 'f1': 0.79607, 'accuracy-SBM': 0.79607, 'auc': 0.96859}
+2025-07-11 14:16:15,153 - INFO - val: {'epoch': 72, 'time_epoch': 4.42684, 'loss': 0.63224931, 'lr': 0, 'params': 463670, 'time_iter': 0.07027, 'accuracy': 0.77937, 'f1': 0.77925, 'accuracy-SBM': 0.77918, 'auc': 0.96053}
+2025-07-11 14:16:19,583 - INFO - test: {'epoch': 72, 'time_epoch': 4.38549, 'loss': 0.62766697, 'lr': 0, 'params': 463670, 'time_iter': 0.06961, 'accuracy': 0.77764, 'f1': 0.77763, 'accuracy-SBM': 0.77766, 'auc': 0.96108}
+2025-07-11 14:16:19,585 - INFO - > Epoch 72: took 100.9s (avg 102.9s) | Best so far: epoch 71	train_loss: 0.5622 train_accuracy-SBM: 0.7955	val_loss: 0.6315 val_accuracy-SBM: 0.7798	test_loss: 0.6343 test_accuracy-SBM: 0.7772
+2025-07-11 14:17:51,504 - INFO - train: {'epoch': 73, 'time_epoch': 91.56355, 'eta': 2433.41672, 'eta_hours': 0.67595, 'loss': 0.55988809, 'lr': 0.00018641, 'params': 463670, 'time_iter': 0.1465, 'accuracy': 0.7961, 'f1': 0.7961, 'accuracy-SBM': 0.7961, 'auc': 0.96865}
+2025-07-11 14:17:55,949 - INFO - val: {'epoch': 73, 'time_epoch': 4.39861, 'loss': 0.63215106, 'lr': 0, 'params': 463670, 'time_iter': 0.06982, 'accuracy': 0.77836, 'f1': 0.77819, 'accuracy-SBM': 0.77816, 'auc': 0.96034}
+2025-07-11 14:18:00,358 - INFO - test: {'epoch': 73, 'time_epoch': 4.37495, 'loss': 0.63355593, 'lr': 0, 'params': 463670, 'time_iter': 0.06944, 'accuracy': 0.77804, 'f1': 0.77807, 'accuracy-SBM': 0.77805, 'auc': 0.9602}
+2025-07-11 14:18:00,359 - INFO - > Epoch 73: took 100.8s (avg 102.8s) | Best so far: epoch 71	train_loss: 0.5622 train_accuracy-SBM: 0.7955	val_loss: 0.6315 val_accuracy-SBM: 0.7798	test_loss: 0.6343 test_accuracy-SBM: 0.7772
+2025-07-11 14:19:32,379 - INFO - train: {'epoch': 74, 'time_epoch': 91.67265, 'eta': 2339.18367, 'eta_hours': 0.64977, 'loss': 0.55670278, 'lr': 0.00017371, 'params': 463670, 'time_iter': 0.14668, 'accuracy': 0.79735, 'f1': 0.79735, 'accuracy-SBM': 0.79735, 'auc': 0.96901}
+2025-07-11 14:19:36,823 - INFO - val: {'epoch': 74, 'time_epoch': 4.39697, 'loss': 0.63813106, 'lr': 0, 'params': 463670, 'time_iter': 0.06979, 'accuracy': 0.77823, 'f1': 0.77811, 'accuracy-SBM': 0.77805, 'auc': 0.9595}
+2025-07-11 14:19:41,233 - INFO - test: {'epoch': 74, 'time_epoch': 4.3658, 'loss': 0.62714703, 'lr': 0, 'params': 463670, 'time_iter': 0.0693, 'accuracy': 0.7794, 'f1': 0.77933, 'accuracy-SBM': 0.77936, 'auc': 0.96073}
+2025-07-11 14:19:41,240 - INFO - > Epoch 74: took 100.9s (avg 102.8s) | Best so far: epoch 71	train_loss: 0.5622 train_accuracy-SBM: 0.7955	val_loss: 0.6315 val_accuracy-SBM: 0.7798	test_loss: 0.6343 test_accuracy-SBM: 0.7772
+2025-07-11 14:21:13,349 - INFO - train: {'epoch': 75, 'time_epoch': 91.85588, 'eta': 2245.07586, 'eta_hours': 0.62363, 'loss': 0.55571715, 'lr': 0.00016136, 'params': 463670, 'time_iter': 0.14697, 'accuracy': 0.79769, 'f1': 0.79769, 'accuracy-SBM': 0.79769, 'auc': 0.96911}
+2025-07-11 14:21:17,760 - INFO - val: {'epoch': 75, 'time_epoch': 4.36478, 'loss': 0.62897405, 'lr': 0, 'params': 463670, 'time_iter': 0.06928, 'accuracy': 0.7788, 'f1': 0.77877, 'accuracy-SBM': 0.77877, 'auc': 0.96068}
+2025-07-11 14:21:22,107 - INFO - test: {'epoch': 75, 'time_epoch': 4.30455, 'loss': 0.62850388, 'lr': 0, 'params': 463670, 'time_iter': 0.06833, 'accuracy': 0.77765, 'f1': 0.77762, 'accuracy-SBM': 0.77766, 'auc': 0.96076}
+2025-07-11 14:21:22,108 - INFO - > Epoch 75: took 100.9s (avg 102.8s) | Best so far: epoch 71	train_loss: 0.5622 train_accuracy-SBM: 0.7955	val_loss: 0.6315 val_accuracy-SBM: 0.7798	test_loss: 0.6343 test_accuracy-SBM: 0.7772
+2025-07-11 14:22:54,147 - INFO - train: {'epoch': 76, 'time_epoch': 91.60008, 'eta': 2150.95013, 'eta_hours': 0.59749, 'loss': 0.55259274, 'lr': 0.00014938, 'params': 463670, 'time_iter': 0.14656, 'accuracy': 0.79872, 'f1': 0.79872, 'accuracy-SBM': 0.79872, 'auc': 0.96947}
+2025-07-11 14:22:58,569 - INFO - val: {'epoch': 76, 'time_epoch': 4.36755, 'loss': 0.62879927, 'lr': 0, 'params': 463670, 'time_iter': 0.06933, 'accuracy': 0.77846, 'f1': 0.77838, 'accuracy-SBM': 0.77835, 'auc': 0.96062}
+2025-07-11 14:23:02,895 - INFO - test: {'epoch': 76, 'time_epoch': 4.29026, 'loss': 0.62477924, 'lr': 0, 'params': 463670, 'time_iter': 0.0681, 'accuracy': 0.77892, 'f1': 0.77892, 'accuracy-SBM': 0.77894, 'auc': 0.96112}
+2025-07-11 14:23:02,897 - INFO - > Epoch 76: took 100.8s (avg 102.8s) | Best so far: epoch 71	train_loss: 0.5622 train_accuracy-SBM: 0.7955	val_loss: 0.6315 val_accuracy-SBM: 0.7798	test_loss: 0.6343 test_accuracy-SBM: 0.7772
+2025-07-11 14:24:35,328 - INFO - train: {'epoch': 77, 'time_epoch': 92.17909, 'eta': 2057.05248, 'eta_hours': 0.5714, 'loss': 0.55061619, 'lr': 0.00013779, 'params': 463670, 'time_iter': 0.14749, 'accuracy': 0.79949, 'f1': 0.79949, 'accuracy-SBM': 0.79949, 'auc': 0.96968}
+2025-07-11 14:24:39,788 - INFO - val: {'epoch': 77, 'time_epoch': 4.40569, 'loss': 0.6255369, 'lr': 0, 'params': 463670, 'time_iter': 0.06993, 'accuracy': 0.77953, 'f1': 0.77942, 'accuracy-SBM': 0.77938, 'auc': 0.96103}
+2025-07-11 14:24:44,167 - INFO - test: {'epoch': 77, 'time_epoch': 4.34578, 'loss': 0.62653608, 'lr': 0, 'params': 463670, 'time_iter': 0.06898, 'accuracy': 0.77827, 'f1': 0.77824, 'accuracy-SBM': 0.77825, 'auc': 0.96094}
+2025-07-11 14:24:44,169 - INFO - > Epoch 77: took 101.3s (avg 102.7s) | Best so far: epoch 71	train_loss: 0.5622 train_accuracy-SBM: 0.7955	val_loss: 0.6315 val_accuracy-SBM: 0.7798	test_loss: 0.6343 test_accuracy-SBM: 0.7772
+2025-07-11 14:26:16,450 - INFO - train: {'epoch': 78, 'time_epoch': 92.03093, 'eta': 1963.15895, 'eta_hours': 0.54532, 'loss': 0.55034607, 'lr': 0.00012659, 'params': 463670, 'time_iter': 0.14725, 'accuracy': 0.79972, 'f1': 0.79973, 'accuracy-SBM': 0.79972, 'auc': 0.96972}
+2025-07-11 14:26:20,814 - INFO - val: {'epoch': 78, 'time_epoch': 4.31047, 'loss': 0.63187997, 'lr': 0, 'params': 463670, 'time_iter': 0.06842, 'accuracy': 0.77985, 'f1': 0.7797, 'accuracy-SBM': 0.7797, 'auc': 0.96037}
+2025-07-11 14:26:25,161 - INFO - test: {'epoch': 78, 'time_epoch': 4.31344, 'loss': 0.62819217, 'lr': 0, 'params': 463670, 'time_iter': 0.06847, 'accuracy': 0.77855, 'f1': 0.77853, 'accuracy-SBM': 0.77853, 'auc': 0.96078}
+2025-07-11 14:26:25,163 - INFO - > Epoch 78: took 101.0s (avg 102.7s) | Best so far: epoch 71	train_loss: 0.5622 train_accuracy-SBM: 0.7955	val_loss: 0.6315 val_accuracy-SBM: 0.7798	test_loss: 0.6343 test_accuracy-SBM: 0.7772
+2025-07-11 14:27:57,452 - INFO - train: {'epoch': 79, 'time_epoch': 92.04456, 'eta': 1869.31539, 'eta_hours': 0.51925, 'loss': 0.54826372, 'lr': 0.0001158, 'params': 463670, 'time_iter': 0.14727, 'accuracy': 0.80044, 'f1': 0.80044, 'accuracy-SBM': 0.80044, 'auc': 0.96994}
+2025-07-11 14:28:01,879 - INFO - val: {'epoch': 79, 'time_epoch': 4.37745, 'loss': 0.63157688, 'lr': 0, 'params': 463670, 'time_iter': 0.06948, 'accuracy': 0.77965, 'f1': 0.77954, 'accuracy-SBM': 0.77952, 'auc': 0.96055}
+2025-07-11 14:28:06,311 - INFO - test: {'epoch': 79, 'time_epoch': 4.39725, 'loss': 0.63373444, 'lr': 0, 'params': 463670, 'time_iter': 0.0698, 'accuracy': 0.77834, 'f1': 0.77835, 'accuracy-SBM': 0.77837, 'auc': 0.96032}
+2025-07-11 14:28:06,314 - INFO - > Epoch 79: took 101.2s (avg 102.7s) | Best so far: epoch 71	train_loss: 0.5622 train_accuracy-SBM: 0.7955	val_loss: 0.6315 val_accuracy-SBM: 0.7798	test_loss: 0.6343 test_accuracy-SBM: 0.7772
+2025-07-11 14:29:38,305 - INFO - train: {'epoch': 80, 'time_epoch': 91.63823, 'eta': 1775.42094, 'eta_hours': 0.49317, 'loss': 0.54695314, 'lr': 0.00010543, 'params': 463670, 'time_iter': 0.14662, 'accuracy': 0.80085, 'f1': 0.80086, 'accuracy-SBM': 0.80085, 'auc': 0.97008}
+2025-07-11 14:29:42,723 - INFO - val: {'epoch': 80, 'time_epoch': 4.36871, 'loss': 0.6294725, 'lr': 0, 'params': 463670, 'time_iter': 0.06934, 'accuracy': 0.77955, 'f1': 0.77949, 'accuracy-SBM': 0.77943, 'auc': 0.96067}
+2025-07-11 14:29:47,070 - INFO - test: {'epoch': 80, 'time_epoch': 4.30694, 'loss': 0.62377532, 'lr': 0, 'params': 463670, 'time_iter': 0.06836, 'accuracy': 0.77959, 'f1': 0.77957, 'accuracy-SBM': 0.77962, 'auc': 0.96139}
+2025-07-11 14:29:47,071 - INFO - > Epoch 80: took 100.8s (avg 102.7s) | Best so far: epoch 71	train_loss: 0.5622 train_accuracy-SBM: 0.7955	val_loss: 0.6315 val_accuracy-SBM: 0.7798	test_loss: 0.6343 test_accuracy-SBM: 0.7772
+2025-07-11 14:31:19,236 - INFO - train: {'epoch': 81, 'time_epoch': 91.79722, 'eta': 1681.61641, 'eta_hours': 0.46712, 'loss': 0.54343148, 'lr': 9.549e-05, 'params': 463670, 'time_iter': 0.14688, 'accuracy': 0.80181, 'f1': 0.80181, 'accuracy-SBM': 0.80181, 'auc': 0.97047}
+2025-07-11 14:31:23,670 - INFO - val: {'epoch': 81, 'time_epoch': 4.37678, 'loss': 0.63221169, 'lr': 0, 'params': 463670, 'time_iter': 0.06947, 'accuracy': 0.77847, 'f1': 0.77838, 'accuracy-SBM': 0.77831, 'auc': 0.96026}
+2025-07-11 14:31:28,089 - INFO - test: {'epoch': 81, 'time_epoch': 4.37559, 'loss': 0.63028409, 'lr': 0, 'params': 463670, 'time_iter': 0.06945, 'accuracy': 0.77882, 'f1': 0.77876, 'accuracy-SBM': 0.7788, 'auc': 0.96051}
+2025-07-11 14:31:28,091 - INFO - > Epoch 81: took 101.0s (avg 102.7s) | Best so far: epoch 71	train_loss: 0.5622 train_accuracy-SBM: 0.7955	val_loss: 0.6315 val_accuracy-SBM: 0.7798	test_loss: 0.6343 test_accuracy-SBM: 0.7772
+2025-07-11 14:33:00,267 - INFO - train: {'epoch': 82, 'time_epoch': 91.82379, 'eta': 1587.8657, 'eta_hours': 0.44107, 'loss': 0.54393985, 'lr': 8.6e-05, 'params': 463670, 'time_iter': 0.14692, 'accuracy': 0.80183, 'f1': 0.80184, 'accuracy-SBM': 0.80184, 'auc': 0.97043}
+2025-07-11 14:33:04,614 - INFO - val: {'epoch': 82, 'time_epoch': 4.29138, 'loss': 0.63432452, 'lr': 0, 'params': 463670, 'time_iter': 0.06812, 'accuracy': 0.77871, 'f1': 0.77867, 'accuracy-SBM': 0.77864, 'auc': 0.96018}
+2025-07-11 14:33:08,947 - INFO - test: {'epoch': 82, 'time_epoch': 4.2987, 'loss': 0.62937602, 'lr': 0, 'params': 463670, 'time_iter': 0.06823, 'accuracy': 0.77906, 'f1': 0.77904, 'accuracy-SBM': 0.77908, 'auc': 0.96075}
+2025-07-11 14:33:08,949 - INFO - > Epoch 82: took 100.9s (avg 102.6s) | Best so far: epoch 71	train_loss: 0.5622 train_accuracy-SBM: 0.7955	val_loss: 0.6315 val_accuracy-SBM: 0.7798	test_loss: 0.6343 test_accuracy-SBM: 0.7772
+2025-07-11 14:34:40,895 - INFO - train: {'epoch': 83, 'time_epoch': 91.70226, 'eta': 1494.13772, 'eta_hours': 0.41504, 'loss': 0.54262021, 'lr': 7.695e-05, 'params': 463670, 'time_iter': 0.14672, 'accuracy': 0.80259, 'f1': 0.80259, 'accuracy-SBM': 0.80259, 'auc': 0.97056}
+2025-07-11 14:34:45,260 - INFO - val: {'epoch': 83, 'time_epoch': 4.31747, 'loss': 0.62941487, 'lr': 0, 'params': 463670, 'time_iter': 0.06853, 'accuracy': 0.78057, 'f1': 0.78047, 'accuracy-SBM': 0.78044, 'auc': 0.96068}
+2025-07-11 14:34:49,563 - INFO - test: {'epoch': 83, 'time_epoch': 4.26241, 'loss': 0.62656942, 'lr': 0, 'params': 463670, 'time_iter': 0.06766, 'accuracy': 0.78011, 'f1': 0.78008, 'accuracy-SBM': 0.7801, 'auc': 0.96102}
+2025-07-11 14:34:49,565 - INFO - > Epoch 83: took 100.6s (avg 102.6s) | Best so far: epoch 83	train_loss: 0.5426 train_accuracy-SBM: 0.8026	val_loss: 0.6294 val_accuracy-SBM: 0.7804	test_loss: 0.6266 test_accuracy-SBM: 0.7801
+2025-07-11 14:36:21,318 - INFO - train: {'epoch': 84, 'time_epoch': 91.48703, 'eta': 1400.41943, 'eta_hours': 0.38901, 'loss': 0.54031361, 'lr': 6.837e-05, 'params': 463670, 'time_iter': 0.14638, 'accuracy': 0.80313, 'f1': 0.80313, 'accuracy-SBM': 0.80313, 'auc': 0.9708}
+2025-07-11 14:36:25,725 - INFO - val: {'epoch': 84, 'time_epoch': 4.35982, 'loss': 0.63244907, 'lr': 0, 'params': 463670, 'time_iter': 0.0692, 'accuracy': 0.77967, 'f1': 0.77958, 'accuracy-SBM': 0.77956, 'auc': 0.96049}
+2025-07-11 14:36:30,120 - INFO - test: {'epoch': 84, 'time_epoch': 4.35612, 'loss': 0.62519214, 'lr': 0, 'params': 463670, 'time_iter': 0.06914, 'accuracy': 0.77992, 'f1': 0.77989, 'accuracy-SBM': 0.77991, 'auc': 0.96131}
+2025-07-11 14:36:30,122 - INFO - > Epoch 84: took 100.6s (avg 102.6s) | Best so far: epoch 83	train_loss: 0.5426 train_accuracy-SBM: 0.8026	val_loss: 0.6294 val_accuracy-SBM: 0.7804	test_loss: 0.6266 test_accuracy-SBM: 0.7801
+2025-07-11 14:38:01,781 - INFO - train: {'epoch': 85, 'time_epoch': 91.4085, 'eta': 1306.74023, 'eta_hours': 0.36298, 'loss': 0.54156439, 'lr': 6.026e-05, 'params': 463670, 'time_iter': 0.14625, 'accuracy': 0.80324, 'f1': 0.80324, 'accuracy-SBM': 0.80324, 'auc': 0.97068}
+2025-07-11 14:38:06,228 - INFO - val: {'epoch': 85, 'time_epoch': 4.3986, 'loss': 0.63615598, 'lr': 0, 'params': 463670, 'time_iter': 0.06982, 'accuracy': 0.77862, 'f1': 0.77853, 'accuracy-SBM': 0.77849, 'auc': 0.96012}
+2025-07-11 14:38:10,657 - INFO - test: {'epoch': 85, 'time_epoch': 4.39489, 'loss': 0.62940028, 'lr': 0, 'params': 463670, 'time_iter': 0.06976, 'accuracy': 0.77946, 'f1': 0.77943, 'accuracy-SBM': 0.77945, 'auc': 0.96085}
+2025-07-11 14:38:10,658 - INFO - > Epoch 85: took 100.5s (avg 102.6s) | Best so far: epoch 83	train_loss: 0.5426 train_accuracy-SBM: 0.8026	val_loss: 0.6294 val_accuracy-SBM: 0.7804	test_loss: 0.6266 test_accuracy-SBM: 0.7801
+2025-07-11 14:39:42,963 - INFO - train: {'epoch': 86, 'time_epoch': 92.06404, 'eta': 1213.2112, 'eta_hours': 0.337, 'loss': 0.53950511, 'lr': 5.264e-05, 'params': 463670, 'time_iter': 0.1473, 'accuracy': 0.80326, 'f1': 0.80326, 'accuracy-SBM': 0.80326, 'auc': 0.97091}
+2025-07-11 14:39:47,354 - INFO - val: {'epoch': 86, 'time_epoch': 4.34387, 'loss': 0.63167742, 'lr': 0, 'params': 463670, 'time_iter': 0.06895, 'accuracy': 0.77993, 'f1': 0.77986, 'accuracy-SBM': 0.77983, 'auc': 0.96044}
+2025-07-11 14:39:51,724 - INFO - test: {'epoch': 86, 'time_epoch': 4.33635, 'loss': 0.62961513, 'lr': 0, 'params': 463670, 'time_iter': 0.06883, 'accuracy': 0.77933, 'f1': 0.7793, 'accuracy-SBM': 0.77934, 'auc': 0.96067}
+2025-07-11 14:39:51,728 - INFO - > Epoch 86: took 101.1s (avg 102.5s) | Best so far: epoch 83	train_loss: 0.5426 train_accuracy-SBM: 0.8026	val_loss: 0.6294 val_accuracy-SBM: 0.7804	test_loss: 0.6266 test_accuracy-SBM: 0.7801
+2025-07-11 14:41:23,756 - INFO - train: {'epoch': 87, 'time_epoch': 91.77755, 'eta': 1119.67639, 'eta_hours': 0.31102, 'loss': 0.53891174, 'lr': 4.55e-05, 'params': 463670, 'time_iter': 0.14684, 'accuracy': 0.80374, 'f1': 0.80374, 'accuracy-SBM': 0.80374, 'auc': 0.97095}
+2025-07-11 14:41:28,158 - INFO - val: {'epoch': 87, 'time_epoch': 4.35404, 'loss': 0.63080405, 'lr': 0, 'params': 463670, 'time_iter': 0.06911, 'accuracy': 0.77999, 'f1': 0.77992, 'accuracy-SBM': 0.77989, 'auc': 0.96077}
+2025-07-11 14:41:32,521 - INFO - test: {'epoch': 87, 'time_epoch': 4.32955, 'loss': 0.62835741, 'lr': 0, 'params': 463670, 'time_iter': 0.06872, 'accuracy': 0.77976, 'f1': 0.77976, 'accuracy-SBM': 0.77981, 'auc': 0.961}
+2025-07-11 14:41:32,523 - INFO - > Epoch 87: took 100.8s (avg 102.5s) | Best so far: epoch 83	train_loss: 0.5426 train_accuracy-SBM: 0.8026	val_loss: 0.6294 val_accuracy-SBM: 0.7804	test_loss: 0.6266 test_accuracy-SBM: 0.7801
+2025-07-11 14:43:04,605 - INFO - train: {'epoch': 88, 'time_epoch': 91.83604, 'eta': 1026.1883, 'eta_hours': 0.28505, 'loss': 0.53653322, 'lr': 3.886e-05, 'params': 463670, 'time_iter': 0.14694, 'accuracy': 0.80445, 'f1': 0.80445, 'accuracy-SBM': 0.80445, 'auc': 0.97121}
+2025-07-11 14:43:08,979 - INFO - val: {'epoch': 88, 'time_epoch': 4.31438, 'loss': 0.63113807, 'lr': 0, 'params': 463670, 'time_iter': 0.06848, 'accuracy': 0.7794, 'f1': 0.77932, 'accuracy-SBM': 0.77932, 'auc': 0.96061}
+2025-07-11 14:43:13,314 - INFO - test: {'epoch': 88, 'time_epoch': 4.3013, 'loss': 0.62824535, 'lr': 0, 'params': 463670, 'time_iter': 0.06827, 'accuracy': 0.77882, 'f1': 0.77881, 'accuracy-SBM': 0.77882, 'auc': 0.96092}
+2025-07-11 14:43:13,316 - INFO - > Epoch 88: took 100.8s (avg 102.5s) | Best so far: epoch 83	train_loss: 0.5426 train_accuracy-SBM: 0.8026	val_loss: 0.6294 val_accuracy-SBM: 0.7804	test_loss: 0.6266 test_accuracy-SBM: 0.7801
+2025-07-11 14:44:45,443 - INFO - train: {'epoch': 89, 'time_epoch': 91.87417, 'eta': 932.74115, 'eta_hours': 0.25909, 'loss': 0.53667111, 'lr': 3.272e-05, 'params': 463670, 'time_iter': 0.147, 'accuracy': 0.80439, 'f1': 0.8044, 'accuracy-SBM': 0.8044, 'auc': 0.9712}
+2025-07-11 14:44:49,830 - INFO - val: {'epoch': 89, 'time_epoch': 4.34162, 'loss': 0.62939322, 'lr': 0, 'params': 463670, 'time_iter': 0.06891, 'accuracy': 0.77939, 'f1': 0.7793, 'accuracy-SBM': 0.77929, 'auc': 0.96071}
+2025-07-11 14:44:54,296 - INFO - test: {'epoch': 89, 'time_epoch': 4.39068, 'loss': 0.62646598, 'lr': 0, 'params': 463670, 'time_iter': 0.06969, 'accuracy': 0.77962, 'f1': 0.7796, 'accuracy-SBM': 0.77961, 'auc': 0.96103}
+2025-07-11 14:44:54,297 - INFO - > Epoch 89: took 101.0s (avg 102.5s) | Best so far: epoch 83	train_loss: 0.5426 train_accuracy-SBM: 0.8026	val_loss: 0.6294 val_accuracy-SBM: 0.7804	test_loss: 0.6266 test_accuracy-SBM: 0.7801
+2025-07-11 14:46:26,089 - INFO - train: {'epoch': 90, 'time_epoch': 91.54464, 'eta': 839.29599, 'eta_hours': 0.23314, 'loss': 0.53596259, 'lr': 2.709e-05, 'params': 463670, 'time_iter': 0.14647, 'accuracy': 0.80481, 'f1': 0.80481, 'accuracy-SBM': 0.80481, 'auc': 0.97128}
+2025-07-11 14:46:30,458 - INFO - val: {'epoch': 90, 'time_epoch': 4.32387, 'loss': 0.62927858, 'lr': 0, 'params': 463670, 'time_iter': 0.06863, 'accuracy': 0.77948, 'f1': 0.77943, 'accuracy-SBM': 0.77941, 'auc': 0.96075}
+2025-07-11 14:46:34,794 - INFO - test: {'epoch': 90, 'time_epoch': 4.30089, 'loss': 0.6278447, 'lr': 0, 'params': 463670, 'time_iter': 0.06827, 'accuracy': 0.779, 'f1': 0.77896, 'accuracy-SBM': 0.779, 'auc': 0.96091}
+2025-07-11 14:46:34,810 - INFO - > Epoch 90: took 100.5s (avg 102.5s) | Best so far: epoch 83	train_loss: 0.5426 train_accuracy-SBM: 0.8026	val_loss: 0.6294 val_accuracy-SBM: 0.7804	test_loss: 0.6266 test_accuracy-SBM: 0.7801
+2025-07-11 14:48:06,268 - INFO - train: {'epoch': 91, 'time_epoch': 91.21251, 'eta': 745.86326, 'eta_hours': 0.20718, 'loss': 0.53730055, 'lr': 2.198e-05, 'params': 463670, 'time_iter': 0.14594, 'accuracy': 0.80399, 'f1': 0.80399, 'accuracy-SBM': 0.80399, 'auc': 0.97114}
+2025-07-11 14:48:10,637 - INFO - val: {'epoch': 91, 'time_epoch': 4.32405, 'loss': 0.62924942, 'lr': 0, 'params': 463670, 'time_iter': 0.06864, 'accuracy': 0.77984, 'f1': 0.77974, 'accuracy-SBM': 0.7797, 'auc': 0.9609}
+2025-07-11 14:48:14,936 - INFO - test: {'epoch': 91, 'time_epoch': 4.25587, 'loss': 0.62688568, 'lr': 0, 'params': 463670, 'time_iter': 0.06755, 'accuracy': 0.78025, 'f1': 0.78022, 'accuracy-SBM': 0.78025, 'auc': 0.96117}
+2025-07-11 14:48:14,938 - INFO - > Epoch 91: took 100.1s (avg 102.4s) | Best so far: epoch 83	train_loss: 0.5426 train_accuracy-SBM: 0.8026	val_loss: 0.6294 val_accuracy-SBM: 0.7804	test_loss: 0.6266 test_accuracy-SBM: 0.7801
+2025-07-11 14:49:46,552 - INFO - train: {'epoch': 92, 'time_epoch': 91.36997, 'eta': 652.49013, 'eta_hours': 0.18125, 'loss': 0.53507754, 'lr': 1.74e-05, 'params': 463670, 'time_iter': 0.14619, 'accuracy': 0.80536, 'f1': 0.80536, 'accuracy-SBM': 0.80536, 'auc': 0.97138}
+2025-07-11 14:49:50,952 - INFO - val: {'epoch': 92, 'time_epoch': 4.35283, 'loss': 0.63042587, 'lr': 0, 'params': 463670, 'time_iter': 0.06909, 'accuracy': 0.78034, 'f1': 0.78026, 'accuracy-SBM': 0.78022, 'auc': 0.96076}
+2025-07-11 14:49:55,299 - INFO - test: {'epoch': 92, 'time_epoch': 4.31291, 'loss': 0.62858494, 'lr': 0, 'params': 463670, 'time_iter': 0.06846, 'accuracy': 0.78005, 'f1': 0.78003, 'accuracy-SBM': 0.78006, 'auc': 0.96096}
+2025-07-11 14:49:55,301 - INFO - > Epoch 92: took 100.4s (avg 102.4s) | Best so far: epoch 83	train_loss: 0.5426 train_accuracy-SBM: 0.8026	val_loss: 0.6294 val_accuracy-SBM: 0.7804	test_loss: 0.6266 test_accuracy-SBM: 0.7801
+2025-07-11 14:51:27,421 - INFO - train: {'epoch': 93, 'time_epoch': 91.69523, 'eta': 559.18039, 'eta_hours': 0.15533, 'loss': 0.53418101, 'lr': 1.334e-05, 'params': 463670, 'time_iter': 0.14671, 'accuracy': 0.80528, 'f1': 0.80528, 'accuracy-SBM': 0.80528, 'auc': 0.97147}
+2025-07-11 14:51:31,735 - INFO - val: {'epoch': 93, 'time_epoch': 4.26877, 'loss': 0.63201443, 'lr': 0, 'params': 463670, 'time_iter': 0.06776, 'accuracy': 0.77958, 'f1': 0.7795, 'accuracy-SBM': 0.77948, 'auc': 0.96057}
+2025-07-11 14:51:36,039 - INFO - test: {'epoch': 93, 'time_epoch': 4.26873, 'loss': 0.62758738, 'lr': 0, 'params': 463670, 'time_iter': 0.06776, 'accuracy': 0.78054, 'f1': 0.78052, 'accuracy-SBM': 0.78056, 'auc': 0.96105}
+2025-07-11 14:51:36,041 - INFO - > Epoch 93: took 100.7s (avg 102.4s) | Best so far: epoch 83	train_loss: 0.5426 train_accuracy-SBM: 0.8026	val_loss: 0.6294 val_accuracy-SBM: 0.7804	test_loss: 0.6266 test_accuracy-SBM: 0.7801
+2025-07-11 14:53:07,061 - INFO - train: {'epoch': 94, 'time_epoch': 90.6601, 'eta': 465.85015, 'eta_hours': 0.1294, 'loss': 0.53391548, 'lr': 9.81e-06, 'params': 463670, 'time_iter': 0.14506, 'accuracy': 0.80544, 'f1': 0.80544, 'accuracy-SBM': 0.80544, 'auc': 0.9715}
+2025-07-11 14:53:11,358 - INFO - val: {'epoch': 94, 'time_epoch': 4.24408, 'loss': 0.63103761, 'lr': 0, 'params': 463670, 'time_iter': 0.06737, 'accuracy': 0.78006, 'f1': 0.77998, 'accuracy-SBM': 0.77994, 'auc': 0.96058}
+2025-07-11 14:53:15,644 - INFO - test: {'epoch': 94, 'time_epoch': 4.25113, 'loss': 0.62828341, 'lr': 0, 'params': 463670, 'time_iter': 0.06748, 'accuracy': 0.77986, 'f1': 0.77983, 'accuracy-SBM': 0.77987, 'auc': 0.96093}
+2025-07-11 14:53:15,646 - INFO - > Epoch 94: took 99.6s (avg 102.4s) | Best so far: epoch 83	train_loss: 0.5426 train_accuracy-SBM: 0.8026	val_loss: 0.6294 val_accuracy-SBM: 0.7804	test_loss: 0.6266 test_accuracy-SBM: 0.7801
+2025-07-11 14:54:46,634 - INFO - train: {'epoch': 95, 'time_epoch': 90.74743, 'eta': 372.57918, 'eta_hours': 0.10349, 'loss': 0.53386415, 'lr': 6.82e-06, 'params': 463670, 'time_iter': 0.1452, 'accuracy': 0.80534, 'f1': 0.80534, 'accuracy-SBM': 0.80534, 'auc': 0.97151}
+2025-07-11 14:54:50,851 - INFO - val: {'epoch': 95, 'time_epoch': 4.16851, 'loss': 0.63174739, 'lr': 0, 'params': 463670, 'time_iter': 0.06617, 'accuracy': 0.77989, 'f1': 0.77981, 'accuracy-SBM': 0.77977, 'auc': 0.96056}
+2025-07-11 14:54:55,045 - INFO - test: {'epoch': 95, 'time_epoch': 4.1611, 'loss': 0.62815133, 'lr': 0, 'params': 463670, 'time_iter': 0.06605, 'accuracy': 0.77955, 'f1': 0.77953, 'accuracy-SBM': 0.77956, 'auc': 0.96102}
+2025-07-11 14:54:55,047 - INFO - > Epoch 95: took 99.4s (avg 102.3s) | Best so far: epoch 83	train_loss: 0.5426 train_accuracy-SBM: 0.8026	val_loss: 0.6294 val_accuracy-SBM: 0.7804	test_loss: 0.6266 test_accuracy-SBM: 0.7801
+2025-07-11 14:56:25,336 - INFO - train: {'epoch': 96, 'time_epoch': 90.05065, 'eta': 279.33869, 'eta_hours': 0.07759, 'loss': 0.5342952, 'lr': 4.37e-06, 'params': 463670, 'time_iter': 0.14408, 'accuracy': 0.80491, 'f1': 0.80491, 'accuracy-SBM': 0.80491, 'auc': 0.97147}
+2025-07-11 14:56:29,654 - INFO - val: {'epoch': 96, 'time_epoch': 4.27164, 'loss': 0.63450961, 'lr': 0, 'params': 463670, 'time_iter': 0.0678, 'accuracy': 0.77921, 'f1': 0.77913, 'accuracy-SBM': 0.77911, 'auc': 0.96029}
+2025-07-11 14:56:33,953 - INFO - test: {'epoch': 96, 'time_epoch': 4.26439, 'loss': 0.62985592, 'lr': 0, 'params': 463670, 'time_iter': 0.06769, 'accuracy': 0.77968, 'f1': 0.77966, 'accuracy-SBM': 0.7797, 'auc': 0.96081}
+2025-07-11 14:56:33,955 - INFO - > Epoch 96: took 98.9s (avg 102.3s) | Best so far: epoch 83	train_loss: 0.5426 train_accuracy-SBM: 0.8026	val_loss: 0.6294 val_accuracy-SBM: 0.7804	test_loss: 0.6266 test_accuracy-SBM: 0.7801
+2025-07-11 14:58:03,495 - INFO - train: {'epoch': 97, 'time_epoch': 89.30369, 'eta': 186.14805, 'eta_hours': 0.05171, 'loss': 0.53252873, 'lr': 2.46e-06, 'params': 463670, 'time_iter': 0.14289, 'accuracy': 0.80612, 'f1': 0.80612, 'accuracy-SBM': 0.80612, 'auc': 0.97163}
+2025-07-11 14:58:07,675 - INFO - val: {'epoch': 97, 'time_epoch': 4.13461, 'loss': 0.63332022, 'lr': 0, 'params': 463670, 'time_iter': 0.06563, 'accuracy': 0.77965, 'f1': 0.77957, 'accuracy-SBM': 0.77955, 'auc': 0.96037}
+2025-07-11 14:58:11,840 - INFO - test: {'epoch': 97, 'time_epoch': 4.12423, 'loss': 0.6273981, 'lr': 0, 'params': 463670, 'time_iter': 0.06546, 'accuracy': 0.77992, 'f1': 0.77991, 'accuracy-SBM': 0.77993, 'auc': 0.96105}
+2025-07-11 14:58:11,842 - INFO - > Epoch 97: took 97.9s (avg 102.3s) | Best so far: epoch 83	train_loss: 0.5426 train_accuracy-SBM: 0.8026	val_loss: 0.6294 val_accuracy-SBM: 0.7804	test_loss: 0.6266 test_accuracy-SBM: 0.7801
+2025-07-11 14:59:41,063 - INFO - train: {'epoch': 98, 'time_epoch': 88.98031, 'eta': 93.03268, 'eta_hours': 0.02584, 'loss': 0.53374137, 'lr': 1.09e-06, 'params': 463670, 'time_iter': 0.14237, 'accuracy': 0.80539, 'f1': 0.80539, 'accuracy-SBM': 0.80539, 'auc': 0.97152}
+2025-07-11 14:59:45,308 - INFO - val: {'epoch': 98, 'time_epoch': 4.19207, 'loss': 0.63385258, 'lr': 0, 'params': 463670, 'time_iter': 0.06654, 'accuracy': 0.779, 'f1': 0.77893, 'accuracy-SBM': 0.77889, 'auc': 0.96041}
+2025-07-11 14:59:49,490 - INFO - test: {'epoch': 98, 'time_epoch': 4.14866, 'loss': 0.63032543, 'lr': 0, 'params': 463670, 'time_iter': 0.06585, 'accuracy': 0.77976, 'f1': 0.77973, 'accuracy-SBM': 0.77976, 'auc': 0.96081}
+2025-07-11 14:59:49,492 - INFO - > Epoch 98: took 97.6s (avg 102.2s) | Best so far: epoch 83	train_loss: 0.5426 train_accuracy-SBM: 0.8026	val_loss: 0.6294 val_accuracy-SBM: 0.7804	test_loss: 0.6266 test_accuracy-SBM: 0.7801
+2025-07-11 15:01:19,583 - INFO - train: {'epoch': 99, 'time_epoch': 89.85496, 'eta': 0.0, 'eta_hours': 0.0, 'loss': 0.5328873, 'lr': 2.7e-07, 'params': 463670, 'time_iter': 0.14377, 'accuracy': 0.80573, 'f1': 0.80573, 'accuracy-SBM': 0.80573, 'auc': 0.97161}
+2025-07-11 15:01:23,763 - INFO - val: {'epoch': 99, 'time_epoch': 4.13494, 'loss': 0.63344722, 'lr': 0, 'params': 463670, 'time_iter': 0.06563, 'accuracy': 0.77961, 'f1': 0.77952, 'accuracy-SBM': 0.7795, 'auc': 0.96045}
+2025-07-11 15:01:27,912 - INFO - test: {'epoch': 99, 'time_epoch': 4.11818, 'loss': 0.62977531, 'lr': 0, 'params': 463670, 'time_iter': 0.06537, 'accuracy': 0.7795, 'f1': 0.77948, 'accuracy-SBM': 0.77949, 'auc': 0.96085}
+2025-07-11 15:01:28,133 - INFO - > Epoch 99: took 98.4s (avg 102.2s) | Best so far: epoch 83	train_loss: 0.5426 train_accuracy-SBM: 0.8026	val_loss: 0.6294 val_accuracy-SBM: 0.7804	test_loss: 0.6266 test_accuracy-SBM: 0.7801
+2025-07-11 15:01:28,134 - INFO - Avg time per epoch: 102.17s
+2025-07-11 15:01:28,134 - INFO - Total train loop time: 2.84h
+2025-07-11 15:01:28,190 - INFO - Task done, results saved in results/Cluster/Cluster-GATV2-47
+2025-07-11 15:01:28,190 - INFO - Total time: 10294.52s (2.86h)
+2025-07-11 15:01:28,210 - INFO - Results aggregated across runs saved in results/Cluster/Cluster-GATV2-47/agg
+2025-07-11 15:01:28,210 - INFO - === OPTIMIZED TRAINING COMPLETED SUCCESSFULLY! ===
+2025-07-11 15:01:28,210 - INFO - Results saved in: results/Cluster/Cluster-GATV2-47
+2025-07-11 15:01:28,210 - INFO - Test results JSON files saved in: results/Cluster/Cluster-GATV2-47/test_results/
+Completed seed 47. Results saved in results/Cluster/Cluster-GATV2-47
+----------------------------------------
+All experiments completed!

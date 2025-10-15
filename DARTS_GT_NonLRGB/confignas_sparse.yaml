@@ -1,17 +1,9 @@
-
-# NAS-enhanced GPS Configuration
-# CHECKLIST ITEM 6: Configuration file with uniform, random, nas options
-
-#check if everything else same with actual config-yes
-#check if NAS related parameters added appropiate -yes
-#add them to main_gps.py - yes
-
-
 benchmark: false
 bn:
   eps: 1.0e-05
   mom: 0.1
 cfg_dest: config.yaml
+custom_metrics: []
 dataset:
   is_binary: 'binary'
   cache_load: false
@@ -20,7 +12,7 @@ dataset:
   edge_dim: 128
   edge_encoder: true
   edge_encoder_bn: false
-  edge_encoder_name: Bond
+  edge_encoder_name: DummyEdge
   edge_encoder_num_types: 0
   edge_message_ratio: 0.8
   edge_negative_sampling_ratio: 1.0
@@ -29,14 +21,14 @@ dataset:
   encoder_bn: true
   encoder_dim: 128
   encoder_name: db
-  format: OGB
+  format: PyG-GNNBenchmarkDataset
   label_column: none
   label_table: none
   location: local
-  name: ogbg-molhiv
+  name: PATTERN
   node_encoder: true
   node_encoder_bn: false
-  node_encoder_name: Atom+RWSE
+  node_encoder_name: LapPE
   node_encoder_num_types: 0
   remove_feature: false
   resample_disjoint: false
@@ -70,7 +62,7 @@ gnn:
   clear_feature: true
   dim_inner: 64
   dropout: 0.0
-  head: san_graph
+  head: inductive_node
   keep_edge: 0.5
   l2norm: true
   layer_type: generalconv
@@ -84,42 +76,41 @@ gnn:
   skip_every: 1
   stage_type: stack
 gpu_mem: false
-#['GINE','CustomGatedGCN','GAT','PNA','Nonetyp2']
 gt:
   routing_mode: 'nas'  # Options: 'uniform', 'random', 'nas'
-  perturbation_strength: 0.05##
+  perturbation_strength: 0.05  # Fixed: removed ##
   # Expert GNN types - SAME as MOE for compatibility
-  head_gnn_types: ['CustomGatedGCN','GINE','GATV2']
+  head_gnn_types: ['GINE','CustomGatedGCN','GATV2']
   attn_gnn_uni: 'None'
-  weight_fix: '1:1:1:1:1:1:1:1'
+  weight_fix: '1:1:1:1:1:1'
+  edge_startup: 0.1
   weight_type: nas
   gnns_type_used: 2
   teacher_student_training:
     enabled: false
     teacher_instruct_epochs: 20        # Epochs where the Teacher is frozen
     teacher_lr_multiplier_frozen: 0.0  # LR for kv_model during instruction (0 = frozen)
-    teacher_lr_multiplier_finetune: 0.1 #### LR for kv_model during co-learning (e.g., 10% of base_lr)
+    teacher_lr_multiplier_finetune: 0.1  # LR for kv_model during co-learning (e.g., 10% of base_lr)
     student_q_lr_multiplier: 5.0       # Fast LR for q_projection during instruction
   pk_explainer:
-    enabled: true           # Set to true to run analysis
-    visualization: true     # Generate plots
-    save_attention: false   # Don't save raw attention (memory intensive)
-
+      enabled: true           # Set to true to run analysis
+      visualization: true     # Generate plots
+      save_attention: false   # Don't save raw attention (memory intensive)
 
   
   # NAS configuration for DARTS search (only used in 'nas' mode)
   nas:
     enabled: true
-    darts_epochs: 30           #### Full DARTS search epochs (only for 'nas' mode)
+    darts_epochs: 20           # Full DARTS search epochs (only for 'nas' mode)
     darts_split_ratio: 0.6     # 60% for DARTS training, 40% for DARTS validation
     arc_learning_rate: 4.0e-4  # Architecture parameter learning rate
     grad_clip: 5.0             # Gradient clipping for stability
     unrolled: false            # Use first-order approximation
-    stabilization_epochs: 5    ###
+    stabilization_epochs: 5    # Fixed: removed ###
     # DARTS learning rate scheduler parameters
     darts_lr_schedule:
-      lr_reduce_factor: 0.5      # ← Changed from 'factor' to 'lr_reduce_factor'
-      lr_schedule_patience: 10   # ← Changed from 'patience' to 'lr_schedule_patience'
+      lr_reduce_factor: 0.5      # Changed from 'factor' to 'lr_reduce_factor'
+      lr_schedule_patience: 10   # Changed from 'patience' to 'lr_schedule_patience'
       min_lr: 1.0e-6
       init_lr: 0.0025
       weight_decay: 3e-4
@@ -132,8 +123,7 @@ gt:
     epsilon: 0.15  # Perturbation epsilon
     max_steps: 10  # Max perturbation steps
     samples: 5     # Number of uncertainty samples
-    
-  # EXACT SAME parameters as MOE for architecture compatibility
+
   attn_dropout: 0.5
   batch_norm: true
   bigbird:
@@ -148,32 +138,33 @@ gt:
     num_random_blocks: 3
     use_bias: false
   dim_hidden: 64
-  dropout: 0.05
+  dropout: 0.0
   full_graph: true
   gamma: 1.0e-05
   layer_norm: false
   layer_type: None+SparseTransformer
-  layers: 8
+  layers: 6
   n_heads: 4
   pna_degrees: []
   residual: true
+infer: {}
 mem:
   inplace: false
 metric_agg: argmax
-metric_best: auc
+metric_best: accuracy-SBM
 model:
   edge_decoding: dot
-  graph_pooling: mean
-  loss_fun: cross_entropy
+  graph_pooling: add
+  loss_fun: weighted_cross_entropy
   match_upper: true
   size_average: mean
   thresh: 0.5
-  type: NASModel
-name_tag: NASModelrun
+  type: NASModelEdge
+name_tag: NASModelEdgerun
 num_threads: 6
 num_workers: 0
 optim:
-  base_lr: 0.0001
+  base_lr: 0.0005
   batch_accumulation: 1
   clip_grad_norm: true
   lr_decay: 0.1
@@ -190,7 +181,7 @@ optim:
   - 60
   - 90
   weight_decay: 1.0e-05
-out_dir: results/MolHIV/MolHIV-Sparse-NE-35
+out_dir: results/pattern/pattern-NASSPARSE-49
 posenc_ElstaticSE:
   dim_pe: 16
   enable: false
@@ -202,6 +193,13 @@ posenc_ElstaticSE:
   n_heads: 4
   pass_as_var: false
   post_layers: 0
+  raw_norm_type: none
+posenc_EquivStableLapPE:
+  eigen:
+    eigvec_norm: L2
+    laplacian_norm: sym
+    max_freqs: 10
+  enable: false
   raw_norm_type: none
 posenc_HKdiagSE:
   dim_pe: 16
@@ -219,27 +217,27 @@ posenc_LapPE:
   dim_pe: 16
   eigen:
     eigvec_norm: L2
-    laplacian_norm: sym
-    max_freqs: 10
-  enable: false
-  layers: 3
-  model: none
+    laplacian_norm: none
+    max_freqs: 16
+  enable: true
+  layers: 2
+  model: DeepSet
   n_heads: 4
   pass_as_var: false
   post_layers: 0
   raw_norm_type: none
 posenc_RWSE:
   dim_pe: 16
-  enable: true
+  enable: false
   kernel:
     times: []
-    times_func: range(1,17)
+    times_func: ''
   layers: 3
-  model: Linear
+  model: none
   n_heads: 4
   pass_as_var: false
   post_layers: 0
-  raw_norm_type: BatchNorm
+  raw_norm_type: none
 posenc_SignNet:
   dim_pe: 16
   eigen:
@@ -255,11 +253,15 @@ posenc_SignNet:
   phi_out_dim: 4
   post_layers: 0
   raw_norm_type: none
+pretrained:
+  dir: ''
+  freeze_main: false
+  reset_prediction_head: true
 print: both
 round: 5
 
 run_multiple_splits: []
-seed: 35
+seed: 49
 share:
   dim_in: 1
   dim_out: 1
@@ -269,8 +271,10 @@ tensorboard_each_run: false
 train:
   auto_resume: false
   batch_size: 32
+  ckpt_best: false
   ckpt_clean: true
   ckpt_period: 100
+  enable_ckpt: true
   epoch_resume: -1
   eval_period: 1
   iter_per_epoch: 32
@@ -284,6 +288,7 @@ train:
   radius: extend
   sample_node: false
   sampler: full_batch
+  skip_train_eval: false
   walk_length: 4
 val:
   node_per_graph: 32
@@ -294,5 +299,5 @@ view_emb: false
 wandb:
   entity: gtransformers
   name: ''
-  project: molhiv
+  project: PATTERN-fix
   use: false

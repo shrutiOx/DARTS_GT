@@ -1,0 +1,1007 @@
+Lmod has detected the following error: The following module(s) are unknown:
+"cuda/12.0"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore-cache load "cuda/12.0"
+
+Also make sure that all modulefiles written in TCL start with the string
+#%Module
+
+
+
+              total        used        free      shared  buff/cache   available
+Mem:          251Gi        10Gi       154Gi       2.7Gi        86Gi       236Gi
+Swap:         1.9Gi        26Mi       1.8Gi
+Sat Aug 23 09:26:17 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 560.35.03              Driver Version: 560.35.03      CUDA Version: 12.6     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA TITAN RTX               On  |   00000000:1E:00.0 Off |                  N/A |
+| 60%   69C    P8             26W /  280W |       1MiB /  24576MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Running experiment with seed: 2
+Starting training for seed 2...
+Changed working directory to: /data/coml-deepcmb/lady6973/ABLATION_FINAL/RACE_TO_SUP/PEP_FUNC/FINAL_SINGLE/DENSE_NEQ/UNI_RAND_GT/UNI_GT/GATV2
+Loading config from: /data/coml-deepcmb/lady6973/ABLATION_FINAL/RACE_TO_SUP/PEP_FUNC/FINAL_SINGLE/DENSE_NEQ/UNI_RAND_GT/UNI_GT/GATV2/confignas.yaml
+Using device: cuda
+2025-08-23 09:26:37,702 - INFO - GPU Mem: 25.2GB
+2025-08-23 09:26:37,702 - INFO - Run directory: results/Pepfunc/PepfuncDenseNE-2
+2025-08-23 09:26:37,702 - INFO - Seed: 2
+2025-08-23 09:26:37,702 - INFO - === OPTIMIZED MOE CONFIGURATION ===
+2025-08-23 09:26:37,702 - INFO - Routing mode: none
+2025-08-23 09:26:37,702 - INFO - Expert types: ['GINE', 'CustomGatedGCN', 'GATV2']
+2025-08-23 09:26:37,702 - INFO - Number of layers: 2
+2025-08-23 09:26:37,702 - INFO - Uncertainty enabled: False
+2025-08-23 09:26:37,702 - INFO - Training mode: custom
+2025-08-23 09:26:37,702 - INFO - Optimization: Uncertainty only for last layer + test/val
+2025-08-23 09:26:37,702 - INFO - Additional features: Router weights logging + JSON export
+2025-08-23 09:26:40,957 - INFO - [*] Loaded dataset 'peptides-functional' from 'OGB':
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/torch_geometric/data/in_memory_dataset.py:300: UserWarning: It is not recommended to directly access the internal storage format `data` of an 'InMemoryDataset'. If you are absolutely certain what you are doing, access the internal storage via `InMemoryDataset._data` instead to suppress this warning. Alternatively, you can access stacked individual attributes of every graph via `dataset.{attr_name}`.
+  warnings.warn(msg)
+2025-08-23 09:26:40,959 - INFO -   Data(edge_index=[2, 4773974], edge_attr=[4773974, 3], x=[2344859, 9], y=[15535, 10])
+2025-08-23 09:26:40,990 - INFO -   undirected: True
+2025-08-23 09:26:40,990 - INFO -   num graphs: 15535
+/data/coml-deepcmb/lady6973/py310_new_venv/lib/python3.9/site-packages/torch_geometric/data/in_memory_dataset.py:300: UserWarning: It is not recommended to directly access the internal storage format `data` of an 'InMemoryDataset'. The data of the dataset is already cached, so any modifications to `data` will not be reflected when accessing its elements. Clearing the cache now by removing all elements in `dataset._data_list`. If you are absolutely certain what you are doing, access the internal storage via `InMemoryDataset._data` instead to suppress this warning. Alternatively, you can access stacked individual attributes of every graph via `dataset.{attr_name}`.
+  warnings.warn(msg)
+2025-08-23 09:26:40,990 - INFO -   avg num_nodes/graph: 150
+2025-08-23 09:26:40,991 - INFO -   num node features: 9
+2025-08-23 09:26:40,991 - INFO -   num edge features: 3
+2025-08-23 09:26:40,991 - INFO -   num classes: 10
+2025-08-23 09:26:40,991 - INFO - Precomputing Positional Encoding statistics: ['LapPE'] for all graphs...
+2025-08-23 09:26:40,995 - INFO -   ...estimated to be undirected: True
+  0%|          | 0/15535 [00:00<?, ?it/s]  0%|          | 0/15535 [00:10<?, ?it/s] 11%|█▏        | 1760/15535 [00:10<01:18, 175.84it/s] 22%|██▏       | 3489/15535 [00:20<01:09, 174.10it/s] 33%|███▎      | 5187/15535 [00:30<01:00, 172.12it/s] 44%|████▍     | 6841/15535 [00:40<00:51, 169.37it/s] 55%|█████▌    | 8611/15535 [00:50<00:40, 172.11it/s] 67%|██████▋   | 10445/15535 [01:00<00:28, 175.94it/s] 79%|███████▉  | 12268/15535 [01:10<00:18, 177.94it/s] 90%|█████████ | 14000/15535 [01:20<00:08, 176.41it/s]100%|██████████| 15535/15535 [01:28<00:00, 174.90it/s]
+2025-08-23 09:28:10,434 - INFO - Done! Took 00:01:29.44
+2025-08-23 09:28:10,480 - INFO - [*] Loaded dataset 'peptides-functional' from 'OGB'
+2025-08-23 09:28:10,890 - INFO - Created model type: <class 'torch_geometric.graphgym.model_builder.GraphGymModule'>
+2025-08-23 09:28:10,890 - INFO - Inner model type: <class 'graphgps.network.UniGT_model_Q.UNIFORM_GTModel'>
+2025-08-23 09:28:10,890 - INFO - Inner model has get_darts_model: False
+2025-08-23 09:28:10,891 - INFO - GraphGymModule(
+  (model): UNIFORM_GTModel(
+    (encoder): FeatureEncoder(
+      (node_encoder): Concat2NodeEncoder(
+        (encoder1): AtomEncoder(
+          (atom_embedding_list): ModuleList(
+            (0): Embedding(119, 104)
+            (1): Embedding(5, 104)
+            (2-3): 2 x Embedding(12, 104)
+            (4): Embedding(10, 104)
+            (5-6): 2 x Embedding(6, 104)
+            (7-8): 2 x Embedding(2, 104)
+          )
+        )
+        (encoder2): LapPENodeEncoder(
+          (linear_A): Linear(in_features=2, out_features=32, bias=True)
+          (pe_encoder): Sequential(
+            (0): ReLU()
+            (1): Linear(in_features=32, out_features=16, bias=True)
+            (2): ReLU()
+          )
+        )
+      )
+      (edge_encoder): BondEncoder(
+        (bond_embedding_list): ModuleList(
+          (0): Embedding(5, 120)
+          (1): Embedding(6, 120)
+          (2): Embedding(2, 120)
+        )
+      )
+    )
+    (layers): Sequential(
+      (0): UNIFORMGTLayer(
+        summary: dim_h=120, global_model_type=Transformer, heads=4
+        (kv_model): GATv2Conv(120, 30, heads=4)
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=120, out_features=120, bias=True)
+        )
+        (q_projection): Sequential(
+          (0): Linear(in_features=120, out_features=120, bias=True)
+          (1): ReLU()
+          (2): Linear(in_features=120, out_features=120, bias=True)
+        )
+        (norm1_local): BatchNorm1d(120, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_kv): BatchNorm1d(120, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_attn): BatchNorm1d(120, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_local): Dropout(p=0.0, inplace=False)
+        (dropout_kv): Dropout(p=0.0, inplace=False)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=120, out_features=240, bias=True)
+        (ff_linear2): Linear(in_features=240, out_features=120, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(120, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+      (1): UNIFORMGTLayer(
+        summary: dim_h=120, global_model_type=Transformer, heads=4
+        (kv_model): GATv2Conv(120, 30, heads=4)
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=120, out_features=120, bias=True)
+        )
+        (q_projection): Sequential(
+          (0): Linear(in_features=120, out_features=120, bias=True)
+          (1): ReLU()
+          (2): Linear(in_features=120, out_features=120, bias=True)
+        )
+        (norm1_local): BatchNorm1d(120, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_kv): BatchNorm1d(120, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (norm1_attn): BatchNorm1d(120, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (dropout_local): Dropout(p=0.0, inplace=False)
+        (dropout_kv): Dropout(p=0.0, inplace=False)
+        (dropout_attn): Dropout(p=0.0, inplace=False)
+        (ff_linear1): Linear(in_features=120, out_features=240, bias=True)
+        (ff_linear2): Linear(in_features=240, out_features=120, bias=True)
+        (act_fn_ff): ReLU()
+        (norm2): BatchNorm1d(120, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (ff_dropout1): Dropout(p=0.0, inplace=False)
+        (ff_dropout2): Dropout(p=0.0, inplace=False)
+      )
+    )
+    (post_mp): GNNGraphHead(
+      (layer_post_mp): MLP(
+        (model): Sequential(
+          (0): Linear(
+            (model): Linear(120, 10, bias=True)
+          )
+        )
+      )
+    )
+  )
+)
+2025-08-23 09:28:10,892 - INFO - Number of parameters: 400,930
+2025-08-23 09:28:10,892 - INFO - Starting optimized training: 2025-08-23 09:28:10.892689
+2025-08-23 09:28:11,066 - INFO - [*] Loaded dataset 'peptides-functional' from 'OGB':
+2025-08-23 09:28:11,066 - INFO -   Data(edge_index=[2, 4773974], edge_attr=[4773974, 3], x=[2344859, 9], y=[15535, 10])
+2025-08-23 09:28:11,067 - INFO -   undirected: True
+2025-08-23 09:28:11,067 - INFO -   num graphs: 15535
+2025-08-23 09:28:11,067 - INFO -   avg num_nodes/graph: 150
+2025-08-23 09:28:11,068 - INFO -   num node features: 9
+2025-08-23 09:28:11,068 - INFO -   num edge features: 3
+2025-08-23 09:28:11,068 - INFO -   num classes: 10
+2025-08-23 09:28:11,068 - INFO - Precomputing Positional Encoding statistics: ['LapPE'] for all graphs...
+2025-08-23 09:28:11,072 - INFO -   ...estimated to be undirected: True
+  0%|          | 0/15535 [00:00<?, ?it/s] 11%|█▏        | 1774/15535 [00:10<01:17, 177.35it/s] 23%|██▎       | 3556/15535 [00:20<01:07, 177.85it/s] 34%|███▍      | 5316/15535 [00:30<00:57, 176.98it/s] 46%|████▌     | 7149/15535 [00:40<00:46, 179.46it/s] 58%|█████▊    | 8973/15535 [00:50<00:36, 180.51it/s] 69%|██████▉   | 10794/15535 [01:00<00:26, 181.03it/s] 82%|████████▏ | 12686/15535 [01:10<00:15, 183.69it/s] 94%|█████████▎| 14542/15535 [01:20<00:05, 184.28it/s]100%|██████████| 15535/15535 [01:25<00:00, 181.47it/s]
+2025-08-23 09:29:37,291 - INFO - Done! Took 00:01:26.22
+2025-08-23 09:29:37,338 - INFO - [*] Loaded dataset 'peptides-functional' from 'OGB'
+2025-08-23 09:29:37,395 - INFO - === STARTING OPTIMIZED TRAINING ===
+2025-08-23 09:29:37,395 - INFO - Start from epoch 0
+2025-08-23 09:29:48,058 - INFO - train: {'epoch': 0, 'time_epoch': 10.23, 'eta': 2035.77067, 'eta_hours': 0.56549, 'loss': 0.58290555, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.12035, 'accuracy': 0.68039, 'auc': 0.64873, 'ap': 0.2842}
+2025-08-23 09:29:48,060 - INFO - ...computing epoch stats took: 0.43s
+2025-08-23 09:29:49,045 - INFO - val: {'epoch': 0, 'time_epoch': 0.85102, 'loss': 0.66373319, 'lr': 0, 'params': 400930, 'time_iter': 0.04479, 'accuracy': 0.63492, 'auc': 0.66976, 'ap': 0.31705}
+2025-08-23 09:29:49,047 - INFO - ...computing epoch stats took: 0.13s
+2025-08-23 09:29:49,936 - INFO - test: {'epoch': 0, 'time_epoch': 0.85701, 'loss': 0.66723046, 'lr': 0, 'params': 400930, 'time_iter': 0.04511, 'accuracy': 0.63372, 'auc': 0.67087, 'ap': 0.31074}
+2025-08-23 09:29:49,938 - INFO - ...computing epoch stats took: 0.03s
+2025-08-23 09:29:49,938 - INFO - > Epoch 0: took 12.5s (avg 12.5s) | Best so far: epoch 0	train_loss: 0.5829 train_ap: 0.2842	val_loss: 0.6637 val_ap: 0.3170	test_loss: 0.6672 test_ap: 0.3107
+2025-08-23 09:29:56,428 - INFO - train: {'epoch': 1, 'time_epoch': 6.43621, 'eta': 1649.9553, 'eta_hours': 0.45832, 'loss': 0.4893958, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.07572, 'accuracy': 0.78286, 'auc': 0.70931, 'ap': 0.34019}
+2025-08-23 09:29:56,430 - INFO - ...computing epoch stats took: 0.05s
+2025-08-23 09:29:57,018 - INFO - val: {'epoch': 1, 'time_epoch': 0.55619, 'loss': 0.41884138, 'lr': 0, 'params': 400930, 'time_iter': 0.02927, 'accuracy': 0.85041, 'auc': 0.74124, 'ap': 0.38817}
+2025-08-23 09:29:57,020 - INFO - ...computing epoch stats took: 0.03s
+2025-08-23 09:29:57,613 - INFO - test: {'epoch': 1, 'time_epoch': 0.56028, 'loss': 0.42290056, 'lr': 0, 'params': 400930, 'time_iter': 0.02949, 'accuracy': 0.84239, 'auc': 0.74114, 'ap': 0.37355}
+2025-08-23 09:29:57,614 - INFO - ...computing epoch stats took: 0.03s
+2025-08-23 09:29:57,615 - INFO - > Epoch 1: took 7.7s (avg 10.1s) | Best so far: epoch 1	train_loss: 0.4894 train_ap: 0.3402	val_loss: 0.4188 val_ap: 0.3882	test_loss: 0.4229 test_ap: 0.3735
+2025-08-23 09:30:04,174 - INFO - train: {'epoch': 2, 'time_epoch': 6.50419, 'eta': 1521.52318, 'eta_hours': 0.42265, 'loss': 0.36488564, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.07652, 'accuracy': 0.88018, 'auc': 0.75707, 'ap': 0.38654}
+2025-08-23 09:30:04,176 - INFO - ...computing epoch stats took: 0.05s
+2025-08-23 09:30:04,769 - INFO - val: {'epoch': 2, 'time_epoch': 0.56133, 'loss': 0.3275187, 'lr': 0, 'params': 400930, 'time_iter': 0.02954, 'accuracy': 0.89052, 'auc': 0.77871, 'ap': 0.43066}
+2025-08-23 09:30:04,771 - INFO - ...computing epoch stats took: 0.03s
+2025-08-23 09:30:05,367 - INFO - test: {'epoch': 2, 'time_epoch': 0.56434, 'loss': 0.33188373, 'lr': 0, 'params': 400930, 'time_iter': 0.0297, 'accuracy': 0.88752, 'auc': 0.77682, 'ap': 0.41677}
+2025-08-23 09:30:05,368 - INFO - ...computing epoch stats took: 0.03s
+2025-08-23 09:30:05,368 - INFO - > Epoch 2: took 7.8s (avg 9.3s) | Best so far: epoch 2	train_loss: 0.3649 train_ap: 0.3865	val_loss: 0.3275 val_ap: 0.4307	test_loss: 0.3319 test_ap: 0.4168
+2025-08-23 09:30:11,901 - INFO - train: {'epoch': 3, 'time_epoch': 6.47919, 'eta': 1452.8303, 'eta_hours': 0.40356, 'loss': 0.29121249, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.07623, 'accuracy': 0.89453, 'auc': 0.80021, 'ap': 0.43548}
+2025-08-23 09:30:12,493 - INFO - val: {'epoch': 3, 'time_epoch': 0.55788, 'loss': 0.27091185, 'lr': 0, 'params': 400930, 'time_iter': 0.02936, 'accuracy': 0.8967, 'auc': 0.817, 'ap': 0.47046}
+2025-08-23 09:30:13,089 - INFO - test: {'epoch': 3, 'time_epoch': 0.56153, 'loss': 0.27320988, 'lr': 0, 'params': 400930, 'time_iter': 0.02955, 'accuracy': 0.89421, 'auc': 0.81195, 'ap': 0.4591}
+2025-08-23 09:30:13,091 - INFO - > Epoch 3: took 7.7s (avg 8.9s) | Best so far: epoch 3	train_loss: 0.2912 train_ap: 0.4355	val_loss: 0.2709 val_ap: 0.4705	test_loss: 0.2732 test_ap: 0.4591
+2025-08-23 09:30:19,639 - INFO - train: {'epoch': 4, 'time_epoch': 6.49265, 'eta': 1409.5478, 'eta_hours': 0.39154, 'loss': 0.26553407, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.07638, 'accuracy': 0.8971, 'auc': 0.82548, 'ap': 0.46528}
+2025-08-23 09:30:20,234 - INFO - val: {'epoch': 4, 'time_epoch': 0.56165, 'loss': 0.2612333, 'lr': 0, 'params': 400930, 'time_iter': 0.02956, 'accuracy': 0.89605, 'auc': 0.83209, 'ap': 0.47834}
+2025-08-23 09:30:20,833 - INFO - test: {'epoch': 4, 'time_epoch': 0.56477, 'loss': 0.26237361, 'lr': 0, 'params': 400930, 'time_iter': 0.02972, 'accuracy': 0.89532, 'auc': 0.832, 'ap': 0.4682}
+2025-08-23 09:30:20,834 - INFO - > Epoch 4: took 7.7s (avg 8.7s) | Best so far: epoch 4	train_loss: 0.2655 train_ap: 0.4653	val_loss: 0.2612 val_ap: 0.4783	test_loss: 0.2624 test_ap: 0.4682
+2025-08-23 09:30:27,629 - INFO - train: {'epoch': 5, 'time_epoch': 6.74066, 'eta': 1386.54745, 'eta_hours': 0.38515, 'loss': 0.25422348, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.0793, 'accuracy': 0.89888, 'auc': 0.83985, 'ap': 0.48214}
+2025-08-23 09:30:28,224 - INFO - val: {'epoch': 5, 'time_epoch': 0.56166, 'loss': 0.25873497, 'lr': 0, 'params': 400930, 'time_iter': 0.02956, 'accuracy': 0.89923, 'auc': 0.84241, 'ap': 0.4998}
+2025-08-23 09:30:28,823 - INFO - test: {'epoch': 5, 'time_epoch': 0.56526, 'loss': 0.26288967, 'lr': 0, 'params': 400930, 'time_iter': 0.02975, 'accuracy': 0.8979, 'auc': 0.83547, 'ap': 0.4848}
+2025-08-23 09:30:28,824 - INFO - > Epoch 5: took 8.0s (avg 8.6s) | Best so far: epoch 5	train_loss: 0.2542 train_ap: 0.4821	val_loss: 0.2587 val_ap: 0.4998	test_loss: 0.2629 test_ap: 0.4848
+2025-08-23 09:30:35,388 - INFO - train: {'epoch': 6, 'time_epoch': 6.50778, 'eta': 1361.7719, 'eta_hours': 0.37827, 'loss': 0.24649206, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.07656, 'accuracy': 0.90183, 'auc': 0.84845, 'ap': 0.49678}
+2025-08-23 09:30:35,983 - INFO - val: {'epoch': 6, 'time_epoch': 0.5614, 'loss': 0.25122288, 'lr': 0, 'params': 400930, 'time_iter': 0.02955, 'accuracy': 0.90051, 'auc': 0.8533, 'ap': 0.5079}
+2025-08-23 09:30:36,581 - INFO - test: {'epoch': 6, 'time_epoch': 0.56496, 'loss': 0.25268458, 'lr': 0, 'params': 400930, 'time_iter': 0.02973, 'accuracy': 0.89991, 'auc': 0.85007, 'ap': 0.49466}
+2025-08-23 09:30:36,583 - INFO - > Epoch 6: took 7.8s (avg 8.5s) | Best so far: epoch 6	train_loss: 0.2465 train_ap: 0.4968	val_loss: 0.2512 val_ap: 0.5079	test_loss: 0.2527 test_ap: 0.4947
+2025-08-23 09:30:43,166 - INFO - train: {'epoch': 7, 'time_epoch': 6.52776, 'eta': 1342.04275, 'eta_hours': 0.37279, 'loss': 0.24278286, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.0768, 'accuracy': 0.90245, 'auc': 0.85351, 'ap': 0.50451}
+2025-08-23 09:30:43,764 - INFO - val: {'epoch': 7, 'time_epoch': 0.56286, 'loss': 0.24592804, 'lr': 0, 'params': 400930, 'time_iter': 0.02962, 'accuracy': 0.89966, 'auc': 0.85558, 'ap': 0.51379}
+2025-08-23 09:30:44,372 - INFO - test: {'epoch': 7, 'time_epoch': 0.57338, 'loss': 0.24966667, 'lr': 0, 'params': 400930, 'time_iter': 0.03018, 'accuracy': 0.89798, 'auc': 0.84917, 'ap': 0.50385}
+2025-08-23 09:30:44,374 - INFO - > Epoch 7: took 7.8s (avg 8.4s) | Best so far: epoch 7	train_loss: 0.2428 train_ap: 0.5045	val_loss: 0.2459 val_ap: 0.5138	test_loss: 0.2497 test_ap: 0.5039
+2025-08-23 09:30:51,060 - INFO - train: {'epoch': 8, 'time_epoch': 6.6318, 'eta': 1327.45528, 'eta_hours': 0.36874, 'loss': 0.23885262, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.07802, 'accuracy': 0.90422, 'auc': 0.85927, 'ap': 0.51689}
+2025-08-23 09:30:51,655 - INFO - val: {'epoch': 8, 'time_epoch': 0.56168, 'loss': 0.24223875, 'lr': 0, 'params': 400930, 'time_iter': 0.02956, 'accuracy': 0.9018, 'auc': 0.86089, 'ap': 0.52064}
+2025-08-23 09:30:52,253 - INFO - test: {'epoch': 8, 'time_epoch': 0.56495, 'loss': 0.2469023, 'lr': 0, 'params': 400930, 'time_iter': 0.02973, 'accuracy': 0.89837, 'auc': 0.85392, 'ap': 0.50719}
+2025-08-23 09:30:52,254 - INFO - > Epoch 8: took 7.9s (avg 8.3s) | Best so far: epoch 8	train_loss: 0.2389 train_ap: 0.5169	val_loss: 0.2422 val_ap: 0.5206	test_loss: 0.2469 test_ap: 0.5072
+2025-08-23 09:30:58,953 - INFO - train: {'epoch': 9, 'time_epoch': 6.64172, 'eta': 1314.64743, 'eta_hours': 0.36518, 'loss': 0.23476396, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.07814, 'accuracy': 0.90611, 'auc': 0.86473, 'ap': 0.5272}
+2025-08-23 09:30:59,547 - INFO - val: {'epoch': 9, 'time_epoch': 0.5605, 'loss': 0.23881989, 'lr': 0, 'params': 400930, 'time_iter': 0.0295, 'accuracy': 0.90408, 'auc': 0.85981, 'ap': 0.53753}
+2025-08-23 09:31:00,147 - INFO - test: {'epoch': 9, 'time_epoch': 0.56707, 'loss': 0.24719218, 'lr': 0, 'params': 400930, 'time_iter': 0.02985, 'accuracy': 0.90313, 'auc': 0.8544, 'ap': 0.52097}
+2025-08-23 09:31:00,149 - INFO - > Epoch 9: took 7.9s (avg 8.3s) | Best so far: epoch 9	train_loss: 0.2348 train_ap: 0.5272	val_loss: 0.2388 val_ap: 0.5375	test_loss: 0.2472 test_ap: 0.5210
+2025-08-23 09:31:06,874 - INFO - train: {'epoch': 10, 'time_epoch': 6.67039, 'eta': 1303.45335, 'eta_hours': 0.36207, 'loss': 0.23098792, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.07848, 'accuracy': 0.90726, 'auc': 0.8686, 'ap': 0.53763}
+2025-08-23 09:31:07,466 - INFO - val: {'epoch': 10, 'time_epoch': 0.55956, 'loss': 0.24757867, 'lr': 0, 'params': 400930, 'time_iter': 0.02945, 'accuracy': 0.90154, 'auc': 0.85928, 'ap': 0.53256}
+2025-08-23 09:31:08,062 - INFO - test: {'epoch': 10, 'time_epoch': 0.56291, 'loss': 0.2511057, 'lr': 0, 'params': 400930, 'time_iter': 0.02963, 'accuracy': 0.90043, 'auc': 0.85008, 'ap': 0.51828}
+2025-08-23 09:31:08,064 - INFO - > Epoch 10: took 7.9s (avg 8.2s) | Best so far: epoch 9	train_loss: 0.2348 train_ap: 0.5272	val_loss: 0.2388 val_ap: 0.5375	test_loss: 0.2472 test_ap: 0.5210
+2025-08-23 09:31:14,765 - INFO - train: {'epoch': 11, 'time_epoch': 6.64611, 'eta': 1292.63271, 'eta_hours': 0.35906, 'loss': 0.22882782, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.07819, 'accuracy': 0.90693, 'auc': 0.87246, 'ap': 0.54254}
+2025-08-23 09:31:15,360 - INFO - val: {'epoch': 11, 'time_epoch': 0.56157, 'loss': 0.23703225, 'lr': 0, 'params': 400930, 'time_iter': 0.02956, 'accuracy': 0.90378, 'auc': 0.86253, 'ap': 0.53911}
+2025-08-23 09:31:15,963 - INFO - test: {'epoch': 11, 'time_epoch': 0.56948, 'loss': 0.24007311, 'lr': 0, 'params': 400930, 'time_iter': 0.02997, 'accuracy': 0.90472, 'auc': 0.85924, 'ap': 0.52133}
+2025-08-23 09:31:15,964 - INFO - > Epoch 11: took 7.9s (avg 8.2s) | Best so far: epoch 11	train_loss: 0.2288 train_ap: 0.5425	val_loss: 0.2370 val_ap: 0.5391	test_loss: 0.2401 test_ap: 0.5213
+2025-08-23 09:31:22,729 - INFO - train: {'epoch': 12, 'time_epoch': 6.71006, 'eta': 1283.37431, 'eta_hours': 0.35649, 'loss': 0.22575632, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.07894, 'accuracy': 0.9094, 'auc': 0.8764, 'ap': 0.55225}
+2025-08-23 09:31:23,326 - INFO - val: {'epoch': 12, 'time_epoch': 0.56288, 'loss': 0.23336104, 'lr': 0, 'params': 400930, 'time_iter': 0.02963, 'accuracy': 0.90532, 'auc': 0.86773, 'ap': 0.55098}
+2025-08-23 09:31:23,927 - INFO - test: {'epoch': 12, 'time_epoch': 0.56786, 'loss': 0.23827144, 'lr': 0, 'params': 400930, 'time_iter': 0.02989, 'accuracy': 0.90257, 'auc': 0.8642, 'ap': 0.53636}
+2025-08-23 09:31:23,928 - INFO - > Epoch 12: took 8.0s (avg 8.2s) | Best so far: epoch 12	train_loss: 0.2258 train_ap: 0.5523	val_loss: 0.2334 val_ap: 0.5510	test_loss: 0.2383 test_ap: 0.5364
+2025-08-23 09:31:30,689 - INFO - train: {'epoch': 13, 'time_epoch': 6.70514, 'eta': 1274.4146, 'eta_hours': 0.354, 'loss': 0.2232184, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.07888, 'accuracy': 0.91071, 'auc': 0.87901, 'ap': 0.55857}
+2025-08-23 09:31:31,284 - INFO - val: {'epoch': 13, 'time_epoch': 0.5614, 'loss': 0.23165487, 'lr': 0, 'params': 400930, 'time_iter': 0.02955, 'accuracy': 0.90566, 'auc': 0.87176, 'ap': 0.55314}
+2025-08-23 09:31:31,883 - INFO - test: {'epoch': 13, 'time_epoch': 0.56482, 'loss': 0.23588774, 'lr': 0, 'params': 400930, 'time_iter': 0.02973, 'accuracy': 0.90476, 'auc': 0.86975, 'ap': 0.53452}
+2025-08-23 09:31:31,884 - INFO - > Epoch 13: took 8.0s (avg 8.2s) | Best so far: epoch 13	train_loss: 0.2232 train_ap: 0.5586	val_loss: 0.2317 val_ap: 0.5531	test_loss: 0.2359 test_ap: 0.5345
+2025-08-23 09:31:38,594 - INFO - train: {'epoch': 14, 'time_epoch': 6.65439, 'eta': 1265.12953, 'eta_hours': 0.35142, 'loss': 0.22088098, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.07829, 'accuracy': 0.91111, 'auc': 0.88134, 'ap': 0.57105}
+2025-08-23 09:31:39,190 - INFO - val: {'epoch': 14, 'time_epoch': 0.5627, 'loss': 0.22697542, 'lr': 0, 'params': 400930, 'time_iter': 0.02962, 'accuracy': 0.90819, 'auc': 0.87982, 'ap': 0.57038}
+2025-08-23 09:31:39,789 - INFO - test: {'epoch': 14, 'time_epoch': 0.56581, 'loss': 0.23654949, 'lr': 0, 'params': 400930, 'time_iter': 0.02978, 'accuracy': 0.90442, 'auc': 0.87341, 'ap': 0.54514}
+2025-08-23 09:31:39,791 - INFO - > Epoch 14: took 7.9s (avg 8.2s) | Best so far: epoch 14	train_loss: 0.2209 train_ap: 0.5710	val_loss: 0.2270 val_ap: 0.5704	test_loss: 0.2365 test_ap: 0.5451
+2025-08-23 09:31:46,533 - INFO - train: {'epoch': 15, 'time_epoch': 6.68671, 'eta': 1256.54498, 'eta_hours': 0.34904, 'loss': 0.21891834, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.07867, 'accuracy': 0.91176, 'auc': 0.8832, 'ap': 0.57758}
+2025-08-23 09:31:47,128 - INFO - val: {'epoch': 15, 'time_epoch': 0.56079, 'loss': 0.23284435, 'lr': 0, 'params': 400930, 'time_iter': 0.02952, 'accuracy': 0.90485, 'auc': 0.8767, 'ap': 0.55963}
+2025-08-23 09:31:47,726 - INFO - test: {'epoch': 15, 'time_epoch': 0.56494, 'loss': 0.23975982, 'lr': 0, 'params': 400930, 'time_iter': 0.02973, 'accuracy': 0.9012, 'auc': 0.86917, 'ap': 0.53667}
+2025-08-23 09:31:47,727 - INFO - > Epoch 15: took 7.9s (avg 8.1s) | Best so far: epoch 14	train_loss: 0.2209 train_ap: 0.5710	val_loss: 0.2270 val_ap: 0.5704	test_loss: 0.2365 test_ap: 0.5451
+2025-08-23 09:31:54,478 - INFO - train: {'epoch': 16, 'time_epoch': 6.69669, 'eta': 1248.29109, 'eta_hours': 0.34675, 'loss': 0.21556093, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.07878, 'accuracy': 0.91288, 'auc': 0.8874, 'ap': 0.57914}
+2025-08-23 09:31:55,075 - INFO - val: {'epoch': 16, 'time_epoch': 0.56396, 'loss': 0.22574845, 'lr': 0, 'params': 400930, 'time_iter': 0.02968, 'accuracy': 0.90781, 'auc': 0.88015, 'ap': 0.58005}
+2025-08-23 09:31:55,675 - INFO - test: {'epoch': 16, 'time_epoch': 0.5663, 'loss': 0.23451538, 'lr': 0, 'params': 400930, 'time_iter': 0.02981, 'accuracy': 0.90553, 'auc': 0.87231, 'ap': 0.55096}
+2025-08-23 09:31:55,676 - INFO - > Epoch 16: took 7.9s (avg 8.1s) | Best so far: epoch 16	train_loss: 0.2156 train_ap: 0.5791	val_loss: 0.2257 val_ap: 0.5800	test_loss: 0.2345 test_ap: 0.5510
+2025-08-23 09:32:02,474 - INFO - train: {'epoch': 17, 'time_epoch': 6.74361, 'eta': 1240.68468, 'eta_hours': 0.34463, 'loss': 0.21496159, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.07934, 'accuracy': 0.9134, 'auc': 0.89062, 'ap': 0.58166}
+2025-08-23 09:32:03,071 - INFO - val: {'epoch': 17, 'time_epoch': 0.564, 'loss': 0.22367667, 'lr': 0, 'params': 400930, 'time_iter': 0.02968, 'accuracy': 0.91077, 'auc': 0.8808, 'ap': 0.59009}
+2025-08-23 09:32:03,675 - INFO - test: {'epoch': 17, 'time_epoch': 0.56988, 'loss': 0.23114639, 'lr': 0, 'params': 400930, 'time_iter': 0.02999, 'accuracy': 0.90686, 'auc': 0.87508, 'ap': 0.55182}
+2025-08-23 09:32:03,676 - INFO - > Epoch 17: took 8.0s (avg 8.1s) | Best so far: epoch 17	train_loss: 0.2150 train_ap: 0.5817	val_loss: 0.2237 val_ap: 0.5901	test_loss: 0.2311 test_ap: 0.5518
+2025-08-23 09:32:10,478 - INFO - train: {'epoch': 18, 'time_epoch': 6.74809, 'eta': 1233.21171, 'eta_hours': 0.34256, 'loss': 0.21149867, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.07939, 'accuracy': 0.91435, 'auc': 0.89472, 'ap': 0.59612}
+2025-08-23 09:32:11,077 - INFO - val: {'epoch': 18, 'time_epoch': 0.56602, 'loss': 0.23120409, 'lr': 0, 'params': 400930, 'time_iter': 0.02979, 'accuracy': 0.90631, 'auc': 0.87771, 'ap': 0.56478}
+2025-08-23 09:32:11,678 - INFO - test: {'epoch': 18, 'time_epoch': 0.56733, 'loss': 0.23914112, 'lr': 0, 'params': 400930, 'time_iter': 0.02986, 'accuracy': 0.90382, 'auc': 0.86226, 'ap': 0.53739}
+2025-08-23 09:32:11,679 - INFO - > Epoch 18: took 8.0s (avg 8.1s) | Best so far: epoch 17	train_loss: 0.2150 train_ap: 0.5817	val_loss: 0.2237 val_ap: 0.5901	test_loss: 0.2311 test_ap: 0.5518
+2025-08-23 09:32:18,490 - INFO - train: {'epoch': 19, 'time_epoch': 6.7554, 'eta': 1225.87705, 'eta_hours': 0.34052, 'loss': 0.20899652, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.07948, 'accuracy': 0.91488, 'auc': 0.89551, 'ap': 0.60129}
+2025-08-23 09:32:19,092 - INFO - val: {'epoch': 19, 'time_epoch': 0.56823, 'loss': 0.23447827, 'lr': 0, 'params': 400930, 'time_iter': 0.02991, 'accuracy': 0.90493, 'auc': 0.87171, 'ap': 0.57031}
+2025-08-23 09:32:19,693 - INFO - test: {'epoch': 19, 'time_epoch': 0.56849, 'loss': 0.23912998, 'lr': 0, 'params': 400930, 'time_iter': 0.02992, 'accuracy': 0.90313, 'auc': 0.87087, 'ap': 0.54353}
+2025-08-23 09:32:19,695 - INFO - > Epoch 19: took 8.0s (avg 8.1s) | Best so far: epoch 17	train_loss: 0.2150 train_ap: 0.5817	val_loss: 0.2237 val_ap: 0.5901	test_loss: 0.2311 test_ap: 0.5518
+2025-08-23 09:32:26,502 - INFO - train: {'epoch': 20, 'time_epoch': 6.75245, 'eta': 1218.57243, 'eta_hours': 0.33849, 'loss': 0.20660031, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.07944, 'accuracy': 0.91679, 'auc': 0.89817, 'ap': 0.60974}
+2025-08-23 09:32:27,098 - INFO - val: {'epoch': 20, 'time_epoch': 0.56362, 'loss': 0.22322415, 'lr': 0, 'params': 400930, 'time_iter': 0.02966, 'accuracy': 0.91111, 'auc': 0.88404, 'ap': 0.59345}
+2025-08-23 09:32:27,707 - INFO - test: {'epoch': 20, 'time_epoch': 0.57563, 'loss': 0.23084481, 'lr': 0, 'params': 400930, 'time_iter': 0.0303, 'accuracy': 0.90755, 'auc': 0.88018, 'ap': 0.56475}
+2025-08-23 09:32:27,709 - INFO - > Epoch 20: took 8.0s (avg 8.1s) | Best so far: epoch 20	train_loss: 0.2066 train_ap: 0.6097	val_loss: 0.2232 val_ap: 0.5935	test_loss: 0.2308 test_ap: 0.5647
+2025-08-23 09:32:34,788 - INFO - train: {'epoch': 21, 'time_epoch': 7.02574, 'eta': 1213.52913, 'eta_hours': 0.33709, 'loss': 0.20463567, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.08266, 'accuracy': 0.91758, 'auc': 0.90145, 'ap': 0.6156}
+2025-08-23 09:32:35,387 - INFO - val: {'epoch': 21, 'time_epoch': 0.56607, 'loss': 0.22178165, 'lr': 0, 'params': 400930, 'time_iter': 0.02979, 'accuracy': 0.90991, 'auc': 0.88625, 'ap': 0.58994}
+2025-08-23 09:32:35,994 - INFO - test: {'epoch': 21, 'time_epoch': 0.57297, 'loss': 0.22828125, 'lr': 0, 'params': 400930, 'time_iter': 0.03016, 'accuracy': 0.90849, 'auc': 0.88361, 'ap': 0.56567}
+2025-08-23 09:32:35,995 - INFO - > Epoch 21: took 8.3s (avg 8.1s) | Best so far: epoch 20	train_loss: 0.2066 train_ap: 0.6097	val_loss: 0.2232 val_ap: 0.5935	test_loss: 0.2308 test_ap: 0.5647
+2025-08-23 09:32:42,857 - INFO - train: {'epoch': 22, 'time_epoch': 6.80691, 'eta': 1206.62943, 'eta_hours': 0.33517, 'loss': 0.20192568, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.08008, 'accuracy': 0.918, 'auc': 0.90428, 'ap': 0.61972}
+2025-08-23 09:32:43,459 - INFO - val: {'epoch': 22, 'time_epoch': 0.56965, 'loss': 0.25936597, 'lr': 0, 'params': 400930, 'time_iter': 0.02998, 'accuracy': 0.90086, 'auc': 0.85661, 'ap': 0.55922}
+2025-08-23 09:32:44,064 - INFO - test: {'epoch': 22, 'time_epoch': 0.57235, 'loss': 0.26093217, 'lr': 0, 'params': 400930, 'time_iter': 0.03012, 'accuracy': 0.89944, 'auc': 0.85511, 'ap': 0.53048}
+2025-08-23 09:32:44,066 - INFO - > Epoch 22: took 8.1s (avg 8.1s) | Best so far: epoch 20	train_loss: 0.2066 train_ap: 0.6097	val_loss: 0.2232 val_ap: 0.5935	test_loss: 0.2308 test_ap: 0.5647
+2025-08-23 09:32:50,944 - INFO - train: {'epoch': 23, 'time_epoch': 6.82348, 'eta': 1199.85899, 'eta_hours': 0.33329, 'loss': 0.20277893, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.08028, 'accuracy': 0.91834, 'auc': 0.90388, 'ap': 0.61506}
+2025-08-23 09:32:51,542 - INFO - val: {'epoch': 23, 'time_epoch': 0.56427, 'loss': 0.22561565, 'lr': 0, 'params': 400930, 'time_iter': 0.0297, 'accuracy': 0.91085, 'auc': 0.88673, 'ap': 0.59276}
+2025-08-23 09:32:52,145 - INFO - test: {'epoch': 23, 'time_epoch': 0.56928, 'loss': 0.23716791, 'lr': 0, 'params': 400930, 'time_iter': 0.02996, 'accuracy': 0.90742, 'auc': 0.87922, 'ap': 0.55777}
+2025-08-23 09:32:52,147 - INFO - > Epoch 23: took 8.1s (avg 8.1s) | Best so far: epoch 20	train_loss: 0.2066 train_ap: 0.6097	val_loss: 0.2232 val_ap: 0.5935	test_loss: 0.2308 test_ap: 0.5647
+2025-08-23 09:32:58,955 - INFO - train: {'epoch': 24, 'time_epoch': 6.753, 'eta': 1192.59092, 'eta_hours': 0.33128, 'loss': 0.19942629, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.07945, 'accuracy': 0.91885, 'auc': 0.90629, 'ap': 0.62807}
+2025-08-23 09:32:59,554 - INFO - val: {'epoch': 24, 'time_epoch': 0.56685, 'loss': 0.21905484, 'lr': 0, 'params': 400930, 'time_iter': 0.02983, 'accuracy': 0.91124, 'auc': 0.88943, 'ap': 0.5956}
+2025-08-23 09:33:00,163 - INFO - test: {'epoch': 24, 'time_epoch': 0.57458, 'loss': 0.22377949, 'lr': 0, 'params': 400930, 'time_iter': 0.03024, 'accuracy': 0.91128, 'auc': 0.88663, 'ap': 0.58114}
+2025-08-23 09:33:00,165 - INFO - > Epoch 24: took 8.0s (avg 8.1s) | Best so far: epoch 24	train_loss: 0.1994 train_ap: 0.6281	val_loss: 0.2191 val_ap: 0.5956	test_loss: 0.2238 test_ap: 0.5811
+2025-08-23 09:33:07,030 - INFO - train: {'epoch': 25, 'time_epoch': 6.811, 'eta': 1185.75065, 'eta_hours': 0.32938, 'loss': 0.19687936, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.08013, 'accuracy': 0.91986, 'auc': 0.90924, 'ap': 0.63683}
+2025-08-23 09:33:07,630 - INFO - val: {'epoch': 25, 'time_epoch': 0.5672, 'loss': 0.20912051, 'lr': 0, 'params': 400930, 'time_iter': 0.02985, 'accuracy': 0.91733, 'auc': 0.89495, 'ap': 0.62115}
+2025-08-23 09:33:08,239 - INFO - test: {'epoch': 25, 'time_epoch': 0.57584, 'loss': 0.22121676, 'lr': 0, 'params': 400930, 'time_iter': 0.03031, 'accuracy': 0.91407, 'auc': 0.88912, 'ap': 0.58776}
+2025-08-23 09:33:08,240 - INFO - > Epoch 25: took 8.1s (avg 8.1s) | Best so far: epoch 25	train_loss: 0.1969 train_ap: 0.6368	val_loss: 0.2091 val_ap: 0.6211	test_loss: 0.2212 test_ap: 0.5878
+2025-08-23 09:33:15,069 - INFO - train: {'epoch': 26, 'time_epoch': 6.77454, 'eta': 1178.67893, 'eta_hours': 0.32741, 'loss': 0.19565457, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.0797, 'accuracy': 0.92067, 'auc': 0.9121, 'ap': 0.63808}
+2025-08-23 09:33:15,669 - INFO - val: {'epoch': 26, 'time_epoch': 0.56765, 'loss': 0.21844695, 'lr': 0, 'params': 400930, 'time_iter': 0.02988, 'accuracy': 0.91021, 'auc': 0.88745, 'ap': 0.59714}
+2025-08-23 09:33:16,274 - INFO - test: {'epoch': 26, 'time_epoch': 0.57171, 'loss': 0.2287066, 'lr': 0, 'params': 400930, 'time_iter': 0.03009, 'accuracy': 0.90875, 'auc': 0.88437, 'ap': 0.57506}
+2025-08-23 09:33:16,276 - INFO - > Epoch 26: took 8.0s (avg 8.1s) | Best so far: epoch 25	train_loss: 0.1969 train_ap: 0.6368	val_loss: 0.2091 val_ap: 0.6211	test_loss: 0.2212 test_ap: 0.5878
+2025-08-23 09:33:23,121 - INFO - train: {'epoch': 27, 'time_epoch': 6.79217, 'eta': 1171.73675, 'eta_hours': 0.32548, 'loss': 0.19274898, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.07991, 'accuracy': 0.92229, 'auc': 0.91521, 'ap': 0.64269}
+2025-08-23 09:33:23,720 - INFO - val: {'epoch': 27, 'time_epoch': 0.56623, 'loss': 0.22389027, 'lr': 0, 'params': 400930, 'time_iter': 0.0298, 'accuracy': 0.90927, 'auc': 0.88643, 'ap': 0.59953}
+2025-08-23 09:33:24,323 - INFO - test: {'epoch': 27, 'time_epoch': 0.57004, 'loss': 0.23652037, 'lr': 0, 'params': 400930, 'time_iter': 0.03, 'accuracy': 0.90472, 'auc': 0.87737, 'ap': 0.57215}
+2025-08-23 09:33:24,325 - INFO - > Epoch 27: took 8.0s (avg 8.1s) | Best so far: epoch 25	train_loss: 0.1969 train_ap: 0.6368	val_loss: 0.2091 val_ap: 0.6211	test_loss: 0.2212 test_ap: 0.5878
+2025-08-23 09:33:31,149 - INFO - train: {'epoch': 28, 'time_epoch': 6.76982, 'eta': 1164.67309, 'eta_hours': 0.32352, 'loss': 0.19329722, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.07964, 'accuracy': 0.92126, 'auc': 0.9151, 'ap': 0.64341}
+2025-08-23 09:33:31,753 - INFO - val: {'epoch': 28, 'time_epoch': 0.57062, 'loss': 0.21013692, 'lr': 0, 'params': 400930, 'time_iter': 0.03003, 'accuracy': 0.91737, 'auc': 0.89874, 'ap': 0.62518}
+2025-08-23 09:33:32,361 - INFO - test: {'epoch': 28, 'time_epoch': 0.57435, 'loss': 0.22401513, 'lr': 0, 'params': 400930, 'time_iter': 0.03023, 'accuracy': 0.91004, 'auc': 0.89035, 'ap': 0.5876}
+2025-08-23 09:33:32,363 - INFO - > Epoch 28: took 8.0s (avg 8.1s) | Best so far: epoch 28	train_loss: 0.1933 train_ap: 0.6434	val_loss: 0.2101 val_ap: 0.6252	test_loss: 0.2240 test_ap: 0.5876
+2025-08-23 09:33:39,219 - INFO - train: {'epoch': 29, 'time_epoch': 6.80053, 'eta': 1157.80308, 'eta_hours': 0.32161, 'loss': 0.19061555, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.08001, 'accuracy': 0.92246, 'auc': 0.91697, 'ap': 0.65581}
+2025-08-23 09:33:39,821 - INFO - val: {'epoch': 29, 'time_epoch': 0.56871, 'loss': 0.25499059, 'lr': 0, 'params': 400930, 'time_iter': 0.02993, 'accuracy': 0.90335, 'auc': 0.86085, 'ap': 0.55103}
+2025-08-23 09:33:40,428 - INFO - test: {'epoch': 29, 'time_epoch': 0.57394, 'loss': 0.261936, 'lr': 0, 'params': 400930, 'time_iter': 0.03021, 'accuracy': 0.90176, 'auc': 0.85792, 'ap': 0.5337}
+2025-08-23 09:33:40,434 - INFO - > Epoch 29: took 8.1s (avg 8.1s) | Best so far: epoch 28	train_loss: 0.1933 train_ap: 0.6434	val_loss: 0.2101 val_ap: 0.6252	test_loss: 0.2240 test_ap: 0.5876
+2025-08-23 09:33:47,312 - INFO - train: {'epoch': 30, 'time_epoch': 6.82352, 'eta': 1151.06286, 'eta_hours': 0.31974, 'loss': 0.18921161, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.08028, 'accuracy': 0.92306, 'auc': 0.91828, 'ap': 0.6596}
+2025-08-23 09:33:47,913 - INFO - val: {'epoch': 30, 'time_epoch': 0.56843, 'loss': 0.22426564, 'lr': 0, 'params': 400930, 'time_iter': 0.02992, 'accuracy': 0.91034, 'auc': 0.88845, 'ap': 0.59093}
+2025-08-23 09:33:48,520 - INFO - test: {'epoch': 30, 'time_epoch': 0.57338, 'loss': 0.23220694, 'lr': 0, 'params': 400930, 'time_iter': 0.03018, 'accuracy': 0.90776, 'auc': 0.88211, 'ap': 0.58189}
+2025-08-23 09:33:48,522 - INFO - > Epoch 30: took 8.1s (avg 8.1s) | Best so far: epoch 28	train_loss: 0.1933 train_ap: 0.6434	val_loss: 0.2101 val_ap: 0.6252	test_loss: 0.2240 test_ap: 0.5876
+2025-08-23 09:33:55,369 - INFO - train: {'epoch': 31, 'time_epoch': 6.79163, 'eta': 1144.15001, 'eta_hours': 0.31782, 'loss': 0.18600733, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.0799, 'accuracy': 0.92493, 'auc': 0.92067, 'ap': 0.66704}
+2025-08-23 09:33:55,971 - INFO - val: {'epoch': 31, 'time_epoch': 0.56807, 'loss': 0.27174837, 'lr': 0, 'params': 400930, 'time_iter': 0.0299, 'accuracy': 0.89039, 'auc': 0.85196, 'ap': 0.5164}
+2025-08-23 09:33:56,574 - INFO - test: {'epoch': 31, 'time_epoch': 0.56991, 'loss': 0.27767812, 'lr': 0, 'params': 400930, 'time_iter': 0.03, 'accuracy': 0.88722, 'auc': 0.8472, 'ap': 0.50979}
+2025-08-23 09:33:56,575 - INFO - > Epoch 31: took 8.1s (avg 8.1s) | Best so far: epoch 28	train_loss: 0.1933 train_ap: 0.6434	val_loss: 0.2101 val_ap: 0.6252	test_loss: 0.2240 test_ap: 0.5876
+2025-08-23 09:34:03,431 - INFO - train: {'epoch': 32, 'time_epoch': 6.80184, 'eta': 1137.2962, 'eta_hours': 0.31592, 'loss': 0.18377087, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.08002, 'accuracy': 0.92497, 'auc': 0.92253, 'ap': 0.67231}
+2025-08-23 09:34:04,035 - INFO - val: {'epoch': 32, 'time_epoch': 0.5693, 'loss': 0.23059509, 'lr': 0, 'params': 400930, 'time_iter': 0.02996, 'accuracy': 0.90987, 'auc': 0.88647, 'ap': 0.60396}
+2025-08-23 09:34:04,643 - INFO - test: {'epoch': 32, 'time_epoch': 0.57513, 'loss': 0.23588179, 'lr': 0, 'params': 400930, 'time_iter': 0.03027, 'accuracy': 0.90742, 'auc': 0.88734, 'ap': 0.5786}
+2025-08-23 09:34:04,645 - INFO - > Epoch 32: took 8.1s (avg 8.1s) | Best so far: epoch 28	train_loss: 0.1933 train_ap: 0.6434	val_loss: 0.2101 val_ap: 0.6252	test_loss: 0.2240 test_ap: 0.5876
+2025-08-23 09:34:11,511 - INFO - train: {'epoch': 33, 'time_epoch': 6.81241, 'eta': 1130.49705, 'eta_hours': 0.31403, 'loss': 0.18320893, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.08015, 'accuracy': 0.9264, 'auc': 0.9235, 'ap': 0.67348}
+2025-08-23 09:34:12,110 - INFO - val: {'epoch': 33, 'time_epoch': 0.56565, 'loss': 0.22006859, 'lr': 0, 'params': 400930, 'time_iter': 0.02977, 'accuracy': 0.9139, 'auc': 0.88955, 'ap': 0.6136}
+2025-08-23 09:34:12,714 - INFO - test: {'epoch': 33, 'time_epoch': 0.57154, 'loss': 0.227952, 'lr': 0, 'params': 400930, 'time_iter': 0.03008, 'accuracy': 0.91025, 'auc': 0.89177, 'ap': 0.5946}
+2025-08-23 09:34:12,716 - INFO - > Epoch 33: took 8.1s (avg 8.1s) | Best so far: epoch 28	train_loss: 0.1933 train_ap: 0.6434	val_loss: 0.2101 val_ap: 0.6252	test_loss: 0.2240 test_ap: 0.5876
+2025-08-23 09:34:19,600 - INFO - train: {'epoch': 34, 'time_epoch': 6.83002, 'eta': 1123.78017, 'eta_hours': 0.31216, 'loss': 0.18237451, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.08035, 'accuracy': 0.92614, 'auc': 0.92467, 'ap': 0.6771}
+2025-08-23 09:34:20,203 - INFO - val: {'epoch': 34, 'time_epoch': 0.57054, 'loss': 0.23364784, 'lr': 0, 'params': 400930, 'time_iter': 0.03003, 'accuracy': 0.90982, 'auc': 0.88369, 'ap': 0.59198}
+2025-08-23 09:34:20,809 - INFO - test: {'epoch': 34, 'time_epoch': 0.57261, 'loss': 0.24260864, 'lr': 0, 'params': 400930, 'time_iter': 0.03014, 'accuracy': 0.90609, 'auc': 0.88311, 'ap': 0.57804}
+2025-08-23 09:34:20,811 - INFO - > Epoch 34: took 8.1s (avg 8.1s) | Best so far: epoch 28	train_loss: 0.1933 train_ap: 0.6434	val_loss: 0.2101 val_ap: 0.6252	test_loss: 0.2240 test_ap: 0.5876
+2025-08-23 09:34:27,686 - INFO - train: {'epoch': 35, 'time_epoch': 6.82229, 'eta': 1117.02176, 'eta_hours': 0.31028, 'loss': 0.18110913, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.08026, 'accuracy': 0.9263, 'auc': 0.92683, 'ap': 0.68026}
+2025-08-23 09:34:28,286 - INFO - val: {'epoch': 35, 'time_epoch': 0.56803, 'loss': 0.2229518, 'lr': 0, 'params': 400930, 'time_iter': 0.0299, 'accuracy': 0.91493, 'auc': 0.89361, 'ap': 0.62103}
+2025-08-23 09:34:28,889 - INFO - test: {'epoch': 35, 'time_epoch': 0.57051, 'loss': 0.22700689, 'lr': 0, 'params': 400930, 'time_iter': 0.03003, 'accuracy': 0.91274, 'auc': 0.89376, 'ap': 0.5984}
+2025-08-23 09:34:28,890 - INFO - > Epoch 35: took 8.1s (avg 8.1s) | Best so far: epoch 28	train_loss: 0.1933 train_ap: 0.6434	val_loss: 0.2101 val_ap: 0.6252	test_loss: 0.2240 test_ap: 0.5876
+2025-08-23 09:34:35,753 - INFO - train: {'epoch': 36, 'time_epoch': 6.80953, 'eta': 1110.20371, 'eta_hours': 0.30839, 'loss': 0.17841253, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.08011, 'accuracy': 0.92779, 'auc': 0.92896, 'ap': 0.6865}
+2025-08-23 09:34:36,351 - INFO - val: {'epoch': 36, 'time_epoch': 0.56604, 'loss': 0.21833257, 'lr': 0, 'params': 400930, 'time_iter': 0.02979, 'accuracy': 0.91574, 'auc': 0.89136, 'ap': 0.6162}
+2025-08-23 09:34:36,959 - INFO - test: {'epoch': 36, 'time_epoch': 0.57505, 'loss': 0.22506681, 'lr': 0, 'params': 400930, 'time_iter': 0.03027, 'accuracy': 0.91308, 'auc': 0.89195, 'ap': 0.60928}
+2025-08-23 09:34:36,961 - INFO - > Epoch 36: took 8.1s (avg 8.1s) | Best so far: epoch 28	train_loss: 0.1933 train_ap: 0.6434	val_loss: 0.2101 val_ap: 0.6252	test_loss: 0.2240 test_ap: 0.5876
+2025-08-23 09:34:45,037 - INFO - train: {'epoch': 37, 'time_epoch': 7.94209, 'eta': 1108.21436, 'eta_hours': 0.30784, 'loss': 0.1756233, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.09344, 'accuracy': 0.92882, 'auc': 0.93156, 'ap': 0.69063}
+2025-08-23 09:34:46,278 - INFO - val: {'epoch': 37, 'time_epoch': 1.20432, 'loss': 0.22084625, 'lr': 0, 'params': 400930, 'time_iter': 0.06339, 'accuracy': 0.91326, 'auc': 0.89542, 'ap': 0.61708}
+2025-08-23 09:34:46,882 - INFO - test: {'epoch': 37, 'time_epoch': 0.57147, 'loss': 0.2316394, 'lr': 0, 'params': 400930, 'time_iter': 0.03008, 'accuracy': 0.91047, 'auc': 0.89226, 'ap': 0.60369}
+2025-08-23 09:34:46,884 - INFO - > Epoch 37: took 9.9s (avg 8.1s) | Best so far: epoch 28	train_loss: 0.1933 train_ap: 0.6434	val_loss: 0.2101 val_ap: 0.6252	test_loss: 0.2240 test_ap: 0.5876
+2025-08-23 09:34:53,719 - INFO - train: {'epoch': 38, 'time_epoch': 6.78347, 'eta': 1101.13674, 'eta_hours': 0.30587, 'loss': 0.17140198, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.07981, 'accuracy': 0.93043, 'auc': 0.9339, 'ap': 0.70216}
+2025-08-23 09:34:54,316 - INFO - val: {'epoch': 38, 'time_epoch': 0.5641, 'loss': 0.23541022, 'lr': 0, 'params': 400930, 'time_iter': 0.02969, 'accuracy': 0.90824, 'auc': 0.88222, 'ap': 0.59248}
+2025-08-23 09:34:54,917 - INFO - test: {'epoch': 38, 'time_epoch': 0.5697, 'loss': 0.24770417, 'lr': 0, 'params': 400930, 'time_iter': 0.02998, 'accuracy': 0.90528, 'auc': 0.87955, 'ap': 0.57861}
+2025-08-23 09:34:54,919 - INFO - > Epoch 38: took 8.0s (avg 8.1s) | Best so far: epoch 28	train_loss: 0.1933 train_ap: 0.6434	val_loss: 0.2101 val_ap: 0.6252	test_loss: 0.2240 test_ap: 0.5876
+2025-08-23 09:35:01,828 - INFO - train: {'epoch': 39, 'time_epoch': 6.85262, 'eta': 1094.35043, 'eta_hours': 0.30399, 'loss': 0.17342335, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.08062, 'accuracy': 0.92984, 'auc': 0.93289, 'ap': 0.70296}
+2025-08-23 09:35:02,432 - INFO - val: {'epoch': 39, 'time_epoch': 0.57044, 'loss': 0.21810352, 'lr': 0, 'params': 400930, 'time_iter': 0.03002, 'accuracy': 0.91729, 'auc': 0.8978, 'ap': 0.62929}
+2025-08-23 09:35:03,033 - INFO - test: {'epoch': 39, 'time_epoch': 0.56971, 'loss': 0.22782804, 'lr': 0, 'params': 400930, 'time_iter': 0.02998, 'accuracy': 0.91343, 'auc': 0.89409, 'ap': 0.61406}
+2025-08-23 09:35:03,035 - INFO - > Epoch 39: took 8.1s (avg 8.1s) | Best so far: epoch 39	train_loss: 0.1734 train_ap: 0.7030	val_loss: 0.2181 val_ap: 0.6293	test_loss: 0.2278 test_ap: 0.6141
+2025-08-23 09:35:09,893 - INFO - train: {'epoch': 40, 'time_epoch': 6.80493, 'eta': 1087.37594, 'eta_hours': 0.30205, 'loss': 0.16959656, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.08006, 'accuracy': 0.93101, 'auc': 0.93622, 'ap': 0.70851}
+2025-08-23 09:35:10,490 - INFO - val: {'epoch': 40, 'time_epoch': 0.56427, 'loss': 0.27652007, 'lr': 0, 'params': 400930, 'time_iter': 0.0297, 'accuracy': 0.89683, 'auc': 0.85482, 'ap': 0.56481}
+2025-08-23 09:35:11,092 - INFO - test: {'epoch': 40, 'time_epoch': 0.57018, 'loss': 0.27584878, 'lr': 0, 'params': 400930, 'time_iter': 0.03001, 'accuracy': 0.89738, 'auc': 0.85798, 'ap': 0.54723}
+2025-08-23 09:35:11,094 - INFO - > Epoch 40: took 8.1s (avg 8.1s) | Best so far: epoch 39	train_loss: 0.1734 train_ap: 0.7030	val_loss: 0.2181 val_ap: 0.6293	test_loss: 0.2278 test_ap: 0.6141
+2025-08-23 09:35:17,980 - INFO - train: {'epoch': 41, 'time_epoch': 6.8284, 'eta': 1080.49783, 'eta_hours': 0.30014, 'loss': 0.16894505, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.08033, 'accuracy': 0.93156, 'auc': 0.93637, 'ap': 0.71199}
+2025-08-23 09:35:18,603 - INFO - val: {'epoch': 41, 'time_epoch': 0.58945, 'loss': 0.21322639, 'lr': 0, 'params': 400930, 'time_iter': 0.03102, 'accuracy': 0.92021, 'auc': 0.89818, 'ap': 0.63498}
+2025-08-23 09:35:19,225 - INFO - test: {'epoch': 41, 'time_epoch': 0.58775, 'loss': 0.22291204, 'lr': 0, 'params': 400930, 'time_iter': 0.03093, 'accuracy': 0.91772, 'auc': 0.89474, 'ap': 0.62164}
+2025-08-23 09:35:19,227 - INFO - > Epoch 41: took 8.1s (avg 8.1s) | Best so far: epoch 41	train_loss: 0.1689 train_ap: 0.7120	val_loss: 0.2132 val_ap: 0.6350	test_loss: 0.2229 test_ap: 0.6216
+2025-08-23 09:35:26,200 - INFO - train: {'epoch': 42, 'time_epoch': 6.91671, 'eta': 1073.94445, 'eta_hours': 0.29832, 'loss': 0.16744174, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.08137, 'accuracy': 0.93202, 'auc': 0.93828, 'ap': 0.71555}
+2025-08-23 09:35:26,855 - INFO - val: {'epoch': 42, 'time_epoch': 0.5837, 'loss': 0.21335593, 'lr': 0, 'params': 400930, 'time_iter': 0.03072, 'accuracy': 0.91656, 'auc': 0.89961, 'ap': 0.63629}
+2025-08-23 09:35:27,511 - INFO - test: {'epoch': 42, 'time_epoch': 0.58935, 'loss': 0.22445367, 'lr': 0, 'params': 400930, 'time_iter': 0.03102, 'accuracy': 0.91308, 'auc': 0.89622, 'ap': 0.6162}
+2025-08-23 09:35:27,553 - INFO - > Epoch 42: took 8.3s (avg 8.1s) | Best so far: epoch 42	train_loss: 0.1674 train_ap: 0.7156	val_loss: 0.2134 val_ap: 0.6363	test_loss: 0.2245 test_ap: 0.6162
+2025-08-23 09:35:34,723 - INFO - train: {'epoch': 43, 'time_epoch': 7.11389, 'eta': 1068.07366, 'eta_hours': 0.29669, 'loss': 0.16534536, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.08369, 'accuracy': 0.93306, 'auc': 0.93946, 'ap': 0.72188}
+2025-08-23 09:35:35,349 - INFO - val: {'epoch': 43, 'time_epoch': 0.58869, 'loss': 0.22590879, 'lr': 0, 'params': 400930, 'time_iter': 0.03098, 'accuracy': 0.91291, 'auc': 0.88754, 'ap': 0.59994}
+2025-08-23 09:35:36,000 - INFO - test: {'epoch': 43, 'time_epoch': 0.61519, 'loss': 0.23395636, 'lr': 0, 'params': 400930, 'time_iter': 0.03238, 'accuracy': 0.90931, 'auc': 0.88872, 'ap': 0.60133}
+2025-08-23 09:35:36,003 - INFO - > Epoch 43: took 8.4s (avg 8.1s) | Best so far: epoch 42	train_loss: 0.1674 train_ap: 0.7156	val_loss: 0.2134 val_ap: 0.6363	test_loss: 0.2245 test_ap: 0.6162
+2025-08-23 09:35:43,372 - INFO - train: {'epoch': 44, 'time_epoch': 7.30381, 'eta': 1062.80179, 'eta_hours': 0.29522, 'loss': 0.16635977, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.08593, 'accuracy': 0.93227, 'auc': 0.93901, 'ap': 0.71953}
+2025-08-23 09:35:43,997 - INFO - val: {'epoch': 44, 'time_epoch': 0.58914, 'loss': 0.22418023, 'lr': 0, 'params': 400930, 'time_iter': 0.03101, 'accuracy': 0.91596, 'auc': 0.88965, 'ap': 0.61116}
+2025-08-23 09:35:44,633 - INFO - test: {'epoch': 44, 'time_epoch': 0.59975, 'loss': 0.22056556, 'lr': 0, 'params': 400930, 'time_iter': 0.03157, 'accuracy': 0.9184, 'auc': 0.89467, 'ap': 0.62519}
+2025-08-23 09:35:44,635 - INFO - > Epoch 44: took 8.6s (avg 8.2s) | Best so far: epoch 42	train_loss: 0.1674 train_ap: 0.7156	val_loss: 0.2134 val_ap: 0.6363	test_loss: 0.2245 test_ap: 0.6162
+2025-08-23 09:35:51,747 - INFO - train: {'epoch': 45, 'time_epoch': 7.04728, 'eta': 1056.58275, 'eta_hours': 0.2935, 'loss': 0.16302968, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.08291, 'accuracy': 0.93452, 'auc': 0.94168, 'ap': 0.72628}
+2025-08-23 09:35:52,376 - INFO - val: {'epoch': 45, 'time_epoch': 0.59283, 'loss': 0.25262696, 'lr': 0, 'params': 400930, 'time_iter': 0.0312, 'accuracy': 0.90133, 'auc': 0.87104, 'ap': 0.5695}
+2025-08-23 09:35:52,999 - INFO - test: {'epoch': 45, 'time_epoch': 0.58812, 'loss': 0.25638951, 'lr': 0, 'params': 400930, 'time_iter': 0.03095, 'accuracy': 0.8997, 'auc': 0.87273, 'ap': 0.56471}
+2025-08-23 09:35:53,001 - INFO - > Epoch 45: took 8.4s (avg 8.2s) | Best so far: epoch 42	train_loss: 0.1674 train_ap: 0.7156	val_loss: 0.2134 val_ap: 0.6363	test_loss: 0.2245 test_ap: 0.6162
+2025-08-23 09:36:00,050 - INFO - train: {'epoch': 46, 'time_epoch': 6.98787, 'eta': 1050.13507, 'eta_hours': 0.2917, 'loss': 0.16294745, 'lr': 0.0005, 'params': 400930, 'time_iter': 0.08221, 'accuracy': 0.93362, 'auc': 0.9418, 'ap': 0.73136}
+2025-08-23 09:36:00,677 - INFO - val: {'epoch': 46, 'time_epoch': 0.59117, 'loss': 0.23195377, 'lr': 0, 'params': 400930, 'time_iter': 0.03111, 'accuracy': 0.91326, 'auc': 0.89229, 'ap': 0.61773}
+2025-08-23 09:36:01,303 - INFO - test: {'epoch': 46, 'time_epoch': 0.59172, 'loss': 0.23957444, 'lr': 0, 'params': 400930, 'time_iter': 0.03114, 'accuracy': 0.9118, 'auc': 0.89344, 'ap': 0.61193}
+Epoch 00047: reducing learning rate of group 0 to 2.5000e-04.
+2025-08-23 09:36:01,305 - INFO - > Epoch 46: took 8.3s (avg 8.2s) | Best so far: epoch 42	train_loss: 0.1674 train_ap: 0.7156	val_loss: 0.2134 val_ap: 0.6363	test_loss: 0.2245 test_ap: 0.6162
+2025-08-23 09:36:08,381 - INFO - train: {'epoch': 47, 'time_epoch': 7.01748, 'eta': 1043.75863, 'eta_hours': 0.28993, 'loss': 0.14981448, 'lr': 0.00025, 'params': 400930, 'time_iter': 0.08256, 'accuracy': 0.93962, 'auc': 0.95102, 'ap': 0.759}
+2025-08-23 09:36:09,001 - INFO - val: {'epoch': 47, 'time_epoch': 0.5838, 'loss': 0.21091313, 'lr': 0, 'params': 400930, 'time_iter': 0.03073, 'accuracy': 0.92063, 'auc': 0.90226, 'ap': 0.64406}
+2025-08-23 09:36:09,621 - INFO - test: {'epoch': 47, 'time_epoch': 0.58575, 'loss': 0.21870104, 'lr': 0, 'params': 400930, 'time_iter': 0.03083, 'accuracy': 0.9178, 'auc': 0.89959, 'ap': 0.64618}
+2025-08-23 09:36:09,623 - INFO - > Epoch 47: took 8.3s (avg 8.2s) | Best so far: epoch 47	train_loss: 0.1498 train_ap: 0.7590	val_loss: 0.2109 val_ap: 0.6441	test_loss: 0.2187 test_ap: 0.6462
+2025-08-23 09:36:16,695 - INFO - train: {'epoch': 48, 'time_epoch': 7.01361, 'eta': 1037.34411, 'eta_hours': 0.28815, 'loss': 0.14568206, 'lr': 0.00025, 'params': 400930, 'time_iter': 0.08251, 'accuracy': 0.94144, 'auc': 0.95386, 'ap': 0.77012}
+2025-08-23 09:36:17,314 - INFO - val: {'epoch': 48, 'time_epoch': 0.58375, 'loss': 0.21218916, 'lr': 0, 'params': 400930, 'time_iter': 0.03072, 'accuracy': 0.92055, 'auc': 0.90081, 'ap': 0.64556}
+2025-08-23 09:36:17,938 - INFO - test: {'epoch': 48, 'time_epoch': 0.58958, 'loss': 0.22527533, 'lr': 0, 'params': 400930, 'time_iter': 0.03103, 'accuracy': 0.91647, 'auc': 0.89893, 'ap': 0.63891}
+2025-08-23 09:36:17,940 - INFO - > Epoch 48: took 8.3s (avg 8.2s) | Best so far: epoch 48	train_loss: 0.1457 train_ap: 0.7701	val_loss: 0.2122 val_ap: 0.6456	test_loss: 0.2253 test_ap: 0.6389
+2025-08-23 09:36:25,003 - INFO - train: {'epoch': 49, 'time_epoch': 7.00316, 'eta': 1030.87428, 'eta_hours': 0.28635, 'loss': 0.14614334, 'lr': 0.00025, 'params': 400930, 'time_iter': 0.08239, 'accuracy': 0.94102, 'auc': 0.95374, 'ap': 0.77075}
+2025-08-23 09:36:25,618 - INFO - val: {'epoch': 49, 'time_epoch': 0.58056, 'loss': 0.21739563, 'lr': 0, 'params': 400930, 'time_iter': 0.03056, 'accuracy': 0.91939, 'auc': 0.89921, 'ap': 0.64227}
+2025-08-23 09:36:26,236 - INFO - test: {'epoch': 49, 'time_epoch': 0.58436, 'loss': 0.22939323, 'lr': 0, 'params': 400930, 'time_iter': 0.03076, 'accuracy': 0.91441, 'auc': 0.89914, 'ap': 0.6341}
+2025-08-23 09:36:26,238 - INFO - > Epoch 49: took 8.3s (avg 8.2s) | Best so far: epoch 48	train_loss: 0.1457 train_ap: 0.7701	val_loss: 0.2122 val_ap: 0.6456	test_loss: 0.2253 test_ap: 0.6389
+2025-08-23 09:36:33,283 - INFO - train: {'epoch': 50, 'time_epoch': 6.98704, 'eta': 1024.33643, 'eta_hours': 0.28454, 'loss': 0.14428879, 'lr': 0.00025, 'params': 400930, 'time_iter': 0.0822, 'accuracy': 0.94189, 'auc': 0.95498, 'ap': 0.77297}
+2025-08-23 09:36:33,896 - INFO - val: {'epoch': 50, 'time_epoch': 0.57898, 'loss': 0.22858416, 'lr': 0, 'params': 400930, 'time_iter': 0.03047, 'accuracy': 0.9145, 'auc': 0.89322, 'ap': 0.62921}
+2025-08-23 09:36:34,514 - INFO - test: {'epoch': 50, 'time_epoch': 0.5815, 'loss': 0.23025394, 'lr': 0, 'params': 400930, 'time_iter': 0.03061, 'accuracy': 0.91647, 'auc': 0.8927, 'ap': 0.63329}
+2025-08-23 09:36:34,516 - INFO - > Epoch 50: took 8.3s (avg 8.2s) | Best so far: epoch 48	train_loss: 0.1457 train_ap: 0.7701	val_loss: 0.2122 val_ap: 0.6456	test_loss: 0.2253 test_ap: 0.6389
+2025-08-23 09:36:41,592 - INFO - train: {'epoch': 51, 'time_epoch': 7.01834, 'eta': 1017.8704, 'eta_hours': 0.28274, 'loss': 0.14149014, 'lr': 0.00025, 'params': 400930, 'time_iter': 0.08257, 'accuracy': 0.94366, 'auc': 0.95635, 'ap': 0.77682}
+2025-08-23 09:36:42,203 - INFO - val: {'epoch': 51, 'time_epoch': 0.57685, 'loss': 0.21916247, 'lr': 0, 'params': 400930, 'time_iter': 0.03036, 'accuracy': 0.9181, 'auc': 0.90029, 'ap': 0.63832}
+2025-08-23 09:36:42,819 - INFO - test: {'epoch': 51, 'time_epoch': 0.58234, 'loss': 0.23163204, 'lr': 0, 'params': 400930, 'time_iter': 0.03065, 'accuracy': 0.91523, 'auc': 0.89904, 'ap': 0.6352}
+2025-08-23 09:36:42,821 - INFO - > Epoch 51: took 8.3s (avg 8.2s) | Best so far: epoch 48	train_loss: 0.1457 train_ap: 0.7701	val_loss: 0.2122 val_ap: 0.6456	test_loss: 0.2253 test_ap: 0.6389
+2025-08-23 09:36:49,834 - INFO - train: {'epoch': 52, 'time_epoch': 6.95652, 'eta': 1011.21207, 'eta_hours': 0.28089, 'loss': 0.14160025, 'lr': 0.00025, 'params': 400930, 'time_iter': 0.08184, 'accuracy': 0.9426, 'auc': 0.95631, 'ap': 0.77659}
+2025-08-23 09:36:50,450 - INFO - val: {'epoch': 52, 'time_epoch': 0.58107, 'loss': 0.21941606, 'lr': 0, 'params': 400930, 'time_iter': 0.03058, 'accuracy': 0.92085, 'auc': 0.89995, 'ap': 0.64786}
+2025-08-23 09:36:51,069 - INFO - test: {'epoch': 52, 'time_epoch': 0.58494, 'loss': 0.23277623, 'lr': 0, 'params': 400930, 'time_iter': 0.03079, 'accuracy': 0.91484, 'auc': 0.89954, 'ap': 0.6435}
+2025-08-23 09:36:51,071 - INFO - > Epoch 52: took 8.2s (avg 8.2s) | Best so far: epoch 52	train_loss: 0.1416 train_ap: 0.7766	val_loss: 0.2194 val_ap: 0.6479	test_loss: 0.2328 test_ap: 0.6435
+2025-08-23 09:36:58,101 - INFO - train: {'epoch': 53, 'time_epoch': 6.97214, 'eta': 1004.58492, 'eta_hours': 0.27905, 'loss': 0.14061167, 'lr': 0.00025, 'params': 400930, 'time_iter': 0.08203, 'accuracy': 0.94401, 'auc': 0.95785, 'ap': 0.78082}
+2025-08-23 09:36:58,714 - INFO - val: {'epoch': 53, 'time_epoch': 0.57723, 'loss': 0.21767979, 'lr': 0, 'params': 400930, 'time_iter': 0.03038, 'accuracy': 0.91986, 'auc': 0.90145, 'ap': 0.64279}
+2025-08-23 09:36:59,618 - INFO - test: {'epoch': 53, 'time_epoch': 0.8698, 'loss': 0.22745914, 'lr': 0, 'params': 400930, 'time_iter': 0.04578, 'accuracy': 0.91969, 'auc': 0.90325, 'ap': 0.64912}
+2025-08-23 09:36:59,620 - INFO - > Epoch 53: took 8.5s (avg 8.2s) | Best so far: epoch 52	train_loss: 0.1416 train_ap: 0.7766	val_loss: 0.2194 val_ap: 0.6479	test_loss: 0.2328 test_ap: 0.6435
+2025-08-23 09:37:06,664 - INFO - train: {'epoch': 54, 'time_epoch': 6.98821, 'eta': 997.98759, 'eta_hours': 0.27722, 'loss': 0.13763754, 'lr': 0.00025, 'params': 400930, 'time_iter': 0.08221, 'accuracy': 0.94484, 'auc': 0.95923, 'ap': 0.78809}
+2025-08-23 09:37:07,273 - INFO - val: {'epoch': 54, 'time_epoch': 0.57475, 'loss': 0.23919256, 'lr': 0, 'params': 400930, 'time_iter': 0.03025, 'accuracy': 0.91236, 'auc': 0.88741, 'ap': 0.6188}
+2025-08-23 09:37:07,888 - INFO - test: {'epoch': 54, 'time_epoch': 0.58149, 'loss': 0.24510863, 'lr': 0, 'params': 400930, 'time_iter': 0.0306, 'accuracy': 0.91424, 'auc': 0.88454, 'ap': 0.61373}
+2025-08-23 09:37:07,889 - INFO - > Epoch 54: took 8.3s (avg 8.2s) | Best so far: epoch 52	train_loss: 0.1416 train_ap: 0.7766	val_loss: 0.2194 val_ap: 0.6479	test_loss: 0.2328 test_ap: 0.6435
+2025-08-23 09:37:14,886 - INFO - train: {'epoch': 55, 'time_epoch': 6.93904, 'eta': 991.24985, 'eta_hours': 0.27535, 'loss': 0.13839508, 'lr': 0.00025, 'params': 400930, 'time_iter': 0.08164, 'accuracy': 0.94453, 'auc': 0.95953, 'ap': 0.78595}
+2025-08-23 09:37:15,500 - INFO - val: {'epoch': 55, 'time_epoch': 0.57787, 'loss': 0.22327275, 'lr': 0, 'params': 400930, 'time_iter': 0.03041, 'accuracy': 0.91767, 'auc': 0.89985, 'ap': 0.63556}
+2025-08-23 09:37:16,118 - INFO - test: {'epoch': 55, 'time_epoch': 0.58396, 'loss': 0.23778799, 'lr': 0, 'params': 400930, 'time_iter': 0.03073, 'accuracy': 0.91489, 'auc': 0.89828, 'ap': 0.63057}
+2025-08-23 09:37:16,120 - INFO - > Epoch 55: took 8.2s (avg 8.2s) | Best so far: epoch 52	train_loss: 0.1416 train_ap: 0.7766	val_loss: 0.2194 val_ap: 0.6479	test_loss: 0.2328 test_ap: 0.6435
+2025-08-23 09:37:23,131 - INFO - train: {'epoch': 56, 'time_epoch': 6.95408, 'eta': 984.54279, 'eta_hours': 0.27348, 'loss': 0.13620923, 'lr': 0.00025, 'params': 400930, 'time_iter': 0.08181, 'accuracy': 0.94481, 'auc': 0.96046, 'ap': 0.79245}
+2025-08-23 09:37:23,743 - INFO - val: {'epoch': 56, 'time_epoch': 0.57808, 'loss': 0.22152041, 'lr': 0, 'params': 400930, 'time_iter': 0.03043, 'accuracy': 0.92012, 'auc': 0.90161, 'ap': 0.63562}
+2025-08-23 09:37:24,365 - INFO - test: {'epoch': 56, 'time_epoch': 0.588, 'loss': 0.22855911, 'lr': 0, 'params': 400930, 'time_iter': 0.03095, 'accuracy': 0.91793, 'auc': 0.90138, 'ap': 0.64667}
+2025-08-23 09:37:24,366 - INFO - > Epoch 56: took 8.2s (avg 8.2s) | Best so far: epoch 52	train_loss: 0.1416 train_ap: 0.7766	val_loss: 0.2194 val_ap: 0.6479	test_loss: 0.2328 test_ap: 0.6435
+2025-08-23 09:37:31,403 - INFO - train: {'epoch': 57, 'time_epoch': 6.97787, 'eta': 977.88547, 'eta_hours': 0.27163, 'loss': 0.13631945, 'lr': 0.00025, 'params': 400930, 'time_iter': 0.08209, 'accuracy': 0.94516, 'auc': 0.96011, 'ap': 0.79175}
+2025-08-23 09:37:32,010 - INFO - val: {'epoch': 57, 'time_epoch': 0.57373, 'loss': 0.23401716, 'lr': 0, 'params': 400930, 'time_iter': 0.0302, 'accuracy': 0.91617, 'auc': 0.89559, 'ap': 0.62903}
+2025-08-23 09:37:32,626 - INFO - test: {'epoch': 57, 'time_epoch': 0.58149, 'loss': 0.24448129, 'lr': 0, 'params': 400930, 'time_iter': 0.0306, 'accuracy': 0.91403, 'auc': 0.89465, 'ap': 0.62581}
+2025-08-23 09:37:32,627 - INFO - > Epoch 57: took 8.3s (avg 8.2s) | Best so far: epoch 52	train_loss: 0.1416 train_ap: 0.7766	val_loss: 0.2194 val_ap: 0.6479	test_loss: 0.2328 test_ap: 0.6435
+2025-08-23 09:37:39,638 - INFO - train: {'epoch': 58, 'time_epoch': 6.9528, 'eta': 971.15735, 'eta_hours': 0.26977, 'loss': 0.1334803, 'lr': 0.00025, 'params': 400930, 'time_iter': 0.0818, 'accuracy': 0.94556, 'auc': 0.96235, 'ap': 0.79693}
+2025-08-23 09:37:40,248 - INFO - val: {'epoch': 58, 'time_epoch': 0.57582, 'loss': 0.22359979, 'lr': 0, 'params': 400930, 'time_iter': 0.03031, 'accuracy': 0.91767, 'auc': 0.90141, 'ap': 0.64007}
+2025-08-23 09:37:40,858 - INFO - test: {'epoch': 58, 'time_epoch': 0.57494, 'loss': 0.23358822, 'lr': 0, 'params': 400930, 'time_iter': 0.03026, 'accuracy': 0.91527, 'auc': 0.89861, 'ap': 0.64879}
+2025-08-23 09:37:40,859 - INFO - > Epoch 58: took 8.2s (avg 8.2s) | Best so far: epoch 52	train_loss: 0.1416 train_ap: 0.7766	val_loss: 0.2194 val_ap: 0.6479	test_loss: 0.2328 test_ap: 0.6435
+2025-08-23 09:37:47,819 - INFO - train: {'epoch': 59, 'time_epoch': 6.9028, 'eta': 964.30508, 'eta_hours': 0.26786, 'loss': 0.13295284, 'lr': 0.00025, 'params': 400930, 'time_iter': 0.08121, 'accuracy': 0.94604, 'auc': 0.96227, 'ap': 0.79853}
+2025-08-23 09:37:48,424 - INFO - val: {'epoch': 59, 'time_epoch': 0.57114, 'loss': 0.24430069, 'lr': 0, 'params': 400930, 'time_iter': 0.03006, 'accuracy': 0.91158, 'auc': 0.88726, 'ap': 0.61049}
+2025-08-23 09:37:49,032 - INFO - test: {'epoch': 59, 'time_epoch': 0.57443, 'loss': 0.25259022, 'lr': 0, 'params': 400930, 'time_iter': 0.03023, 'accuracy': 0.90918, 'auc': 0.88939, 'ap': 0.61611}
+2025-08-23 09:37:49,033 - INFO - > Epoch 59: took 8.2s (avg 8.2s) | Best so far: epoch 52	train_loss: 0.1416 train_ap: 0.7766	val_loss: 0.2194 val_ap: 0.6479	test_loss: 0.2328 test_ap: 0.6435
+2025-08-23 09:37:55,992 - INFO - train: {'epoch': 60, 'time_epoch': 6.90373, 'eta': 957.45327, 'eta_hours': 0.26596, 'loss': 0.13266535, 'lr': 0.00025, 'params': 400930, 'time_iter': 0.08122, 'accuracy': 0.9458, 'auc': 0.96259, 'ap': 0.79635}
+2025-08-23 09:37:56,602 - INFO - val: {'epoch': 60, 'time_epoch': 0.5747, 'loss': 0.22233234, 'lr': 0, 'params': 400930, 'time_iter': 0.03025, 'accuracy': 0.92029, 'auc': 0.90481, 'ap': 0.64735}
+2025-08-23 09:37:57,215 - INFO - test: {'epoch': 60, 'time_epoch': 0.57919, 'loss': 0.23642181, 'lr': 0, 'params': 400930, 'time_iter': 0.03048, 'accuracy': 0.91862, 'auc': 0.90167, 'ap': 0.64898}
+2025-08-23 09:37:57,217 - INFO - > Epoch 60: took 8.2s (avg 8.2s) | Best so far: epoch 52	train_loss: 0.1416 train_ap: 0.7766	val_loss: 0.2194 val_ap: 0.6479	test_loss: 0.2328 test_ap: 0.6435
+2025-08-23 09:38:04,176 - INFO - train: {'epoch': 61, 'time_epoch': 6.90286, 'eta': 950.59784, 'eta_hours': 0.26405, 'loss': 0.13497394, 'lr': 0.00025, 'params': 400930, 'time_iter': 0.08121, 'accuracy': 0.94511, 'auc': 0.96123, 'ap': 0.79309}
+2025-08-23 09:38:04,787 - INFO - val: {'epoch': 61, 'time_epoch': 0.57623, 'loss': 0.23972331, 'lr': 0, 'params': 400930, 'time_iter': 0.03033, 'accuracy': 0.91699, 'auc': 0.8948, 'ap': 0.63877}
+2025-08-23 09:38:05,399 - INFO - test: {'epoch': 61, 'time_epoch': 0.57838, 'loss': 0.24523235, 'lr': 0, 'params': 400930, 'time_iter': 0.03044, 'accuracy': 0.91446, 'auc': 0.89518, 'ap': 0.63926}
+2025-08-23 09:38:05,400 - INFO - > Epoch 61: took 8.2s (avg 8.2s) | Best so far: epoch 52	train_loss: 0.1416 train_ap: 0.7766	val_loss: 0.2194 val_ap: 0.6479	test_loss: 0.2328 test_ap: 0.6435
+2025-08-23 09:38:12,369 - INFO - train: {'epoch': 62, 'time_epoch': 6.91074, 'eta': 943.75805, 'eta_hours': 0.26216, 'loss': 0.13128826, 'lr': 0.00025, 'params': 400930, 'time_iter': 0.0813, 'accuracy': 0.94712, 'auc': 0.96276, 'ap': 0.80156}
+2025-08-23 09:38:12,971 - INFO - val: {'epoch': 62, 'time_epoch': 0.56832, 'loss': 0.2277594, 'lr': 0, 'params': 400930, 'time_iter': 0.02991, 'accuracy': 0.92055, 'auc': 0.90059, 'ap': 0.64634}
+2025-08-23 09:38:13,578 - INFO - test: {'epoch': 62, 'time_epoch': 0.57289, 'loss': 0.24130352, 'lr': 0, 'params': 400930, 'time_iter': 0.03015, 'accuracy': 0.91913, 'auc': 0.90017, 'ap': 0.64642}
+2025-08-23 09:38:13,580 - INFO - > Epoch 62: took 8.2s (avg 8.2s) | Best so far: epoch 52	train_loss: 0.1416 train_ap: 0.7766	val_loss: 0.2194 val_ap: 0.6479	test_loss: 0.2328 test_ap: 0.6435
+2025-08-23 09:38:20,430 - INFO - train: {'epoch': 63, 'time_epoch': 6.79484, 'eta': 936.66977, 'eta_hours': 0.26019, 'loss': 0.12973865, 'lr': 0.00025, 'params': 400930, 'time_iter': 0.07994, 'accuracy': 0.94767, 'auc': 0.96448, 'ap': 0.80304}
+2025-08-23 09:38:21,034 - INFO - val: {'epoch': 63, 'time_epoch': 0.56851, 'loss': 0.23186215, 'lr': 0, 'params': 400930, 'time_iter': 0.02992, 'accuracy': 0.91737, 'auc': 0.89677, 'ap': 0.63403}
+2025-08-23 09:38:21,641 - INFO - test: {'epoch': 63, 'time_epoch': 0.57253, 'loss': 0.2377398, 'lr': 0, 'params': 400930, 'time_iter': 0.03013, 'accuracy': 0.9169, 'auc': 0.89848, 'ap': 0.65168}
+2025-08-23 09:38:21,642 - INFO - > Epoch 63: took 8.1s (avg 8.2s) | Best so far: epoch 52	train_loss: 0.1416 train_ap: 0.7766	val_loss: 0.2194 val_ap: 0.6479	test_loss: 0.2328 test_ap: 0.6435
+2025-08-23 09:38:28,504 - INFO - train: {'epoch': 64, 'time_epoch': 6.80657, 'eta': 929.61487, 'eta_hours': 0.25823, 'loss': 0.12863741, 'lr': 0.00025, 'params': 400930, 'time_iter': 0.08008, 'accuracy': 0.94874, 'auc': 0.96439, 'ap': 0.80759}
+2025-08-23 09:38:29,112 - INFO - val: {'epoch': 64, 'time_epoch': 0.57234, 'loss': 0.23029303, 'lr': 0, 'params': 400930, 'time_iter': 0.03012, 'accuracy': 0.91695, 'auc': 0.89954, 'ap': 0.64876}
+2025-08-23 09:38:29,719 - INFO - test: {'epoch': 64, 'time_epoch': 0.57316, 'loss': 0.24009506, 'lr': 0, 'params': 400930, 'time_iter': 0.03017, 'accuracy': 0.9157, 'auc': 0.89828, 'ap': 0.64431}
+2025-08-23 09:38:29,721 - INFO - > Epoch 64: took 8.1s (avg 8.2s) | Best so far: epoch 64	train_loss: 0.1286 train_ap: 0.8076	val_loss: 0.2303 val_ap: 0.6488	test_loss: 0.2401 test_ap: 0.6443
+2025-08-23 09:38:36,568 - INFO - train: {'epoch': 65, 'time_epoch': 6.79366, 'eta': 922.54129, 'eta_hours': 0.25626, 'loss': 0.12771909, 'lr': 0.00025, 'params': 400930, 'time_iter': 0.07993, 'accuracy': 0.9482, 'auc': 0.96449, 'ap': 0.80747}
+2025-08-23 09:38:37,163 - INFO - val: {'epoch': 65, 'time_epoch': 0.56195, 'loss': 0.22981771, 'lr': 0, 'params': 400930, 'time_iter': 0.02958, 'accuracy': 0.92038, 'auc': 0.8981, 'ap': 0.63862}
+2025-08-23 09:38:37,769 - INFO - test: {'epoch': 65, 'time_epoch': 0.57168, 'loss': 0.2425735, 'lr': 0, 'params': 400930, 'time_iter': 0.03009, 'accuracy': 0.91772, 'auc': 0.89957, 'ap': 0.64441}
+2025-08-23 09:38:37,770 - INFO - > Epoch 65: took 8.0s (avg 8.2s) | Best so far: epoch 64	train_loss: 0.1286 train_ap: 0.8076	val_loss: 0.2303 val_ap: 0.6488	test_loss: 0.2401 test_ap: 0.6443
+2025-08-23 09:38:44,633 - INFO - train: {'epoch': 66, 'time_epoch': 6.80609, 'eta': 915.50073, 'eta_hours': 0.25431, 'loss': 0.12702334, 'lr': 0.00025, 'params': 400930, 'time_iter': 0.08007, 'accuracy': 0.94878, 'auc': 0.9656, 'ap': 0.81081}
+2025-08-23 09:38:45,232 - INFO - val: {'epoch': 66, 'time_epoch': 0.56585, 'loss': 0.23116845, 'lr': 0, 'params': 400930, 'time_iter': 0.02978, 'accuracy': 0.91892, 'auc': 0.89923, 'ap': 0.6376}
+2025-08-23 09:38:45,833 - INFO - test: {'epoch': 66, 'time_epoch': 0.56798, 'loss': 0.24446203, 'lr': 0, 'params': 400930, 'time_iter': 0.02989, 'accuracy': 0.91647, 'auc': 0.8977, 'ap': 0.64633}
+2025-08-23 09:38:45,835 - INFO - > Epoch 66: took 8.1s (avg 8.2s) | Best so far: epoch 64	train_loss: 0.1286 train_ap: 0.8076	val_loss: 0.2303 val_ap: 0.6488	test_loss: 0.2401 test_ap: 0.6443
+2025-08-23 09:38:52,675 - INFO - train: {'epoch': 67, 'time_epoch': 6.78133, 'eta': 908.41901, 'eta_hours': 0.25234, 'loss': 0.12675339, 'lr': 0.00025, 'params': 400930, 'time_iter': 0.07978, 'accuracy': 0.94798, 'auc': 0.96637, 'ap': 0.8136}
+2025-08-23 09:38:53,285 - INFO - val: {'epoch': 67, 'time_epoch': 0.57567, 'loss': 0.24590047, 'lr': 0, 'params': 400930, 'time_iter': 0.0303, 'accuracy': 0.91399, 'auc': 0.89092, 'ap': 0.61649}
+2025-08-23 09:38:53,897 - INFO - test: {'epoch': 67, 'time_epoch': 0.57719, 'loss': 0.25643115, 'lr': 0, 'params': 400930, 'time_iter': 0.03038, 'accuracy': 0.91055, 'auc': 0.89449, 'ap': 0.62284}
+Epoch 00068: reducing learning rate of group 0 to 1.2500e-04.
+2025-08-23 09:38:53,898 - INFO - > Epoch 67: took 8.1s (avg 8.2s) | Best so far: epoch 64	train_loss: 0.1286 train_ap: 0.8076	val_loss: 0.2303 val_ap: 0.6488	test_loss: 0.2401 test_ap: 0.6443
+2025-08-23 09:39:00,773 - INFO - train: {'epoch': 68, 'time_epoch': 6.81793, 'eta': 901.41548, 'eta_hours': 0.25039, 'loss': 0.11770547, 'lr': 0.000125, 'params': 400930, 'time_iter': 0.08021, 'accuracy': 0.95296, 'auc': 0.97053, 'ap': 0.83164}
+2025-08-23 09:39:01,374 - INFO - val: {'epoch': 68, 'time_epoch': 0.56673, 'loss': 0.22934624, 'lr': 0, 'params': 400930, 'time_iter': 0.02983, 'accuracy': 0.92154, 'auc': 0.90179, 'ap': 0.64978}
+2025-08-23 09:39:01,982 - INFO - test: {'epoch': 68, 'time_epoch': 0.57381, 'loss': 0.24076012, 'lr': 0, 'params': 400930, 'time_iter': 0.0302, 'accuracy': 0.91888, 'auc': 0.90241, 'ap': 0.66125}
+2025-08-23 09:39:01,984 - INFO - > Epoch 68: took 8.1s (avg 8.2s) | Best so far: epoch 68	train_loss: 0.1177 train_ap: 0.8316	val_loss: 0.2293 val_ap: 0.6498	test_loss: 0.2408 test_ap: 0.6613
+2025-08-23 09:39:08,853 - INFO - train: {'epoch': 69, 'time_epoch': 6.81376, 'eta': 894.40951, 'eta_hours': 0.24845, 'loss': 0.11576902, 'lr': 0.000125, 'params': 400930, 'time_iter': 0.08016, 'accuracy': 0.9534, 'auc': 0.97201, 'ap': 0.83672}
+2025-08-23 09:39:09,457 - INFO - val: {'epoch': 69, 'time_epoch': 0.5702, 'loss': 0.23254394, 'lr': 0, 'params': 400930, 'time_iter': 0.03001, 'accuracy': 0.92029, 'auc': 0.90206, 'ap': 0.65378}
+2025-08-23 09:39:10,064 - INFO - test: {'epoch': 69, 'time_epoch': 0.5727, 'loss': 0.24512274, 'lr': 0, 'params': 400930, 'time_iter': 0.03014, 'accuracy': 0.91931, 'auc': 0.90056, 'ap': 0.6569}
+2025-08-23 09:39:10,065 - INFO - > Epoch 69: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:39:17,204 - INFO - train: {'epoch': 70, 'time_epoch': 7.08154, 'eta': 887.89547, 'eta_hours': 0.24664, 'loss': 0.11584197, 'lr': 0.000125, 'params': 400930, 'time_iter': 0.08331, 'accuracy': 0.95355, 'auc': 0.97147, 'ap': 0.83635}
+2025-08-23 09:39:17,825 - INFO - val: {'epoch': 70, 'time_epoch': 0.58469, 'loss': 0.23224061, 'lr': 0, 'params': 400930, 'time_iter': 0.03077, 'accuracy': 0.92063, 'auc': 0.90185, 'ap': 0.64854}
+2025-08-23 09:39:18,440 - INFO - test: {'epoch': 70, 'time_epoch': 0.581, 'loss': 0.24426558, 'lr': 0, 'params': 400930, 'time_iter': 0.03058, 'accuracy': 0.91922, 'auc': 0.90015, 'ap': 0.65987}
+2025-08-23 09:39:18,442 - INFO - > Epoch 70: took 8.4s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:39:25,343 - INFO - train: {'epoch': 71, 'time_epoch': 6.84216, 'eta': 880.94011, 'eta_hours': 0.24471, 'loss': 0.11494131, 'lr': 0.000125, 'params': 400930, 'time_iter': 0.0805, 'accuracy': 0.95373, 'auc': 0.97174, 'ap': 0.83735}
+2025-08-23 09:39:25,954 - INFO - val: {'epoch': 71, 'time_epoch': 0.57553, 'loss': 0.2317566, 'lr': 0, 'params': 400930, 'time_iter': 0.03029, 'accuracy': 0.92003, 'auc': 0.90263, 'ap': 0.65097}
+2025-08-23 09:39:26,567 - INFO - test: {'epoch': 71, 'time_epoch': 0.57851, 'loss': 0.23927541, 'lr': 0, 'params': 400930, 'time_iter': 0.03045, 'accuracy': 0.91931, 'auc': 0.90373, 'ap': 0.66471}
+2025-08-23 09:39:26,569 - INFO - > Epoch 71: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:39:33,486 - INFO - train: {'epoch': 72, 'time_epoch': 6.86105, 'eta': 874.02072, 'eta_hours': 0.24278, 'loss': 0.11354014, 'lr': 0.000125, 'params': 400930, 'time_iter': 0.08072, 'accuracy': 0.9543, 'auc': 0.97319, 'ap': 0.84273}
+2025-08-23 09:39:34,098 - INFO - val: {'epoch': 72, 'time_epoch': 0.57741, 'loss': 0.23506747, 'lr': 0, 'params': 400930, 'time_iter': 0.03039, 'accuracy': 0.92102, 'auc': 0.90172, 'ap': 0.64805}
+2025-08-23 09:39:34,715 - INFO - test: {'epoch': 72, 'time_epoch': 0.58165, 'loss': 0.24490422, 'lr': 0, 'params': 400930, 'time_iter': 0.03061, 'accuracy': 0.9181, 'auc': 0.90144, 'ap': 0.65786}
+2025-08-23 09:39:34,716 - INFO - > Epoch 72: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:39:41,668 - INFO - train: {'epoch': 73, 'time_epoch': 6.89468, 'eta': 867.16017, 'eta_hours': 0.24088, 'loss': 0.11366951, 'lr': 0.000125, 'params': 400930, 'time_iter': 0.08111, 'accuracy': 0.95421, 'auc': 0.97286, 'ap': 0.84225}
+2025-08-23 09:39:42,284 - INFO - val: {'epoch': 73, 'time_epoch': 0.58068, 'loss': 0.23592715, 'lr': 0, 'params': 400930, 'time_iter': 0.03056, 'accuracy': 0.91853, 'auc': 0.90124, 'ap': 0.65068}
+2025-08-23 09:39:42,907 - INFO - test: {'epoch': 73, 'time_epoch': 0.58845, 'loss': 0.24469815, 'lr': 0, 'params': 400930, 'time_iter': 0.03097, 'accuracy': 0.91845, 'auc': 0.90324, 'ap': 0.65989}
+2025-08-23 09:39:42,908 - INFO - > Epoch 73: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:39:49,810 - INFO - train: {'epoch': 74, 'time_epoch': 6.8442, 'eta': 860.21457, 'eta_hours': 0.23895, 'loss': 0.11159648, 'lr': 0.000125, 'params': 400930, 'time_iter': 0.08052, 'accuracy': 0.955, 'auc': 0.97389, 'ap': 0.84619}
+2025-08-23 09:39:50,418 - INFO - val: {'epoch': 74, 'time_epoch': 0.5723, 'loss': 0.23627449, 'lr': 0, 'params': 400930, 'time_iter': 0.03012, 'accuracy': 0.91909, 'auc': 0.90005, 'ap': 0.64709}
+2025-08-23 09:39:51,029 - INFO - test: {'epoch': 74, 'time_epoch': 0.57655, 'loss': 0.24473706, 'lr': 0, 'params': 400930, 'time_iter': 0.03034, 'accuracy': 0.91716, 'auc': 0.90296, 'ap': 0.66122}
+2025-08-23 09:39:51,030 - INFO - > Epoch 74: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:39:57,910 - INFO - train: {'epoch': 75, 'time_epoch': 6.82281, 'eta': 853.23674, 'eta_hours': 0.23701, 'loss': 0.11288207, 'lr': 0.000125, 'params': 400930, 'time_iter': 0.08027, 'accuracy': 0.9549, 'auc': 0.97311, 'ap': 0.84535}
+2025-08-23 09:39:58,514 - INFO - val: {'epoch': 75, 'time_epoch': 0.56916, 'loss': 0.2363015, 'lr': 0, 'params': 400930, 'time_iter': 0.02996, 'accuracy': 0.91965, 'auc': 0.90189, 'ap': 0.65167}
+2025-08-23 09:39:59,124 - INFO - test: {'epoch': 75, 'time_epoch': 0.57555, 'loss': 0.24480473, 'lr': 0, 'params': 400930, 'time_iter': 0.03029, 'accuracy': 0.91716, 'auc': 0.90314, 'ap': 0.66442}
+2025-08-23 09:39:59,126 - INFO - > Epoch 75: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:40:05,999 - INFO - train: {'epoch': 76, 'time_epoch': 6.81552, 'eta': 846.2513, 'eta_hours': 0.23507, 'loss': 0.11103037, 'lr': 0.000125, 'params': 400930, 'time_iter': 0.08018, 'accuracy': 0.95573, 'auc': 0.97319, 'ap': 0.84797}
+2025-08-23 09:40:06,606 - INFO - val: {'epoch': 76, 'time_epoch': 0.57175, 'loss': 0.23686163, 'lr': 0, 'params': 400930, 'time_iter': 0.03009, 'accuracy': 0.92008, 'auc': 0.90067, 'ap': 0.65088}
+2025-08-23 09:40:07,214 - INFO - test: {'epoch': 76, 'time_epoch': 0.57379, 'loss': 0.24600716, 'lr': 0, 'params': 400930, 'time_iter': 0.0302, 'accuracy': 0.9184, 'auc': 0.90273, 'ap': 0.66167}
+2025-08-23 09:40:07,216 - INFO - > Epoch 76: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:40:14,105 - INFO - train: {'epoch': 77, 'time_epoch': 6.83201, 'eta': 839.29601, 'eta_hours': 0.23314, 'loss': 0.11130277, 'lr': 0.000125, 'params': 400930, 'time_iter': 0.08038, 'accuracy': 0.95532, 'auc': 0.97421, 'ap': 0.84662}
+2025-08-23 09:40:14,707 - INFO - val: {'epoch': 77, 'time_epoch': 0.567, 'loss': 0.23802927, 'lr': 0, 'params': 400930, 'time_iter': 0.02984, 'accuracy': 0.91986, 'auc': 0.9005, 'ap': 0.64963}
+2025-08-23 09:40:15,317 - INFO - test: {'epoch': 77, 'time_epoch': 0.57448, 'loss': 0.24579969, 'lr': 0, 'params': 400930, 'time_iter': 0.03024, 'accuracy': 0.91875, 'auc': 0.90055, 'ap': 0.66537}
+2025-08-23 09:40:15,318 - INFO - > Epoch 77: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:40:22,242 - INFO - train: {'epoch': 78, 'time_epoch': 6.86661, 'eta': 832.39683, 'eta_hours': 0.23122, 'loss': 0.11004092, 'lr': 0.000125, 'params': 400930, 'time_iter': 0.08078, 'accuracy': 0.95597, 'auc': 0.97484, 'ap': 0.84975}
+2025-08-23 09:40:22,849 - INFO - val: {'epoch': 78, 'time_epoch': 0.57196, 'loss': 0.24615429, 'lr': 0, 'params': 400930, 'time_iter': 0.0301, 'accuracy': 0.91793, 'auc': 0.89775, 'ap': 0.6502}
+2025-08-23 09:40:23,459 - INFO - test: {'epoch': 78, 'time_epoch': 0.57605, 'loss': 0.25379075, 'lr': 0, 'params': 400930, 'time_iter': 0.03032, 'accuracy': 0.91767, 'auc': 0.89963, 'ap': 0.65574}
+2025-08-23 09:40:23,461 - INFO - > Epoch 78: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:40:30,354 - INFO - train: {'epoch': 79, 'time_epoch': 6.83757, 'eta': 825.45491, 'eta_hours': 0.22929, 'loss': 0.10944926, 'lr': 0.000125, 'params': 400930, 'time_iter': 0.08044, 'accuracy': 0.95653, 'auc': 0.97491, 'ap': 0.85151}
+2025-08-23 09:40:30,962 - INFO - val: {'epoch': 79, 'time_epoch': 0.57339, 'loss': 0.23783918, 'lr': 0, 'params': 400930, 'time_iter': 0.03018, 'accuracy': 0.92076, 'auc': 0.90149, 'ap': 0.64964}
+2025-08-23 09:40:31,571 - INFO - test: {'epoch': 79, 'time_epoch': 0.57549, 'loss': 0.2495317, 'lr': 0, 'params': 400930, 'time_iter': 0.03029, 'accuracy': 0.91973, 'auc': 0.90263, 'ap': 0.66122}
+2025-08-23 09:40:31,573 - INFO - > Epoch 79: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:40:38,434 - INFO - train: {'epoch': 80, 'time_epoch': 6.80474, 'eta': 818.46733, 'eta_hours': 0.22735, 'loss': 0.1091759, 'lr': 0.000125, 'params': 400930, 'time_iter': 0.08006, 'accuracy': 0.95554, 'auc': 0.97472, 'ap': 0.84733}
+2025-08-23 09:40:39,046 - INFO - val: {'epoch': 80, 'time_epoch': 0.57717, 'loss': 0.24252483, 'lr': 0, 'params': 400930, 'time_iter': 0.03038, 'accuracy': 0.91883, 'auc': 0.90027, 'ap': 0.64587}
+2025-08-23 09:40:39,664 - INFO - test: {'epoch': 80, 'time_epoch': 0.58418, 'loss': 0.25159432, 'lr': 0, 'params': 400930, 'time_iter': 0.03075, 'accuracy': 0.9169, 'auc': 0.90294, 'ap': 0.66058}
+2025-08-23 09:40:39,665 - INFO - > Epoch 80: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:40:46,543 - INFO - train: {'epoch': 81, 'time_epoch': 6.82207, 'eta': 811.50914, 'eta_hours': 0.22542, 'loss': 0.10913085, 'lr': 0.000125, 'params': 400930, 'time_iter': 0.08026, 'accuracy': 0.95578, 'auc': 0.97541, 'ap': 0.84982}
+2025-08-23 09:40:47,149 - INFO - val: {'epoch': 81, 'time_epoch': 0.57107, 'loss': 0.24646024, 'lr': 0, 'params': 400930, 'time_iter': 0.03006, 'accuracy': 0.92025, 'auc': 0.89791, 'ap': 0.64396}
+2025-08-23 09:40:47,758 - INFO - test: {'epoch': 81, 'time_epoch': 0.57501, 'loss': 0.2569349, 'lr': 0, 'params': 400930, 'time_iter': 0.03026, 'accuracy': 0.91759, 'auc': 0.89857, 'ap': 0.65217}
+2025-08-23 09:40:47,760 - INFO - > Epoch 81: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:40:54,611 - INFO - train: {'epoch': 82, 'time_epoch': 6.79465, 'eta': 804.51559, 'eta_hours': 0.22348, 'loss': 0.10815611, 'lr': 0.000125, 'params': 400930, 'time_iter': 0.07994, 'accuracy': 0.95624, 'auc': 0.97538, 'ap': 0.85324}
+2025-08-23 09:40:55,215 - INFO - val: {'epoch': 82, 'time_epoch': 0.56978, 'loss': 0.24382758, 'lr': 0, 'params': 400930, 'time_iter': 0.02999, 'accuracy': 0.91849, 'auc': 0.90158, 'ap': 0.64936}
+2025-08-23 09:40:55,824 - INFO - test: {'epoch': 82, 'time_epoch': 0.57449, 'loss': 0.25280702, 'lr': 0, 'params': 400930, 'time_iter': 0.03024, 'accuracy': 0.91802, 'auc': 0.90387, 'ap': 0.659}
+2025-08-23 09:40:55,825 - INFO - > Epoch 82: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:41:02,736 - INFO - train: {'epoch': 83, 'time_epoch': 6.85401, 'eta': 797.60875, 'eta_hours': 0.22156, 'loss': 0.10642736, 'lr': 0.000125, 'params': 400930, 'time_iter': 0.08064, 'accuracy': 0.95714, 'auc': 0.97584, 'ap': 0.85701}
+2025-08-23 09:41:03,342 - INFO - val: {'epoch': 83, 'time_epoch': 0.57089, 'loss': 0.24519202, 'lr': 0, 'params': 400930, 'time_iter': 0.03005, 'accuracy': 0.91986, 'auc': 0.89997, 'ap': 0.64516}
+2025-08-23 09:41:03,950 - INFO - test: {'epoch': 83, 'time_epoch': 0.57454, 'loss': 0.25885943, 'lr': 0, 'params': 400930, 'time_iter': 0.03024, 'accuracy': 0.91532, 'auc': 0.90097, 'ap': 0.65468}
+2025-08-23 09:41:03,952 - INFO - > Epoch 83: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:41:10,838 - INFO - train: {'epoch': 84, 'time_epoch': 6.83023, 'eta': 790.67097, 'eta_hours': 0.21963, 'loss': 0.10722704, 'lr': 0.000125, 'params': 400930, 'time_iter': 0.08036, 'accuracy': 0.95762, 'auc': 0.97578, 'ap': 0.85658}
+2025-08-23 09:41:11,445 - INFO - val: {'epoch': 84, 'time_epoch': 0.57217, 'loss': 0.24769994, 'lr': 0, 'params': 400930, 'time_iter': 0.03011, 'accuracy': 0.91943, 'auc': 0.89761, 'ap': 0.6435}
+2025-08-23 09:41:12,054 - INFO - test: {'epoch': 84, 'time_epoch': 0.5744, 'loss': 0.25442186, 'lr': 0, 'params': 400930, 'time_iter': 0.03023, 'accuracy': 0.91798, 'auc': 0.89835, 'ap': 0.6546}
+2025-08-23 09:41:12,056 - INFO - > Epoch 84: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:41:18,946 - INFO - train: {'epoch': 85, 'time_epoch': 6.83428, 'eta': 783.74106, 'eta_hours': 0.21771, 'loss': 0.10564317, 'lr': 0.000125, 'params': 400930, 'time_iter': 0.0804, 'accuracy': 0.95733, 'auc': 0.9764, 'ap': 0.85748}
+2025-08-23 09:41:19,552 - INFO - val: {'epoch': 85, 'time_epoch': 0.57084, 'loss': 0.24732816, 'lr': 0, 'params': 400930, 'time_iter': 0.03004, 'accuracy': 0.91926, 'auc': 0.89899, 'ap': 0.64315}
+2025-08-23 09:41:20,161 - INFO - test: {'epoch': 85, 'time_epoch': 0.57508, 'loss': 0.25667068, 'lr': 0, 'params': 400930, 'time_iter': 0.03027, 'accuracy': 0.91802, 'auc': 0.90171, 'ap': 0.66013}
+2025-08-23 09:41:20,163 - INFO - > Epoch 85: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:41:27,246 - INFO - train: {'epoch': 86, 'time_epoch': 7.02836, 'eta': 777.06543, 'eta_hours': 0.21585, 'loss': 0.10627236, 'lr': 0.000125, 'params': 400930, 'time_iter': 0.08269, 'accuracy': 0.95705, 'auc': 0.9766, 'ap': 0.85513}
+2025-08-23 09:41:27,852 - INFO - val: {'epoch': 86, 'time_epoch': 0.57133, 'loss': 0.24829277, 'lr': 0, 'params': 400930, 'time_iter': 0.03007, 'accuracy': 0.92072, 'auc': 0.89867, 'ap': 0.64842}
+2025-08-23 09:41:28,462 - INFO - test: {'epoch': 86, 'time_epoch': 0.57576, 'loss': 0.25748545, 'lr': 0, 'params': 400930, 'time_iter': 0.0303, 'accuracy': 0.91896, 'auc': 0.90198, 'ap': 0.66407}
+2025-08-23 09:41:28,464 - INFO - > Epoch 86: took 8.3s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:41:35,364 - INFO - train: {'epoch': 87, 'time_epoch': 6.84342, 'eta': 770.14641, 'eta_hours': 0.21393, 'loss': 0.10596833, 'lr': 0.000125, 'params': 400930, 'time_iter': 0.08051, 'accuracy': 0.95736, 'auc': 0.97624, 'ap': 0.85511}
+2025-08-23 09:41:35,986 - INFO - val: {'epoch': 87, 'time_epoch': 0.58579, 'loss': 0.24681928, 'lr': 0, 'params': 400930, 'time_iter': 0.03083, 'accuracy': 0.91991, 'auc': 0.8978, 'ap': 0.64866}
+2025-08-23 09:41:36,608 - INFO - test: {'epoch': 87, 'time_epoch': 0.58656, 'loss': 0.25804744, 'lr': 0, 'params': 400930, 'time_iter': 0.03087, 'accuracy': 0.91798, 'auc': 0.89984, 'ap': 0.65736}
+2025-08-23 09:41:36,609 - INFO - > Epoch 87: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:41:43,488 - INFO - train: {'epoch': 88, 'time_epoch': 6.82272, 'eta': 763.20327, 'eta_hours': 0.212, 'loss': 0.10541897, 'lr': 0.000125, 'params': 400930, 'time_iter': 0.08027, 'accuracy': 0.95745, 'auc': 0.97633, 'ap': 0.86077}
+2025-08-23 09:41:44,097 - INFO - val: {'epoch': 88, 'time_epoch': 0.57385, 'loss': 0.24690253, 'lr': 0, 'params': 400930, 'time_iter': 0.0302, 'accuracy': 0.91845, 'auc': 0.90016, 'ap': 0.64481}
+2025-08-23 09:41:44,711 - INFO - test: {'epoch': 88, 'time_epoch': 0.57921, 'loss': 0.25545247, 'lr': 0, 'params': 400930, 'time_iter': 0.03048, 'accuracy': 0.91767, 'auc': 0.90126, 'ap': 0.66309}
+Epoch 00089: reducing learning rate of group 0 to 6.2500e-05.
+2025-08-23 09:41:44,712 - INFO - > Epoch 88: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:41:51,580 - INFO - train: {'epoch': 89, 'time_epoch': 6.81134, 'eta': 756.24889, 'eta_hours': 0.21007, 'loss': 0.10151889, 'lr': 6.25e-05, 'params': 400930, 'time_iter': 0.08013, 'accuracy': 0.95904, 'auc': 0.9786, 'ap': 0.86456}
+2025-08-23 09:41:52,191 - INFO - val: {'epoch': 89, 'time_epoch': 0.57566, 'loss': 0.24541771, 'lr': 0, 'params': 400930, 'time_iter': 0.0303, 'accuracy': 0.92021, 'auc': 0.89974, 'ap': 0.65028}
+2025-08-23 09:41:52,806 - INFO - test: {'epoch': 89, 'time_epoch': 0.58039, 'loss': 0.25633319, 'lr': 0, 'params': 400930, 'time_iter': 0.03055, 'accuracy': 0.91798, 'auc': 0.90253, 'ap': 0.66627}
+2025-08-23 09:41:52,808 - INFO - > Epoch 89: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:41:59,731 - INFO - train: {'epoch': 90, 'time_epoch': 6.86536, 'eta': 749.36237, 'eta_hours': 0.20816, 'loss': 0.10057509, 'lr': 6.25e-05, 'params': 400930, 'time_iter': 0.08077, 'accuracy': 0.95956, 'auc': 0.97924, 'ap': 0.86785}
+2025-08-23 09:42:00,348 - INFO - val: {'epoch': 90, 'time_epoch': 0.5819, 'loss': 0.24714676, 'lr': 0, 'params': 400930, 'time_iter': 0.03063, 'accuracy': 0.92016, 'auc': 0.89982, 'ap': 0.65206}
+2025-08-23 09:42:00,964 - INFO - test: {'epoch': 90, 'time_epoch': 0.58125, 'loss': 0.25574431, 'lr': 0, 'params': 400930, 'time_iter': 0.03059, 'accuracy': 0.91806, 'auc': 0.90319, 'ap': 0.66847}
+2025-08-23 09:42:00,966 - INFO - > Epoch 90: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:42:07,882 - INFO - train: {'epoch': 91, 'time_epoch': 6.86013, 'eta': 742.47016, 'eta_hours': 0.20624, 'loss': 0.09907541, 'lr': 6.25e-05, 'params': 400930, 'time_iter': 0.08071, 'accuracy': 0.9605, 'auc': 0.97945, 'ap': 0.86984}
+2025-08-23 09:42:08,493 - INFO - val: {'epoch': 91, 'time_epoch': 0.57621, 'loss': 0.24750854, 'lr': 0, 'params': 400930, 'time_iter': 0.03033, 'accuracy': 0.91978, 'auc': 0.89925, 'ap': 0.64979}
+2025-08-23 09:42:09,109 - INFO - test: {'epoch': 91, 'time_epoch': 0.58093, 'loss': 0.25513708, 'lr': 0, 'params': 400930, 'time_iter': 0.03058, 'accuracy': 0.91858, 'auc': 0.90323, 'ap': 0.66696}
+2025-08-23 09:42:09,111 - INFO - > Epoch 91: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:42:16,047 - INFO - train: {'epoch': 92, 'time_epoch': 6.88184, 'eta': 735.60363, 'eta_hours': 0.20433, 'loss': 0.09949065, 'lr': 6.25e-05, 'params': 400930, 'time_iter': 0.08096, 'accuracy': 0.95987, 'auc': 0.97933, 'ap': 0.86897}
+2025-08-23 09:42:16,660 - INFO - val: {'epoch': 92, 'time_epoch': 0.5786, 'loss': 0.25060198, 'lr': 0, 'params': 400930, 'time_iter': 0.03045, 'accuracy': 0.92089, 'auc': 0.89812, 'ap': 0.64791}
+2025-08-23 09:42:17,277 - INFO - test: {'epoch': 92, 'time_epoch': 0.58123, 'loss': 0.26091515, 'lr': 0, 'params': 400930, 'time_iter': 0.03059, 'accuracy': 0.91755, 'auc': 0.90196, 'ap': 0.66355}
+2025-08-23 09:42:17,279 - INFO - > Epoch 92: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:42:24,229 - INFO - train: {'epoch': 93, 'time_epoch': 6.89254, 'eta': 728.74884, 'eta_hours': 0.20243, 'loss': 0.09929048, 'lr': 6.25e-05, 'params': 400930, 'time_iter': 0.08109, 'accuracy': 0.96, 'auc': 0.97931, 'ap': 0.87018}
+2025-08-23 09:42:24,835 - INFO - val: {'epoch': 93, 'time_epoch': 0.57165, 'loss': 0.24676848, 'lr': 0, 'params': 400930, 'time_iter': 0.03009, 'accuracy': 0.92136, 'auc': 0.89995, 'ap': 0.65123}
+2025-08-23 09:42:25,446 - INFO - test: {'epoch': 93, 'time_epoch': 0.57601, 'loss': 0.25773721, 'lr': 0, 'params': 400930, 'time_iter': 0.03032, 'accuracy': 0.91767, 'auc': 0.90331, 'ap': 0.66563}
+2025-08-23 09:42:25,447 - INFO - > Epoch 93: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:42:32,351 - INFO - train: {'epoch': 94, 'time_epoch': 6.84752, 'eta': 721.84349, 'eta_hours': 0.20051, 'loss': 0.09804269, 'lr': 6.25e-05, 'params': 400930, 'time_iter': 0.08056, 'accuracy': 0.96122, 'auc': 0.98032, 'ap': 0.87608}
+2025-08-23 09:42:32,956 - INFO - val: {'epoch': 94, 'time_epoch': 0.57181, 'loss': 0.24786684, 'lr': 0, 'params': 400930, 'time_iter': 0.0301, 'accuracy': 0.92029, 'auc': 0.8989, 'ap': 0.64831}
+2025-08-23 09:42:33,568 - INFO - test: {'epoch': 94, 'time_epoch': 0.57633, 'loss': 0.25841701, 'lr': 0, 'params': 400930, 'time_iter': 0.03033, 'accuracy': 0.91849, 'auc': 0.90305, 'ap': 0.66537}
+2025-08-23 09:42:33,569 - INFO - > Epoch 94: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:42:40,447 - INFO - train: {'epoch': 95, 'time_epoch': 6.8208, 'eta': 714.9104, 'eta_hours': 0.19859, 'loss': 0.09818006, 'lr': 6.25e-05, 'params': 400930, 'time_iter': 0.08024, 'accuracy': 0.9607, 'auc': 0.97937, 'ap': 0.87226}
+2025-08-23 09:42:41,054 - INFO - val: {'epoch': 95, 'time_epoch': 0.57192, 'loss': 0.25220426, 'lr': 0, 'params': 400930, 'time_iter': 0.0301, 'accuracy': 0.91948, 'auc': 0.89861, 'ap': 0.64991}
+2025-08-23 09:42:41,667 - INFO - test: {'epoch': 95, 'time_epoch': 0.57756, 'loss': 0.26042626, 'lr': 0, 'params': 400930, 'time_iter': 0.0304, 'accuracy': 0.91772, 'auc': 0.90255, 'ap': 0.66665}
+2025-08-23 09:42:41,668 - INFO - > Epoch 95: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:42:48,546 - INFO - train: {'epoch': 96, 'time_epoch': 6.82245, 'eta': 707.98137, 'eta_hours': 0.19666, 'loss': 0.09784591, 'lr': 6.25e-05, 'params': 400930, 'time_iter': 0.08026, 'accuracy': 0.96052, 'auc': 0.97977, 'ap': 0.87162}
+2025-08-23 09:42:49,152 - INFO - val: {'epoch': 96, 'time_epoch': 0.57206, 'loss': 0.25114523, 'lr': 0, 'params': 400930, 'time_iter': 0.03011, 'accuracy': 0.91986, 'auc': 0.89808, 'ap': 0.64883}
+2025-08-23 09:42:49,761 - INFO - test: {'epoch': 96, 'time_epoch': 0.57521, 'loss': 0.26280817, 'lr': 0, 'params': 400930, 'time_iter': 0.03027, 'accuracy': 0.91772, 'auc': 0.89989, 'ap': 0.66017}
+2025-08-23 09:42:49,762 - INFO - > Epoch 96: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:42:56,622 - INFO - train: {'epoch': 97, 'time_epoch': 6.80269, 'eta': 701.03395, 'eta_hours': 0.19473, 'loss': 0.09804987, 'lr': 6.25e-05, 'params': 400930, 'time_iter': 0.08003, 'accuracy': 0.96042, 'auc': 0.98017, 'ap': 0.87264}
+2025-08-23 09:42:57,229 - INFO - val: {'epoch': 97, 'time_epoch': 0.57328, 'loss': 0.25354307, 'lr': 0, 'params': 400930, 'time_iter': 0.03017, 'accuracy': 0.919, 'auc': 0.89708, 'ap': 0.64835}
+2025-08-23 09:42:57,841 - INFO - test: {'epoch': 97, 'time_epoch': 0.57687, 'loss': 0.26135785, 'lr': 0, 'params': 400930, 'time_iter': 0.03036, 'accuracy': 0.91918, 'auc': 0.90069, 'ap': 0.66531}
+2025-08-23 09:42:57,843 - INFO - > Epoch 97: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:43:04,790 - INFO - train: {'epoch': 98, 'time_epoch': 6.89017, 'eta': 694.17871, 'eta_hours': 0.19283, 'loss': 0.09714628, 'lr': 6.25e-05, 'params': 400930, 'time_iter': 0.08106, 'accuracy': 0.96116, 'auc': 0.97981, 'ap': 0.86988}
+2025-08-23 09:43:05,399 - INFO - val: {'epoch': 98, 'time_epoch': 0.57329, 'loss': 0.25677941, 'lr': 0, 'params': 400930, 'time_iter': 0.03017, 'accuracy': 0.91896, 'auc': 0.89808, 'ap': 0.64643}
+2025-08-23 09:43:06,012 - INFO - test: {'epoch': 98, 'time_epoch': 0.57808, 'loss': 0.26859985, 'lr': 0, 'params': 400930, 'time_iter': 0.03043, 'accuracy': 0.91707, 'auc': 0.90157, 'ap': 0.66379}
+2025-08-23 09:43:06,013 - INFO - > Epoch 98: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:43:12,929 - INFO - train: {'epoch': 99, 'time_epoch': 6.85913, 'eta': 687.29173, 'eta_hours': 0.19091, 'loss': 0.09672764, 'lr': 6.25e-05, 'params': 400930, 'time_iter': 0.0807, 'accuracy': 0.96162, 'auc': 0.98017, 'ap': 0.87514}
+2025-08-23 09:43:13,537 - INFO - val: {'epoch': 99, 'time_epoch': 0.57349, 'loss': 0.25469743, 'lr': 0, 'params': 400930, 'time_iter': 0.03018, 'accuracy': 0.91793, 'auc': 0.89769, 'ap': 0.64628}
+2025-08-23 09:43:14,148 - INFO - test: {'epoch': 99, 'time_epoch': 0.57678, 'loss': 0.26347775, 'lr': 0, 'params': 400930, 'time_iter': 0.03036, 'accuracy': 0.91707, 'auc': 0.90189, 'ap': 0.66765}
+2025-08-23 09:43:14,220 - INFO - > Epoch 99: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:43:21,131 - INFO - train: {'epoch': 100, 'time_epoch': 6.85498, 'eta': 680.40123, 'eta_hours': 0.189, 'loss': 0.0964449, 'lr': 6.25e-05, 'params': 400930, 'time_iter': 0.08065, 'accuracy': 0.9614, 'auc': 0.98066, 'ap': 0.87766}
+2025-08-23 09:43:21,739 - INFO - val: {'epoch': 100, 'time_epoch': 0.57234, 'loss': 0.25291756, 'lr': 0, 'params': 400930, 'time_iter': 0.03012, 'accuracy': 0.91969, 'auc': 0.89798, 'ap': 0.64743}
+2025-08-23 09:43:22,356 - INFO - test: {'epoch': 100, 'time_epoch': 0.58251, 'loss': 0.26274076, 'lr': 0, 'params': 400930, 'time_iter': 0.03066, 'accuracy': 0.91823, 'auc': 0.90086, 'ap': 0.66391}
+2025-08-23 09:43:22,358 - INFO - > Epoch 100: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:43:29,296 - INFO - train: {'epoch': 101, 'time_epoch': 6.88164, 'eta': 673.53704, 'eta_hours': 0.18709, 'loss': 0.09605447, 'lr': 6.25e-05, 'params': 400930, 'time_iter': 0.08096, 'accuracy': 0.96201, 'auc': 0.98054, 'ap': 0.87574}
+2025-08-23 09:43:29,902 - INFO - val: {'epoch': 101, 'time_epoch': 0.57114, 'loss': 0.25656689, 'lr': 0, 'params': 400930, 'time_iter': 0.03006, 'accuracy': 0.91918, 'auc': 0.89926, 'ap': 0.64983}
+2025-08-23 09:43:30,518 - INFO - test: {'epoch': 101, 'time_epoch': 0.58056, 'loss': 0.26835721, 'lr': 0, 'params': 400930, 'time_iter': 0.03056, 'accuracy': 0.91828, 'auc': 0.9012, 'ap': 0.66804}
+2025-08-23 09:43:30,519 - INFO - > Epoch 101: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:43:37,621 - INFO - train: {'epoch': 102, 'time_epoch': 7.04418, 'eta': 666.82559, 'eta_hours': 0.18523, 'loss': 0.09694794, 'lr': 6.25e-05, 'params': 400930, 'time_iter': 0.08287, 'accuracy': 0.96075, 'auc': 0.98041, 'ap': 0.87554}
+2025-08-23 09:43:38,228 - INFO - val: {'epoch': 102, 'time_epoch': 0.57304, 'loss': 0.25855329, 'lr': 0, 'params': 400930, 'time_iter': 0.03016, 'accuracy': 0.91828, 'auc': 0.89704, 'ap': 0.64827}
+2025-08-23 09:43:38,843 - INFO - test: {'epoch': 102, 'time_epoch': 0.57968, 'loss': 0.26474166, 'lr': 0, 'params': 400930, 'time_iter': 0.03051, 'accuracy': 0.91832, 'auc': 0.9022, 'ap': 0.66989}
+2025-08-23 09:43:38,845 - INFO - > Epoch 102: took 8.3s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:43:45,775 - INFO - train: {'epoch': 103, 'time_epoch': 6.87298, 'eta': 659.9497, 'eta_hours': 0.18332, 'loss': 0.09665103, 'lr': 6.25e-05, 'params': 400930, 'time_iter': 0.08086, 'accuracy': 0.9611, 'auc': 0.98029, 'ap': 0.8748}
+2025-08-23 09:43:46,383 - INFO - val: {'epoch': 103, 'time_epoch': 0.57306, 'loss': 0.25730761, 'lr': 0, 'params': 400930, 'time_iter': 0.03016, 'accuracy': 0.91892, 'auc': 0.89744, 'ap': 0.64482}
+2025-08-23 09:43:46,996 - INFO - test: {'epoch': 103, 'time_epoch': 0.57734, 'loss': 0.26551538, 'lr': 0, 'params': 400930, 'time_iter': 0.03039, 'accuracy': 0.91913, 'auc': 0.90115, 'ap': 0.66507}
+2025-08-23 09:43:46,997 - INFO - > Epoch 103: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:43:53,908 - INFO - train: {'epoch': 104, 'time_epoch': 6.85367, 'eta': 653.0564, 'eta_hours': 0.1814, 'loss': 0.09510369, 'lr': 6.25e-05, 'params': 400930, 'time_iter': 0.08063, 'accuracy': 0.96238, 'auc': 0.98094, 'ap': 0.87976}
+2025-08-23 09:43:54,517 - INFO - val: {'epoch': 104, 'time_epoch': 0.57323, 'loss': 0.25758389, 'lr': 0, 'params': 400930, 'time_iter': 0.03017, 'accuracy': 0.91918, 'auc': 0.89765, 'ap': 0.64733}
+2025-08-23 09:43:55,131 - INFO - test: {'epoch': 104, 'time_epoch': 0.57884, 'loss': 0.26624325, 'lr': 0, 'params': 400930, 'time_iter': 0.03047, 'accuracy': 0.91767, 'auc': 0.90162, 'ap': 0.66431}
+2025-08-23 09:43:55,132 - INFO - > Epoch 104: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:44:02,055 - INFO - train: {'epoch': 105, 'time_epoch': 6.8655, 'eta': 646.17434, 'eta_hours': 0.17949, 'loss': 0.09568983, 'lr': 6.25e-05, 'params': 400930, 'time_iter': 0.08077, 'accuracy': 0.96195, 'auc': 0.98078, 'ap': 0.87835}
+2025-08-23 09:44:02,663 - INFO - val: {'epoch': 105, 'time_epoch': 0.5743, 'loss': 0.25763893, 'lr': 0, 'params': 400930, 'time_iter': 0.03023, 'accuracy': 0.91913, 'auc': 0.89773, 'ap': 0.64586}
+2025-08-23 09:44:03,275 - INFO - test: {'epoch': 105, 'time_epoch': 0.57694, 'loss': 0.27009726, 'lr': 0, 'params': 400930, 'time_iter': 0.03037, 'accuracy': 0.91776, 'auc': 0.90076, 'ap': 0.66504}
+2025-08-23 09:44:03,276 - INFO - > Epoch 105: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:44:10,250 - INFO - train: {'epoch': 106, 'time_epoch': 6.91732, 'eta': 639.33763, 'eta_hours': 0.17759, 'loss': 0.09523525, 'lr': 6.25e-05, 'params': 400930, 'time_iter': 0.08138, 'accuracy': 0.96202, 'auc': 0.98095, 'ap': 0.87916}
+2025-08-23 09:44:10,860 - INFO - val: {'epoch': 106, 'time_epoch': 0.57598, 'loss': 0.25744921, 'lr': 0, 'params': 400930, 'time_iter': 0.03031, 'accuracy': 0.92081, 'auc': 0.8983, 'ap': 0.64883}
+2025-08-23 09:44:11,475 - INFO - test: {'epoch': 106, 'time_epoch': 0.58079, 'loss': 0.26721678, 'lr': 0, 'params': 400930, 'time_iter': 0.03057, 'accuracy': 0.91853, 'auc': 0.90157, 'ap': 0.6694}
+2025-08-23 09:44:11,476 - INFO - > Epoch 106: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:44:18,409 - INFO - train: {'epoch': 107, 'time_epoch': 6.87625, 'eta': 632.46444, 'eta_hours': 0.17568, 'loss': 0.09546184, 'lr': 6.25e-05, 'params': 400930, 'time_iter': 0.0809, 'accuracy': 0.96153, 'auc': 0.98091, 'ap': 0.87866}
+2025-08-23 09:44:19,016 - INFO - val: {'epoch': 107, 'time_epoch': 0.57293, 'loss': 0.25555843, 'lr': 0, 'params': 400930, 'time_iter': 0.03015, 'accuracy': 0.91845, 'auc': 0.89765, 'ap': 0.64602}
+2025-08-23 09:44:19,628 - INFO - test: {'epoch': 107, 'time_epoch': 0.57678, 'loss': 0.26401893, 'lr': 0, 'params': 400930, 'time_iter': 0.03036, 'accuracy': 0.91772, 'auc': 0.90201, 'ap': 0.66791}
+2025-08-23 09:44:19,629 - INFO - > Epoch 107: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:44:26,548 - INFO - train: {'epoch': 108, 'time_epoch': 6.86183, 'eta': 625.57916, 'eta_hours': 0.17377, 'loss': 0.09298504, 'lr': 6.25e-05, 'params': 400930, 'time_iter': 0.08073, 'accuracy': 0.96268, 'auc': 0.98215, 'ap': 0.88158}
+2025-08-23 09:44:27,156 - INFO - val: {'epoch': 108, 'time_epoch': 0.57378, 'loss': 0.25701072, 'lr': 0, 'params': 400930, 'time_iter': 0.0302, 'accuracy': 0.91948, 'auc': 0.89753, 'ap': 0.65225}
+2025-08-23 09:44:27,768 - INFO - test: {'epoch': 108, 'time_epoch': 0.57763, 'loss': 0.26687267, 'lr': 0, 'params': 400930, 'time_iter': 0.0304, 'accuracy': 0.91948, 'auc': 0.90124, 'ap': 0.66761}
+2025-08-23 09:44:27,770 - INFO - > Epoch 108: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:44:34,682 - INFO - train: {'epoch': 109, 'time_epoch': 6.85433, 'eta': 618.68816, 'eta_hours': 0.17186, 'loss': 0.09378378, 'lr': 6.25e-05, 'params': 400930, 'time_iter': 0.08064, 'accuracy': 0.96273, 'auc': 0.98138, 'ap': 0.87961}
+2025-08-23 09:44:35,291 - INFO - val: {'epoch': 109, 'time_epoch': 0.57528, 'loss': 0.26008414, 'lr': 0, 'params': 400930, 'time_iter': 0.03028, 'accuracy': 0.91896, 'auc': 0.89744, 'ap': 0.64565}
+2025-08-23 09:44:35,910 - INFO - test: {'epoch': 109, 'time_epoch': 0.58419, 'loss': 0.26971785, 'lr': 0, 'params': 400930, 'time_iter': 0.03075, 'accuracy': 0.91699, 'auc': 0.90097, 'ap': 0.66271}
+Epoch 00110: reducing learning rate of group 0 to 3.1250e-05.
+2025-08-23 09:44:35,912 - INFO - > Epoch 109: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:44:42,838 - INFO - train: {'epoch': 110, 'time_epoch': 6.87025, 'eta': 611.81059, 'eta_hours': 0.16995, 'loss': 0.09256968, 'lr': 3.125e-05, 'params': 400930, 'time_iter': 0.08083, 'accuracy': 0.96307, 'auc': 0.98215, 'ap': 0.88397}
+2025-08-23 09:44:43,449 - INFO - val: {'epoch': 110, 'time_epoch': 0.57671, 'loss': 0.2608082, 'lr': 0, 'params': 400930, 'time_iter': 0.03035, 'accuracy': 0.91883, 'auc': 0.89762, 'ap': 0.64943}
+2025-08-23 09:44:44,067 - INFO - test: {'epoch': 110, 'time_epoch': 0.58261, 'loss': 0.26960412, 'lr': 0, 'params': 400930, 'time_iter': 0.03066, 'accuracy': 0.91918, 'auc': 0.90147, 'ap': 0.66827}
+2025-08-23 09:44:44,068 - INFO - > Epoch 110: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:44:51,021 - INFO - train: {'epoch': 111, 'time_epoch': 6.89676, 'eta': 604.95398, 'eta_hours': 0.16804, 'loss': 0.09363127, 'lr': 3.125e-05, 'params': 400930, 'time_iter': 0.08114, 'accuracy': 0.96247, 'auc': 0.98162, 'ap': 0.88247}
+2025-08-23 09:44:51,628 - INFO - val: {'epoch': 111, 'time_epoch': 0.57248, 'loss': 0.25880533, 'lr': 0, 'params': 400930, 'time_iter': 0.03013, 'accuracy': 0.91948, 'auc': 0.89846, 'ap': 0.65141}
+2025-08-23 09:44:52,243 - INFO - test: {'epoch': 111, 'time_epoch': 0.58079, 'loss': 0.2688659, 'lr': 0, 'params': 400930, 'time_iter': 0.03057, 'accuracy': 0.91832, 'auc': 0.90213, 'ap': 0.66777}
+2025-08-23 09:44:52,245 - INFO - > Epoch 111: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:44:59,209 - INFO - train: {'epoch': 112, 'time_epoch': 6.90661, 'eta': 598.10424, 'eta_hours': 0.16614, 'loss': 0.09243904, 'lr': 3.125e-05, 'params': 400930, 'time_iter': 0.08125, 'accuracy': 0.96324, 'auc': 0.98189, 'ap': 0.88619}
+2025-08-23 09:44:59,818 - INFO - val: {'epoch': 112, 'time_epoch': 0.57405, 'loss': 0.25974131, 'lr': 0, 'params': 400930, 'time_iter': 0.03021, 'accuracy': 0.91862, 'auc': 0.89703, 'ap': 0.64633}
+2025-08-23 09:45:00,440 - INFO - test: {'epoch': 112, 'time_epoch': 0.58695, 'loss': 0.26797469, 'lr': 0, 'params': 400930, 'time_iter': 0.03089, 'accuracy': 0.91896, 'auc': 0.90115, 'ap': 0.66863}
+2025-08-23 09:45:00,441 - INFO - > Epoch 112: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:45:07,414 - INFO - train: {'epoch': 113, 'time_epoch': 6.91538, 'eta': 591.26013, 'eta_hours': 0.16424, 'loss': 0.09163515, 'lr': 3.125e-05, 'params': 400930, 'time_iter': 0.08136, 'accuracy': 0.96363, 'auc': 0.98259, 'ap': 0.88645}
+2025-08-23 09:45:08,036 - INFO - val: {'epoch': 113, 'time_epoch': 0.58673, 'loss': 0.25872221, 'lr': 0, 'params': 400930, 'time_iter': 0.03088, 'accuracy': 0.92046, 'auc': 0.89744, 'ap': 0.64925}
+2025-08-23 09:45:08,654 - INFO - test: {'epoch': 113, 'time_epoch': 0.58373, 'loss': 0.26900325, 'lr': 0, 'params': 400930, 'time_iter': 0.03072, 'accuracy': 0.91909, 'auc': 0.90092, 'ap': 0.66655}
+2025-08-23 09:45:08,656 - INFO - > Epoch 113: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:45:15,593 - INFO - train: {'epoch': 114, 'time_epoch': 6.87989, 'eta': 584.38854, 'eta_hours': 0.16233, 'loss': 0.09233401, 'lr': 3.125e-05, 'params': 400930, 'time_iter': 0.08094, 'accuracy': 0.96334, 'auc': 0.9822, 'ap': 0.88327}
+2025-08-23 09:45:16,201 - INFO - val: {'epoch': 114, 'time_epoch': 0.57345, 'loss': 0.26153339, 'lr': 0, 'params': 400930, 'time_iter': 0.03018, 'accuracy': 0.9184, 'auc': 0.89669, 'ap': 0.6463}
+2025-08-23 09:45:16,817 - INFO - test: {'epoch': 114, 'time_epoch': 0.58078, 'loss': 0.27185509, 'lr': 0, 'params': 400930, 'time_iter': 0.03057, 'accuracy': 0.91763, 'auc': 0.90058, 'ap': 0.66613}
+2025-08-23 09:45:16,818 - INFO - > Epoch 114: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:45:23,772 - INFO - train: {'epoch': 115, 'time_epoch': 6.897, 'eta': 577.52919, 'eta_hours': 0.16042, 'loss': 0.09086724, 'lr': 3.125e-05, 'params': 400930, 'time_iter': 0.08114, 'accuracy': 0.96356, 'auc': 0.98279, 'ap': 0.8874}
+2025-08-23 09:45:24,383 - INFO - val: {'epoch': 115, 'time_epoch': 0.57605, 'loss': 0.26418965, 'lr': 0, 'params': 400930, 'time_iter': 0.03032, 'accuracy': 0.91802, 'auc': 0.89584, 'ap': 0.64504}
+2025-08-23 09:45:24,999 - INFO - test: {'epoch': 115, 'time_epoch': 0.58175, 'loss': 0.27148112, 'lr': 0, 'params': 400930, 'time_iter': 0.03062, 'accuracy': 0.91896, 'auc': 0.90036, 'ap': 0.6634}
+2025-08-23 09:45:25,001 - INFO - > Epoch 115: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:45:31,952 - INFO - train: {'epoch': 116, 'time_epoch': 6.89357, 'eta': 570.66677, 'eta_hours': 0.15852, 'loss': 0.09114721, 'lr': 3.125e-05, 'params': 400930, 'time_iter': 0.0811, 'accuracy': 0.96342, 'auc': 0.98256, 'ap': 0.8863}
+2025-08-23 09:45:32,563 - INFO - val: {'epoch': 116, 'time_epoch': 0.57647, 'loss': 0.26134567, 'lr': 0, 'params': 400930, 'time_iter': 0.03034, 'accuracy': 0.91879, 'auc': 0.89717, 'ap': 0.64814}
+2025-08-23 09:45:33,177 - INFO - test: {'epoch': 116, 'time_epoch': 0.57985, 'loss': 0.27017299, 'lr': 0, 'params': 400930, 'time_iter': 0.03052, 'accuracy': 0.91798, 'auc': 0.90161, 'ap': 0.66761}
+2025-08-23 09:45:33,179 - INFO - > Epoch 116: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:45:40,132 - INFO - train: {'epoch': 117, 'time_epoch': 6.8959, 'eta': 563.80544, 'eta_hours': 0.15661, 'loss': 0.08984398, 'lr': 3.125e-05, 'params': 400930, 'time_iter': 0.08113, 'accuracy': 0.96402, 'auc': 0.98287, 'ap': 0.88588}
+2025-08-23 09:45:40,744 - INFO - val: {'epoch': 117, 'time_epoch': 0.57666, 'loss': 0.26274812, 'lr': 0, 'params': 400930, 'time_iter': 0.03035, 'accuracy': 0.91875, 'auc': 0.89658, 'ap': 0.64369}
+2025-08-23 09:45:41,359 - INFO - test: {'epoch': 117, 'time_epoch': 0.58086, 'loss': 0.27153644, 'lr': 0, 'params': 400930, 'time_iter': 0.03057, 'accuracy': 0.91772, 'auc': 0.90166, 'ap': 0.66566}
+2025-08-23 09:45:41,361 - INFO - > Epoch 117: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:45:48,541 - INFO - train: {'epoch': 118, 'time_epoch': 7.12281, 'eta': 557.09799, 'eta_hours': 0.15475, 'loss': 0.09037756, 'lr': 3.125e-05, 'params': 400930, 'time_iter': 0.0838, 'accuracy': 0.96423, 'auc': 0.98308, 'ap': 0.88682}
+2025-08-23 09:45:49,151 - INFO - val: {'epoch': 118, 'time_epoch': 0.5746, 'loss': 0.26160698, 'lr': 0, 'params': 400930, 'time_iter': 0.03024, 'accuracy': 0.9184, 'auc': 0.89758, 'ap': 0.64875}
+2025-08-23 09:45:49,766 - INFO - test: {'epoch': 118, 'time_epoch': 0.57989, 'loss': 0.27067695, 'lr': 0, 'params': 400930, 'time_iter': 0.03052, 'accuracy': 0.91853, 'auc': 0.90217, 'ap': 0.67012}
+2025-08-23 09:45:49,768 - INFO - > Epoch 118: took 8.4s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:45:56,675 - INFO - train: {'epoch': 119, 'time_epoch': 6.85128, 'eta': 550.20258, 'eta_hours': 0.15283, 'loss': 0.09111485, 'lr': 3.125e-05, 'params': 400930, 'time_iter': 0.0806, 'accuracy': 0.96317, 'auc': 0.98302, 'ap': 0.88629}
+2025-08-23 09:45:57,284 - INFO - val: {'epoch': 119, 'time_epoch': 0.57317, 'loss': 0.26528482, 'lr': 0, 'params': 400930, 'time_iter': 0.03017, 'accuracy': 0.91845, 'auc': 0.89624, 'ap': 0.6474}
+2025-08-23 09:45:57,896 - INFO - test: {'epoch': 119, 'time_epoch': 0.57742, 'loss': 0.27294883, 'lr': 0, 'params': 400930, 'time_iter': 0.03039, 'accuracy': 0.91849, 'auc': 0.90131, 'ap': 0.66713}
+2025-08-23 09:45:57,898 - INFO - > Epoch 119: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:46:04,827 - INFO - train: {'epoch': 120, 'time_epoch': 6.87456, 'eta': 543.32311, 'eta_hours': 0.15092, 'loss': 0.09004594, 'lr': 3.125e-05, 'params': 400930, 'time_iter': 0.08088, 'accuracy': 0.96422, 'auc': 0.98293, 'ap': 0.888}
+2025-08-23 09:46:05,439 - INFO - val: {'epoch': 120, 'time_epoch': 0.57681, 'loss': 0.26373303, 'lr': 0, 'params': 400930, 'time_iter': 0.03036, 'accuracy': 0.91866, 'auc': 0.89649, 'ap': 0.64587}
+2025-08-23 09:46:06,055 - INFO - test: {'epoch': 120, 'time_epoch': 0.58195, 'loss': 0.27121181, 'lr': 0, 'params': 400930, 'time_iter': 0.03063, 'accuracy': 0.91828, 'auc': 0.90144, 'ap': 0.66739}
+2025-08-23 09:46:06,056 - INFO - > Epoch 120: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:46:13,012 - INFO - train: {'epoch': 121, 'time_epoch': 6.90032, 'eta': 536.46019, 'eta_hours': 0.14902, 'loss': 0.08870684, 'lr': 3.125e-05, 'params': 400930, 'time_iter': 0.08118, 'accuracy': 0.96466, 'auc': 0.98326, 'ap': 0.88908}
+2025-08-23 09:46:13,624 - INFO - val: {'epoch': 121, 'time_epoch': 0.57748, 'loss': 0.2646605, 'lr': 0, 'params': 400930, 'time_iter': 0.03039, 'accuracy': 0.91802, 'auc': 0.89612, 'ap': 0.64481}
+2025-08-23 09:46:14,243 - INFO - test: {'epoch': 121, 'time_epoch': 0.58447, 'loss': 0.27254485, 'lr': 0, 'params': 400930, 'time_iter': 0.03076, 'accuracy': 0.9184, 'auc': 0.90165, 'ap': 0.6679}
+2025-08-23 09:46:14,244 - INFO - > Epoch 121: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:46:21,171 - INFO - train: {'epoch': 122, 'time_epoch': 6.87015, 'eta': 529.57777, 'eta_hours': 0.1471, 'loss': 0.09017804, 'lr': 3.125e-05, 'params': 400930, 'time_iter': 0.08083, 'accuracy': 0.96462, 'auc': 0.98275, 'ap': 0.88541}
+2025-08-23 09:46:21,781 - INFO - val: {'epoch': 122, 'time_epoch': 0.57565, 'loss': 0.26679821, 'lr': 0, 'params': 400930, 'time_iter': 0.0303, 'accuracy': 0.91819, 'auc': 0.89526, 'ap': 0.64344}
+2025-08-23 09:46:22,397 - INFO - test: {'epoch': 122, 'time_epoch': 0.58159, 'loss': 0.27273612, 'lr': 0, 'params': 400930, 'time_iter': 0.03061, 'accuracy': 0.91828, 'auc': 0.89994, 'ap': 0.66496}
+2025-08-23 09:46:22,399 - INFO - > Epoch 122: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:46:29,339 - INFO - train: {'epoch': 123, 'time_epoch': 6.88333, 'eta': 522.70363, 'eta_hours': 0.1452, 'loss': 0.09017947, 'lr': 3.125e-05, 'params': 400930, 'time_iter': 0.08098, 'accuracy': 0.96362, 'auc': 0.98317, 'ap': 0.88626}
+2025-08-23 09:46:29,952 - INFO - val: {'epoch': 123, 'time_epoch': 0.57775, 'loss': 0.26289097, 'lr': 0, 'params': 400930, 'time_iter': 0.03041, 'accuracy': 0.9178, 'auc': 0.8976, 'ap': 0.64812}
+2025-08-23 09:46:30,572 - INFO - test: {'epoch': 123, 'time_epoch': 0.58505, 'loss': 0.27228254, 'lr': 0, 'params': 400930, 'time_iter': 0.03079, 'accuracy': 0.91806, 'auc': 0.90181, 'ap': 0.66925}
+2025-08-23 09:46:30,574 - INFO - > Epoch 123: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:46:37,536 - INFO - train: {'epoch': 124, 'time_epoch': 6.9052, 'eta': 515.84246, 'eta_hours': 0.14329, 'loss': 0.08878541, 'lr': 3.125e-05, 'params': 400930, 'time_iter': 0.08124, 'accuracy': 0.96496, 'auc': 0.98359, 'ap': 0.89236}
+2025-08-23 09:46:38,149 - INFO - val: {'epoch': 124, 'time_epoch': 0.57813, 'loss': 0.26556537, 'lr': 0, 'params': 400930, 'time_iter': 0.03043, 'accuracy': 0.91819, 'auc': 0.89638, 'ap': 0.6471}
+2025-08-23 09:46:38,768 - INFO - test: {'epoch': 124, 'time_epoch': 0.58443, 'loss': 0.27241957, 'lr': 0, 'params': 400930, 'time_iter': 0.03076, 'accuracy': 0.91888, 'auc': 0.90144, 'ap': 0.66883}
+2025-08-23 09:46:38,769 - INFO - > Epoch 124: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:46:45,669 - INFO - train: {'epoch': 125, 'time_epoch': 6.8437, 'eta': 508.94448, 'eta_hours': 0.14137, 'loss': 0.08974218, 'lr': 3.125e-05, 'params': 400930, 'time_iter': 0.08051, 'accuracy': 0.96417, 'auc': 0.98342, 'ap': 0.88896}
+2025-08-23 09:46:46,280 - INFO - val: {'epoch': 125, 'time_epoch': 0.57611, 'loss': 0.26621008, 'lr': 0, 'params': 400930, 'time_iter': 0.03032, 'accuracy': 0.9181, 'auc': 0.8954, 'ap': 0.6466}
+2025-08-23 09:46:46,896 - INFO - test: {'epoch': 125, 'time_epoch': 0.58212, 'loss': 0.2717767, 'lr': 0, 'params': 400930, 'time_iter': 0.03064, 'accuracy': 0.9178, 'auc': 0.90148, 'ap': 0.66892}
+2025-08-23 09:46:46,897 - INFO - > Epoch 125: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:46:53,787 - INFO - train: {'epoch': 126, 'time_epoch': 6.834, 'eta': 502.04177, 'eta_hours': 0.13946, 'loss': 0.09000033, 'lr': 3.125e-05, 'params': 400930, 'time_iter': 0.0804, 'accuracy': 0.96333, 'auc': 0.98289, 'ap': 0.88627}
+2025-08-23 09:46:54,395 - INFO - val: {'epoch': 126, 'time_epoch': 0.57464, 'loss': 0.26299106, 'lr': 0, 'params': 400930, 'time_iter': 0.03024, 'accuracy': 0.91858, 'auc': 0.89606, 'ap': 0.64729}
+2025-08-23 09:46:55,010 - INFO - test: {'epoch': 126, 'time_epoch': 0.58049, 'loss': 0.27052873, 'lr': 0, 'params': 400930, 'time_iter': 0.03055, 'accuracy': 0.91836, 'auc': 0.90101, 'ap': 0.66768}
+2025-08-23 09:46:55,012 - INFO - > Epoch 126: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:47:01,954 - INFO - train: {'epoch': 127, 'time_epoch': 6.88436, 'eta': 495.16846, 'eta_hours': 0.13755, 'loss': 0.08863423, 'lr': 3.125e-05, 'params': 400930, 'time_iter': 0.08099, 'accuracy': 0.96447, 'auc': 0.98378, 'ap': 0.89296}
+2025-08-23 09:47:02,565 - INFO - val: {'epoch': 127, 'time_epoch': 0.57591, 'loss': 0.26640133, 'lr': 0, 'params': 400930, 'time_iter': 0.03031, 'accuracy': 0.91798, 'auc': 0.89625, 'ap': 0.64561}
+2025-08-23 09:47:03,178 - INFO - test: {'epoch': 127, 'time_epoch': 0.57808, 'loss': 0.27584805, 'lr': 0, 'params': 400930, 'time_iter': 0.03043, 'accuracy': 0.91798, 'auc': 0.90028, 'ap': 0.66702}
+2025-08-23 09:47:03,180 - INFO - > Epoch 127: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:47:10,095 - INFO - train: {'epoch': 128, 'time_epoch': 6.85868, 'eta': 488.28085, 'eta_hours': 0.13563, 'loss': 0.08939744, 'lr': 3.125e-05, 'params': 400930, 'time_iter': 0.08069, 'accuracy': 0.96447, 'auc': 0.98335, 'ap': 0.89088}
+2025-08-23 09:47:10,703 - INFO - val: {'epoch': 128, 'time_epoch': 0.57329, 'loss': 0.26645916, 'lr': 0, 'params': 400930, 'time_iter': 0.03017, 'accuracy': 0.91866, 'auc': 0.89655, 'ap': 0.64855}
+2025-08-23 09:47:11,315 - INFO - test: {'epoch': 128, 'time_epoch': 0.57787, 'loss': 0.27628481, 'lr': 0, 'params': 400930, 'time_iter': 0.03041, 'accuracy': 0.91729, 'auc': 0.90057, 'ap': 0.66726}
+2025-08-23 09:47:11,317 - INFO - > Epoch 128: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:47:18,199 - INFO - train: {'epoch': 129, 'time_epoch': 6.82437, 'eta': 481.37521, 'eta_hours': 0.13372, 'loss': 0.08824765, 'lr': 3.125e-05, 'params': 400930, 'time_iter': 0.08029, 'accuracy': 0.9652, 'auc': 0.98366, 'ap': 0.89065}
+2025-08-23 09:47:18,811 - INFO - val: {'epoch': 129, 'time_epoch': 0.57722, 'loss': 0.26711339, 'lr': 0, 'params': 400930, 'time_iter': 0.03038, 'accuracy': 0.91858, 'auc': 0.897, 'ap': 0.6453}
+2025-08-23 09:47:19,425 - INFO - test: {'epoch': 129, 'time_epoch': 0.5791, 'loss': 0.27856181, 'lr': 0, 'params': 400930, 'time_iter': 0.03048, 'accuracy': 0.91767, 'auc': 0.90075, 'ap': 0.6637}
+2025-08-23 09:47:19,426 - INFO - > Epoch 129: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:47:26,335 - INFO - train: {'epoch': 130, 'time_epoch': 6.85262, 'eta': 474.4857, 'eta_hours': 0.1318, 'loss': 0.0886018, 'lr': 3.125e-05, 'params': 400930, 'time_iter': 0.08062, 'accuracy': 0.96456, 'auc': 0.98354, 'ap': 0.89075}
+2025-08-23 09:47:26,943 - INFO - val: {'epoch': 130, 'time_epoch': 0.57392, 'loss': 0.26895498, 'lr': 0, 'params': 400930, 'time_iter': 0.03021, 'accuracy': 0.9181, 'auc': 0.89551, 'ap': 0.64466}
+2025-08-23 09:47:27,558 - INFO - test: {'epoch': 130, 'time_epoch': 0.58024, 'loss': 0.27890042, 'lr': 0, 'params': 400930, 'time_iter': 0.03054, 'accuracy': 0.91712, 'auc': 0.90011, 'ap': 0.66635}
+Epoch 00131: reducing learning rate of group 0 to 1.5625e-05.
+2025-08-23 09:47:27,560 - INFO - > Epoch 130: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:47:34,473 - INFO - train: {'epoch': 131, 'time_epoch': 6.85596, 'eta': 467.59846, 'eta_hours': 0.12989, 'loss': 0.08754309, 'lr': 1.563e-05, 'params': 400930, 'time_iter': 0.08066, 'accuracy': 0.96487, 'auc': 0.98417, 'ap': 0.89092}
+2025-08-23 09:47:35,079 - INFO - val: {'epoch': 131, 'time_epoch': 0.57102, 'loss': 0.26756371, 'lr': 0, 'params': 400930, 'time_iter': 0.03005, 'accuracy': 0.91823, 'auc': 0.89613, 'ap': 0.64702}
+2025-08-23 09:47:35,692 - INFO - test: {'epoch': 131, 'time_epoch': 0.57856, 'loss': 0.27557273, 'lr': 0, 'params': 400930, 'time_iter': 0.03045, 'accuracy': 0.91845, 'auc': 0.90025, 'ap': 0.6676}
+2025-08-23 09:47:35,694 - INFO - > Epoch 131: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:47:42,633 - INFO - train: {'epoch': 132, 'time_epoch': 6.88342, 'eta': 460.72552, 'eta_hours': 0.12798, 'loss': 0.08722956, 'lr': 1.563e-05, 'params': 400930, 'time_iter': 0.08098, 'accuracy': 0.96551, 'auc': 0.98379, 'ap': 0.89312}
+2025-08-23 09:47:43,240 - INFO - val: {'epoch': 132, 'time_epoch': 0.57298, 'loss': 0.26921324, 'lr': 0, 'params': 400930, 'time_iter': 0.03016, 'accuracy': 0.91789, 'auc': 0.89647, 'ap': 0.64735}
+2025-08-23 09:47:43,854 - INFO - test: {'epoch': 132, 'time_epoch': 0.57894, 'loss': 0.27737083, 'lr': 0, 'params': 400930, 'time_iter': 0.03047, 'accuracy': 0.91828, 'auc': 0.90091, 'ap': 0.6685}
+2025-08-23 09:47:43,856 - INFO - > Epoch 132: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:47:50,757 - INFO - train: {'epoch': 133, 'time_epoch': 6.84472, 'eta': 453.83337, 'eta_hours': 0.12606, 'loss': 0.08696748, 'lr': 1.563e-05, 'params': 400930, 'time_iter': 0.08053, 'accuracy': 0.96558, 'auc': 0.98426, 'ap': 0.89486}
+2025-08-23 09:47:51,364 - INFO - val: {'epoch': 133, 'time_epoch': 0.5726, 'loss': 0.27026182, 'lr': 0, 'params': 400930, 'time_iter': 0.03014, 'accuracy': 0.91767, 'auc': 0.8961, 'ap': 0.64683}
+2025-08-23 09:47:51,971 - INFO - test: {'epoch': 133, 'time_epoch': 0.57396, 'loss': 0.2773366, 'lr': 0, 'params': 400930, 'time_iter': 0.03021, 'accuracy': 0.91819, 'auc': 0.9012, 'ap': 0.66833}
+2025-08-23 09:47:51,973 - INFO - > Epoch 133: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:47:59,109 - INFO - train: {'epoch': 134, 'time_epoch': 7.07874, 'eta': 447.0546, 'eta_hours': 0.12418, 'loss': 0.08731833, 'lr': 1.563e-05, 'params': 400930, 'time_iter': 0.08328, 'accuracy': 0.96544, 'auc': 0.98428, 'ap': 0.89554}
+2025-08-23 09:47:59,716 - INFO - val: {'epoch': 134, 'time_epoch': 0.5724, 'loss': 0.27009412, 'lr': 0, 'params': 400930, 'time_iter': 0.03013, 'accuracy': 0.91746, 'auc': 0.89599, 'ap': 0.64617}
+2025-08-23 09:48:00,334 - INFO - test: {'epoch': 134, 'time_epoch': 0.58347, 'loss': 0.27958895, 'lr': 0, 'params': 400930, 'time_iter': 0.03071, 'accuracy': 0.91828, 'auc': 0.90102, 'ap': 0.66757}
+2025-08-23 09:48:00,336 - INFO - > Epoch 134: took 8.4s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:48:07,246 - INFO - train: {'epoch': 135, 'time_epoch': 6.85292, 'eta': 440.16514, 'eta_hours': 0.12227, 'loss': 0.0884799, 'lr': 1.563e-05, 'params': 400930, 'time_iter': 0.08062, 'accuracy': 0.96447, 'auc': 0.98381, 'ap': 0.89413}
+2025-08-23 09:48:07,854 - INFO - val: {'epoch': 135, 'time_epoch': 0.57332, 'loss': 0.269358, 'lr': 0, 'params': 400930, 'time_iter': 0.03017, 'accuracy': 0.91772, 'auc': 0.89643, 'ap': 0.64659}
+2025-08-23 09:48:08,469 - INFO - test: {'epoch': 135, 'time_epoch': 0.58064, 'loss': 0.27757479, 'lr': 0, 'params': 400930, 'time_iter': 0.03056, 'accuracy': 0.91789, 'auc': 0.90121, 'ap': 0.66722}
+2025-08-23 09:48:08,470 - INFO - > Epoch 135: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:48:15,365 - INFO - train: {'epoch': 136, 'time_epoch': 6.83713, 'eta': 433.26896, 'eta_hours': 0.12035, 'loss': 0.08768624, 'lr': 1.563e-05, 'params': 400930, 'time_iter': 0.08044, 'accuracy': 0.96512, 'auc': 0.98404, 'ap': 0.89294}
+2025-08-23 09:48:15,974 - INFO - val: {'epoch': 136, 'time_epoch': 0.57487, 'loss': 0.26981866, 'lr': 0, 'params': 400930, 'time_iter': 0.03026, 'accuracy': 0.91862, 'auc': 0.89566, 'ap': 0.6466}
+2025-08-23 09:48:16,593 - INFO - test: {'epoch': 136, 'time_epoch': 0.58363, 'loss': 0.27827155, 'lr': 0, 'params': 400930, 'time_iter': 0.03072, 'accuracy': 0.91853, 'auc': 0.90088, 'ap': 0.66659}
+2025-08-23 09:48:16,594 - INFO - > Epoch 136: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:48:23,484 - INFO - train: {'epoch': 137, 'time_epoch': 6.83376, 'eta': 426.37212, 'eta_hours': 0.11844, 'loss': 0.08804734, 'lr': 1.563e-05, 'params': 400930, 'time_iter': 0.0804, 'accuracy': 0.96494, 'auc': 0.98397, 'ap': 0.89398}
+2025-08-23 09:48:24,093 - INFO - val: {'epoch': 137, 'time_epoch': 0.57398, 'loss': 0.27069988, 'lr': 0, 'params': 400930, 'time_iter': 0.03021, 'accuracy': 0.91845, 'auc': 0.89566, 'ap': 0.64576}
+2025-08-23 09:48:24,706 - INFO - test: {'epoch': 137, 'time_epoch': 0.57836, 'loss': 0.27747715, 'lr': 0, 'params': 400930, 'time_iter': 0.03044, 'accuracy': 0.9172, 'auc': 0.90111, 'ap': 0.66635}
+2025-08-23 09:48:24,707 - INFO - > Epoch 137: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:48:31,655 - INFO - train: {'epoch': 138, 'time_epoch': 6.89004, 'eta': 419.50089, 'eta_hours': 0.11653, 'loss': 0.08693174, 'lr': 1.563e-05, 'params': 400930, 'time_iter': 0.08106, 'accuracy': 0.9654, 'auc': 0.98453, 'ap': 0.89439}
+2025-08-23 09:48:32,260 - INFO - val: {'epoch': 138, 'time_epoch': 0.57098, 'loss': 0.26887619, 'lr': 0, 'params': 400930, 'time_iter': 0.03005, 'accuracy': 0.91875, 'auc': 0.89571, 'ap': 0.64736}
+2025-08-23 09:48:32,875 - INFO - test: {'epoch': 138, 'time_epoch': 0.57912, 'loss': 0.27849598, 'lr': 0, 'params': 400930, 'time_iter': 0.03048, 'accuracy': 0.91767, 'auc': 0.90039, 'ap': 0.66671}
+2025-08-23 09:48:32,876 - INFO - > Epoch 138: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:48:39,799 - INFO - train: {'epoch': 139, 'time_epoch': 6.86636, 'eta': 412.61924, 'eta_hours': 0.11462, 'loss': 0.08681458, 'lr': 1.563e-05, 'params': 400930, 'time_iter': 0.08078, 'accuracy': 0.9654, 'auc': 0.98427, 'ap': 0.89528}
+2025-08-23 09:48:40,415 - INFO - val: {'epoch': 139, 'time_epoch': 0.58147, 'loss': 0.26868518, 'lr': 0, 'params': 400930, 'time_iter': 0.0306, 'accuracy': 0.91686, 'auc': 0.8959, 'ap': 0.64561}
+2025-08-23 09:48:41,028 - INFO - test: {'epoch': 139, 'time_epoch': 0.5782, 'loss': 0.27544226, 'lr': 0, 'params': 400930, 'time_iter': 0.03043, 'accuracy': 0.91772, 'auc': 0.9013, 'ap': 0.66687}
+2025-08-23 09:48:41,029 - INFO - > Epoch 139: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:48:47,966 - INFO - train: {'epoch': 140, 'time_epoch': 6.88147, 'eta': 405.74413, 'eta_hours': 0.11271, 'loss': 0.08686, 'lr': 1.563e-05, 'params': 400930, 'time_iter': 0.08096, 'accuracy': 0.96568, 'auc': 0.98425, 'ap': 0.89446}
+2025-08-23 09:48:48,573 - INFO - val: {'epoch': 140, 'time_epoch': 0.57292, 'loss': 0.26846645, 'lr': 0, 'params': 400930, 'time_iter': 0.03015, 'accuracy': 0.91793, 'auc': 0.89562, 'ap': 0.647}
+2025-08-23 09:48:49,186 - INFO - test: {'epoch': 140, 'time_epoch': 0.57759, 'loss': 0.27710852, 'lr': 0, 'params': 400930, 'time_iter': 0.0304, 'accuracy': 0.91729, 'auc': 0.90103, 'ap': 0.66689}
+2025-08-23 09:48:49,188 - INFO - > Epoch 140: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:48:56,130 - INFO - train: {'epoch': 141, 'time_epoch': 6.88427, 'eta': 398.87007, 'eta_hours': 0.1108, 'loss': 0.08781055, 'lr': 1.563e-05, 'params': 400930, 'time_iter': 0.08099, 'accuracy': 0.96528, 'auc': 0.98378, 'ap': 0.89287}
+2025-08-23 09:48:56,741 - INFO - val: {'epoch': 141, 'time_epoch': 0.57618, 'loss': 0.26932475, 'lr': 0, 'params': 400930, 'time_iter': 0.03033, 'accuracy': 0.91733, 'auc': 0.89526, 'ap': 0.64355}
+2025-08-23 09:48:57,357 - INFO - test: {'epoch': 141, 'time_epoch': 0.58135, 'loss': 0.27693399, 'lr': 0, 'params': 400930, 'time_iter': 0.0306, 'accuracy': 0.91883, 'auc': 0.90084, 'ap': 0.66712}
+2025-08-23 09:48:57,358 - INFO - > Epoch 141: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:49:04,301 - INFO - train: {'epoch': 142, 'time_epoch': 6.88642, 'eta': 391.99672, 'eta_hours': 0.10889, 'loss': 0.08633089, 'lr': 1.563e-05, 'params': 400930, 'time_iter': 0.08102, 'accuracy': 0.96588, 'auc': 0.98444, 'ap': 0.89365}
+2025-08-23 09:49:04,913 - INFO - val: {'epoch': 142, 'time_epoch': 0.5768, 'loss': 0.26891147, 'lr': 0, 'params': 400930, 'time_iter': 0.03036, 'accuracy': 0.91815, 'auc': 0.89597, 'ap': 0.64615}
+2025-08-23 09:49:05,527 - INFO - test: {'epoch': 142, 'time_epoch': 0.57899, 'loss': 0.27590942, 'lr': 0, 'params': 400930, 'time_iter': 0.03047, 'accuracy': 0.91935, 'auc': 0.90157, 'ap': 0.66957}
+2025-08-23 09:49:05,529 - INFO - > Epoch 142: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:49:12,476 - INFO - train: {'epoch': 143, 'time_epoch': 6.89101, 'eta': 385.12498, 'eta_hours': 0.10698, 'loss': 0.08715731, 'lr': 1.563e-05, 'params': 400930, 'time_iter': 0.08107, 'accuracy': 0.9646, 'auc': 0.98415, 'ap': 0.89558}
+2025-08-23 09:49:13,092 - INFO - val: {'epoch': 143, 'time_epoch': 0.58012, 'loss': 0.27119691, 'lr': 0, 'params': 400930, 'time_iter': 0.03053, 'accuracy': 0.9178, 'auc': 0.89538, 'ap': 0.64409}
+2025-08-23 09:49:13,708 - INFO - test: {'epoch': 143, 'time_epoch': 0.58184, 'loss': 0.27941409, 'lr': 0, 'params': 400930, 'time_iter': 0.03062, 'accuracy': 0.91819, 'auc': 0.90095, 'ap': 0.6666}
+2025-08-23 09:49:13,710 - INFO - > Epoch 143: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:49:20,638 - INFO - train: {'epoch': 144, 'time_epoch': 6.87178, 'eta': 378.24568, 'eta_hours': 0.10507, 'loss': 0.08576935, 'lr': 1.563e-05, 'params': 400930, 'time_iter': 0.08084, 'accuracy': 0.96621, 'auc': 0.98493, 'ap': 0.89659}
+2025-08-23 09:49:21,248 - INFO - val: {'epoch': 144, 'time_epoch': 0.57549, 'loss': 0.2706648, 'lr': 0, 'params': 400930, 'time_iter': 0.03029, 'accuracy': 0.91836, 'auc': 0.89529, 'ap': 0.64586}
+2025-08-23 09:49:21,859 - INFO - test: {'epoch': 144, 'time_epoch': 0.57706, 'loss': 0.28067679, 'lr': 0, 'params': 400930, 'time_iter': 0.03037, 'accuracy': 0.91785, 'auc': 0.90045, 'ap': 0.66632}
+2025-08-23 09:49:21,861 - INFO - > Epoch 144: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:49:28,807 - INFO - train: {'epoch': 145, 'time_epoch': 6.89076, 'eta': 371.3735, 'eta_hours': 0.10316, 'loss': 0.08560788, 'lr': 1.563e-05, 'params': 400930, 'time_iter': 0.08107, 'accuracy': 0.96585, 'auc': 0.98445, 'ap': 0.89565}
+2025-08-23 09:49:29,415 - INFO - val: {'epoch': 145, 'time_epoch': 0.57382, 'loss': 0.26994623, 'lr': 0, 'params': 400930, 'time_iter': 0.0302, 'accuracy': 0.91819, 'auc': 0.8952, 'ap': 0.64448}
+2025-08-23 09:49:30,029 - INFO - test: {'epoch': 145, 'time_epoch': 0.57866, 'loss': 0.27820179, 'lr': 0, 'params': 400930, 'time_iter': 0.03046, 'accuracy': 0.91823, 'auc': 0.90078, 'ap': 0.6674}
+2025-08-23 09:49:30,031 - INFO - > Epoch 145: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:49:36,913 - INFO - train: {'epoch': 146, 'time_epoch': 6.82477, 'eta': 364.47728, 'eta_hours': 0.10124, 'loss': 0.08770847, 'lr': 1.563e-05, 'params': 400930, 'time_iter': 0.08029, 'accuracy': 0.9649, 'auc': 0.98421, 'ap': 0.89107}
+2025-08-23 09:49:37,521 - INFO - val: {'epoch': 146, 'time_epoch': 0.57324, 'loss': 0.27051645, 'lr': 0, 'params': 400930, 'time_iter': 0.03017, 'accuracy': 0.91695, 'auc': 0.8962, 'ap': 0.64605}
+2025-08-23 09:49:38,133 - INFO - test: {'epoch': 146, 'time_epoch': 0.57778, 'loss': 0.27913265, 'lr': 0, 'params': 400930, 'time_iter': 0.03041, 'accuracy': 0.91772, 'auc': 0.90139, 'ap': 0.66767}
+2025-08-23 09:49:38,135 - INFO - > Epoch 146: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:49:45,055 - INFO - train: {'epoch': 147, 'time_epoch': 6.86466, 'eta': 357.59604, 'eta_hours': 0.09933, 'loss': 0.08626198, 'lr': 1.563e-05, 'params': 400930, 'time_iter': 0.08076, 'accuracy': 0.96587, 'auc': 0.98429, 'ap': 0.89376}
+2025-08-23 09:49:45,661 - INFO - val: {'epoch': 147, 'time_epoch': 0.57146, 'loss': 0.27002317, 'lr': 0, 'params': 400930, 'time_iter': 0.03008, 'accuracy': 0.91862, 'auc': 0.8958, 'ap': 0.64659}
+2025-08-23 09:49:46,273 - INFO - test: {'epoch': 147, 'time_epoch': 0.57765, 'loss': 0.27990556, 'lr': 0, 'params': 400930, 'time_iter': 0.0304, 'accuracy': 0.91875, 'auc': 0.90083, 'ap': 0.66671}
+2025-08-23 09:49:46,275 - INFO - > Epoch 147: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:49:53,205 - INFO - train: {'epoch': 148, 'time_epoch': 6.87357, 'eta': 350.71807, 'eta_hours': 0.09742, 'loss': 0.086256, 'lr': 1.563e-05, 'params': 400930, 'time_iter': 0.08087, 'accuracy': 0.96588, 'auc': 0.98449, 'ap': 0.89583}
+2025-08-23 09:49:53,815 - INFO - val: {'epoch': 148, 'time_epoch': 0.57535, 'loss': 0.26959997, 'lr': 0, 'params': 400930, 'time_iter': 0.03028, 'accuracy': 0.91772, 'auc': 0.89546, 'ap': 0.6468}
+2025-08-23 09:49:54,430 - INFO - test: {'epoch': 148, 'time_epoch': 0.58021, 'loss': 0.27850837, 'lr': 0, 'params': 400930, 'time_iter': 0.03054, 'accuracy': 0.91866, 'auc': 0.90054, 'ap': 0.66862}
+2025-08-23 09:49:54,432 - INFO - > Epoch 148: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:50:01,361 - INFO - train: {'epoch': 149, 'time_epoch': 6.87198, 'eta': 343.83963, 'eta_hours': 0.09551, 'loss': 0.08680472, 'lr': 1.563e-05, 'params': 400930, 'time_iter': 0.08085, 'accuracy': 0.96499, 'auc': 0.98445, 'ap': 0.8935}
+2025-08-23 09:50:01,972 - INFO - val: {'epoch': 149, 'time_epoch': 0.5765, 'loss': 0.27262297, 'lr': 0, 'params': 400930, 'time_iter': 0.03034, 'accuracy': 0.91755, 'auc': 0.89519, 'ap': 0.64562}
+2025-08-23 09:50:02,590 - INFO - test: {'epoch': 149, 'time_epoch': 0.58371, 'loss': 0.2811709, 'lr': 0, 'params': 400930, 'time_iter': 0.03072, 'accuracy': 0.91737, 'auc': 0.90062, 'ap': 0.66629}
+2025-08-23 09:50:02,592 - INFO - > Epoch 149: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:50:09,534 - INFO - train: {'epoch': 150, 'time_epoch': 6.8853, 'eta': 336.9656, 'eta_hours': 0.0936, 'loss': 0.08536165, 'lr': 1.563e-05, 'params': 400930, 'time_iter': 0.081, 'accuracy': 0.96599, 'auc': 0.98507, 'ap': 0.8971}
+2025-08-23 09:50:10,373 - INFO - val: {'epoch': 150, 'time_epoch': 0.80573, 'loss': 0.27062088, 'lr': 0, 'params': 400930, 'time_iter': 0.04241, 'accuracy': 0.91815, 'auc': 0.89577, 'ap': 0.64866}
+2025-08-23 09:50:10,988 - INFO - test: {'epoch': 150, 'time_epoch': 0.58064, 'loss': 0.28134477, 'lr': 0, 'params': 400930, 'time_iter': 0.03056, 'accuracy': 0.91832, 'auc': 0.90072, 'ap': 0.66721}
+2025-08-23 09:50:10,989 - INFO - > Epoch 150: took 8.4s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:50:17,907 - INFO - train: {'epoch': 151, 'time_epoch': 6.86179, 'eta': 330.084, 'eta_hours': 0.09169, 'loss': 0.08630888, 'lr': 1.563e-05, 'params': 400930, 'time_iter': 0.08073, 'accuracy': 0.96587, 'auc': 0.98448, 'ap': 0.89773}
+2025-08-23 09:50:18,518 - INFO - val: {'epoch': 151, 'time_epoch': 0.57475, 'loss': 0.26896225, 'lr': 0, 'params': 400930, 'time_iter': 0.03025, 'accuracy': 0.91806, 'auc': 0.89563, 'ap': 0.64498}
+2025-08-23 09:50:19,132 - INFO - test: {'epoch': 151, 'time_epoch': 0.5794, 'loss': 0.27792048, 'lr': 0, 'params': 400930, 'time_iter': 0.03049, 'accuracy': 0.9184, 'auc': 0.90102, 'ap': 0.66732}
+Epoch 00152: reducing learning rate of group 0 to 1.0000e-05.
+2025-08-23 09:50:19,134 - INFO - > Epoch 151: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:50:26,037 - INFO - train: {'epoch': 152, 'time_epoch': 6.8455, 'eta': 323.19765, 'eta_hours': 0.08978, 'loss': 0.08568936, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08054, 'accuracy': 0.96569, 'auc': 0.98486, 'ap': 0.89932}
+2025-08-23 09:50:26,645 - INFO - val: {'epoch': 152, 'time_epoch': 0.5745, 'loss': 0.26964561, 'lr': 0, 'params': 400930, 'time_iter': 0.03024, 'accuracy': 0.91733, 'auc': 0.89646, 'ap': 0.64782}
+2025-08-23 09:50:27,257 - INFO - test: {'epoch': 152, 'time_epoch': 0.57718, 'loss': 0.28008737, 'lr': 0, 'params': 400930, 'time_iter': 0.03038, 'accuracy': 0.91892, 'auc': 0.9008, 'ap': 0.66831}
+2025-08-23 09:50:27,259 - INFO - > Epoch 152: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:50:34,190 - INFO - train: {'epoch': 153, 'time_epoch': 6.87374, 'eta': 316.32026, 'eta_hours': 0.08787, 'loss': 0.08445319, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08087, 'accuracy': 0.96709, 'auc': 0.98506, 'ap': 0.89784}
+2025-08-23 09:50:34,796 - INFO - val: {'epoch': 153, 'time_epoch': 0.57197, 'loss': 0.27128603, 'lr': 0, 'params': 400930, 'time_iter': 0.0301, 'accuracy': 0.91763, 'auc': 0.89596, 'ap': 0.6471}
+2025-08-23 09:50:35,409 - INFO - test: {'epoch': 153, 'time_epoch': 0.57807, 'loss': 0.2820117, 'lr': 0, 'params': 400930, 'time_iter': 0.03042, 'accuracy': 0.91772, 'auc': 0.90069, 'ap': 0.66706}
+2025-08-23 09:50:35,411 - INFO - > Epoch 153: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:50:42,294 - INFO - train: {'epoch': 154, 'time_epoch': 6.82807, 'eta': 309.42967, 'eta_hours': 0.08595, 'loss': 0.08559143, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08033, 'accuracy': 0.96619, 'auc': 0.98465, 'ap': 0.89714}
+2025-08-23 09:50:42,900 - INFO - val: {'epoch': 154, 'time_epoch': 0.57157, 'loss': 0.26999955, 'lr': 0, 'params': 400930, 'time_iter': 0.03008, 'accuracy': 0.91755, 'auc': 0.89605, 'ap': 0.6469}
+2025-08-23 09:50:43,511 - INFO - test: {'epoch': 154, 'time_epoch': 0.57583, 'loss': 0.27930919, 'lr': 0, 'params': 400930, 'time_iter': 0.03031, 'accuracy': 0.91896, 'auc': 0.9009, 'ap': 0.66955}
+2025-08-23 09:50:43,513 - INFO - > Epoch 154: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:50:50,397 - INFO - train: {'epoch': 155, 'time_epoch': 6.82636, 'eta': 302.53939, 'eta_hours': 0.08404, 'loss': 0.08575, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08031, 'accuracy': 0.96565, 'auc': 0.98456, 'ap': 0.89595}
+2025-08-23 09:50:51,007 - INFO - val: {'epoch': 155, 'time_epoch': 0.57571, 'loss': 0.27227024, 'lr': 0, 'params': 400930, 'time_iter': 0.0303, 'accuracy': 0.91802, 'auc': 0.89526, 'ap': 0.64665}
+2025-08-23 09:50:51,621 - INFO - test: {'epoch': 155, 'time_epoch': 0.57869, 'loss': 0.28113392, 'lr': 0, 'params': 400930, 'time_iter': 0.03046, 'accuracy': 0.91806, 'auc': 0.90075, 'ap': 0.66778}
+2025-08-23 09:50:51,622 - INFO - > Epoch 155: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:50:58,517 - INFO - train: {'epoch': 156, 'time_epoch': 6.83731, 'eta': 295.65293, 'eta_hours': 0.08213, 'loss': 0.08525703, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08044, 'accuracy': 0.96613, 'auc': 0.98516, 'ap': 0.89789}
+2025-08-23 09:50:59,131 - INFO - val: {'epoch': 156, 'time_epoch': 0.57886, 'loss': 0.27007627, 'lr': 0, 'params': 400930, 'time_iter': 0.03047, 'accuracy': 0.91836, 'auc': 0.89552, 'ap': 0.64615}
+2025-08-23 09:50:59,745 - INFO - test: {'epoch': 156, 'time_epoch': 0.57907, 'loss': 0.27842686, 'lr': 0, 'params': 400930, 'time_iter': 0.03048, 'accuracy': 0.91913, 'auc': 0.90088, 'ap': 0.66766}
+2025-08-23 09:50:59,746 - INFO - > Epoch 156: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:51:06,643 - INFO - train: {'epoch': 157, 'time_epoch': 6.83982, 'eta': 288.76776, 'eta_hours': 0.08021, 'loss': 0.08609142, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08047, 'accuracy': 0.96553, 'auc': 0.98458, 'ap': 0.89491}
+2025-08-23 09:51:07,256 - INFO - val: {'epoch': 157, 'time_epoch': 0.57728, 'loss': 0.27313357, 'lr': 0, 'params': 400930, 'time_iter': 0.03038, 'accuracy': 0.91677, 'auc': 0.89536, 'ap': 0.64533}
+2025-08-23 09:51:07,870 - INFO - test: {'epoch': 157, 'time_epoch': 0.57945, 'loss': 0.28081219, 'lr': 0, 'params': 400930, 'time_iter': 0.0305, 'accuracy': 0.91836, 'auc': 0.90102, 'ap': 0.66823}
+2025-08-23 09:51:07,871 - INFO - > Epoch 157: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:51:14,770 - INFO - train: {'epoch': 158, 'time_epoch': 6.84193, 'eta': 281.8837, 'eta_hours': 0.0783, 'loss': 0.08540356, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08049, 'accuracy': 0.96597, 'auc': 0.98463, 'ap': 0.89597}
+2025-08-23 09:51:15,380 - INFO - val: {'epoch': 158, 'time_epoch': 0.5744, 'loss': 0.27212567, 'lr': 0, 'params': 400930, 'time_iter': 0.03023, 'accuracy': 0.91832, 'auc': 0.89517, 'ap': 0.64544}
+2025-08-23 09:51:15,995 - INFO - test: {'epoch': 158, 'time_epoch': 0.58007, 'loss': 0.28024401, 'lr': 0, 'params': 400930, 'time_iter': 0.03053, 'accuracy': 0.91879, 'auc': 0.9009, 'ap': 0.66777}
+2025-08-23 09:51:15,996 - INFO - > Epoch 158: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:51:22,923 - INFO - train: {'epoch': 159, 'time_epoch': 6.86979, 'eta': 275.00713, 'eta_hours': 0.07639, 'loss': 0.08520656, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08082, 'accuracy': 0.966, 'auc': 0.98484, 'ap': 0.8951}
+2025-08-23 09:51:23,537 - INFO - val: {'epoch': 159, 'time_epoch': 0.57875, 'loss': 0.27013443, 'lr': 0, 'params': 400930, 'time_iter': 0.03046, 'accuracy': 0.91793, 'auc': 0.8959, 'ap': 0.64688}
+2025-08-23 09:51:24,153 - INFO - test: {'epoch': 159, 'time_epoch': 0.5813, 'loss': 0.27961151, 'lr': 0, 'params': 400930, 'time_iter': 0.03059, 'accuracy': 0.91823, 'auc': 0.90109, 'ap': 0.66821}
+2025-08-23 09:51:24,154 - INFO - > Epoch 159: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:51:31,083 - INFO - train: {'epoch': 160, 'time_epoch': 6.87134, 'eta': 268.13102, 'eta_hours': 0.07448, 'loss': 0.08545334, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08084, 'accuracy': 0.96589, 'auc': 0.98476, 'ap': 0.89518}
+2025-08-23 09:51:31,693 - INFO - val: {'epoch': 160, 'time_epoch': 0.57445, 'loss': 0.27082264, 'lr': 0, 'params': 400930, 'time_iter': 0.03023, 'accuracy': 0.9175, 'auc': 0.8956, 'ap': 0.64731}
+2025-08-23 09:51:32,309 - INFO - test: {'epoch': 160, 'time_epoch': 0.58061, 'loss': 0.27966546, 'lr': 0, 'params': 400930, 'time_iter': 0.03056, 'accuracy': 0.91892, 'auc': 0.90097, 'ap': 0.66913}
+2025-08-23 09:51:32,310 - INFO - > Epoch 160: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:51:39,252 - INFO - train: {'epoch': 161, 'time_epoch': 6.88411, 'eta': 261.25797, 'eta_hours': 0.07257, 'loss': 0.08454942, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08099, 'accuracy': 0.96606, 'auc': 0.98486, 'ap': 0.89714}
+2025-08-23 09:51:39,866 - INFO - val: {'epoch': 161, 'time_epoch': 0.57958, 'loss': 0.27413546, 'lr': 0, 'params': 400930, 'time_iter': 0.0305, 'accuracy': 0.91746, 'auc': 0.8953, 'ap': 0.64564}
+2025-08-23 09:51:40,481 - INFO - test: {'epoch': 161, 'time_epoch': 0.5799, 'loss': 0.28206129, 'lr': 0, 'params': 400930, 'time_iter': 0.03052, 'accuracy': 0.91892, 'auc': 0.90109, 'ap': 0.66767}
+2025-08-23 09:51:40,482 - INFO - > Epoch 161: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:51:47,432 - INFO - train: {'epoch': 162, 'time_epoch': 6.89268, 'eta': 254.38673, 'eta_hours': 0.07066, 'loss': 0.08451089, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08109, 'accuracy': 0.96607, 'auc': 0.98529, 'ap': 0.90065}
+2025-08-23 09:51:48,041 - INFO - val: {'epoch': 162, 'time_epoch': 0.57479, 'loss': 0.27300931, 'lr': 0, 'params': 400930, 'time_iter': 0.03025, 'accuracy': 0.91802, 'auc': 0.89505, 'ap': 0.64544}
+2025-08-23 09:51:48,656 - INFO - test: {'epoch': 162, 'time_epoch': 0.57938, 'loss': 0.28177937, 'lr': 0, 'params': 400930, 'time_iter': 0.03049, 'accuracy': 0.91849, 'auc': 0.90059, 'ap': 0.66695}
+2025-08-23 09:51:48,657 - INFO - > Epoch 162: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:51:55,581 - INFO - train: {'epoch': 163, 'time_epoch': 6.86673, 'eta': 247.50952, 'eta_hours': 0.06875, 'loss': 0.08551724, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08079, 'accuracy': 0.96629, 'auc': 0.98468, 'ap': 0.89818}
+2025-08-23 09:51:56,189 - INFO - val: {'epoch': 163, 'time_epoch': 0.57318, 'loss': 0.27337042, 'lr': 0, 'params': 400930, 'time_iter': 0.03017, 'accuracy': 0.91806, 'auc': 0.89556, 'ap': 0.64565}
+2025-08-23 09:51:56,804 - INFO - test: {'epoch': 163, 'time_epoch': 0.58108, 'loss': 0.2821341, 'lr': 0, 'params': 400930, 'time_iter': 0.03058, 'accuracy': 0.91755, 'auc': 0.90074, 'ap': 0.66766}
+2025-08-23 09:51:56,806 - INFO - > Epoch 163: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:52:03,767 - INFO - train: {'epoch': 164, 'time_epoch': 6.90337, 'eta': 240.64022, 'eta_hours': 0.06684, 'loss': 0.08498554, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08122, 'accuracy': 0.96639, 'auc': 0.98475, 'ap': 0.89833}
+2025-08-23 09:52:04,377 - INFO - val: {'epoch': 164, 'time_epoch': 0.57504, 'loss': 0.27335741, 'lr': 0, 'params': 400930, 'time_iter': 0.03027, 'accuracy': 0.91716, 'auc': 0.89501, 'ap': 0.64493}
+2025-08-23 09:52:04,989 - INFO - test: {'epoch': 164, 'time_epoch': 0.5772, 'loss': 0.28092844, 'lr': 0, 'params': 400930, 'time_iter': 0.03038, 'accuracy': 0.91767, 'auc': 0.90104, 'ap': 0.66871}
+2025-08-23 09:52:04,991 - INFO - > Epoch 164: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:52:11,935 - INFO - train: {'epoch': 165, 'time_epoch': 6.88772, 'eta': 233.7673, 'eta_hours': 0.06494, 'loss': 0.08455889, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08103, 'accuracy': 0.96649, 'auc': 0.98512, 'ap': 0.89787}
+2025-08-23 09:52:12,543 - INFO - val: {'epoch': 165, 'time_epoch': 0.57361, 'loss': 0.27334844, 'lr': 0, 'params': 400930, 'time_iter': 0.03019, 'accuracy': 0.91737, 'auc': 0.89538, 'ap': 0.64394}
+2025-08-23 09:52:13,152 - INFO - test: {'epoch': 165, 'time_epoch': 0.5751, 'loss': 0.28092412, 'lr': 0, 'params': 400930, 'time_iter': 0.03027, 'accuracy': 0.9181, 'auc': 0.90065, 'ap': 0.66676}
+2025-08-23 09:52:13,153 - INFO - > Epoch 165: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:52:20,053 - INFO - train: {'epoch': 166, 'time_epoch': 6.84281, 'eta': 226.88533, 'eta_hours': 0.06302, 'loss': 0.08598443, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.0805, 'accuracy': 0.96627, 'auc': 0.98436, 'ap': 0.89898}
+2025-08-23 09:52:20,662 - INFO - val: {'epoch': 166, 'time_epoch': 0.57413, 'loss': 0.27224197, 'lr': 0, 'params': 400930, 'time_iter': 0.03022, 'accuracy': 0.91776, 'auc': 0.89516, 'ap': 0.64613}
+2025-08-23 09:52:21,512 - INFO - test: {'epoch': 166, 'time_epoch': 0.81557, 'loss': 0.27938295, 'lr': 0, 'params': 400930, 'time_iter': 0.04292, 'accuracy': 0.9184, 'auc': 0.90136, 'ap': 0.66909}
+2025-08-23 09:52:21,514 - INFO - > Epoch 166: took 8.4s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:52:28,452 - INFO - train: {'epoch': 167, 'time_epoch': 6.8818, 'eta': 220.01125, 'eta_hours': 0.06111, 'loss': 0.08538419, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08096, 'accuracy': 0.96596, 'auc': 0.98478, 'ap': 0.8977}
+2025-08-23 09:52:29,059 - INFO - val: {'epoch': 167, 'time_epoch': 0.57209, 'loss': 0.27444739, 'lr': 0, 'params': 400930, 'time_iter': 0.03011, 'accuracy': 0.91699, 'auc': 0.89478, 'ap': 0.64334}
+2025-08-23 09:52:29,678 - INFO - test: {'epoch': 167, 'time_epoch': 0.58352, 'loss': 0.28418126, 'lr': 0, 'params': 400930, 'time_iter': 0.03071, 'accuracy': 0.91798, 'auc': 0.90033, 'ap': 0.66523}
+2025-08-23 09:52:29,680 - INFO - > Epoch 167: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:52:36,590 - INFO - train: {'epoch': 168, 'time_epoch': 6.85368, 'eta': 213.13193, 'eta_hours': 0.0592, 'loss': 0.08490224, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08063, 'accuracy': 0.96648, 'auc': 0.98506, 'ap': 0.89921}
+2025-08-23 09:52:37,200 - INFO - val: {'epoch': 168, 'time_epoch': 0.57611, 'loss': 0.27363463, 'lr': 0, 'params': 400930, 'time_iter': 0.03032, 'accuracy': 0.91733, 'auc': 0.89447, 'ap': 0.6451}
+2025-08-23 09:52:37,816 - INFO - test: {'epoch': 168, 'time_epoch': 0.58038, 'loss': 0.28156903, 'lr': 0, 'params': 400930, 'time_iter': 0.03055, 'accuracy': 0.91905, 'auc': 0.90055, 'ap': 0.6681}
+2025-08-23 09:52:37,818 - INFO - > Epoch 168: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:52:44,736 - INFO - train: {'epoch': 169, 'time_epoch': 6.861, 'eta': 206.25419, 'eta_hours': 0.05729, 'loss': 0.08552523, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08072, 'accuracy': 0.96628, 'auc': 0.9846, 'ap': 0.89616}
+2025-08-23 09:52:45,348 - INFO - val: {'epoch': 169, 'time_epoch': 0.57716, 'loss': 0.27551986, 'lr': 0, 'params': 400930, 'time_iter': 0.03038, 'accuracy': 0.91707, 'auc': 0.89456, 'ap': 0.64475}
+2025-08-23 09:52:45,964 - INFO - test: {'epoch': 169, 'time_epoch': 0.58034, 'loss': 0.2826515, 'lr': 0, 'params': 400930, 'time_iter': 0.03054, 'accuracy': 0.91879, 'auc': 0.901, 'ap': 0.66783}
+2025-08-23 09:52:45,965 - INFO - > Epoch 169: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:52:52,884 - INFO - train: {'epoch': 170, 'time_epoch': 6.86054, 'eta': 199.37658, 'eta_hours': 0.05538, 'loss': 0.08525746, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08071, 'accuracy': 0.96608, 'auc': 0.98467, 'ap': 0.89625}
+2025-08-23 09:52:53,495 - INFO - val: {'epoch': 170, 'time_epoch': 0.57672, 'loss': 0.27309234, 'lr': 0, 'params': 400930, 'time_iter': 0.03035, 'accuracy': 0.9172, 'auc': 0.89545, 'ap': 0.64606}
+2025-08-23 09:52:54,109 - INFO - test: {'epoch': 170, 'time_epoch': 0.57889, 'loss': 0.28129817, 'lr': 0, 'params': 400930, 'time_iter': 0.03047, 'accuracy': 0.91755, 'auc': 0.90089, 'ap': 0.66843}
+2025-08-23 09:52:54,110 - INFO - > Epoch 170: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:53:01,062 - INFO - train: {'epoch': 171, 'time_epoch': 6.89501, 'eta': 192.50477, 'eta_hours': 0.05347, 'loss': 0.08454309, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08112, 'accuracy': 0.96657, 'auc': 0.98493, 'ap': 0.89924}
+2025-08-23 09:53:01,673 - INFO - val: {'epoch': 171, 'time_epoch': 0.5762, 'loss': 0.27559053, 'lr': 0, 'params': 400930, 'time_iter': 0.03033, 'accuracy': 0.9178, 'auc': 0.89512, 'ap': 0.64293}
+2025-08-23 09:53:02,291 - INFO - test: {'epoch': 171, 'time_epoch': 0.58281, 'loss': 0.28402144, 'lr': 0, 'params': 400930, 'time_iter': 0.03067, 'accuracy': 0.91772, 'auc': 0.90072, 'ap': 0.66702}
+2025-08-23 09:53:02,292 - INFO - > Epoch 171: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:53:09,202 - INFO - train: {'epoch': 172, 'time_epoch': 6.85225, 'eta': 185.62602, 'eta_hours': 0.05156, 'loss': 0.08522873, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08061, 'accuracy': 0.96591, 'auc': 0.98502, 'ap': 0.89941}
+2025-08-23 09:53:09,814 - INFO - val: {'epoch': 172, 'time_epoch': 0.57704, 'loss': 0.27647205, 'lr': 0, 'params': 400930, 'time_iter': 0.03037, 'accuracy': 0.91656, 'auc': 0.89487, 'ap': 0.64477}
+2025-08-23 09:53:10,432 - INFO - test: {'epoch': 172, 'time_epoch': 0.58306, 'loss': 0.28544263, 'lr': 0, 'params': 400930, 'time_iter': 0.03069, 'accuracy': 0.91759, 'auc': 0.90034, 'ap': 0.66693}
+2025-08-23 09:53:10,434 - INFO - > Epoch 172: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:53:17,359 - INFO - train: {'epoch': 173, 'time_epoch': 6.86705, 'eta': 178.74979, 'eta_hours': 0.04965, 'loss': 0.08607543, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08079, 'accuracy': 0.96536, 'auc': 0.98464, 'ap': 0.89549}
+2025-08-23 09:53:17,972 - INFO - val: {'epoch': 173, 'time_epoch': 0.57879, 'loss': 0.27568955, 'lr': 0, 'params': 400930, 'time_iter': 0.03046, 'accuracy': 0.91789, 'auc': 0.89519, 'ap': 0.64435}
+2025-08-23 09:53:18,589 - INFO - test: {'epoch': 173, 'time_epoch': 0.58136, 'loss': 0.28345926, 'lr': 0, 'params': 400930, 'time_iter': 0.0306, 'accuracy': 0.91858, 'auc': 0.90086, 'ap': 0.66768}
+2025-08-23 09:53:18,590 - INFO - > Epoch 173: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:53:25,520 - INFO - train: {'epoch': 174, 'time_epoch': 6.87221, 'eta': 171.8744, 'eta_hours': 0.04774, 'loss': 0.08491035, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08085, 'accuracy': 0.96613, 'auc': 0.98522, 'ap': 0.90054}
+2025-08-23 09:53:26,132 - INFO - val: {'epoch': 174, 'time_epoch': 0.57713, 'loss': 0.2735442, 'lr': 0, 'params': 400930, 'time_iter': 0.03038, 'accuracy': 0.91742, 'auc': 0.89541, 'ap': 0.64579}
+2025-08-23 09:53:26,750 - INFO - test: {'epoch': 174, 'time_epoch': 0.58363, 'loss': 0.28155662, 'lr': 0, 'params': 400930, 'time_iter': 0.03072, 'accuracy': 0.91819, 'auc': 0.9007, 'ap': 0.6673}
+2025-08-23 09:53:26,751 - INFO - > Epoch 174: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:53:33,674 - INFO - train: {'epoch': 175, 'time_epoch': 6.8649, 'eta': 164.99805, 'eta_hours': 0.04583, 'loss': 0.0850733, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08076, 'accuracy': 0.96622, 'auc': 0.98492, 'ap': 0.899}
+2025-08-23 09:53:34,287 - INFO - val: {'epoch': 175, 'time_epoch': 0.57749, 'loss': 0.2761545, 'lr': 0, 'params': 400930, 'time_iter': 0.03039, 'accuracy': 0.91695, 'auc': 0.89462, 'ap': 0.64442}
+2025-08-23 09:53:34,899 - INFO - test: {'epoch': 175, 'time_epoch': 0.5778, 'loss': 0.28464884, 'lr': 0, 'params': 400930, 'time_iter': 0.03041, 'accuracy': 0.91759, 'auc': 0.90035, 'ap': 0.66693}
+2025-08-23 09:53:34,901 - INFO - > Epoch 175: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:53:41,826 - INFO - train: {'epoch': 176, 'time_epoch': 6.86842, 'eta': 158.12229, 'eta_hours': 0.04392, 'loss': 0.08498065, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.0808, 'accuracy': 0.96619, 'auc': 0.98503, 'ap': 0.89814}
+2025-08-23 09:53:42,436 - INFO - val: {'epoch': 176, 'time_epoch': 0.57576, 'loss': 0.27394657, 'lr': 0, 'params': 400930, 'time_iter': 0.0303, 'accuracy': 0.91806, 'auc': 0.89498, 'ap': 0.64437}
+2025-08-23 09:53:43,053 - INFO - test: {'epoch': 176, 'time_epoch': 0.58077, 'loss': 0.2817044, 'lr': 0, 'params': 400930, 'time_iter': 0.03057, 'accuracy': 0.91793, 'auc': 0.90059, 'ap': 0.66822}
+2025-08-23 09:53:43,054 - INFO - > Epoch 176: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:53:50,001 - INFO - train: {'epoch': 177, 'time_epoch': 6.88957, 'eta': 151.24922, 'eta_hours': 0.04201, 'loss': 0.08491491, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08105, 'accuracy': 0.96621, 'auc': 0.9849, 'ap': 0.89813}
+2025-08-23 09:53:50,613 - INFO - val: {'epoch': 177, 'time_epoch': 0.57674, 'loss': 0.2770137, 'lr': 0, 'params': 400930, 'time_iter': 0.03035, 'accuracy': 0.9175, 'auc': 0.89458, 'ap': 0.64426}
+2025-08-23 09:53:51,226 - INFO - test: {'epoch': 177, 'time_epoch': 0.57852, 'loss': 0.28528197, 'lr': 0, 'params': 400930, 'time_iter': 0.03045, 'accuracy': 0.91707, 'auc': 0.90034, 'ap': 0.66737}
+2025-08-23 09:53:51,228 - INFO - > Epoch 177: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:53:58,183 - INFO - train: {'epoch': 178, 'time_epoch': 6.89796, 'eta': 144.37696, 'eta_hours': 0.0401, 'loss': 0.08531737, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08115, 'accuracy': 0.96623, 'auc': 0.98505, 'ap': 0.89854}
+2025-08-23 09:53:58,791 - INFO - val: {'epoch': 178, 'time_epoch': 0.5744, 'loss': 0.27435674, 'lr': 0, 'params': 400930, 'time_iter': 0.03023, 'accuracy': 0.9166, 'auc': 0.89486, 'ap': 0.64396}
+2025-08-23 09:53:59,408 - INFO - test: {'epoch': 178, 'time_epoch': 0.58267, 'loss': 0.2816592, 'lr': 0, 'params': 400930, 'time_iter': 0.03067, 'accuracy': 0.91785, 'auc': 0.90076, 'ap': 0.66733}
+2025-08-23 09:53:59,410 - INFO - > Epoch 178: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:54:06,365 - INFO - train: {'epoch': 179, 'time_epoch': 6.89722, 'eta': 137.50432, 'eta_hours': 0.0382, 'loss': 0.08405901, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08114, 'accuracy': 0.96696, 'auc': 0.98528, 'ap': 0.89906}
+2025-08-23 09:54:06,980 - INFO - val: {'epoch': 179, 'time_epoch': 0.58026, 'loss': 0.27596621, 'lr': 0, 'params': 400930, 'time_iter': 0.03054, 'accuracy': 0.91737, 'auc': 0.895, 'ap': 0.64357}
+2025-08-23 09:54:07,602 - INFO - test: {'epoch': 179, 'time_epoch': 0.58454, 'loss': 0.28349657, 'lr': 0, 'params': 400930, 'time_iter': 0.03077, 'accuracy': 0.91746, 'auc': 0.90088, 'ap': 0.66724}
+2025-08-23 09:54:07,603 - INFO - > Epoch 179: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:54:14,589 - INFO - train: {'epoch': 180, 'time_epoch': 6.93024, 'eta': 130.63488, 'eta_hours': 0.03629, 'loss': 0.08398221, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08153, 'accuracy': 0.96678, 'auc': 0.98502, 'ap': 0.90004}
+2025-08-23 09:54:15,196 - INFO - val: {'epoch': 180, 'time_epoch': 0.5727, 'loss': 0.27615959, 'lr': 0, 'params': 400930, 'time_iter': 0.03014, 'accuracy': 0.91815, 'auc': 0.89431, 'ap': 0.64515}
+2025-08-23 09:54:15,812 - INFO - test: {'epoch': 180, 'time_epoch': 0.58108, 'loss': 0.28358583, 'lr': 0, 'params': 400930, 'time_iter': 0.03058, 'accuracy': 0.91793, 'auc': 0.90048, 'ap': 0.66785}
+2025-08-23 09:54:15,814 - INFO - > Epoch 180: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:54:22,761 - INFO - train: {'epoch': 181, 'time_epoch': 6.88975, 'eta': 123.76077, 'eta_hours': 0.03438, 'loss': 0.08355172, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08106, 'accuracy': 0.96764, 'auc': 0.98509, 'ap': 0.89988}
+2025-08-23 09:54:23,381 - INFO - val: {'epoch': 181, 'time_epoch': 0.58445, 'loss': 0.27734896, 'lr': 0, 'params': 400930, 'time_iter': 0.03076, 'accuracy': 0.91733, 'auc': 0.89443, 'ap': 0.64372}
+2025-08-23 09:54:24,005 - INFO - test: {'epoch': 181, 'time_epoch': 0.58972, 'loss': 0.28468724, 'lr': 0, 'params': 400930, 'time_iter': 0.03104, 'accuracy': 0.91699, 'auc': 0.90069, 'ap': 0.66764}
+2025-08-23 09:54:24,007 - INFO - > Epoch 181: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:54:31,017 - INFO - train: {'epoch': 182, 'time_epoch': 6.95213, 'eta': 116.89228, 'eta_hours': 0.03247, 'loss': 0.08536871, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08179, 'accuracy': 0.96584, 'auc': 0.98485, 'ap': 0.89559}
+2025-08-23 09:54:31,632 - INFO - val: {'epoch': 182, 'time_epoch': 0.58117, 'loss': 0.27593164, 'lr': 0, 'params': 400930, 'time_iter': 0.03059, 'accuracy': 0.91652, 'auc': 0.89465, 'ap': 0.64454}
+2025-08-23 09:54:32,248 - INFO - test: {'epoch': 182, 'time_epoch': 0.58176, 'loss': 0.28293229, 'lr': 0, 'params': 400930, 'time_iter': 0.03062, 'accuracy': 0.91742, 'auc': 0.90062, 'ap': 0.6674}
+2025-08-23 09:54:32,253 - INFO - > Epoch 182: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:54:39,492 - INFO - train: {'epoch': 183, 'time_epoch': 7.18166, 'eta': 110.04284, 'eta_hours': 0.03057, 'loss': 0.08447827, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08449, 'accuracy': 0.96649, 'auc': 0.98507, 'ap': 0.90087}
+2025-08-23 09:54:40,102 - INFO - val: {'epoch': 183, 'time_epoch': 0.5743, 'loss': 0.27389975, 'lr': 0, 'params': 400930, 'time_iter': 0.03023, 'accuracy': 0.91643, 'auc': 0.89482, 'ap': 0.64522}
+2025-08-23 09:54:40,715 - INFO - test: {'epoch': 183, 'time_epoch': 0.57878, 'loss': 0.281336, 'lr': 0, 'params': 400930, 'time_iter': 0.03046, 'accuracy': 0.91763, 'auc': 0.90106, 'ap': 0.66903}
+2025-08-23 09:54:40,716 - INFO - > Epoch 183: took 8.5s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:54:47,656 - INFO - train: {'epoch': 184, 'time_epoch': 6.88292, 'eta': 103.16559, 'eta_hours': 0.02866, 'loss': 0.08440126, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08098, 'accuracy': 0.96634, 'auc': 0.98542, 'ap': 0.90086}
+2025-08-23 09:54:48,263 - INFO - val: {'epoch': 184, 'time_epoch': 0.5729, 'loss': 0.27644533, 'lr': 0, 'params': 400930, 'time_iter': 0.03015, 'accuracy': 0.91733, 'auc': 0.89475, 'ap': 0.64503}
+2025-08-23 09:54:48,876 - INFO - test: {'epoch': 184, 'time_epoch': 0.57798, 'loss': 0.2855217, 'lr': 0, 'params': 400930, 'time_iter': 0.03042, 'accuracy': 0.91707, 'auc': 0.90002, 'ap': 0.66545}
+2025-08-23 09:54:48,877 - INFO - > Epoch 184: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:54:55,805 - INFO - train: {'epoch': 185, 'time_epoch': 6.87118, 'eta': 96.28739, 'eta_hours': 0.02675, 'loss': 0.08447172, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08084, 'accuracy': 0.96598, 'auc': 0.98519, 'ap': 0.89964}
+2025-08-23 09:54:56,413 - INFO - val: {'epoch': 185, 'time_epoch': 0.57321, 'loss': 0.27449274, 'lr': 0, 'params': 400930, 'time_iter': 0.03017, 'accuracy': 0.91703, 'auc': 0.89498, 'ap': 0.6448}
+2025-08-23 09:54:57,027 - INFO - test: {'epoch': 185, 'time_epoch': 0.57939, 'loss': 0.28161527, 'lr': 0, 'params': 400930, 'time_iter': 0.03049, 'accuracy': 0.91832, 'auc': 0.90068, 'ap': 0.66811}
+2025-08-23 09:54:57,028 - INFO - > Epoch 185: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:55:03,981 - INFO - train: {'epoch': 186, 'time_epoch': 6.89565, 'eta': 89.41097, 'eta_hours': 0.02484, 'loss': 0.08395859, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08113, 'accuracy': 0.96685, 'auc': 0.98492, 'ap': 0.89747}
+2025-08-23 09:55:04,588 - INFO - val: {'epoch': 186, 'time_epoch': 0.57303, 'loss': 0.27387668, 'lr': 0, 'params': 400930, 'time_iter': 0.03016, 'accuracy': 0.91677, 'auc': 0.89487, 'ap': 0.64493}
+2025-08-23 09:55:05,200 - INFO - test: {'epoch': 186, 'time_epoch': 0.57746, 'loss': 0.28132885, 'lr': 0, 'params': 400930, 'time_iter': 0.03039, 'accuracy': 0.91815, 'auc': 0.90041, 'ap': 0.66726}
+2025-08-23 09:55:05,202 - INFO - > Epoch 186: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:55:12,171 - INFO - train: {'epoch': 187, 'time_epoch': 6.91304, 'eta': 82.53545, 'eta_hours': 0.02293, 'loss': 0.08475887, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08133, 'accuracy': 0.96654, 'auc': 0.98494, 'ap': 0.89941}
+2025-08-23 09:55:12,782 - INFO - val: {'epoch': 187, 'time_epoch': 0.57579, 'loss': 0.2760331, 'lr': 0, 'params': 400930, 'time_iter': 0.0303, 'accuracy': 0.91716, 'auc': 0.89412, 'ap': 0.64463}
+2025-08-23 09:55:13,396 - INFO - test: {'epoch': 187, 'time_epoch': 0.57994, 'loss': 0.28472229, 'lr': 0, 'params': 400930, 'time_iter': 0.03052, 'accuracy': 0.91772, 'auc': 0.89996, 'ap': 0.66636}
+2025-08-23 09:55:13,398 - INFO - > Epoch 187: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:55:20,326 - INFO - train: {'epoch': 188, 'time_epoch': 6.87129, 'eta': 75.65711, 'eta_hours': 0.02102, 'loss': 0.08428278, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08084, 'accuracy': 0.9667, 'auc': 0.98519, 'ap': 0.89619}
+2025-08-23 09:55:20,938 - INFO - val: {'epoch': 188, 'time_epoch': 0.57633, 'loss': 0.27460122, 'lr': 0, 'params': 400930, 'time_iter': 0.03033, 'accuracy': 0.91746, 'auc': 0.8955, 'ap': 0.64594}
+2025-08-23 09:55:21,555 - INFO - test: {'epoch': 188, 'time_epoch': 0.58164, 'loss': 0.28305584, 'lr': 0, 'params': 400930, 'time_iter': 0.03061, 'accuracy': 0.91785, 'auc': 0.90052, 'ap': 0.66737}
+2025-08-23 09:55:21,558 - INFO - > Epoch 188: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:55:28,519 - INFO - train: {'epoch': 189, 'time_epoch': 6.9043, 'eta': 68.78058, 'eta_hours': 0.01911, 'loss': 0.08380658, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08123, 'accuracy': 0.96651, 'auc': 0.98535, 'ap': 0.89848}
+2025-08-23 09:55:29,127 - INFO - val: {'epoch': 189, 'time_epoch': 0.57318, 'loss': 0.27568141, 'lr': 0, 'params': 400930, 'time_iter': 0.03017, 'accuracy': 0.91742, 'auc': 0.89489, 'ap': 0.64553}
+2025-08-23 09:55:29,740 - INFO - test: {'epoch': 189, 'time_epoch': 0.57842, 'loss': 0.2837289, 'lr': 0, 'params': 400930, 'time_iter': 0.03044, 'accuracy': 0.91815, 'auc': 0.90076, 'ap': 0.66896}
+2025-08-23 09:55:29,741 - INFO - > Epoch 189: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:55:36,628 - INFO - train: {'epoch': 190, 'time_epoch': 6.82971, 'eta': 61.90024, 'eta_hours': 0.01719, 'loss': 0.08390853, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08035, 'accuracy': 0.96655, 'auc': 0.98532, 'ap': 0.90283}
+2025-08-23 09:55:37,235 - INFO - val: {'epoch': 190, 'time_epoch': 0.57203, 'loss': 0.27535997, 'lr': 0, 'params': 400930, 'time_iter': 0.03011, 'accuracy': 0.91669, 'auc': 0.89495, 'ap': 0.64502}
+2025-08-23 09:55:37,848 - INFO - test: {'epoch': 190, 'time_epoch': 0.57852, 'loss': 0.28273379, 'lr': 0, 'params': 400930, 'time_iter': 0.03045, 'accuracy': 0.91737, 'auc': 0.90054, 'ap': 0.6689}
+2025-08-23 09:55:37,850 - INFO - > Epoch 190: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:55:44,743 - INFO - train: {'epoch': 191, 'time_epoch': 6.83767, 'eta': 55.02077, 'eta_hours': 0.01528, 'loss': 0.08482486, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08044, 'accuracy': 0.96558, 'auc': 0.98495, 'ap': 0.89605}
+2025-08-23 09:55:45,355 - INFO - val: {'epoch': 191, 'time_epoch': 0.57765, 'loss': 0.27465788, 'lr': 0, 'params': 400930, 'time_iter': 0.0304, 'accuracy': 0.91703, 'auc': 0.89512, 'ap': 0.64706}
+2025-08-23 09:55:45,973 - INFO - test: {'epoch': 191, 'time_epoch': 0.58157, 'loss': 0.2829217, 'lr': 0, 'params': 400930, 'time_iter': 0.03061, 'accuracy': 0.91763, 'auc': 0.90048, 'ap': 0.66791}
+2025-08-23 09:55:45,974 - INFO - > Epoch 191: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:55:52,890 - INFO - train: {'epoch': 192, 'time_epoch': 6.85782, 'eta': 48.14245, 'eta_hours': 0.01337, 'loss': 0.08392859, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08068, 'accuracy': 0.96641, 'auc': 0.98524, 'ap': 0.89949}
+2025-08-23 09:55:53,500 - INFO - val: {'epoch': 192, 'time_epoch': 0.57604, 'loss': 0.27724812, 'lr': 0, 'params': 400930, 'time_iter': 0.03032, 'accuracy': 0.91729, 'auc': 0.89523, 'ap': 0.64656}
+2025-08-23 09:55:54,115 - INFO - test: {'epoch': 192, 'time_epoch': 0.58036, 'loss': 0.28587574, 'lr': 0, 'params': 400930, 'time_iter': 0.03055, 'accuracy': 0.91793, 'auc': 0.90087, 'ap': 0.6685}
+2025-08-23 09:55:54,117 - INFO - > Epoch 192: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:56:01,062 - INFO - train: {'epoch': 193, 'time_epoch': 6.88791, 'eta': 41.26528, 'eta_hours': 0.01146, 'loss': 0.08338103, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08103, 'accuracy': 0.96685, 'auc': 0.98512, 'ap': 0.90025}
+2025-08-23 09:56:01,670 - INFO - val: {'epoch': 193, 'time_epoch': 0.57397, 'loss': 0.27701577, 'lr': 0, 'params': 400930, 'time_iter': 0.03021, 'accuracy': 0.91733, 'auc': 0.89497, 'ap': 0.64838}
+2025-08-23 09:56:02,286 - INFO - test: {'epoch': 193, 'time_epoch': 0.5808, 'loss': 0.28620022, 'lr': 0, 'params': 400930, 'time_iter': 0.03057, 'accuracy': 0.91832, 'auc': 0.90056, 'ap': 0.6688}
+2025-08-23 09:56:02,287 - INFO - > Epoch 193: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:56:09,194 - INFO - train: {'epoch': 194, 'time_epoch': 6.84989, 'eta': 34.38703, 'eta_hours': 0.00955, 'loss': 0.08408221, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08059, 'accuracy': 0.96651, 'auc': 0.9849, 'ap': 0.89734}
+2025-08-23 09:56:09,801 - INFO - val: {'epoch': 194, 'time_epoch': 0.57209, 'loss': 0.27688858, 'lr': 0, 'params': 400930, 'time_iter': 0.03011, 'accuracy': 0.91596, 'auc': 0.89448, 'ap': 0.6456}
+2025-08-23 09:56:10,413 - INFO - test: {'epoch': 194, 'time_epoch': 0.57771, 'loss': 0.2848259, 'lr': 0, 'params': 400930, 'time_iter': 0.03041, 'accuracy': 0.9169, 'auc': 0.90031, 'ap': 0.66748}
+2025-08-23 09:56:10,415 - INFO - > Epoch 194: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:56:17,335 - INFO - train: {'epoch': 195, 'time_epoch': 6.86335, 'eta': 27.50933, 'eta_hours': 0.00764, 'loss': 0.08319458, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08075, 'accuracy': 0.96703, 'auc': 0.98536, 'ap': 0.90232}
+2025-08-23 09:56:17,945 - INFO - val: {'epoch': 195, 'time_epoch': 0.57533, 'loss': 0.27562402, 'lr': 0, 'params': 400930, 'time_iter': 0.03028, 'accuracy': 0.91699, 'auc': 0.89502, 'ap': 0.6465}
+2025-08-23 09:56:18,556 - INFO - test: {'epoch': 195, 'time_epoch': 0.57654, 'loss': 0.28355978, 'lr': 0, 'params': 400930, 'time_iter': 0.03034, 'accuracy': 0.91707, 'auc': 0.90031, 'ap': 0.66747}
+2025-08-23 09:56:18,557 - INFO - > Epoch 195: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:56:25,501 - INFO - train: {'epoch': 196, 'time_epoch': 6.88702, 'eta': 20.63215, 'eta_hours': 0.00573, 'loss': 0.08365544, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08102, 'accuracy': 0.96627, 'auc': 0.98546, 'ap': 0.89919}
+2025-08-23 09:56:26,110 - INFO - val: {'epoch': 196, 'time_epoch': 0.57422, 'loss': 0.27837339, 'lr': 0, 'params': 400930, 'time_iter': 0.03022, 'accuracy': 0.91767, 'auc': 0.89433, 'ap': 0.64619}
+2025-08-23 09:56:26,722 - INFO - test: {'epoch': 196, 'time_epoch': 0.57722, 'loss': 0.28775719, 'lr': 0, 'params': 400930, 'time_iter': 0.03038, 'accuracy': 0.91707, 'auc': 0.90012, 'ap': 0.6677}
+2025-08-23 09:56:26,724 - INFO - > Epoch 196: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:56:33,651 - INFO - train: {'epoch': 197, 'time_epoch': 6.87004, 'eta': 13.75469, 'eta_hours': 0.00382, 'loss': 0.08407717, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08082, 'accuracy': 0.96671, 'auc': 0.98502, 'ap': 0.89696}
+2025-08-23 09:56:34,258 - INFO - val: {'epoch': 197, 'time_epoch': 0.57315, 'loss': 0.27704134, 'lr': 0, 'params': 400930, 'time_iter': 0.03017, 'accuracy': 0.91776, 'auc': 0.89454, 'ap': 0.64433}
+2025-08-23 09:56:34,871 - INFO - test: {'epoch': 197, 'time_epoch': 0.57874, 'loss': 0.28487311, 'lr': 0, 'params': 400930, 'time_iter': 0.03046, 'accuracy': 0.9175, 'auc': 0.90047, 'ap': 0.66676}
+2025-08-23 09:56:34,873 - INFO - > Epoch 197: took 8.1s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:56:41,814 - INFO - train: {'epoch': 198, 'time_epoch': 6.88473, 'eta': 6.87738, 'eta_hours': 0.00191, 'loss': 0.08457679, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.081, 'accuracy': 0.96603, 'auc': 0.98529, 'ap': 0.89933}
+2025-08-23 09:56:42,424 - INFO - val: {'epoch': 198, 'time_epoch': 0.57559, 'loss': 0.27703683, 'lr': 0, 'params': 400930, 'time_iter': 0.03029, 'accuracy': 0.91742, 'auc': 0.89464, 'ap': 0.64606}
+2025-08-23 09:56:43,036 - INFO - test: {'epoch': 198, 'time_epoch': 0.57716, 'loss': 0.28501302, 'lr': 0, 'params': 400930, 'time_iter': 0.03038, 'accuracy': 0.91759, 'auc': 0.90049, 'ap': 0.66726}
+2025-08-23 09:56:43,038 - INFO - > Epoch 198: took 8.2s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:56:50,170 - INFO - train: {'epoch': 199, 'time_epoch': 7.07653, 'eta': 0.0, 'eta_hours': 0.0, 'loss': 0.08423895, 'lr': 1e-05, 'params': 400930, 'time_iter': 0.08325, 'accuracy': 0.96636, 'auc': 0.98528, 'ap': 0.89803}
+2025-08-23 09:56:50,779 - INFO - val: {'epoch': 199, 'time_epoch': 0.57427, 'loss': 0.2772912, 'lr': 0, 'params': 400930, 'time_iter': 0.03022, 'accuracy': 0.91669, 'auc': 0.89409, 'ap': 0.64541}
+2025-08-23 09:56:51,391 - INFO - test: {'epoch': 199, 'time_epoch': 0.57709, 'loss': 0.28437618, 'lr': 0, 'params': 400930, 'time_iter': 0.03037, 'accuracy': 0.91703, 'auc': 0.89985, 'ap': 0.66723}
+2025-08-23 09:56:51,462 - INFO - > Epoch 199: took 8.4s (avg 8.2s) | Best so far: epoch 69	train_loss: 0.1158 train_ap: 0.8367	val_loss: 0.2325 val_ap: 0.6538	test_loss: 0.2451 test_ap: 0.6569
+2025-08-23 09:56:51,462 - INFO - Avg time per epoch: 8.17s
+2025-08-23 09:56:51,462 - INFO - Total train loop time: 0.45h
+2025-08-23 09:56:51,465 - INFO - Task done, results saved in results/Pepfunc/PepfuncDenseNE-2
+2025-08-23 09:56:51,465 - INFO - Total time: 1720.57s (0.48h)
+2025-08-23 09:56:51,466 - INFO - Results aggregated across runs saved in results/Pepfunc/PepfuncDenseNE-2/agg
+2025-08-23 09:56:51,466 - INFO - === OPTIMIZED TRAINING COMPLETED SUCCESSFULLY! ===
+2025-08-23 09:56:51,466 - INFO - Results saved in: results/Pepfunc/PepfuncDenseNE-2
+2025-08-23 09:56:51,466 - INFO - Test results JSON files saved in: results/Pepfunc/PepfuncDenseNE-2/test_results/
+Completed seed 2. Results saved in results/Pepfunc/PepfuncDenseNE-2
+----------------------------------------
+Submitting next job for seed 3
+Submitted batch job 5482727

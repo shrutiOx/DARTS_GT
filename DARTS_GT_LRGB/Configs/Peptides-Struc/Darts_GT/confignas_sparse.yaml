@@ -1,0 +1,112 @@
+out_dir: results/PepSt/PepStDenseNE-49
+metric_best: mae
+metric_agg: argmin
+wandb:
+  use: false
+  project: peptides-struct
+dataset:
+  format: OGB
+  name: peptides-structural
+  task: graph
+  task_type: regression
+  transductive: False
+  node_encoder: True
+  node_encoder_name: Atom+LapPE
+  node_encoder_bn: False
+  edge_encoder: True
+  edge_encoder_name: Bond
+  edge_encoder_bn: False
+posenc_LapPE:
+  enable: True
+  eigen:
+    laplacian_norm: none
+    eigvec_norm: L2
+    max_freqs: 10
+  model: DeepSet
+  dim_pe: 16
+  layers: 2
+  raw_norm_type: none
+train:
+  mode: nas_uncertainty_train
+  batch_size: 128
+  eval_period: 1
+  ckpt_period: 100
+model:
+  type: NASModelQ
+  loss_fun: l1
+  graph_pooling: mean
+gt:
+  routing_mode: 'nas'  # Options: 'uniform', 'random', 'nas'
+  perturbation_strength: 0.05##
+  # Expert GNN types - SAME as MOE for compatibility
+  head_gnn_types: ['GINE','CustomGatedGCN','GATV2']
+  attn_gnn_uni: 'None'
+  weight_fix: '1:1'
+  residual_mult: 0.1
+  weight_type: nas
+  gnns_type_used: 2
+  teacher_student_training:
+    enabled: false
+    teacher_instruct_epochs: 20        # Epochs where the Teacher is frozen
+    teacher_lr_multiplier_frozen: 0.0  # LR for kv_model during instruction (0 = frozen)
+    teacher_lr_multiplier_finetune: 0.1 #### LR for kv_model during co-learning (e.g., 10% of base_lr)
+    student_q_lr_multiplier: 5.0       # Fast LR for q_projection during instruction
+  pk_explainer:
+    enabled: true           # Set to true to run analysis
+    visualization: true     # Generate plots
+    save_attention: false   # Don't save raw attention (memory intensive)
+
+
+  
+  # NAS configuration for DARTS search (only used in 'nas' mode)
+  nas:
+    enabled: true
+    darts_epochs: 50           #### Full DARTS search epochs (only for 'nas' mode)
+    darts_split_ratio: 0.6     # 60% for DARTS training, 40% for DARTS validation
+    arc_learning_rate: 4.0e-4  # Architecture parameter learning rate
+    grad_clip: 5.0             # Gradient clipping for stability
+    unrolled: false            # Use first-order approximation
+    stabilization_epochs: 5    ###
+    # DARTS learning rate scheduler parameters
+    darts_lr_schedule:
+      lr_reduce_factor: 0.5      # ← Changed from 'factor' to 'lr_reduce_factor'
+      lr_schedule_patience: 10   # ← Changed from 'patience' to 'lr_schedule_patience'
+      min_lr: 1.0e-6
+      init_lr: 0.0025
+      weight_decay: 3e-4
+  
+  # Uncertainty parameters - SAME as MOE (only last layer, test only)
+  # NO variance computation (removed)
+  uncertainty:
+    enabled: false  # Whether to compute uncertainty metrics
+    delta: 0.02    # Perturbation delta for uncertainty
+    epsilon: 0.15  # Perturbation epsilon
+    max_steps: 10  # Max perturbation steps
+    samples: 5     # Number of uncertainty samples
+    
+  layer_type: None+SparseTransformer
+  layers: 2
+  n_heads: 4
+  dim_hidden: 120  # `gt.dim_hidden` must match `gnn.dim_inner`
+  dropout: 0.0
+  attn_dropout: 0.5
+  layer_norm: False
+  batch_norm: True
+gnn:
+  head: default
+  layers_pre_mp: 0
+  layers_post_mp: 1  # Not used when `gnn.head: san_graph`
+  dim_inner: 120  # `gt.dim_hidden` must match `gnn.dim_inner`
+  batchnorm: True
+  act: relu
+  dropout: 0.0
+optim:
+  optimizer: adamW
+  weight_decay: 0.0
+  base_lr: 0.0005
+  max_epoch: 200
+  scheduler: reduce_on_plateau
+  reduce_factor: 0.5
+  schedule_patience: 20
+  min_lr: 1e-5
+seed: 49

@@ -73,7 +73,7 @@ def main():
     args = parse_args()
     
     # Fix: Set the full path to the config file
-    args.cfg_file = os.path.join(os.getcwd(), "confignas_sparse_molhiv.yaml")  # Use YOUR config file here
+    args.cfg_file = os.path.join(os.getcwd(), "confignas_sparse.yaml")  # Use YOUR config file here
 
     print(f"Loading config from: {args.cfg_file}")
     

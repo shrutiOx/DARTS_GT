@@ -13,8 +13,7 @@ import logging
 # Change to your script directory
 
 
-os.chdir("D:/MY_FOLDER/ABLATION_FINAL/MAIN_PACKAGE/LRGB")
-
+os.chdir("D:/MY_FOLDER/DARTS_GT/DARTS_GT_LRGB") ###Put your script directory here
 
 
 
@@ -79,7 +78,7 @@ def main():
     args = parse_args()
     
     # Fix: Set the full path to the config file
-    args.cfg_file = os.path.join(os.getcwd(), "confignas.yaml")  # Use optimized config
+    args.cfg_file = os.path.join(os.getcwd(), "confignas_dense.yaml")  # Use optimized config
     #args.cfg_file = os.path.join(os.getcwd(), "NAS_config.yaml")  # Use optimized config
     print(f"Loading config from: {args.cfg_file}")
     
