@@ -97,6 +97,39 @@ DARTS_GT/
 **For detailed code documentation, see [CODE_STRUCTURE.md](CODE_STRUCTURE.md)**  
 **For configuration options, see [CONFIG_GUIDE.md](CONFIG_GUIDE.md)**
 
+## Reproducing Paper Results
+
+### Benchmarking DARTS-GT
+
+Configs for all datasets are organized in `Configs/` folders:
+- **Non-LRGB datasets:** `DARTS_GT_NonLRGB/Configs/` (ZINC, MolHIV, MolPCBA, Pattern, Cluster, MalNet)
+- **LRGB datasets:** `DARTS_GT_LRGB/Configs/` (Peptides-Func, Peptides-Struct)
+
+Each dataset has multiple model variants: `Darts_gt/`, `Vanilla/`, `Uniform/`, `Random/`, `Symmetric/`, etc. - corresponding to different experimental tables in the paper.
+
+**Example usage:**
+```bash
+# Navigate to appropriate directory
+cd DARTS_GT_NonLRGB
+
+# Run DARTS-GT (Table III-IV)
+python mainnas.py --cfg Configs/Zinc/confignas_sparse.yaml
+
+# Run Vanilla-GT baseline (Table II)
+python mainnas.py --cfg Configs/MolHIV/Vanilla/confignas_sparse_V.yaml
+
+# Run ablation studies (Table V-VI)
+python mainnas.py --cfg Configs/Cluster/Random/confignas_rand.yaml
+python mainnas.py --cfg Configs/Cluster/Symmetric/confignas_syym.yaml
+```
+
+**Run multiple seeds:** Modify `seed:` parameter in the config YAML file, or use shell scripts to automate.
+
+**Our experimental logs:** The `ResultsLogs/` folders contain the actual logs and results we obtained for all seeds reported in the paper.
+
+**Outputs:** Results saved to directory specified by `out_dir:` in config file, containing logs, metrics, and interpretability analysis.
+
+
 
 ## Acknowledgments
 
