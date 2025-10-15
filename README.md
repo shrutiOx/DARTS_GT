@@ -1,5 +1,24 @@
-# DARTS_GT
-This repository contains code for our work DARTS-GT
+## DARTS-GT: Differentiable Architecture Search for Graph Transformers with Quantifiable Instance-Specific Interpretability Analysis
+<img width="553" height="787" alt="image" src="https://github.com/user-attachments/assets/6d47d711-f9f3-46b1-b90c-dcd9250af63c" />
+
+
+
+
+
+## Overview
+Graph Transformers combine attention with graph inductive biases but suffer from:
+
+Rigid architectures - commit to fixed GNN types across all layers
+Black-box predictions - lack quantifiable methods to identify which components drive predictions
+
+## DARTS-GT addresses both:
+
+ **DARTS-GT** redesigns Graph Transformer attention through **asymmetry** and **differentiable architecture search**, while introducing the first **quantitative interpretability framework** for Graph Transformers.
+
+**The problem:** Current GTs commit to fixed GNN types across layers and lack quantifiable methods to identify which components drive predictions—making it difficult to understand what the model actually learned.
+
+**Our solution:** Causal ablation-based interpretability that reveals which heads and nodes matter for each prediction.
+
 
 
 ## Acknowledgments
