@@ -19,8 +19,28 @@ Graph Transformers combine attention with graph structure, but face key limitati
 - **Asymmetric attention mechanism** - queries from features, keys/values from GNN transformations avoiding parallel MPNN+Transformer paths (GPS, UGAS etc)
 - **First quantitative interpretability framework** - causal ablation via Head-deviation, Specialization, and Focus metrics
 
-**Key Result:** Competitive SOTA without parallel MPNNs + quantifiable interpretability for Graph Transformers.
+** Result:** Competitive SOTA without parallel MPNNs + quantifiable interpretability for Graph Transformers.
 
+## Key Results
+
+**State-of-the-art on 4/8 benchmarks:**
+
+| Dataset | Metric | DARTS-GT | Previous Best |
+|---------|--------|----------|---------------|
+| ZINC | MAE ↓ | **0.066 ± 0.003** | 0.070 (GPS) |
+| MalNet-Tiny | Acc ↑ | **0.9325 ± 0.006** | 92.64 (GPS) |
+| Peptides-Func | AP ↑ | **0.669 ± 0.004** | 0.667 (UGAS) |
+| Peptides-Struct | MAE ↓ | **0.246 ± 0.0006** | 0.247 (UGAS) |
+
+Competitive performance on PATTERN, CLUSTER, MolHIV, MolPCBA.
+
+**Architecture Discovery:**
+- Dataset-specific patterns emerge: from highly specialized (81% GINE on MolPCBA) to balanced (ZINC)
+- Heterogeneous architectures consistently produce more interpretable models than other baseline GTs 
+
+**Interpretability Insight:**
+- Visual attention salience does NOT always correlate with causal importance 
+- Our metrics reveal which heads and nodes actually drive predictions
 
 
 ## Acknowledgments
