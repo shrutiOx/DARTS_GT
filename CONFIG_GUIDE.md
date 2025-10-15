@@ -365,6 +365,32 @@ gt:
 
 ---
 
+### `type`
+**Type:** `str`  
+**Default:** `NASModel`
+
+Type of Model we used e.g. 'NASModelEdge','NASModel','UNIRAND_GTModel','vanilla_model' etc
+```yaml
+model:
+  type: 'NASModel'
+```
+
+---
+
+---
+
+### `mode`
+**Type:** `str`  
+**Default:** `NoMixNas_uncertainty_train`
+
+Type of train  we used e.g. 'NoMixNas_uncertainty_train' (for NAS NonLRGB) ,'NAS_uncertainty_train' (for NAS LRGB),'custom_train' (all others)
+```yaml
+train:
+  mode: 'NoMixNas_uncertainty_train'
+```
+
+---
+
 ### `dim_hidden`, `n_heads`, `dropout`, etc.
 
 Standard GraphGPS parameters actively used. See [GraphGPS docs](https://github.com/rampasek/GraphGPS) for full list.
@@ -375,7 +401,7 @@ Standard GraphGPS parameters actively used. See [GraphGPS docs](https://github.c
 
 ## See Also
 
-- [CODE_STRUCTURE.md](CODE_STRUCTURE.md) - Code organization
+
 - [README.md](README.md) - Quick start guide
 - [GraphGPS Documentation](https://github.com/rampasek/GraphGPS) - Base framework
 
