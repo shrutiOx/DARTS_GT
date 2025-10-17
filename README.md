@@ -204,3 +204,17 @@ While our implementation leverages the GraphGPS infrastructure (data loaders, tr
 
 ### License
 This project is released under the MIT License, consistent with the original GraphGPS ,NNI and LRGB codebases. See [LICENSE](LICENSE) for details.
+
+## Citation
+
+If you find this work useful, please cite:
+
+[![arXiv](https://img.shields.io/badge/arXiv-2510.14336-b31b1b.svg)](https://arxiv.org/abs/2510.14336)
+```bibtex
+@article{chakraborty2025dartsgt,
+  title={DARTS-GT: Differentiable Architecture Search for Graph Transformers with Quantifiable Instance-Specific Interpretability Analysis},
+  author={Chakraborty, Shruti Sarika and Minary, Peter},
+  journal={arXiv preprint https://arxiv.org/abs/2510.14336},
+  year={2025}
+}
+```
