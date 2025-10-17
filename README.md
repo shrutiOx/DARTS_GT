@@ -212,9 +212,10 @@ If you find this work useful, please cite:
 [![arXiv](https://img.shields.io/badge/arXiv-2510.14336-b31b1b.svg)](https://arxiv.org/abs/2510.14336)
 ```bibtex
 @article{chakraborty2025dartsgt,
-  title={DARTS-GT: Differentiable Architecture Search for Graph Transformers with Quantifiable Instance-Specific Interpretability Analysis},
+  title={DARTS-GT: Differentiable Architecture Search for Graph Transformers 
+         with Quantifiable Instance-Specific Interpretability Analysis},
   author={Chakraborty, Shruti Sarika and Minary, Peter},
-  journal={arXiv preprint https://arxiv.org/abs/2510.14336},
+  journal={arXiv preprint arXiv:2510.14336},
   year={2025}
 }
 ```
